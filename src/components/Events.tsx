@@ -1,5 +1,3 @@
-import type { FC } from "react";
-
 export const mockEvents = [
   {
     id: 1,
@@ -33,16 +31,14 @@ export const mockEvents = [
   },
 ];
 
-export const Events: FC = () => {
-  return (
-    <>
-      {mockEvents.map((event) => (
-        <article key="id">
-          <p>{event.sport}</p>
-          <p>od: {event.name}</p>
-          <button>Otevřít</button>
-        </article>
-      ))}
-    </>
-  );
-};
+export const Events: React.FC = () => (
+  <>
+    {mockEvents.map(({ id, sport, name }) => (
+      <article key={id}>
+        <p>{sport}</p>
+        <p>od: {name}</p>
+        <button>Otevřít</button>
+      </article>
+    ))}
+  </>
+);
