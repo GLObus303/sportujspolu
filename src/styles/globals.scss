@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+#__next,
+html {
+  height: 100%;
+  line-height: 1.5;
+}
+
+* {
+  font-family: "inter", sans-serif;
+}
+
+p {
+  font-size: 1rem;
+}
+
+button {
+  font-size: 1rem;
+}
