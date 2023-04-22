@@ -1,5 +1,6 @@
-import type { NextPage } from "next";
-import { Events } from "../components/Events";
+import { NextPage } from 'next';
+
+import { Events } from '../components/Events';
 
 const Home: NextPage = () => <Events />;
 
