@@ -1,12 +1,12 @@
-import type { ReactNode, FC } from "react";
-import { Header } from "./Header";
+import { ReactNode } from 'react';
 
-type Props = {
-  children?: ReactNode;
-  headerActionComponent?: ReactNode;
+import { Header } from './Header';
+
+type LayoutProps = {
+  children: ReactNode;
 };
 
-export const Layout: FC<Props> = ({ children }) => (
+export const Layout: React.FC<LayoutProps> = ({ children }) => (
   <div>
     <Header />
     <main className="p-0 md:p-6">{children}</main>
