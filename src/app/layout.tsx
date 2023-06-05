@@ -7,16 +7,12 @@ export const metadata = {
   description: 'Už nikdy nesportuj sám',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="cs">
-      <body>
-        <Layout>{children}</Layout>
-      </body>
-    </html>
-  );
-}
+const RootLayout = ({ children }: { children: React.ReactNode }) => (
+  <html lang="cs">
+    <body>
+      <Layout>{children}</Layout>
+    </body>
+  </html>
+);
+
+export default RootLayout;
