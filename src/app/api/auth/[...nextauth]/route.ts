@@ -1,25 +1,25 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { AuthOptions } from 'next-auth';
 import ky from 'ky';
 
 type User = {
   id: string;
-  name: string;
-};
-
-type APIResponse = {
-  name: string;
   email: string;
 };
 
-export const authOptions = {
+type Resp = {
+  token: string;
+};
+
+export const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
       credentials: {},
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         const { email, password } = credentials as {
           email: string;
           password: string;
@@ -27,7 +27,7 @@ export const authOptions = {
 
         try {
           const response = await ky.post(
-            'https://sportujspolu-api.onrender.com/api/v1/user/registerjjb',
+            'https://sportujspolu-api.onrender.com/api/v1/user/login',
             {
               json: {
                 email,
@@ -40,12 +40,22 @@ export const authOptions = {
             return null;
           }
 
-          const apiUser: APIResponse = await response.json();
+          const resp: Resp = await response.json();
 
-          const user: User = {
-            id: apiUser.email,
-            name: apiUser.name,
-          };
+          const userResponse = await ky.get(
+            'https://sportujspolu-api.onrender.com/api/v1/user/me',
+            {
+              headers: {
+                Authorization: `Bearer ${resp.token}`,
+              },
+            },
+          );
+
+          if (userResponse.status !== 200) {
+            return null;
+          }
+
+          const user: User = await userResponse.json();
 
           return user;
         } catch (error) {
@@ -55,7 +65,7 @@ export const authOptions = {
     }),
   ],
   pages: {
-    signIn: '/',
+    signIn: '/login',
   },
 };
 
