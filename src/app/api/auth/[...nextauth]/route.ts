@@ -27,7 +27,7 @@ export const authOptions = {
 
         try {
           const response = await ky.post(
-            'https://sportujspolu-api.onrender.com/api/v1/users/login',
+            'https://sportujspolu-api.onrender.com/api/v1/user/registerjjb',
             {
               json: {
                 email,
