@@ -13,6 +13,7 @@ const LoginPage = () => {
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setEmail(event.target.value);
+
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(event.target.value);
 

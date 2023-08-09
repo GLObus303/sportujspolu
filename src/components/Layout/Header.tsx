@@ -4,6 +4,8 @@ import Link from 'next/link';
 
 export const Header: React.FC = () => {
   const { data: session } = useSession();
+  const { user } = session || {};
+  const { name, email } = user || {};
 
   return (
     <header className="fixed w-full bg-white">
@@ -12,10 +14,11 @@ export const Header: React.FC = () => {
           SportujSpolu
         </Link>
         <p className="px-4 md:px-8">
-          <b>{session?.user?.name} </b>
-          <i>{session?.user?.email}</i>{' '}
-          {session?.user ? (
+          <b>{name} </b>
+          <i>{email}</i>
+          {user ? (
             <button
+              type="button"
               className="pl-5 hover:text-green-500"
               onClick={() => signOut()}
             >
@@ -23,11 +26,10 @@ export const Header: React.FC = () => {
             </button>
           ) : (
             <>
-              {' '}
               <Link href="/register" className="pl-5 hover:text-green-500">
                 Register
-              </Link>{' '}
-              /{' '}
+              </Link>
+              {' / '}
               <Link href="/login" className="hover:text-green-500">
                 Login
               </Link>

@@ -1,7 +1,8 @@
 'use client';
 import React, { useState } from 'react';
-import ky from 'ky';
 import { useRouter } from 'next/navigation';
+
+import { api } from '../api/client';
 
 const Registration = () => {
   const [formData, setFormData] = useState({
@@ -24,12 +25,9 @@ const Registration = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const response = await ky.post(
-        'https://sportujspolu-api.onrender.com/api/v1/user/register',
-        {
-          json: formData,
-        },
-      );
+      const response = await api.post('user/register', {
+        json: formData,
+      });
 
       if (response.status === 200) {
         router.push('/login');

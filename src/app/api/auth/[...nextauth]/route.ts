@@ -1,24 +1,14 @@
-import NextAuth from 'next-auth';
+import NextAuth, { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { AuthOptions } from 'next-auth';
-import ky from 'ky';
 
-type User = {
-  id: string;
-  email: string;
-};
-
-type Resp = {
-  token: string;
-};
+import { authUser, getUser } from '../../client';
 
 const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
-      name: 'Credentials',
+      type: 'credentials',
       credentials: {},
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       async authorize(credentials) {
         const { email, password } = credentials as {
           email: string;
@@ -26,36 +16,15 @@ const authOptions: AuthOptions = {
         };
 
         try {
-          const response = await ky.post(
-            'https://sportujspolu-api.onrender.com/api/v1/user/login',
-            {
-              json: {
-                email,
-                password,
-              },
-            },
-          );
-
-          if (response.status !== 200) {
+          const resp = await authUser(email, password);
+          if (!resp.token) {
             return null;
           }
 
-          const resp: Resp = await response.json();
-
-          const userResponse = await ky.get(
-            'https://sportujspolu-api.onrender.com/api/v1/user/me',
-            {
-              headers: {
-                Authorization: `Bearer ${resp.token}`,
-              },
-            },
-          );
-
-          if (userResponse.status !== 200) {
+          const user = await getUser(resp.token);
+          if (!user) {
             return null;
           }
-
-          const user: User = await userResponse.json();
 
           return user;
         } catch (error) {
