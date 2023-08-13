@@ -5,31 +5,36 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const [errorMessage, setError] = useState('');
 
   const router = useRouter();
 
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setEmail(event.target.value);
-
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setPassword(event.target.value);
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    try {
+      const response = await signIn('credentials', {
+        redirect: false,
+        email: formData.email,
+        password: formData.password,
+      });
 
-    const result = await signIn('credentials', {
-      redirect: false,
-      email,
-      password,
-    });
-
-    if (!result?.error) {
-      router.push('/');
-    } else {
-      setError(result.error);
+      if (response?.status === 200) {
+        router.push('/');
+      }
+    } catch (error) {
+      setError('Špatný email nebo heslo.');
     }
   };
 
@@ -45,8 +50,8 @@ const LoginPage = () => {
             className="mt-2 w-full border border-black p-2"
             type="email"
             name="email"
-            value={email}
-            onChange={handleEmailChange}
+            value={formData.email}
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -56,8 +61,8 @@ const LoginPage = () => {
             className="mt-2 w-full border border-black p-2"
             type="password"
             name="password"
-            value={password}
-            onChange={handlePasswordChange}
+            value={formData.password}
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -68,7 +73,7 @@ const LoginPage = () => {
           Log In
         </button>
       </form>
-      {error && <p className="pt-5 text-red-500">Špatný email nebo heslo.</p>}
+      {errorMessage && <p className="pt-5 text-red-500">{errorMessage}</p>}
     </div>
   );
 };

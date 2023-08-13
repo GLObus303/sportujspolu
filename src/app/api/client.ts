@@ -1,11 +1,8 @@
 import ky from 'ky';
 
-type User = {
-  id: string;
-  email: string;
-};
+import { User } from '../../types';
 
-type Resp = {
+type Response = {
   token: string;
 };
 
@@ -17,20 +14,20 @@ export const api = ky.create({
   headers: {},
 });
 
-export async function authUser(email: string, password: string) {
-  return await api
+const privateApi = (token: string) =>
+  ky.create({
+    prefixUrl: apiUrl,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+export const authUser = async (email: string, password: string) =>
+  await api
     .post('user/login', {
       json: { email, password },
     })
-    .json<Resp>();
-}
+    .json<Response>();
 
-export async function getUser(token: string) {
-  return await api
-    .get('user/me', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .json<User>();
-}
+export const getUser = async (token: string) =>
+  await privateApi(token).get('user/me').json<User>();

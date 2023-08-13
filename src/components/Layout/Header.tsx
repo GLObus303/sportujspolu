@@ -3,9 +3,7 @@ import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
 
 export const Header: React.FC = () => {
-  const { data: session } = useSession();
-  const { user } = session || {};
-  const { name, email } = user || {};
+  const { name, email } = useSession()?.data?.user || {};
 
   return (
     <header className="fixed w-full bg-white">
@@ -16,7 +14,7 @@ export const Header: React.FC = () => {
         <p className="px-4 md:px-8">
           <b>{name} </b>
           <i>{email}</i>
-          {user ? (
+          {email ? (
             <button
               type="button"
               className="pl-5 hover:text-green-500"

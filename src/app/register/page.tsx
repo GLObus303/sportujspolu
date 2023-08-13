@@ -29,7 +29,7 @@ const Registration = () => {
         json: formData,
       });
 
-      if (response.status === 200) {
+      if (response?.status === 200) {
         router.push('/login');
       }
     } catch (error) {

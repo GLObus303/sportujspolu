@@ -9,19 +9,19 @@ const authOptions: AuthOptions = {
       type: 'credentials',
       credentials: {},
 
-      async authorize(credentials) {
+      authorize: async (credentials) => {
         const { email, password } = credentials as {
           email: string;
           password: string;
         };
 
         try {
-          const resp = await authUser(email, password);
-          if (!resp.token) {
+          const response = await authUser(email, password);
+          if (!response.token) {
             return null;
           }
 
-          const user = await getUser(resp.token);
+          const user = await getUser(response.token);
           if (!user) {
             return null;
           }
