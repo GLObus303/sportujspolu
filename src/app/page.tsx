@@ -1,17 +1,9 @@
-import ky from 'ky';
-
+import { api } from './api/client';
 import { Events } from '../components/Events';
-
-type Event = {
-  id: number;
-  sport: string;
-  name: string;
-};
+import { Event } from '../types';
 
 const Home = async () => {
-  const response = await ky(
-    'https://sportujspolu-api.onrender.com/api/v1/events',
-  );
+  const response = await api('events');
   const events: Event[] = await response.json();
 
   return <Events events={events} />;
