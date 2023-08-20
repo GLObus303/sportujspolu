@@ -1,8 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
-import { signIn } from 'next-auth/react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+
+import { authUser } from '../../client';
+import { useAuth } from '../../context/AuthContext';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +16,8 @@ const LoginPage = () => {
 
   const router = useRouter();
 
+  const { login } = useAuth();
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -24,13 +28,10 @@ const LoginPage = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const response = await signIn('credentials', {
-        redirect: false,
-        email: formData.email,
-        password: formData.password,
-      });
-
-      if (response?.status === 200) {
+      const response = await authUser(formData.email, formData.password);
+      if (response.token) {
+        localStorage.setItem('token', response.token);
+        login(response.token);
         router.push('/');
       }
     } catch (error) {

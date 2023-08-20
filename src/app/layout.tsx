@@ -1,5 +1,5 @@
 import './globals.scss';
-import { NextAuthProvider } from './providers';
+import { AuthProvider } from '../context/AuthContext';
 import { Layout } from '../components/Layout';
 
 export const metadata = {
@@ -10,9 +10,9 @@ export const metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="cs">
     <body>
-      <NextAuthProvider>
+      <AuthProvider>
         <Layout>{children}</Layout>
-      </NextAuthProvider>
+      </AuthProvider>
     </body>
   </html>
 );
