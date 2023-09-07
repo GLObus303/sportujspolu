@@ -1,6 +1,6 @@
 'use client';
 
-import {
+import React, {
   createContext,
   useState,
   useContext,
@@ -25,25 +25,48 @@ type AuthProviderProps = {
   children: ReactNode;
 };
 
-export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const token = localStorage.getItem('token');
+
+  const getCookie = (name: string): string | null => {
+    if (typeof document === 'undefined') {
+      return null;
+    }
+
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+
+    return parts.length === 2 ? parts?.pop()?.split(';')?.[0] || null : null;
+  };
+
+  const setCookie = (name: string, value: string, days = 7): void => {
+    if (typeof document === 'undefined') {
+      return;
+    }
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    const expires = `; expires=${date.toUTCString()}`;
+    document.cookie = `${name}=${value}${expires}; path=/; Secure; HttpOnly`;
+  };
+
+  const deleteCookie = (name: string): void => setCookie(name, '', -1);
 
   useEffect(() => {
+    const token = getCookie('token');
     if (token) {
       getUser(token)
         .then(setUser)
-        .catch(() => localStorage.removeItem('token'));
+        .catch(() => deleteCookie('token'));
     }
-  }, [token]);
+  }, []);
 
-  const login = (newToken: string) => {
-    localStorage.setItem('token', newToken);
+  const login = (newToken: string): void => {
+    setCookie('token', newToken);
     getUser(newToken).then(setUser);
   };
 
-  const logout = () => {
-    localStorage.removeItem('token');
+  const logout = (): void => {
+    deleteCookie('token');
     setUser(null);
   };
 
