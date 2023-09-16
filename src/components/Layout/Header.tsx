@@ -6,7 +6,7 @@ import { useAuth } from '../../context/AuthContext';
 
 export const Header: React.FC = () => {
   const { user, logout } = useAuth();
-  const { name, email } = user || {};
+  const { name, email } = user;
 
   return (
     <header className="fixed w-full bg-white">

@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import nookies from 'nookies';
 
 import { authUser } from '../../client';
 import { useAuth } from '../../context/AuthContext';
+import { SECONDS_IN_WEEK } from '../../utils/constants';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +32,10 @@ const LoginPage = () => {
     try {
       const response = await authUser(formData.email, formData.password);
       if (response.token) {
-        localStorage.setItem('token', response.token);
+        nookies.set(null, 'token', response.token, {
+          path: '/',
+          maxAge: SECONDS_IN_WEEK,
+        });
         login(response.token);
         router.push('/');
       }

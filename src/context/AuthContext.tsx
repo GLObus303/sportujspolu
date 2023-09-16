@@ -1,85 +1,78 @@
 'use client';
 
+import nookies from 'nookies';
 import React, {
   createContext,
   useState,
   useContext,
   useEffect,
+  useMemo,
   ReactNode,
 } from 'react';
 
 import { getUser } from '../client';
 import { User } from '../types';
+import { SECONDS_IN_WEEK } from '../utils/constants';
 
 type AuthContextProps = {
-  user: User | null;
+  user: User;
   login: (token: string) => void;
   logout: () => void;
 };
 
-export const AuthContext = createContext<AuthContextProps | undefined>(
-  undefined,
-);
+const DefaultUser = {
+  id: -1,
+  name: '',
+  email: '',
+  rating: 0,
+};
+
+export const AuthContext = createContext<AuthContextProps | null>(null);
 
 type AuthProviderProps = {
   children: ReactNode;
 };
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-
-  const getCookie = (name: string): string | null => {
-    if (typeof document === 'undefined') {
-      return null;
-    }
-
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-
-    return parts.length === 2 ? parts?.pop()?.split(';')?.[0] || null : null;
-  };
-
-  const setCookie = (name: string, value: string, days = 7): void => {
-    if (typeof document === 'undefined') {
-      return;
-    }
-    const date = new Date();
-    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    const expires = `; expires=${date.toUTCString()}`;
-    document.cookie = `${name}=${value}${expires}; path=/; Secure; HttpOnly`;
-  };
-
-  const deleteCookie = (name: string): void => setCookie(name, '', -1);
+  const [user, setUser] = useState<User>(DefaultUser);
 
   useEffect(() => {
-    const token = getCookie('token');
-    if (token) {
-      getUser(token)
-        .then(setUser)
-        .catch(() => deleteCookie('token'));
-    }
+    const fetchData = async () => {
+      const { token } = nookies.get();
+      if (token) {
+        try {
+          const userData = await getUser(token);
+          setUser(userData);
+        } catch (error) {
+          nookies.destroy(null, 'token');
+        }
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const login = (newToken: string): void => {
-    setCookie('token', newToken);
+  const login = (newToken: string) => {
+    nookies.set(null, 'token', newToken, {
+      path: '/',
+      maxAge: SECONDS_IN_WEEK,
+    });
     getUser(newToken).then(setUser);
   };
 
   const logout = (): void => {
-    deleteCookie('token');
-    setUser(null);
+    nookies.destroy(null, 'token');
+    setUser(DefaultUser);
   };
 
-  return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  const value = useMemo(() => ({ user, login, logout }), [user, login, logout]);
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = (): AuthContextProps => {
   const context = useContext(AuthContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
 
