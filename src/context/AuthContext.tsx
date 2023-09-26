@@ -5,14 +5,15 @@ import React, {
   createContext,
   useState,
   useContext,
-  useEffect,
   useMemo,
+  useCallback,
   ReactNode,
 } from 'react';
 
 import { getUser } from '../client';
 import { User } from '../types';
 import { SECONDS_IN_WEEK } from '../utils/constants';
+import { useEffectAsync } from '../hooks/useEffectAsync';
 
 type AuthContextProps = {
   user: User;
@@ -36,36 +37,35 @@ type AuthProviderProps = {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User>(DefaultUser);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { token } = nookies.get();
-      if (token) {
-        try {
-          const userData = await getUser(token);
-          setUser(userData);
-        } catch (error) {
-          nookies.destroy(null, 'token');
-        }
-      }
-    };
+  useEffectAsync(async () => {
+    const { token } = nookies.get();
 
-    fetchData();
+    if (!token) {
+      return;
+    }
+
+    try {
+      const userData = await getUser(token);
+      setUser(userData);
+    } catch (error) {
+      nookies.destroy(null, 'token');
+    }
   }, []);
 
-  const login = (newToken: string) => {
+  const login = useCallback((newToken: string) => {
     nookies.set(null, 'token', newToken, {
       path: '/',
       maxAge: SECONDS_IN_WEEK,
     });
     getUser(newToken).then(setUser);
-  };
+  }, []);
 
-  const logout = (): void => {
+  const logout = useCallback(() => {
     nookies.destroy(null, 'token');
     setUser(DefaultUser);
-  };
+  }, []);
 
-  const value = useMemo(() => ({ user, login, logout }), [user, login, logout]);
+  const value = useMemo(() => ({ user, login, logout }), [user]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
