@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { api } from '../api/client';
+import { api } from '../../client';
 
 const Registration = () => {
   const [formData, setFormData] = useState({

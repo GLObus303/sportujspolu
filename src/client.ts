@@ -1,6 +1,6 @@
 import ky from 'ky';
 
-import { User } from '../../types';
+import { User } from './types';
 
 type Response = {
   token: string;
