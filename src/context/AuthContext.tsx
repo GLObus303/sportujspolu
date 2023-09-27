@@ -21,7 +21,7 @@ type AuthContextProps = {
   logout: () => void;
 };
 
-const DefaultUser = {
+const defaultUser = {
   id: -1,
   name: '',
   email: '',
@@ -35,7 +35,7 @@ type AuthProviderProps = {
 };
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User>(DefaultUser);
+  const [user, setUser] = useState<User>(defaultUser);
 
   useEffectAsync(async () => {
     const { token } = nookies.get();
@@ -62,7 +62,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = useCallback(() => {
     nookies.destroy(null, 'token');
-    setUser(DefaultUser);
+    setUser(defaultUser);
   }, []);
 
   const value = useMemo(() => ({ user, login, logout }), [user]);
