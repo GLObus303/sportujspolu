@@ -1,29 +1,24 @@
-type Event = {
-  id: number;
-  sport: string;
-  name: string;
-};
+'use client';
+
+import { Event } from '../types';
+import { EventCard } from './EventCard';
 
 export const Events = ({ events }: { events: Event[] }) => (
   <>
-    <section className="flex h-hero min-h-300 items-center justify-center">
-      <h1 className="text-center text-3xl">Už nikdy nesportuj sám</h1>
-    </section>
-    <section className="grid grid-cols-1 gap-x-20 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
-      {events.map(({ id, sport, name }) => (
-        <article
-          className="flex h-article flex-col justify-between bg-primary p-4"
-          key={id}
-        >
-          <p>{sport}</p>
-          <span className="flex items-center justify-between">
-            <p>od: {name}</p>
-            <button className=" transition-property: background-color transition-duration: 0.3s transition-timing-function: h-rounded bg-secondary px-4 py-2 text-white ease-in-out hover:bg-tertiary">
-              Otevřít
-            </button>
-          </span>
-        </article>
+    <h1 className="mt-24 px-20 text-center text-2xl font-medium leading-normal md:mt-14 md:px-0 lg:text-start lg:text-4xl">
+      Všechny sportovní akce v&nbsp;Česku
+    </h1>
+    <section className="x-20 mt-4 grid grid-cols-1 gap-x-5 sm:grid-cols-2 md:mt-14 md:gap-y-5 lg:grid-cols-3 xl:grid-cols-4">
+      {events.map((event, index) => (
+        <EventCard key={index} event={event} />
       ))}
+    </section>
+    <section className="text-center">
+      <button onClick={() => window.alert('🚀 Feature coming soon! 🌟')}>
+        <p className="text-semibold mx-3 mt-12 text-xl hover:text-primary">
+          Zobrazit další akce
+        </p>
+      </button>
     </section>
   </>
 );

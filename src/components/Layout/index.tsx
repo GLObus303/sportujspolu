@@ -9,6 +9,6 @@ type LayoutProps = {
 export const Layout: React.FC<LayoutProps> = ({ children }) => (
   <div>
     <Header />
-    <main className="p-0 md:p-6">{children}</main>
+    <main className="p-0 md:p-14">{children}</main>
   </div>
 );

@@ -11,6 +11,7 @@
     "prettier": "prettier --ignore-path .gitignore --write '**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
+    "classnames": "^2.3.2",
     "ky": "0.33.3",
     "next": "13.4.4",
     "next-auth": "^4.22.3",
