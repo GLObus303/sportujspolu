@@ -14,10 +14,12 @@ export const Events = ({ events }: { events: Event[] }) => (
       ))}
     </section>
     <section className="text-center">
-      <button onClick={() => window.alert('🚀 Feature coming soon! 🌟')}>
-        <p className="text-semibold mx-3 mt-12 text-xl hover:text-primary">
-          Zobrazit další akce
-        </p>
+      <button
+        type="button"
+        title="🚀 Feature coming soon! 🌟"
+        className="mt-12 hover:text-primary focus:text-primary"
+      >
+        <p className="text-semibold mx-3 text-xl">Zobrazit další akce</p>
       </button>
     </section>
   </>

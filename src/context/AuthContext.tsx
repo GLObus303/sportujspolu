@@ -10,7 +10,7 @@ import React, {
   ReactNode,
 } from 'react';
 
-import { getUser } from '../client';
+import { getUser } from '../api/user';
 import { User } from '../types';
 import { SECONDS_IN_WEEK } from '../utils/constants';
 import { useEffectAsync } from '../hooks/useEffectAsync';
@@ -35,7 +35,7 @@ type AuthProviderProps = {
 };
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User>(defaultUser);
+  const [user, setUser] = useState(defaultUser);
 
   useEffectAsync(async () => {
     const { token } = nookies.get();

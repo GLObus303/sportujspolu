@@ -15,3 +15,14 @@ export type Event = {
   description: string;
   level: string;
 };
+
+export type ApiError = {
+  status?: number;
+  message: string;
+};
+
+export type FormData = {
+  password: string;
+  email: string;
+  name?: string;
+};

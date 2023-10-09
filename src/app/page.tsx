@@ -1,4 +1,4 @@
-import { api } from '../client';
+import { api } from '../api/base';
 import { Events } from '../components/Events';
 import { Event } from '../types';
 

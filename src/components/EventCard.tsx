@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import cx from 'classnames';
+import format from 'date-fns/format';
 
 import { StarRating } from './ui/StarRating';
 import { HeartIcon } from './ui/icons/HeartIcon';
@@ -20,15 +21,19 @@ export const EventCard = ({ event }: { event: Event }) => {
 
   const { id, name, sport, date, location, price, description, level } = event;
 
+  const getImagePath = (imageId: number) => `/${(imageId % 12) + 1}.png`;
+
   return (
     <article className="relative rounded-md bg-white shadow-md">
       <button
+        type="button"
         onClick={handleLikeEvent}
+        aria-label={isLiked ? 'Odstranit z oblíbených' : 'Přidat do oblíbených'}
         className="absolute right-3 top-3 z-button"
       >
         <HeartIcon
           className={cx(
-            'transform transition-transform duration-200 ease-in-out hover:scale-115',
+            'transition-transform duration-200 ease-in-out hover:scale-115',
             isLiked ? 'fill-primary' : 'fill-smoke-glass',
           )}
         />
@@ -36,21 +41,12 @@ export const EventCard = ({ event }: { event: Event }) => {
       <Link href={`/event/${event.id}`}>
         <div style={{ aspectRatio: '1/1' }} className="rounded-md bg-white">
           <div className="relative h-1/3 w-full overflow-hidden rounded-tl-md rounded-tr-md object-cover">
-            <Image src={`/${(id % 12) + 1}.png`} alt="" fill />
+            <Image src={getImagePath(id)} alt="" fill />
           </div>
           <div className="flex h-2/3 flex-col justify-between p-5">
             <p className="text-s flex flex-row justify-between font-light">
               <span className="w-1/2 truncate">{location}</span>{' '}
-              <time>
-                {new Date(date).toLocaleString('en-UK', {
-                  day: 'numeric',
-                  month: 'numeric',
-                  year: 'numeric',
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  hour12: false,
-                })}
-              </time>
+              <time>{format(new Date(date), 'dd/MM/yyyy HH:mm')}</time>
             </p>
             <p className="line-clamp-3 overflow-hidden">
               <span className="font-medium">{name}:</span>{' '}
@@ -69,7 +65,7 @@ export const EventCard = ({ event }: { event: Event }) => {
                 </span>
               </p>
               <p className="font-medium">
-                {price === 0 ? 'FREE' : `${price} EUR`}
+                {price === 0 ? 'ZDARMA' : `${price} Kč`}
               </p>
             </div>
           </div>
