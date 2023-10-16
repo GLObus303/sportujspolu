@@ -11,7 +11,7 @@ import React, {
 } from 'react';
 
 import { getUser } from '../api/user';
-import { User } from '../types';
+import { User } from '../types/User';
 import { SECONDS_IN_WEEK } from '../utils/constants';
 import { useEffectAsync } from '../hooks/useEffectAsync';
 
@@ -46,7 +46,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     try {
       const userData = await getUser(token);
-      setUser(userData);
+      setUser(userData as User);
     } catch (error) {
       nookies.destroy(null, 'token');
     }
@@ -57,7 +57,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       path: '/',
       maxAge: SECONDS_IN_WEEK,
     });
-    getUser(newToken).then(setUser);
+    getUser(newToken).then((userData) => setUser(userData as User));
   }, []);
 
   const logout = useCallback(() => {

@@ -6,9 +6,9 @@ import { useState } from 'react';
 import cx from 'classnames';
 import format from 'date-fns/format';
 
-import { StarRating } from './ui/StarRating';
-import { HeartIcon } from './ui/icons/HeartIcon';
-import { Event } from '../types';
+import { StarRating } from '../StarRating';
+import { HeartIcon } from '../icons/HeartIcon';
+import { Event } from '../../types/Event';
 
 const rating = 3.5;
 
@@ -33,7 +33,7 @@ export const EventCard = ({ event }: { event: Event }) => {
       >
         <HeartIcon
           className={cx(
-            'transition-transform duration-200 ease-in-out hover:scale-115',
+            'transition-transform duration-200 ease-in-out hover:scale-115 motion-reduce:hover:scale-100',
             isLiked ? 'fill-primary' : 'fill-smoke-glass',
           )}
         />

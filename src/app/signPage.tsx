@@ -1,12 +1,12 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
-import { Routes } from '../../utils/constants';
-import { SignInForm } from './SignInForm';
-import { SignUpForm } from './SignUpForm';
-import { SocialButton } from '../../components/ui/SocialButton';
-import { GoogleIcon } from '../../components/ui/icons/GoogleIcon';
-import { FacebookIcon } from '../../components/ui/icons/FacebookIcon';
+import { Routes } from '../utils/constants';
+import { SignInForm } from './login/SignInForm';
+import { SignUpForm } from './register/SignUpForm';
+import { SocialButton } from '../components/SocialButton';
+import { GoogleIcon } from '../components/icons/GoogleIcon';
+import { FacebookIcon } from '../components/icons/FacebookIcon';
 
 export const LoginPage = () => {
   const pathname = usePathname();

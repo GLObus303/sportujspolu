@@ -2,9 +2,11 @@ import cx from 'classnames';
 import { FieldErrors } from 'react-hook-form';
 
 import { AriaLiveErrorMessage } from './AriaLiveErrorMessage';
-import { EyeIcon } from './ui/icons/EyeIcon';
+import { EyeIcon } from './icons/EyeIcon';
 
 type InputProps = {
+  ariadescribedby: string;
+  ariainvalid: boolean;
   register: any;
   type?: string;
   name: 'name' | 'password' | 'email';
@@ -18,6 +20,8 @@ type InputProps = {
 };
 
 export const Input: React.FC<InputProps> = ({
+  ariadescribedby,
+  ariainvalid = false,
   register,
   type = 'text',
   name,
@@ -34,6 +38,8 @@ export const Input: React.FC<InputProps> = ({
       {placeholder}
     </span>
     <input
+      aria-describedby={ariadescribedby}
+      aria-invalid={ariainvalid}
       className={cx(
         className,
         'w-full border px-5 py-3 placeholder-light-gray focus:outline-primary',
@@ -65,6 +71,7 @@ export const Input: React.FC<InputProps> = ({
       <AriaLiveErrorMessage
         className="absolute right-0 pt-1 text-xs"
         errorMessage={errors?.[name]?.message as string}
+        id={ariadescribedby}
       />
     )}
   </label>

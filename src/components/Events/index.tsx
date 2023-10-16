@@ -1,6 +1,4 @@
-'use client';
-
-import { Event } from '../types';
+import { Event } from '../../types/Event';
 import { EventCard } from './EventCard';
 
 export const Events = ({ events }: { events: Event[] }) => (

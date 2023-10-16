@@ -1,6 +1,6 @@
 import { api } from '../api/base';
 import { Events } from '../components/Events';
-import { Event } from '../types';
+import { Event } from '../types/Event';
 
 const Home = async () => {
   const response = await api('events');

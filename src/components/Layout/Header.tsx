@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 import { useAuth } from '../../context/AuthContext';
-import { LogoIcon } from '../ui/icons/LogoIcon';
+import { LogoIcon } from '../icons/LogoIcon';
 import { Routes } from '../../utils/constants';
 
 export const Header: React.FC = () => {

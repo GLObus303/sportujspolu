@@ -1,10 +1,11 @@
 import ky from 'ky';
 
 import { ERROR_MESSAGE } from '../utils/constants';
-import { ApiError } from '../types';
+import { ApiError } from '../types/Api';
 
-// const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-const apiUrl = 'https://sportujspolu-api.onrender.com/api/v1/';
+const apiUrl =
+  process.env.NEXT_PUBLIC_API_URL ||
+  'https://sportujspolu-api.onrender.com/api/v1/';
 
 export const api = ky.create({
   prefixUrl: apiUrl,
@@ -28,14 +29,14 @@ export const apiPost = async <T>(
   const apiInstance = token ? privateApi(token) : api;
 
   try {
-    return await apiInstance.post(endpoint, { json: body }).json();
-  } catch (error: unknown) {
-    const apiError: ApiError = {
-      status: (error as { response?: { status: number } }).response?.status,
+    return apiInstance.post(endpoint, { json: body }).json();
+  } catch (error: any) {
+    onError?.({
+      status: error.response?.status,
       message: ERROR_MESSAGE.GENERIC_ERROR,
-    };
-    onError?.(apiError);
-    throw apiError;
+    });
+
+    return null as any;
   }
 };
 
@@ -47,13 +48,13 @@ export const apiGet = async <T>(
   const apiInstance = token ? privateApi(token) : api;
 
   try {
-    return await apiInstance.get(endpoint).json();
-  } catch (error: unknown) {
-    const apiError: ApiError = {
-      status: (error as { response?: { status: number } }).response?.status,
+    return apiInstance.get(endpoint).json();
+  } catch (error: any) {
+    onError?.({
+      status: error.response?.status,
       message: ERROR_MESSAGE.GENERIC_ERROR,
-    };
-    onError?.(apiError);
-    throw apiError;
+    });
+
+    return null as any;
   }
 };

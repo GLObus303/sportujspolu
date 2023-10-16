@@ -3,29 +3,23 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import nookies from 'nookies';
 
-import { schema } from './schema';
-import { useAuth } from '../../../context/AuthContext';
-import { authUser } from '../../../api/user';
-import { Loading } from '../../../components/ui/Loading';
-import { AriaLiveErrorMessage } from '../../../components/AriaLiveErrorMessage';
+import { signupSchema } from './schema';
+import { registerUser } from '../../../api/user';
+import { Loading } from '../../../components/Loading';
 import { Input } from '../../../components/Input';
-import { SECONDS_IN_WEEK, Routes } from '../../../utils/constants';
-import { FormData } from '../../../types';
+import { AriaLiveErrorMessage } from '../../../components/AriaLiveErrorMessage';
+import { Routes } from '../../../utils/constants';
+import { FormData } from '../../../types/Form';
 
-export const SignInForm = () => {
+export const SignUpForm = () => {
   const {
     register,
     watch,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
-    defaultValues: {
-      email: '',
-      password: '',
-    },
+    resolver: yupResolver(signupSchema),
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -34,28 +28,20 @@ export const SignInForm = () => {
 
   const router = useRouter();
 
-  const { login } = useAuth();
-
   const onSubmit = async (formData: FormData) => {
     setIsLoading(true);
 
     try {
-      const response = (await authUser(formData, (error: any) =>
+      await registerUser(formData, (error: any) =>
         setErrorMessage(error.message),
-      )) as { token: string };
-      if (response.token) {
-        nookies.set(null, 'token', response.token, {
-          path: Routes.DASHBOARD,
-          maxAge: SECONDS_IN_WEEK,
-        });
-        login(response.token);
-        router.push(Routes.DASHBOARD);
-      }
+      );
+      router.push(Routes.SIGN_IN);
     } finally {
       setIsLoading(false);
     }
   };
 
+  const watchName = watch('name', '');
   const watchedEmail = watch('email', '');
   const watchedPassword = watch('password', '');
 
@@ -65,6 +51,18 @@ export const SignInForm = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <Input
+        ariadescribedby="nameError"
+        ariainvalid={!!errors?.name}
+        register={register}
+        type="text"
+        name="name"
+        placeholder="Jméno"
+        errors={errors}
+        watchedValue={watchName}
+      />
+      <Input
+        ariadescribedby="emailError"
+        ariainvalid={!!errors?.email}
         register={register}
         type="email"
         name="email"
@@ -73,6 +71,8 @@ export const SignInForm = () => {
         watchedValue={watchedEmail}
       />
       <Input
+        ariadescribedby="passwordError"
+        ariainvalid={!!errors?.password}
         register={register}
         isPassword
         name="password"
@@ -86,10 +86,10 @@ export const SignInForm = () => {
         <button
           type="submit"
           className={cx(
-            'h-11 w-40 rounded-md bg-black py-2 text-white hover:text-primary focus:text-primary',
+            'w-40 rounded-md bg-black px-5 py-2 text-white hover:text-primary focus:text-primary',
           )}
         >
-          Přihlásit se
+          Registrovat
         </button>
       ) : (
         <Loading />
@@ -100,7 +100,7 @@ export const SignInForm = () => {
           errorMessage={errorMessage}
         />
       )}
-      <hr className="mt-10 w-100 border-t border-light-gray" />
+      <hr className="mt-10 w-full border-t border-light-gray" />
     </form>
   );
 };
