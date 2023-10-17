@@ -1,10 +1,11 @@
 'use client';
 
+import { NextPage } from 'next';
+
 import { useAuth } from '../../../context/AuthContext';
 
-const User = () => {
-  const { user } = useAuth();
-  const { name, email } = user;
+const UserPage: NextPage = () => {
+  const { name, email } = useAuth().user;
 
   return (
     <div className="mt-20">
@@ -13,4 +14,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default UserPage;

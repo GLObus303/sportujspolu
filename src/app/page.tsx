@@ -4,7 +4,7 @@ import { Event } from '../types/Event';
 
 const Home = async () => {
   const response = await api('events');
-  const events: Event[] = await response.json();
+  const events = await response.json<Event[]>();
 
   return <Events events={events} />;
 };

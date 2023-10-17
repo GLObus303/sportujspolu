@@ -1,7 +1,7 @@
 import ky from 'ky';
 
 import { ERROR_MESSAGE } from '../utils/constants';
-import { ApiError } from '../types/Api';
+import { OnErrorType } from '../types/Api';
 
 const apiUrl =
   process.env.NEXT_PUBLIC_API_URL ||
@@ -20,41 +20,41 @@ export const privateApi = (token: string) =>
     },
   });
 
-export const apiPost = async <T>(
+export const apiPost = <T = void>(
   endpoint: string,
   body: unknown,
   token?: string,
-  onError?: (error: ApiError) => void,
-): Promise<T> => {
+  onError?: OnErrorType
+) => {
   const apiInstance = token ? privateApi(token) : api;
 
   try {
-    return apiInstance.post(endpoint, { json: body }).json();
+    return apiInstance.post(endpoint, { json: body }).json<T>();
   } catch (error: any) {
     onError?.({
       status: error.response?.status,
       message: ERROR_MESSAGE.GENERIC_ERROR,
     });
 
-    return null as any;
+    return null;
   }
 };
 
-export const apiGet = async <T>(
+export const apiGet = <T = void>(
   endpoint: string,
   token?: string,
-  onError?: (error: ApiError) => void,
-): Promise<T> => {
+  onError?: OnErrorType
+) => {
   const apiInstance = token ? privateApi(token) : api;
 
   try {
-    return apiInstance.get(endpoint).json();
+    return apiInstance.get(endpoint).json<T>();
   } catch (error: any) {
     onError?.({
       status: error.response?.status,
       message: ERROR_MESSAGE.GENERIC_ERROR,
     });
 
-    return null as any;
+    return null;
   }
 };

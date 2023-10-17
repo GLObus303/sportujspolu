@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import { ComponentType } from 'react';
 
 type SocialButtonProps = {
-  Icon: FC<{ className?: string }>;
+  Icon: ComponentType<{ className?: string }>;
   label: string;
 };
 

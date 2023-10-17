@@ -7,8 +7,10 @@ import { LogoIcon } from '../icons/LogoIcon';
 import { Routes } from '../../utils/constants';
 
 export const Header: React.FC = () => {
-  const { user, logout } = useAuth();
-  const { id, name, email } = user;
+  const {
+    user: { id, name, email },
+    logout,
+  } = useAuth();
 
   return (
     <header className="fixed top-0 z-header w-full bg-white">
@@ -46,14 +48,14 @@ export const Header: React.FC = () => {
                   ) : (
                     <div className="rounded-md bg-black px-4 py-1 text-white">
                       <Link
-                        href={Routes.SIGN_UP}
+                        href={Routes.REGISTER}
                         className="hover:text-primary focus:text-primary"
                       >
                         Register
                       </Link>
                       &nbsp;/&nbsp;
                       <Link
-                        href={Routes.SIGN_IN}
+                        href={Routes.LOGIN}
                         className="hover:text-primary focus:text-primary"
                       >
                         Login

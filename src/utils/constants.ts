@@ -2,8 +2,8 @@ export const SECONDS_IN_WEEK = 7 * 24 * 60 * 60;
 
 export const Routes = {
   DASHBOARD: '/',
-  SIGN_IN: '/login',
-  SIGN_UP: '/register',
+  LOGIN: '/login',
+  REGISTER: '/register',
   CREATE_EVENT: '/events/create',
   EVENT: '/events',
   USER: '/user',

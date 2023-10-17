@@ -1,7 +1,11 @@
 import { Event } from '../../types/Event';
 import { EventCard } from './EventCard';
 
-export const Events = ({ events }: { events: Event[] }) => (
+type EventsProps = {
+  events: Event[];
+};
+
+export const Events: React.FC<EventsProps> = ({ events }) => (
   <>
     <h1 className="mt-24 px-20 text-center text-2xl font-medium leading-normal md:mt-14 md:px-0 lg:text-start lg:text-4xl">
       Všechny sportovní akce v&nbsp;Česku

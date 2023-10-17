@@ -12,14 +12,18 @@ import { Event } from '../../types/Event';
 
 const rating = 3.5;
 
-export const EventCard = ({ event }: { event: Event }) => {
+type EventCardProps = {
+  event: Event;
+};
+
+export const EventCard: React.FC<EventCardProps> = ({
+  event: { id, name, sport, date, location, price, description, level },
+}) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLikeEvent = () => {
     setIsLiked(!isLiked);
   };
-
-  const { id, name, sport, date, location, price, description, level } = event;
 
   const getImagePath = (imageId: number) => `/${(imageId % 12) + 1}.png`;
 
@@ -34,11 +38,11 @@ export const EventCard = ({ event }: { event: Event }) => {
         <HeartIcon
           className={cx(
             'transition-transform duration-200 ease-in-out hover:scale-115 motion-reduce:hover:scale-100',
-            isLiked ? 'fill-primary' : 'fill-smoke-glass',
+            isLiked ? 'fill-primary' : 'fill-smoke-glass'
           )}
         />
       </button>
-      <Link href={`/event/${event.id}`}>
+      <Link href={`/event/${id}`}>
         <div style={{ aspectRatio: '1/1' }} className="rounded-md bg-white">
           <div className="relative h-1/3 w-full overflow-hidden rounded-tl-md rounded-tr-md object-cover">
             <Image src={getImagePath(id)} alt="" fill />

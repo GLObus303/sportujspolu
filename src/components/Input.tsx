@@ -5,8 +5,6 @@ import { AriaLiveErrorMessage } from './AriaLiveErrorMessage';
 import { EyeIcon } from './icons/EyeIcon';
 
 type InputProps = {
-  ariadescribedby: string;
-  ariainvalid: boolean;
   register: any;
   type?: string;
   name: 'name' | 'password' | 'email';
@@ -17,11 +15,9 @@ type InputProps = {
   isVisiblePassword?: boolean;
   togglePasswordVisibility?: () => void;
   className?: string;
-};
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Input: React.FC<InputProps> = ({
-  ariadescribedby,
-  ariainvalid = false,
   register,
   type = 'text',
   name,
@@ -38,8 +34,8 @@ export const Input: React.FC<InputProps> = ({
       {placeholder}
     </span>
     <input
-      aria-describedby={ariadescribedby}
-      aria-invalid={ariainvalid}
+      aria-describedby={`${name}-error}`}
+      aria-invalid={!!errors?.[name]}
       className={cx(
         className,
         'w-full border px-5 py-3 placeholder-light-gray focus:outline-primary',
@@ -47,7 +43,7 @@ export const Input: React.FC<InputProps> = ({
           'border-primary': !errors?.[name] && watchedValue,
           'border-secondary': errors?.[name],
           'border-medium-gray': !errors?.[name] && !watchedValue,
-        },
+        }
       )}
       placeholder={placeholder}
       type={(isPassword && (isVisiblePassword ? 'text' : 'password')) || type}
@@ -71,7 +67,7 @@ export const Input: React.FC<InputProps> = ({
       <AriaLiveErrorMessage
         className="absolute right-0 pt-1 text-xs"
         errorMessage={errors?.[name]?.message as string}
-        id={ariadescribedby}
+        id={`${name}`}
       />
     )}
   </label>

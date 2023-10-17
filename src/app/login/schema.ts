@@ -1,7 +1,6 @@
 import * as yup from 'yup';
 
-export const signupSchema = yup.object().shape({
-  name: yup.string().required('Jméno je povinné.'),
+export const loginSchema = yup.object().shape({
   email: yup
     .string()
     .email('Zadejte prosím validní email.')
