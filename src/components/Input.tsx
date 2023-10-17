@@ -15,7 +15,7 @@ type InputProps = {
   isVisiblePassword?: boolean;
   togglePasswordVisibility?: () => void;
   className?: string;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+};
 
 export const Input: React.FC<InputProps> = ({
   register,
@@ -67,7 +67,7 @@ export const Input: React.FC<InputProps> = ({
       <AriaLiveErrorMessage
         className="absolute right-0 pt-1 text-xs"
         errorMessage={errors?.[name]?.message as string}
-        id={`${name}`}
+        id={`${name}-error`}
       />
     )}
   </label>
