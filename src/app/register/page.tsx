@@ -11,6 +11,7 @@ import { registerSchema } from './schema';
 import { registerUser } from '../../api/user';
 import { Loading } from '../../components/Loading';
 import { Input } from '../../components/Input';
+import { PasswordInput } from '../../components/PasswordInput';
 import { AriaLiveErrorMessage } from '../../components/AriaLiveErrorMessage';
 import { Routes } from '../../utils/constants';
 import { FormData } from '../../types/Form';
@@ -79,9 +80,8 @@ const RegisterPage: NextPage = () => {
           errors={errors}
           watchedValue={watchedEmail}
         />
-        <Input
+        <PasswordInput
           register={register}
-          isPassword
           name="password"
           placeholder="Heslo"
           errors={errors}

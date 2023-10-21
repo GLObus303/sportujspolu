@@ -14,6 +14,7 @@ import { loginUser } from '../../api/user';
 import { Loading } from '../../components/Loading';
 import { AriaLiveErrorMessage } from '../../components/AriaLiveErrorMessage';
 import { Input } from '../../components/Input';
+import { PasswordInput } from '../../components/PasswordInput';
 import { SECONDS_IN_WEEK, Routes } from '../../utils/constants';
 import { FormData } from '../../types/Form';
 import { AuthWrapper } from '../../components/AuthWrapper';
@@ -84,9 +85,8 @@ const LoginPage: NextPage = () => {
           errors={errors}
           watchedValue={watchedEmail}
         />
-        <Input
+        <PasswordInput
           register={register}
-          isPassword
           name="password"
           placeholder="Heslo"
           errors={errors}

@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import { useAuth } from '../../context/AuthContext';
 import { LogoIcon } from '../icons/LogoIcon';
+import { ProfileIcon } from '../icons/ProfileIcon';
 import { Routes } from '../../utils/constants';
 
 export const Header: React.FC = () => {
@@ -14,7 +15,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className="fixed top-0 z-header w-full bg-white">
-      <nav className="flex flex-row items-center justify-between border border-light-gray bg-lightest-gray">
+      <nav className="flex flex-row items-center justify-between border-b border-light-gray bg-lightest-gray">
         <Link
           href={Routes.DASHBOARD}
           aria-label="SportujSpolu - domovská stránka"
@@ -32,9 +33,15 @@ export const Header: React.FC = () => {
                       {name && (
                         <Link
                           href={`${Routes.USER}/${id}`}
-                          className="mr-4 text-xl hover:text-primary focus:text-primary"
+                          className="mr-4 items-center justify-center text-xl hover:text-primary focus:text-primary"
                         >
-                          {name}
+                          <ProfileIcon
+                            aria-label="User profile"
+                            className="inline h-6 w-6 hover:fill-primary focus:fill-primary sm:hidden"
+                          />
+                          <span className="hidden whitespace-nowrap sm:inline">
+                            {name}
+                          </span>
                         </Link>
                       )}
                       <button

@@ -50,9 +50,11 @@ export const EventCard: React.FC<EventCardProps> = ({
           <div className="flex h-2/3 flex-col justify-between p-5">
             <p className="text-s flex flex-row justify-between font-light">
               <span className="w-1/2 truncate">{location}</span>{' '}
-              <time>{format(new Date(date), 'dd/MM/yyyy HH:mm')}</time>
+              <time className="truncate">
+                {format(new Date(date), 'dd/MM/yyyy HH:mm')}
+              </time>
             </p>
-            <p className="line-clamp-3 overflow-hidden">
+            <p className="line-clamp-3 overflow-hidden overflow-ellipsis">
               <span className="font-medium">{name}:</span>{' '}
               <span className="font-light">{description}</span>
             </p>

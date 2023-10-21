@@ -10,10 +10,12 @@ export const Events: React.FC<EventsProps> = ({ events }) => (
     <h1 className="mt-24 px-20 text-center text-2xl font-medium leading-normal md:mt-14 md:px-0 lg:text-start lg:text-4xl">
       Všechny sportovní akce v&nbsp;Česku
     </h1>
-    <section className="x-20 mt-4 grid grid-cols-1 gap-x-5 sm:grid-cols-2 md:mt-14 md:gap-y-5 lg:grid-cols-3 xl:grid-cols-4">
-      {events.map((event, index) => (
-        <EventCard key={index} event={event} />
-      ))}
+    <section className="flex justify-center">
+      <div className="mt-10 grid max-w-[350px] grid-cols-1 gap-5 gap-y-5 sm:max-w-[750px] sm:grid-cols-2 sm:px-5 md:mt-14 md:px-0 lg:max-w-[1000px] lg:grid-cols-3 xl:max-w-[1440px] xl:grid-cols-4">
+        {events.map((event, index) => (
+          <EventCard key={index} event={event} />
+        ))}
+      </div>
     </section>
     <section className="text-center">
       <button

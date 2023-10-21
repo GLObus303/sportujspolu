@@ -2,24 +2,27 @@ import cx from 'classnames';
 import { FieldErrors } from 'react-hook-form';
 
 import { AriaLiveErrorMessage } from './AriaLiveErrorMessage';
+import { EyeIcon } from './icons/EyeIcon';
 
 type InputProps = {
   register: any;
-  type?: string;
-  name: 'name' | 'email';
+  name: 'password';
   placeholder?: string;
   errors: FieldErrors;
   watchedValue?: string;
+  isVisiblePassword?: boolean;
+  togglePasswordVisibility?: () => void;
   className?: string;
 };
 
-export const Input: React.FC<InputProps> = ({
+export const PasswordInput: React.FC<InputProps> = ({
   register,
-  type = 'text',
   name,
   placeholder,
   errors,
   watchedValue,
+  isVisiblePassword = false,
+  togglePasswordVisibility,
   className = '',
 }) => (
   <label className="relative mb-10 w-full">
@@ -39,9 +42,21 @@ export const Input: React.FC<InputProps> = ({
         }
       )}
       placeholder={placeholder}
-      type={type}
+      type={isVisiblePassword ? 'text' : 'password'}
       {...register(name)}
     />
+    <button
+      type="button"
+      aria-label={isVisiblePassword ? 'Skrýt heslo' : 'Ukázat heslo'}
+      className="absolute right-4 top-1/2 -translate-y-1/2"
+      onClick={togglePasswordVisibility}
+    >
+      <EyeIcon
+        className={cx('fill-light-gray', {
+          'fill-primary': isVisiblePassword,
+        })}
+      />
+    </button>
     {errors[name] && (
       <AriaLiveErrorMessage
         className="absolute right-0 pt-1 text-xs"
