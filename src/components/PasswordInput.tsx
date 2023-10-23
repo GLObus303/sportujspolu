@@ -6,8 +6,7 @@ import { EyeIcon } from './icons/EyeIcon';
 
 type InputProps = {
   register: any;
-  name: 'password';
-  placeholder?: string;
+  name?: 'password';
   errors: FieldErrors;
   watchedValue?: string;
   isVisiblePassword?: boolean;
@@ -17,8 +16,7 @@ type InputProps = {
 
 export const PasswordInput: React.FC<InputProps> = ({
   register,
-  name,
-  placeholder,
+  name = 'password',
   errors,
   watchedValue,
   isVisiblePassword = false,
@@ -27,7 +25,7 @@ export const PasswordInput: React.FC<InputProps> = ({
 }) => (
   <label className="relative mb-10 w-full">
     <span className="absolute -translate-y-5 text-xs text-dark-gray">
-      {placeholder}
+      Heslo
     </span>
     <input
       aria-describedby={`${name}-error}`}
@@ -41,7 +39,7 @@ export const PasswordInput: React.FC<InputProps> = ({
           'border-medium-gray': !errors?.[name] && !watchedValue,
         }
       )}
-      placeholder={placeholder}
+      placeholder="Heslo"
       type={isVisiblePassword ? 'text' : 'password'}
       {...register(name)}
     />

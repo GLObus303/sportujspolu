@@ -87,8 +87,6 @@ const LoginPage: NextPage = () => {
         />
         <PasswordInput
           register={register}
-          name="password"
-          placeholder="Heslo"
           errors={errors}
           watchedValue={watchedPassword}
           isVisiblePassword={isVisiblePassword}
