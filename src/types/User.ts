@@ -4,9 +4,3 @@ export type User = {
   email: string;
   rating: number;
 };
-
-export type Event = {
-  id: number;
-  sport: string;
-  name: string;
-};
