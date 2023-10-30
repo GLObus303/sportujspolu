@@ -1,9 +1,7 @@
-import { api } from '../../../api/base';
-import { Event } from '../../../types/Event';
+import { getEvent } from '../../../api/events';
 
 export const EventDetail = async ({ id }: { id: string }) => {
-  const response = await api(`events/${id}`);
-  const event = await response.json<Event>();
+  const event = await getEvent(id);
 
   return (
     <>
