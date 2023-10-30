@@ -2,10 +2,8 @@ import { api } from '../../../api/base';
 import { Event } from '../../../types/Event';
 
 export const EventDetail = async ({ id }: { id: string }) => {
-  const response = await api(`events/:${id}`);
-  const events = await response.json<Event[]>();
-
-  const event = events?.find((findEvent) => findEvent.id === Number(id));
+  const response = await api(`events/${id}`);
+  const event = await response.json<Event>();
 
   return (
     <>
