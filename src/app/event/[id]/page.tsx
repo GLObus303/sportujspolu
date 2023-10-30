@@ -1,7 +1,9 @@
 import { NextPage } from 'next';
 
+import { EventDetail } from './EventDetail';
+
 const EventPage: NextPage<{ params: { id: string } }> = ({ params }) => (
-  <div className="mt-20">My Event: {params.id}</div>
+  <EventDetail id={params.id} />
 );
 
 export default EventPage;
