@@ -1,6 +1,10 @@
 import { getEvent } from '../../../api/events';
 
-export const EventDetail = async ({ id }: { id: string }) => {
+type EventDetailProps = {
+  id: string;
+};
+
+export const EventDetail: React.FC<EventDetailProps> = async ({ id }) => {
   const event = await getEvent(id);
 
   return (

@@ -3,4 +3,4 @@ import { Event } from '../types/Event';
 
 export const getEvent = (id: string) => apiGet<Event>(`events/${id}`);
 
-export const getEvents = () => apiGet<Event[]>('events');
+export const getAllEvents = () => apiGet<Event[]>('events');

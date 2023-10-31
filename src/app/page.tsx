@@ -1,8 +1,8 @@
 import { Events } from '../components/Events';
-import { getEvents } from '../api/events';
+import { getAllEvents } from '../api/events';
 
 const Home = async () => {
-  const events = (await getEvents()) || [];
+  const events = (await getAllEvents()) || [];
 
   return <Events events={events} />;
 };
