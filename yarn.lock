@@ -569,10 +569,10 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
-"@types/react-aria-live@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@types/react-aria-live/-/react-aria-live-2.0.3.tgz#2627cc7c2cff57c0b4ec706726dfaaef06f8e187"
-  integrity sha512-QZGRIsPbRwLWeoWiLkESlyVo78DG4pZ/jiywGQk+47Oo1MYhVM2r/AV1UsOCAVBeS2ytEIoLHH83rh26BE2BbA==
+"@types/react-aria-live@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@types/react-aria-live/-/react-aria-live-2.0.4.tgz#7143e86024ebf734f11466f29f21d216296b7674"
+  integrity sha512-EayMLN5tyWWy0yc2TALFC09+ArWPBNaj4yyGpNqaT2ZJT2V//fQWQ9J3FgtPkZ/Jw4rF1xnEve1Di8t17cHc6w==
   dependencies:
     "@types/react" "*"
 
@@ -592,7 +592,7 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@^18.2.33":
+"@types/react@^18.2.8":
   version "18.2.33"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.33.tgz#055356243dc4350a9ee6c6a2c07c5cae12e38877"
   integrity sha512-v+I7S+hu3PIBoVkKGpSYYpiBT1ijqEzWpzQD62/jm4K74hPpSP7FF9BnKG6+fg2+62weJYkkBWDJlZt5JO/9hg==
@@ -3645,10 +3645,10 @@ typed-array-length@^1.0.4:
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
 
-typescript@^5.0.4:
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.4.tgz#b217fd20119bd61a94d4011274e0ab369058da3b"
-  integrity sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==
+typescript@^5.1.3:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.2.tgz#5ebb5e5a5b75f085f22bc3f8460fba308310fa78"
+  integrity sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
