@@ -1,4 +1,3 @@
-import React from 'react';
 import { LiveMessage } from 'react-aria-live';
 
 type ErrorMessageProps = {
@@ -16,6 +15,8 @@ export const AriaLiveErrorMessage: React.FC<ErrorMessageProps> = ({
     <p id={id} role="alert" className={`${className} text-secondary`}>
       {errorMessage}
     </p>
+    {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+    {/* @ts-ignore */}
     <LiveMessage aria-live="polite" message={errorMessage || ''} />
   </>
 );

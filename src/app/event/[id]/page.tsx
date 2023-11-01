@@ -1,7 +1,13 @@
 import { NextPage } from 'next';
 
-const EventPage: NextPage<{ params: { id: string } }> = ({ params }) => (
-  <div className="mt-20">My Event: {params.id}</div>
+import { EventDetail } from './EventDetail';
+
+type EventPageProps = {
+  params: { id: string };
+};
+
+const EventPage: NextPage<EventPageProps> = ({ params }) => (
+  <EventDetail id={params.id} />
 );
 
 export default EventPage;

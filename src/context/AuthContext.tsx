@@ -1,7 +1,7 @@
 'use client';
 
 import nookies from 'nookies';
-import React, {
+import {
   createContext,
   useState,
   useContext,
