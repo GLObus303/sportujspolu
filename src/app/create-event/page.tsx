@@ -1,111 +1,157 @@
 'use client';
-import { NextPage } from 'next';
-import { useState } from 'react';
-import cx from 'classnames';
-import nookies from 'nookies';
 
+import { NextPage } from 'next';
+import nookies from 'nookies';
+import { format } from 'date-fns';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import { EventInput } from './EventInput';
+import { EventTextarea } from './EventTextarea';
 import { postEvent } from '../../api/events';
+import { eventSchema } from './schema';
 
 const CreateEventPage: NextPage = () => {
-  const [eventData, setEventData] = useState({
-    id: '',
-    date: '',
-    description: '',
-    level: '',
-    location: '',
-    name: '',
-    price: 0,
-    sport: '',
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(eventSchema),
   });
 
   const { token } = nookies.get();
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    const newValue = name === 'price' ? parseFloat(value) || 0 : value;
-    setEventData({ ...eventData, [name]: newValue });
+  const onSubmit = async (data: any) => {
+    const dateTimeIso = format(new Date(data.date), "yyyy-MM-dd'T'HH:mm:ss'Z'");
+
+    const eventDataFormatted = {
+      ...data,
+      date: dateTimeIso,
+    };
+
+    if (token) {
+      postEvent(eventDataFormatted, token);
+    }
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const levels = [
+    { value: 'Beginner', label: 'Začátečník' },
+    { value: 'Advanced', label: 'Pokročilý' },
+    { value: 'Expert', label: 'Expert' },
+    { value: 'Any', label: 'Pro každého' },
+  ];
 
-    postEvent(eventData, token);
-  };
+  const watchedName = watch('name', '');
+  const watchedDescription = watch('description', '');
+  const watchedSport = watch('sport', '');
+  const watchedDate = watch('date');
+  const watchedLocation = watch('location', '');
+  const watchedLevel = watch('level', 'Any');
+  const watchedPrice = watch('price', 0);
 
   return (
-    <div className="mt-24 flex flex-col items-center justify-center px-20 text-center md:mt-14 md:px-0 lg:text-start">
-      <h1 className="text-2xl font-medium leading-normal lg:text-4xl">
-        Create Event
+    <div className="flex flex-col items-center justify-center lg:justify-between xl:flex-row xl:items-start">
+      <h1 className="mt-24 px-20 text-center text-2xl font-medium leading-normal md:mt-14 md:px-0 xl:text-start xl:text-4xl">
+        Vytvořit sportovní událost
       </h1>
-      <form
-        onSubmit={handleSubmit}
-        className="mt-10 flex w-full max-w-md flex-col space-y-5"
-      >
-        <input
-          name="date"
-          type="text"
-          placeholder="Date"
-          value={eventData.date}
-          onChange={handleInputChange}
-        />
-        <input
-          name="description"
-          type="text"
-          placeholder="Description"
-          value={eventData.description}
-          onChange={handleInputChange}
-        />
-        <input
-          name="id"
-          type="text"
-          placeholder="ID"
-          value={eventData.id}
-          onChange={handleInputChange}
-        />
-        <input
-          name="level"
-          type="text"
-          placeholder="Level"
-          value={eventData.level}
-          onChange={handleInputChange}
-        />
-        <input
-          name="location"
-          type="text"
-          placeholder="Location"
-          value={eventData.location}
-          onChange={handleInputChange}
-        />
-        <input
-          name="name"
-          type="text"
-          placeholder="Name"
-          value={eventData.name}
-          onChange={handleInputChange}
-        />
-        <input
-          name="price"
-          type="number"
-          placeholder="Price"
-          value={eventData.price}
-          onChange={handleInputChange}
-        />
-        <input
-          name="sport"
-          type="text"
-          placeholder="Sport"
-          value={eventData.sport}
-          onChange={handleInputChange}
-        />
-        <button
-          className={cx(
-            'm-auto w-40 rounded-md bg-black px-5 py-2 text-white hover:text-primary focus:text-primary'
-          )}
-          type="submit"
+      <article className="relative mx-5 mr-0 mt-10 flex w-full max-w-xl flex-col rounded-md bg-white text-center shadow-md lg:text-start xl:mr-28 xl:mt-14 xl:px-0">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col space-y-8 rounded-md bg-white p-7"
         >
-          Create Event
-        </button>
-      </form>
+          <EventInput
+            register={register}
+            type="name"
+            name="name"
+            label="Název události"
+            placeholder="Název události"
+            errors={errors}
+            watchedValue={watchedName}
+          />
+          <EventTextarea
+            register={register}
+            type="text"
+            name="description"
+            label="Popis"
+            placeholder="Popis"
+            errors={errors}
+            watchedValue={watchedDescription}
+          />
+          <EventInput
+            register={register}
+            type="text"
+            name="sport"
+            label="Sport"
+            placeholder="Sport"
+            errors={errors}
+            watchedValue={watchedSport}
+          />
+          <EventInput
+            register={register}
+            type="datetime-local"
+            name="date"
+            label="Kdy proběhne"
+            placeholder="Kdy proběhne"
+            errors={errors}
+            watchedValue={watchedDate}
+          />
+          <EventInput
+            register={register}
+            type="text"
+            name="location"
+            label="Místo konání"
+            placeholder="Místo konání"
+            errors={errors}
+            watchedValue={watchedLocation}
+          />
+          <div className="flex w-full flex-row justify-between">
+            <span className="text-normal mb-4 pt-3 md:pt-2 md:text-xl">
+              Pokročilost
+            </span>
+            <div className="mt-2 flex w-3/5 flex-wrap justify-end gap-4 md:justify-between">
+              {levels.map((level) => (
+                <label
+                  key={level.value}
+                  className="flex cursor-pointer items-center"
+                >
+                  <input
+                    {...register('level')}
+                    type="radio"
+                    value={level.value}
+                    className="h-9 w-36 focus:outline-primary"
+                  />
+                  <span
+                    className={`absolute w-36 rounded-full py-2 text-center leading-5 ${
+                      watchedLevel === level.value
+                        ? 'border border-pistachio bg-pistachio'
+                        : 'border border-light-gray bg-white hover:border-primary'
+                    }`}
+                  >
+                    {level.label}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+          <EventInput
+            register={register}
+            type="number"
+            name="price"
+            label="Cena v Kč"
+            placeholder="Cena"
+            errors={errors}
+            watchedValue={watchedPrice}
+          />
+          <button
+            type="submit"
+            className="ml-auto whitespace-nowrap rounded-md bg-black px-5 py-2 text-white hover:text-primary"
+          >
+            Vytvořit událost
+          </button>
+        </form>
+      </article>
     </div>
   );
 };

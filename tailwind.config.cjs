@@ -13,6 +13,7 @@ module.exports = {
         'light-gray': '#D9D9D9',
         'lightest-gray': '#F9F9FB',
         "smoke-glass": "#00000070",
+        "pistachio": "#94FFA6",
       },
       height: {
         article: "190px",
