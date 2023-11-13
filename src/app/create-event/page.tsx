@@ -6,7 +6,7 @@ import { format } from 'date-fns';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { EventInput } from './EventInput';
+import { Input } from '../../components/Input';
 import { EventTextarea } from './EventTextarea';
 import { postEvent } from '../../api/events';
 import { eventSchema } from './schema';
@@ -61,7 +61,7 @@ const CreateEventPage: NextPage = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col space-y-8 rounded-md bg-white p-7"
         >
-          <EventInput
+          <Input
             register={register}
             type="name"
             name="name"
@@ -69,6 +69,7 @@ const CreateEventPage: NextPage = () => {
             placeholder="Název události"
             errors={errors}
             watchedValue={watchedName}
+            isEventInput
           />
           <EventTextarea
             register={register}
@@ -79,7 +80,7 @@ const CreateEventPage: NextPage = () => {
             errors={errors}
             watchedValue={watchedDescription}
           />
-          <EventInput
+          <Input
             register={register}
             type="text"
             name="sport"
@@ -87,8 +88,9 @@ const CreateEventPage: NextPage = () => {
             placeholder="Sport"
             errors={errors}
             watchedValue={watchedSport}
+            isEventInput
           />
-          <EventInput
+          <Input
             register={register}
             type="datetime-local"
             name="date"
@@ -96,8 +98,9 @@ const CreateEventPage: NextPage = () => {
             placeholder="Kdy proběhne"
             errors={errors}
             watchedValue={watchedDate}
+            isEventInput
           />
-          <EventInput
+          <Input
             register={register}
             type="text"
             name="location"
@@ -105,6 +108,7 @@ const CreateEventPage: NextPage = () => {
             placeholder="Místo konání"
             errors={errors}
             watchedValue={watchedLocation}
+            isEventInput
           />
           <div className="flex w-full flex-row justify-between">
             <span className="text-normal mb-4 pt-3 md:pt-2 md:text-xl">
@@ -135,7 +139,7 @@ const CreateEventPage: NextPage = () => {
               ))}
             </div>
           </div>
-          <EventInput
+          <Input
             register={register}
             type="number"
             name="price"
@@ -143,6 +147,7 @@ const CreateEventPage: NextPage = () => {
             placeholder="Cena"
             errors={errors}
             watchedValue={watchedPrice}
+            isEventInput
           />
           <button
             type="submit"

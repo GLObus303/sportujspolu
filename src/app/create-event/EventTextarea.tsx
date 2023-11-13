@@ -32,7 +32,7 @@ export const EventTextarea: React.FC<InputProps> = ({
         aria-invalid={!!errors?.[name]}
         className={cx(
           className,
-          'w-full border-b px-5 py-3 pb-0 placeholder-medium-gray focus:border-white focus:outline-primary',
+          'w-full border-b px-5 py-3 pb-0 placeholder-light-gray focus:border-white focus:outline-primary',
           {
             'border-primary': !errors?.[name] && watchedValue,
             'border-secondary': errors?.[name],

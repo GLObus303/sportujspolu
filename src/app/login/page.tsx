@@ -81,6 +81,7 @@ const LoginPage: NextPage = () => {
           register={register}
           type="email"
           name="email"
+          label="Email"
           placeholder="Email"
           errors={errors}
           watchedValue={watchedEmail}

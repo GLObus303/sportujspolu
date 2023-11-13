@@ -68,6 +68,7 @@ const RegisterPage: NextPage = () => {
           register={register}
           type="text"
           name="name"
+          label="Jméno"
           placeholder="Jméno"
           errors={errors}
           watchedValue={watchName}
@@ -76,6 +77,7 @@ const RegisterPage: NextPage = () => {
           register={register}
           type="email"
           name="email"
+          label="Email"
           placeholder="Email"
           errors={errors}
           watchedValue={watchedEmail}
