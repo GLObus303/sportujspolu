@@ -6,5 +6,5 @@ export const getEvent = (id: string) => apiGet<Event>(`events/${id}`);
 
 export const getAllEvents = () => apiGet<Event[]>('events');
 
-export const postEvent = (formData: EventFormData, token: string) =>
-  apiPost('events', formData, token);
+export const postEvent = (formData: EventFormData) =>
+  apiPost('events', formData);

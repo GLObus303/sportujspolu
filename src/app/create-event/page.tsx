@@ -1,7 +1,6 @@
 'use client';
 
 import { NextPage } from 'next';
-import nookies from 'nookies';
 import { format } from 'date-fns';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -21,8 +20,6 @@ const CreateEventPage: NextPage = () => {
     resolver: yupResolver(eventSchema),
   });
 
-  const { token } = nookies.get();
-
   const onSubmit = async (data: any) => {
     const dateTimeIso = format(new Date(data.date), "yyyy-MM-dd'T'HH:mm:ss'Z'");
 
@@ -31,9 +28,7 @@ const CreateEventPage: NextPage = () => {
       date: dateTimeIso,
     };
 
-    if (token) {
-      postEvent(eventDataFormatted, token);
-    }
+    postEvent(eventDataFormatted);
   };
 
   const levels = [
