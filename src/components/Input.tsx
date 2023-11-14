@@ -11,8 +11,9 @@ type InputProps = {
   placeholder?: string;
   errors: FieldErrors;
   watchedValue?: string | number | Date;
+  outerClassName?: string;
   className?: string;
-  isEventInput?: boolean;
+  labelClassName?: string;
 };
 
 export const Input: React.FC<InputProps> = ({
@@ -23,26 +24,17 @@ export const Input: React.FC<InputProps> = ({
   placeholder,
   errors,
   watchedValue,
-  className = '',
-  isEventInput = false,
+  outerClassName = 'relative w-full mb-10',
+  className = 'border',
+  labelClassName = 'absolute -translate-y-5 text-xs text-dark-gray',
 }) => (
-  <label
-    className={cx('relative w-full', {
-      'relative flex w-full flex-row justify-between': isEventInput,
-      'mb-10': !isEventInput,
-    })}
-  >
-    <span
-      className={
-        isEventInput
-          ? 'text-normal pt-3 md:pt-2 md:text-xl'
-          : 'absolute -translate-y-5 text-xs text-dark-gray'
-      }
-    >
-      {label}
-    </span>
-    <div className={cx({ 'w-3/5': isEventInput })}>
+  <div className={outerClassName}>
+    <label htmlFor={name} className={labelClassName}>
+      <span>{label}</span>
+    </label>
+    <div className="w-full">
       <input
+        id={name}
         aria-describedby={`${name}-error}`}
         aria-invalid={!!errors?.[name]}
         className={cx(
@@ -53,8 +45,6 @@ export const Input: React.FC<InputProps> = ({
             'border-secondary': errors?.[name],
             'border-medium-gray text-light-gray':
               !errors?.[name] && !watchedValue,
-            'border-b': isEventInput,
-            border: !isEventInput,
           }
         )}
         placeholder={placeholder}
@@ -69,5 +59,5 @@ export const Input: React.FC<InputProps> = ({
         id={`${name}-error`}
       />
     )}
-  </label>
+  </div>
 );

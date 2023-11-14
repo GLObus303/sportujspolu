@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import { FieldErrors } from 'react-hook-form';
 
-import { AriaLiveErrorMessage } from '../../components/AriaLiveErrorMessage';
+import { AriaLiveErrorMessage } from './AriaLiveErrorMessage';
 
 type InputProps = {
   register: any;
@@ -14,7 +14,7 @@ type InputProps = {
   className?: string;
 };
 
-export const EventTextarea: React.FC<InputProps> = ({
+export const Textarea: React.FC<InputProps> = ({
   register,
   type = 'text',
   name,
@@ -25,8 +25,10 @@ export const EventTextarea: React.FC<InputProps> = ({
   className = '',
 }) => (
   <label className="relative flex w-full flex-row justify-between">
-    <span className="text-normal pt-3 md:pt-2 md:text-xl">{label}</span>
-    <div className="w-3/5">
+    <span className="text-normal w-3/5 pt-3 text-start md:pt-2 md:text-xl">
+      {label}
+    </span>
+    <div className="w-full">
       <textarea
         aria-describedby={`${name}-error}`}
         aria-invalid={!!errors?.[name]}

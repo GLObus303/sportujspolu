@@ -13,19 +13,13 @@ export const api = ky.create({
   headers: {},
 });
 
-const getToken = () => {
-  const cookies = nookies.get();
-
-  return cookies.token;
-};
-
 export const privateApi = () =>
   ky.create({
     prefixUrl: apiUrl,
     hooks: {
       beforeRequest: [
         (request) => {
-          const token = getToken();
+          const { token } = nookies.get();
           if (token) {
             request.headers.set('Authorization', `Bearer ${token}`);
           }

@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Input } from '../../components/Input';
-import { EventTextarea } from './EventTextarea';
+import { Textarea } from '../../components/Textarea';
 import { postEvent } from '../../api/events';
 import { eventSchema } from './schema';
 
@@ -64,9 +64,11 @@ const CreateEventPage: NextPage = () => {
             placeholder="Název události"
             errors={errors}
             watchedValue={watchedName}
-            isEventInput
+            outerClassName="relative flex w-full flex-row justify-between"
+            className="border-b"
+            labelClassName="w-3/5 text-start text-normal pt-3 md:pt-2 md:text-xl"
           />
-          <EventTextarea
+          <Textarea
             register={register}
             type="text"
             name="description"
@@ -83,7 +85,9 @@ const CreateEventPage: NextPage = () => {
             placeholder="Sport"
             errors={errors}
             watchedValue={watchedSport}
-            isEventInput
+            outerClassName="relative flex w-full flex-row justify-between"
+            className="border-b"
+            labelClassName="w-3/5 text-start text-normal pt-3 md:pt-2 md:text-xl"
           />
           <Input
             register={register}
@@ -93,7 +97,9 @@ const CreateEventPage: NextPage = () => {
             placeholder="Kdy proběhne"
             errors={errors}
             watchedValue={watchedDate}
-            isEventInput
+            outerClassName="relative flex w-full flex-row justify-between"
+            className="border-b"
+            labelClassName="w-3/5 text-start text-normal pt-3 md:pt-2 md:text-xl"
           />
           <Input
             register={register}
@@ -103,7 +109,9 @@ const CreateEventPage: NextPage = () => {
             placeholder="Místo konání"
             errors={errors}
             watchedValue={watchedLocation}
-            isEventInput
+            outerClassName="relative flex w-full flex-row justify-between"
+            className="border-b"
+            labelClassName="w-3/5 text-start text-normal pt-3 md:pt-2 md:text-xl"
           />
           <div className="flex w-full flex-row justify-between">
             <span className="text-normal mb-4 pt-3 md:pt-2 md:text-xl">
@@ -142,7 +150,9 @@ const CreateEventPage: NextPage = () => {
             placeholder="Cena"
             errors={errors}
             watchedValue={watchedPrice}
-            isEventInput
+            outerClassName="relative flex w-full flex-row justify-between"
+            className="border-b"
+            labelClassName="w-3/5 text-start text-normal pt-3 md:pt-2 md:text-xl"
           />
           <button
             type="submit"
