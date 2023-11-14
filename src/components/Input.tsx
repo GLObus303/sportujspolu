@@ -24,40 +24,36 @@ export const Input: React.FC<InputProps> = ({
   placeholder,
   errors,
   watchedValue,
-  outerClassName = 'relative w-full mb-10',
+  outerClassName = 'relative w-full mb-5',
   className = 'border',
-  labelClassName = 'absolute -translate-y-5 text-xs text-dark-gray',
+  labelClassName = 'text-xs text-dark-gray',
 }) => (
-  <div className={outerClassName}>
-    <label htmlFor={name} className={labelClassName}>
-      <span>{label}</span>
-    </label>
-    <div className="w-full">
-      <input
-        id={name}
-        aria-describedby={`${name}-error}`}
-        aria-invalid={!!errors?.[name]}
-        className={cx(
-          className,
-          'w-full px-5 py-3 placeholder-light-gray focus:outline-primary',
-          {
-            'border-primary': !errors?.[name] && watchedValue,
-            'border-secondary': errors?.[name],
-            'border-medium-gray text-light-gray':
-              !errors?.[name] && !watchedValue,
-          }
-        )}
-        placeholder={placeholder}
-        type={type}
-        {...register(name)}
-      />
-    </div>
+  <label htmlFor={name} className={outerClassName}>
+    <span className={labelClassName}>{label}</span>
+    <input
+      id={name}
+      aria-describedby={`${name}-error`}
+      aria-invalid={!!errors?.[name]}
+      className={cx(
+        className,
+        'w-full px-5 py-3 placeholder-light-gray focus:outline-primary',
+        {
+          'border-primary': !errors?.[name] && watchedValue,
+          'border-medium-gray text-light-gray':
+            !errors?.[name] && !watchedValue,
+          'border-secondary': errors?.[name],
+        }
+      )}
+      placeholder={placeholder}
+      type={type}
+      {...register(name)}
+    />
     {errors[name] && (
       <AriaLiveErrorMessage
-        className="absolute right-0 pt-1 text-xs"
-        errorMessage={errors?.[name]?.message as string}
+        className="absolute bottom-0 right-0 translate-y-5 text-xs"
+        errorMessage={String(errors?.[name]?.message)}
         id={`${name}-error`}
       />
     )}
-  </div>
+  </label>
 );

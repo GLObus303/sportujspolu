@@ -10,6 +10,22 @@ import { Textarea } from '../../components/Textarea';
 import { postEvent } from '../../api/events';
 import { eventSchema } from './schema';
 
+const inputStyles = {
+  outerClassName: 'relative flex w-full flex-row justify-between',
+  className: 'border-b',
+  labelClassName: 'w-3/5 text-start text-normal pt-3 md:pt-2 md:text-xl',
+};
+
+type DefaultValues = {
+  name: string;
+  description: string;
+  sport: string;
+  date: Date;
+  location: string;
+  level: string;
+  price: number;
+};
+
 const CreateEventPage: NextPage = () => {
   const {
     register,
@@ -18,9 +34,17 @@ const CreateEventPage: NextPage = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(eventSchema),
+    defaultValues: {
+      name: '',
+      description: '',
+      sport: '',
+      location: '',
+      level: 'Any',
+      price: 0,
+    },
   });
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: DefaultValues) => {
     const dateTimeIso = format(new Date(data.date), "yyyy-MM-dd'T'HH:mm:ss'Z'");
 
     const eventDataFormatted = {
@@ -38,13 +62,7 @@ const CreateEventPage: NextPage = () => {
     { value: 'Any', label: 'Pro každého' },
   ];
 
-  const watchedName = watch('name', '');
-  const watchedDescription = watch('description', '');
-  const watchedSport = watch('sport', '');
-  const watchedDate = watch('date');
-  const watchedLocation = watch('location', '');
-  const watchedLevel = watch('level', 'Any');
-  const watchedPrice = watch('price', 0);
+  const watchedValues = watch();
 
   return (
     <div className="flex flex-col items-center justify-center lg:justify-between xl:flex-row xl:items-start">
@@ -63,10 +81,8 @@ const CreateEventPage: NextPage = () => {
             label="Název události"
             placeholder="Název události"
             errors={errors}
-            watchedValue={watchedName}
-            outerClassName="relative flex w-full flex-row justify-between"
-            className="border-b"
-            labelClassName="w-3/5 text-start text-normal pt-3 md:pt-2 md:text-xl"
+            watchedValue={watchedValues.name}
+            {...inputStyles}
           />
           <Textarea
             register={register}
@@ -75,7 +91,7 @@ const CreateEventPage: NextPage = () => {
             label="Popis"
             placeholder="Popis"
             errors={errors}
-            watchedValue={watchedDescription}
+            watchedValue={watchedValues.description}
           />
           <Input
             register={register}
@@ -84,10 +100,8 @@ const CreateEventPage: NextPage = () => {
             label="Sport"
             placeholder="Sport"
             errors={errors}
-            watchedValue={watchedSport}
-            outerClassName="relative flex w-full flex-row justify-between"
-            className="border-b"
-            labelClassName="w-3/5 text-start text-normal pt-3 md:pt-2 md:text-xl"
+            watchedValue={watchedValues.sport}
+            {...inputStyles}
           />
           <Input
             register={register}
@@ -96,10 +110,8 @@ const CreateEventPage: NextPage = () => {
             label="Kdy proběhne"
             placeholder="Kdy proběhne"
             errors={errors}
-            watchedValue={watchedDate}
-            outerClassName="relative flex w-full flex-row justify-between"
-            className="border-b"
-            labelClassName="w-3/5 text-start text-normal pt-3 md:pt-2 md:text-xl"
+            watchedValue={watchedValues.date}
+            {...inputStyles}
           />
           <Input
             register={register}
@@ -108,16 +120,14 @@ const CreateEventPage: NextPage = () => {
             label="Místo konání"
             placeholder="Místo konání"
             errors={errors}
-            watchedValue={watchedLocation}
-            outerClassName="relative flex w-full flex-row justify-between"
-            className="border-b"
-            labelClassName="w-3/5 text-start text-normal pt-3 md:pt-2 md:text-xl"
+            watchedValue={watchedValues.location}
+            {...inputStyles}
           />
           <div className="flex w-full flex-row justify-between">
             <span className="text-normal mb-4 pt-3 md:pt-2 md:text-xl">
               Pokročilost
             </span>
-            <div className="mt-2 flex w-3/5 flex-wrap justify-end gap-4 md:justify-between">
+            <div className="mt-5 flex w-3/5 flex-wrap justify-end gap-4 md:justify-between">
               {levels.map((level) => (
                 <label
                   key={level.value}
@@ -131,7 +141,7 @@ const CreateEventPage: NextPage = () => {
                   />
                   <span
                     className={`absolute w-36 rounded-full py-2 text-center leading-5 ${
-                      watchedLevel === level.value
+                      watchedValues.level === level.value
                         ? 'border border-pistachio bg-pistachio'
                         : 'border border-light-gray bg-white hover:border-primary'
                     }`}
@@ -149,10 +159,8 @@ const CreateEventPage: NextPage = () => {
             label="Cena v Kč"
             placeholder="Cena"
             errors={errors}
-            watchedValue={watchedPrice}
-            outerClassName="relative flex w-full flex-row justify-between"
-            className="border-b"
-            labelClassName="w-3/5 text-start text-normal pt-3 md:pt-2 md:text-xl"
+            watchedValue={watchedValues.price}
+            {...inputStyles}
           />
           <button
             type="submit"

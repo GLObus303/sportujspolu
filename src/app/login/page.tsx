@@ -99,13 +99,13 @@ const LoginPage: NextPage = () => {
           <button
             type="submit"
             className={cx(
-              'h-11 w-40 rounded-md bg-black py-2 text-white hover:text-primary focus:text-primary'
+              'mt-5 h-11 w-40 rounded-md bg-black py-2 text-white hover:text-primary focus:text-primary'
             )}
           >
             Přihlásit se
           </button>
         ) : (
-          <Loading />
+          <Loading className="mt-5" />
         )}
         {errorMessage && (
           <AriaLiveErrorMessage

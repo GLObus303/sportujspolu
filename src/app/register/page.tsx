@@ -95,13 +95,13 @@ const RegisterPage: NextPage = () => {
           <button
             type="submit"
             className={cx(
-              'w-40 rounded-md bg-black px-5 py-2 text-white hover:text-primary focus:text-primary'
+              'mt-5 w-40 rounded-md bg-black px-5 py-2 text-white hover:text-primary focus:text-primary'
             )}
           >
             Registrovat
           </button>
         ) : (
-          <Loading />
+          <Loading className="mt-5" />
         )}
         {errorMessage && (
           <AriaLiveErrorMessage
