@@ -25,7 +25,7 @@ export const EventCard: React.FC<EventCardProps> = ({
     setIsLiked(!isLiked);
   };
 
-  const getImagePath = (imageId: number) => `/${(imageId % 12) + 1}.png`;
+  const getImagePath = (eventPrice: number) => `/${(eventPrice % 12) + 1}.png`;
 
   return (
     <article className="relative rounded-md bg-white shadow-md">
@@ -45,7 +45,7 @@ export const EventCard: React.FC<EventCardProps> = ({
       <Link href={`/event/${id}`}>
         <div style={{ aspectRatio: '1/1' }} className="rounded-md bg-white">
           <div className="relative h-1/3 w-full overflow-hidden rounded-tl-md rounded-tr-md object-cover">
-            <Image src={getImagePath(id)} alt="" fill />
+            <Image src={getImagePath(price)} alt="" fill />
           </div>
           <div className="flex h-2/3 flex-col justify-between p-5">
             <p className="text-s flex flex-row justify-between font-light">
