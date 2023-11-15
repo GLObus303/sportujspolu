@@ -68,6 +68,7 @@ const RegisterPage: NextPage = () => {
           register={register}
           type="text"
           name="name"
+          label="Jméno"
           placeholder="Jméno"
           errors={errors}
           watchedValue={watchName}
@@ -76,6 +77,7 @@ const RegisterPage: NextPage = () => {
           register={register}
           type="email"
           name="email"
+          label="Email"
           placeholder="Email"
           errors={errors}
           watchedValue={watchedEmail}
@@ -93,13 +95,13 @@ const RegisterPage: NextPage = () => {
           <button
             type="submit"
             className={cx(
-              'w-40 rounded-md bg-black px-5 py-2 text-white hover:text-primary focus:text-primary'
+              'mt-5 w-40 rounded-md bg-black px-5 py-2 text-white hover:text-primary focus:text-primary'
             )}
           >
             Registrovat
           </button>
         ) : (
-          <Loading />
+          <Loading className="mt-5" />
         )}
         {errorMessage && (
           <AriaLiveErrorMessage
