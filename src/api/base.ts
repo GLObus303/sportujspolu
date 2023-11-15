@@ -1,4 +1,5 @@
 import ky from 'ky';
+import nookies from 'nookies';
 
 import { ERROR_MESSAGE } from '../utils/constants';
 import { OnErrorType } from '../types/Api';
@@ -12,21 +13,27 @@ export const api = ky.create({
   headers: {},
 });
 
-export const privateApi = (token: string) =>
+export const privateApi = () =>
   ky.create({
     prefixUrl: apiUrl,
-    headers: {
-      Authorization: `Bearer ${token}`,
+    hooks: {
+      beforeRequest: [
+        (request) => {
+          const { token } = nookies.get();
+          if (token) {
+            request.headers.set('Authorization', `Bearer ${token}`);
+          }
+        },
+      ],
     },
   });
 
 export const apiPost = <T = void>(
   endpoint: string,
   body: unknown,
-  token?: string,
   onError?: OnErrorType
 ) => {
-  const apiInstance = token ? privateApi(token) : api;
+  const apiInstance = privateApi();
 
   try {
     return apiInstance.post(endpoint, { json: body }).json<T>();
@@ -40,12 +47,8 @@ export const apiPost = <T = void>(
   }
 };
 
-export const apiGet = <T = void>(
-  endpoint: string,
-  token?: string,
-  onError?: OnErrorType
-) => {
-  const apiInstance = token ? privateApi(token) : api;
+export const apiGet = <T = void>(endpoint: string, onError?: OnErrorType) => {
+  const apiInstance = privateApi();
 
   try {
     return apiInstance.get(endpoint).json<T>();

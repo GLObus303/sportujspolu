@@ -6,12 +6,7 @@ import { User } from '../types/User';
 
 export const loginUser = (formData: FormData, onError?: OnErrorType) => {
   try {
-    return apiPost<{ token: string }>(
-      'user/login',
-      formData,
-      undefined,
-      onError
-    );
+    return apiPost<{ token: string }>('user/login', formData, onError);
   } catch (error: unknown) {
     if ((error as ApiError).status === 400) {
       onError?.({
@@ -25,7 +20,7 @@ export const loginUser = (formData: FormData, onError?: OnErrorType) => {
 };
 
 export const registerUser = async (formData: FormData, onError?: OnErrorType) =>
-  apiPost('user/register', formData, undefined, onError);
+  apiPost('user/register', formData, onError);
 
-export const getUser = (token: string, onError?: OnErrorType) =>
-  apiGet<User>('user/me', token, onError);
+export const getUser = (onError?: OnErrorType) =>
+  apiGet<User>('user/me', onError);

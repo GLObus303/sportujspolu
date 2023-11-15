@@ -6,47 +6,44 @@ import { AriaLiveErrorMessage } from './AriaLiveErrorMessage';
 type InputProps = {
   register: any;
   type?: string;
-  name: string;
   label: string;
+  name: string;
   placeholder?: string;
   errors: FieldErrors;
-  watchedValue?: string | number | Date;
-  outerClassName?: string;
+  watchedValue?: string;
   className?: string;
-  labelClassName?: string;
 };
 
-export const Input: React.FC<InputProps> = ({
+export const Textarea: React.FC<InputProps> = ({
   register,
   type = 'text',
   name,
-  label,
   placeholder,
+  label,
   errors,
   watchedValue,
-  outerClassName = 'relative w-full mb-5',
-  className = 'border',
-  labelClassName = 'text-xs text-dark-gray',
+  className = '',
 }) => (
-  <label htmlFor={name} className={outerClassName}>
-    <span className={labelClassName}>{label}</span>
-    <input
-      id={name}
+  <label className="relative flex w-full flex-row justify-between">
+    <span className="text-normal w-3/5 pt-3 text-start md:pt-2 md:text-xl">
+      {label}
+    </span>
+    <textarea
       aria-describedby={`${name}-error`}
       aria-invalid={!!errors?.[name]}
       className={cx(
         className,
-        'w-full px-5 py-3 placeholder-light-gray focus:outline-primary',
+        'w-full border-b px-5 py-3 placeholder-light-gray focus:border-white focus:outline-primary',
         {
           'border-primary': !errors?.[name] && watchedValue,
-          'border-medium-gray text-light-gray':
-            !errors?.[name] && !watchedValue,
+          'border-medium-gray': !errors?.[name] && !watchedValue,
           'border-secondary': errors?.[name],
         }
       )}
       placeholder={placeholder}
       type={type}
       {...register(name)}
+      rows={3}
     />
     {errors[name] && (
       <AriaLiveErrorMessage

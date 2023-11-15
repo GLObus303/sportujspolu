@@ -40,7 +40,7 @@ export const AuthProvider: ChildrenFC = ({ children }) => {
       return;
     }
 
-    const userData = await getUser(token, () => {
+    const userData = await getUser(() => {
       nookies.destroy(null, 'token');
     });
 
@@ -55,7 +55,7 @@ export const AuthProvider: ChildrenFC = ({ children }) => {
       maxAge: SECONDS_IN_WEEK,
     });
 
-    const userData = await getUser(newToken);
+    const userData = await getUser();
 
     if (userData) {
       setUser(userData);
