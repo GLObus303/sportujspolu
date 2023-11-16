@@ -9,12 +9,6 @@ export type LoginFormData = {
   password: string;
 };
 
-export type FormData = {
-  name: string;
-  email: string;
-  password: string;
-};
-
 export type EventFormData = {
   date: string;
   description: string;
