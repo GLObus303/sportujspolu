@@ -1,7 +1,18 @@
-export type FormData = {
-  password: string;
+export type RegisterFormData = {
+  name: string;
   email: string;
-  name?: string;
+  password: string;
+};
+
+export type LoginFormData = {
+  email: string;
+  password: string;
+};
+
+export type FormData = {
+  name: string;
+  email: string;
+  password: string;
 };
 
 export type EventFormData = {

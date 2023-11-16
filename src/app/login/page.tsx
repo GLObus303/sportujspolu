@@ -2,7 +2,7 @@
 
 import cx from 'classnames';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import nookies from 'nookies';
@@ -16,7 +16,7 @@ import { AriaLiveErrorMessage } from '../../components/AriaLiveErrorMessage';
 import { Input } from '../../components/Input';
 import { PasswordInput } from '../../components/PasswordInput';
 import { SECONDS_IN_WEEK, Routes } from '../../utils/constants';
-import { FormData } from '../../types/Form';
+import { LoginFormData } from '../../types/Form';
 import { AuthWrapper } from '../../components/AuthWrapper';
 
 const LoginPage: NextPage = () => {
@@ -27,12 +27,7 @@ const LoginPage: NextPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isVisiblePassword, setVisiblePassword] = useState(false);
 
-  const {
-    register,
-    watch,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const methods = useForm<LoginFormData>({
     resolver: yupResolver(loginSchema),
     defaultValues: {
       email: '',
@@ -40,7 +35,7 @@ const LoginPage: NextPage = () => {
     },
   });
 
-  const onSubmit = async (formData: FormData) => {
+  const onSubmit = async (formData: LoginFormData) => {
     setIsLoading(true);
 
     try {
@@ -61,8 +56,7 @@ const LoginPage: NextPage = () => {
     }
   };
 
-  const watchedEmail = watch('email', '');
-  const watchedPassword = watch('password', '');
+  const watchedPassword = methods.watch('password', '');
 
   return (
     <AuthWrapper
@@ -73,48 +67,49 @@ const LoginPage: NextPage = () => {
       redirectRoute={Routes.REGISTER}
       redirectLinkText="Vytvoř si profil!"
     >
-      <form
-        className="mt-5 flex w-full max-w-sm flex-col items-center"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <Input
-          register={register}
-          type="email"
-          name="email"
-          label="Email"
-          placeholder="Email"
-          errors={errors}
-          watchedValue={watchedEmail}
-        />
-        <PasswordInput
-          register={register}
-          errors={errors}
-          watchedValue={watchedPassword}
-          isVisiblePassword={isVisiblePassword}
-          togglePasswordVisibility={() =>
-            setVisiblePassword(!isVisiblePassword)
-          }
-        />
-        {!isLoading ? (
-          <button
-            type="submit"
-            className={cx(
-              'mt-5 h-11 w-40 rounded-md bg-black py-2 text-white hover:text-primary focus:text-primary'
-            )}
-          >
-            Přihlásit se
-          </button>
-        ) : (
-          <Loading className="mt-5" />
-        )}
-        {errorMessage && (
-          <AriaLiveErrorMessage
-            className="mt-8 text-center"
-            errorMessage={errorMessage}
+      <FormProvider {...methods}>
+        <form
+          className="mt-5 flex w-full max-w-sm flex-col items-center"
+          onSubmit={methods.handleSubmit(onSubmit)}
+        >
+          <Input
+            register={methods.register}
+            type="email"
+            name="email"
+            label="Email"
+            placeholder="Email"
+            errors={methods.formState.errors}
           />
-        )}
-        <hr className="mt-10 w-100 border-t border-light-gray" />
-      </form>
+          <PasswordInput
+            register={methods.register}
+            errors={methods.formState.errors}
+            watchedValue={watchedPassword}
+            isVisiblePassword={isVisiblePassword}
+            togglePasswordVisibility={() =>
+              setVisiblePassword(!isVisiblePassword)
+            }
+          />
+          {!isLoading ? (
+            <button
+              type="submit"
+              className={cx(
+                'mt-5 h-11 w-40 rounded-md bg-black py-2 text-white hover:text-primary focus:text-primary'
+              )}
+            >
+              Přihlásit se
+            </button>
+          ) : (
+            <Loading className="mt-5" />
+          )}
+          {errorMessage && (
+            <AriaLiveErrorMessage
+              className="mt-8 text-center"
+              errorMessage={errorMessage}
+            />
+          )}
+          <hr className="mt-10 w-100 border-t border-light-gray" />
+        </form>
+      </FormProvider>
     </AuthWrapper>
   );
 };
