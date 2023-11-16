@@ -1,6 +1,5 @@
 'use client';
 
-import cx from 'classnames';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useState } from 'react';
@@ -24,9 +23,14 @@ const RegisterPage: NextPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isVisiblePassword, setVisiblePassword] = useState(false);
 
-  const methods = useForm<RegisterFormData>({
+  const formProps = useForm<RegisterFormData>({
     resolver: yupResolver(registerSchema),
   });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = formProps;
 
   const onSubmit = async (formData: RegisterFormData) => {
     setIsLoading(true);
@@ -42,8 +46,6 @@ const RegisterPage: NextPage = () => {
     }
   };
 
-  const watchedPassword = methods.watch('password', '');
-
   return (
     <AuthWrapper
       headingText="Registrace do"
@@ -53,31 +55,30 @@ const RegisterPage: NextPage = () => {
       redirectRoute={Routes.LOGIN}
       redirectLinkText="Přihlaš se!"
     >
-      <FormProvider {...methods}>
+      <FormProvider {...formProps}>
         <form
           className="mt-5 flex w-full max-w-sm flex-col items-center"
-          onSubmit={methods.handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(onSubmit)}
         >
           <Input
-            register={methods.register}
+            register={register}
             type="text"
             name="name"
             label="Jméno"
             placeholder="Jméno"
-            errors={methods.formState.errors}
+            errors={errors}
           />
           <Input
-            register={methods.register}
+            register={register}
             type="email"
             name="email"
             label="Email"
             placeholder="Email"
-            errors={methods.formState.errors}
+            errors={errors}
           />
           <PasswordInput
-            register={methods.register}
-            errors={methods.formState.errors}
-            watchedValue={watchedPassword}
+            register={register}
+            errors={errors}
             isVisiblePassword={isVisiblePassword}
             togglePasswordVisibility={() =>
               setVisiblePassword(!isVisiblePassword)
@@ -86,9 +87,7 @@ const RegisterPage: NextPage = () => {
           {!isLoading ? (
             <button
               type="submit"
-              className={cx(
-                'mt-5 w-40 rounded-md bg-black px-5 py-2 text-white hover:text-primary focus:text-primary'
-              )}
+              className="mt-5 w-40 rounded-md bg-black px-5 py-2 text-white hover:text-primary focus:text-primary"
             >
               Registrovat
             </button>

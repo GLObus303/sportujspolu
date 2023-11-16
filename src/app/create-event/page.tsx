@@ -16,7 +16,7 @@ const inputStyles = {
   labelClassName: 'w-3/5 text-start text-normal pt-3 md:pt-2 md:text-xl',
 };
 
-type DefaultValues = {
+type CreateEventValues = {
   name: string;
   description: string;
   sport: string;
@@ -27,7 +27,7 @@ type DefaultValues = {
 };
 
 const CreateEventPage: NextPage = () => {
-  const methods = useForm<DefaultValues>({
+  const formProps = useForm<CreateEventValues>({
     resolver: yupResolver(eventSchema),
     defaultValues: {
       name: '',
@@ -38,8 +38,14 @@ const CreateEventPage: NextPage = () => {
       price: 0,
     },
   });
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = formProps;
 
-  const onSubmit = async (data: DefaultValues) => {
+  const onSubmit = async (data: CreateEventValues) => {
     const dateTimeIso = format(new Date(data.date), "yyyy-MM-dd'T'HH:mm:ss'Z'");
 
     const eventDataFormatted = {
@@ -57,8 +63,7 @@ const CreateEventPage: NextPage = () => {
     { value: 'Any', label: 'Pro každého' },
   ];
 
-  const watchedDescription = methods.watch('description');
-  const watchedLevel = methods.watch('level');
+  const watchedLevel = watch('level');
 
   return (
     <div className="flex flex-col items-center justify-center lg:justify-between xl:flex-row xl:items-start">
@@ -66,54 +71,53 @@ const CreateEventPage: NextPage = () => {
         Vytvořit sportovní událost
       </h1>
       <article className="relative mx-5 mr-0 mt-10 flex w-full max-w-xl flex-col rounded-md bg-white text-center shadow-md lg:text-start xl:mr-28 xl:mt-14 xl:px-0">
-        <FormProvider {...methods}>
+        <FormProvider {...formProps}>
           <form
-            onSubmit={methods.handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col space-y-8 rounded-md bg-white p-7"
           >
             <Input
-              register={methods.register}
+              register={register}
               type="name"
               name="name"
               label="Název události"
               placeholder="Název události"
-              errors={methods.formState.errors}
+              errors={errors}
               {...inputStyles}
             />
             <Textarea
-              register={methods.register}
+              register={register}
               type="text"
               name="description"
               label="Popis"
               placeholder="Popis"
-              errors={methods.formState.errors}
-              watchedValue={watchedDescription}
+              errors={errors}
             />
             <Input
-              register={methods.register}
+              register={register}
               type="text"
               name="sport"
               label="Sport"
               placeholder="Sport"
-              errors={methods.formState.errors}
+              errors={errors}
               {...inputStyles}
             />
             <Input
-              register={methods.register}
+              register={register}
               type="datetime-local"
               name="date"
               label="Kdy proběhne"
               placeholder="Kdy proběhne"
-              errors={methods.formState.errors}
+              errors={errors}
               {...inputStyles}
             />
             <Input
-              register={methods.register}
+              register={register}
               type="text"
               name="location"
               label="Místo konání"
               placeholder="Místo konání"
-              errors={methods.formState.errors}
+              errors={errors}
               {...inputStyles}
             />
             <div className="flex w-full flex-row justify-between">
@@ -127,7 +131,7 @@ const CreateEventPage: NextPage = () => {
                     className="flex cursor-pointer items-center"
                   >
                     <input
-                      {...methods.register('level')}
+                      {...register('level')}
                       type="radio"
                       value={level.value}
                       className="h-9 w-36 focus:outline-primary"
@@ -146,12 +150,12 @@ const CreateEventPage: NextPage = () => {
               </div>
             </div>
             <Input
-              register={methods.register}
+              register={register}
               type="number"
               name="price"
               label="Cena v Kč"
               placeholder="Cena"
-              errors={methods.formState.errors}
+              errors={errors}
               {...inputStyles}
             />
             <button

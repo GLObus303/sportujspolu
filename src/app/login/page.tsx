@@ -1,6 +1,5 @@
 'use client';
 
-import cx from 'classnames';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useState } from 'react';
@@ -27,13 +26,18 @@ const LoginPage: NextPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isVisiblePassword, setVisiblePassword] = useState(false);
 
-  const methods = useForm<LoginFormData>({
+  const formProps = useForm<LoginFormData>({
     resolver: yupResolver(loginSchema),
     defaultValues: {
       email: '',
       password: '',
     },
   });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = formProps;
 
   const onSubmit = async (formData: LoginFormData) => {
     setIsLoading(true);
@@ -56,8 +60,6 @@ const LoginPage: NextPage = () => {
     }
   };
 
-  const watchedPassword = methods.watch('password', '');
-
   return (
     <AuthWrapper
       headingText="Přihlášení se do"
@@ -67,23 +69,22 @@ const LoginPage: NextPage = () => {
       redirectRoute={Routes.REGISTER}
       redirectLinkText="Vytvoř si profil!"
     >
-      <FormProvider {...methods}>
+      <FormProvider {...formProps}>
         <form
           className="mt-5 flex w-full max-w-sm flex-col items-center"
-          onSubmit={methods.handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(onSubmit)}
         >
           <Input
-            register={methods.register}
+            register={register}
             type="email"
             name="email"
             label="Email"
             placeholder="Email"
-            errors={methods.formState.errors}
+            errors={errors}
           />
           <PasswordInput
-            register={methods.register}
-            errors={methods.formState.errors}
-            watchedValue={watchedPassword}
+            register={register}
+            errors={errors}
             isVisiblePassword={isVisiblePassword}
             togglePasswordVisibility={() =>
               setVisiblePassword(!isVisiblePassword)
@@ -92,9 +93,7 @@ const LoginPage: NextPage = () => {
           {!isLoading ? (
             <button
               type="submit"
-              className={cx(
-                'mt-5 h-11 w-40 rounded-md bg-black py-2 text-white hover:text-primary focus:text-primary'
-              )}
+              className="mt-5 h-11 w-40 rounded-md bg-black py-2 text-white hover:text-primary focus:text-primary"
             >
               Přihlásit se
             </button>

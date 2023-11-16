@@ -11,7 +11,6 @@ type InputProps = {
   label: string;
   placeholder?: string;
   errors: FieldErrors;
-  watchedValue?: string | number | Date;
   outerClassName?: string;
   className?: string;
   labelClassName?: string;
