@@ -25,7 +25,8 @@ export const EventCard: React.FC<EventCardProps> = ({
     setIsLiked(!isLiked);
   };
 
-  const getImagePath = (eventPrice: number) => `/${(eventPrice % 12) + 1}.png`;
+  const getImagePath = (eventPrice: number) =>
+    `/images/${(eventPrice % 12) + 1}.png`;
 
   return (
     <article className="relative rounded-md bg-white shadow-md">
