@@ -7,15 +7,27 @@ import { Events } from '../../../components/Events';
 import { getAllEvents } from '../../../api/events';
 import { getEvent } from '../../../api/events';
 import { StarRating } from '../../../components/StarRating';
-import { mockEvent, mockEventHost } from './mock';
+import { mockEventHost } from './mock';
 
 type EventPageProps = {
   params: { id: string };
 };
 
+const defaultEvent = {
+  id: -1,
+  name: '',
+  description: '',
+  sport: '',
+  location: '',
+  date: '',
+  price: 0,
+  level: '',
+  createdAt: '',
+};
+
 const EventPage: NextPage<EventPageProps> = async ({ params }) => {
   const events = (await getAllEvents()) || [];
-  const event = (await getEvent(params?.id)) || mockEvent;
+  const event = (await getEvent(params?.id)) || defaultEvent;
   const { name, price, description } = event;
 
   return (
@@ -37,7 +49,6 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
             <h1 className="mt-12 px-20 text-center text-2xl font-medium leading-normal md:mt-9 md:px-0 lg:text-start lg:text-4xl">
               {name}
             </h1>
-
             <p
               className="mt-8 text-lg font-light"
               dangerouslySetInnerHTML={{ __html: description }}
