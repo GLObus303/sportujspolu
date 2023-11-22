@@ -14,8 +14,8 @@ export const Header: React.FC = () => {
   } = useAuth();
 
   return (
-    <header className="fixed top-0 z-header w-full bg-white">
-      <nav className="flex flex-row items-center justify-between border-b border-light-gray bg-lightest-gray">
+    <header className="fixed top-0 z-header w-full border-b border-light-gray bg-lightest-gray">
+      <nav className="mx-auto flex max-w-layout flex-row items-center justify-between">
         <Link
           href={Routes.DASHBOARD}
           aria-label="SportujSpolu - domovská stránka"

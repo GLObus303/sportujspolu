@@ -33,7 +33,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
   return (
     <>
       <div className="mt-14 flex flex-col items-start px-4 md:flex-row md:px-0 lg:mt-0">
-        <div className="relative flex h-full w-full flex-col items-center justify-center pr-0 md:pr-14">
+        <div className="relative flex h-full w-full flex-col items-center justify-center pr-0 lg:pr-14">
           <section className="w-full">
             <div
               style={{ aspectRatio: '3/1' }}
@@ -53,7 +53,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
               className="mt-8 text-lg font-light"
               dangerouslySetInnerHTML={{ __html: description }}
             />
-            <EventDetail className="mt-8 md:hidden" event={event} />
+            <EventDetail className="mx-auto mt-8 lg:hidden" event={event} />
             <hr className="my-16 border-t border-light-gray" />
           </section>
           <section className="w-full">
@@ -125,7 +125,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
             ))}
           </section>
         </div>
-        <EventDetail className="sticky hidden md:block" event={event} />
+        <EventDetail className="sticky hidden lg:block" event={event} />
       </div>
       <hr className="my-16 border-t border-light-gray" />
       <section>

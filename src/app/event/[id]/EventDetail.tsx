@@ -27,7 +27,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({
 
   return (
     <section
-      className={`${className} top-14 w-full rounded-md bg-white p-7 text-lg shadow-md md:w-[44rem]`}
+      className={`${className} top-14 w-full max-w-lg rounded-md bg-white p-7 text-lg shadow-md lg:max-w-md`}
     >
       <article className="flex flex-col rounded-md bg-white">
         <button
