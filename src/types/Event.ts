@@ -7,4 +7,12 @@ export type Event = {
   price: number;
   description: string;
   level: string;
+  createdAt: string;
+  // not in API
+  rating?: number;
+  image?: string;
+  allSpots?: number;
+  freeSpots?: number;
+  duration?: number;
+  allDates?: string[];
 };

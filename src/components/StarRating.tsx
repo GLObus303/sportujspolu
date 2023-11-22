@@ -2,10 +2,11 @@ import { StarIcon } from './icons/StarIcon';
 
 type StarProps = {
   rating: number;
+  className?: string;
 };
 
-const Star: React.FC<StarProps> = ({ rating }) => (
-  <span className="relative inline-block h-3 w-3 px-2">
+const Star: React.FC<StarProps> = ({ rating, className = 'h-3 w-3 px-2' }) => (
+  <span className={`${className} relative inline-block px-2`}>
     <StarIcon className="absolute left-0 top-0 h-full w-full fill-dark-gray" />
     <span
       style={{ clipPath: `inset(0 ${100 - rating}% 0 0)` }}
@@ -18,9 +19,13 @@ const Star: React.FC<StarProps> = ({ rating }) => (
 
 type StarRatingProps = {
   rating: number;
+  className?: string;
 };
 
-export const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
+export const StarRating: React.FC<StarRatingProps> = ({
+  rating,
+  className,
+}) => {
   const fullStars = Math.floor(rating);
   const partialPercentage = (rating - fullStars) * 100;
 
@@ -28,13 +33,19 @@ export const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
     <span role="img" aria-label={`Rated ${rating} stars out of 5`}>
       {[...Array(5)].map((_, index) => {
         if (index < fullStars) {
-          return <Star key={index} rating={100} />;
+          return <Star className={className} key={index} rating={100} />;
         }
         if (index === fullStars) {
-          return <Star key={index} rating={partialPercentage} />;
+          return (
+            <Star
+              className={className}
+              key={index}
+              rating={partialPercentage}
+            />
+          );
         }
 
-        return <Star key={index} rating={0} />;
+        return <Star className={className} key={index} rating={0} />;
       })}
     </span>
   );
