@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { EventDetail } from './EventDetail';
+import { HostCard } from './HostCard';
 import { Events } from '../../../components/Events';
 import { getAllEvents } from '../../../api/events';
 import { getEvent } from '../../../api/events';
@@ -46,7 +47,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
                 fill
               />
             </div>
-            <h1 className="mt-12 px-20 text-center text-2xl font-medium leading-normal md:mt-9 md:px-0 lg:text-start lg:text-4xl">
+            <h1 className="mt-12 text-center text-2xl font-medium leading-normal md:mt-9 lg:text-start lg:text-4xl">
               {name}
             </h1>
             <p
@@ -56,34 +57,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
             <EventDetail className="mx-auto mt-8 lg:hidden" event={event} />
             <hr className="my-16 border-t border-light-gray" />
           </section>
-          <section className="w-full">
-            <div className="relative flex flex-col items-center md:mt-0 lg:flex-row">
-              <Link href="/" className="relative h-16 w-16 lg:mr-5">
-                <Image
-                  alt=""
-                  src="/images/2.png"
-                  className="rounded-full object-cover"
-                  fill
-                />
-              </Link>
-              <div>
-                <h2 className="mt-4 text-center text-xl font-medium leading-normal md:px-0 lg:mt-0 lg:whitespace-nowrap lg:text-start lg:text-3xl">
-                  Sportuj s Instruktorkou{' '}
-                  <Link href="/" className="hover:text-primary">
-                    {mockEventHost.name}
-                  </Link>
-                </h2>
-                <p className="font-light lg:whitespace-nowrap">
-                  Instruktorkou na SportujSpolu od roku {mockEventHost.since}
-                </p>
-              </div>
-            </div>
-            <p
-              className="mt-8 text-lg font-light"
-              dangerouslySetInnerHTML={{ __html: mockEventHost.description }}
-            />
-            <hr className="my-16 w-full border-t border-light-gray" />
-          </section>
+          <HostCard className="w-full" eventHost={mockEventHost} />
           <section className="w-full">
             <h2 className="flex flex-col px-20 text-center text-xl font-medium leading-normal md:flex-row md:px-0 lg:text-start lg:text-3xl">
               <StarRating
@@ -99,7 +73,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
                 <div key={review.id} className="relative mt-10 flex flex-row">
                   <Link href="/" className="relative mr-4 h-12 w-12">
                     <Image
-                      alt=""
+                      alt={`Zobrazit profil - ${review.name}`}
                       src={review.image}
                       className="rounded-full object-cover"
                       fill
@@ -130,9 +104,9 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
       <hr className="my-16 border-t border-light-gray" />
       <section>
         <h2 className="px-20 text-center text-xl font-medium leading-normal md:px-0 lg:text-start lg:text-3xl">
-          Další sportovní akce
+          Podobné sportovní akce
         </h2>
-        <Events events={events} />
+        <Events events={events.slice(0, 4)} />
       </section>
     </>
   );

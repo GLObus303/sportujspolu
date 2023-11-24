@@ -1,6 +1,14 @@
-import { SVGProps } from 'react';
+'use client';
 
-export const HeartIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => (
+import { SVGProps } from 'react';
+import { useState } from 'react';
+import cx from 'classnames';
+
+type HeartButtonProps = {
+  className?: string;
+};
+
+const HeartIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
@@ -15,3 +23,26 @@ export const HeartIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => (
     />
   </svg>
 );
+
+export const HeartButton: React.FC<HeartButtonProps> = ({ className }) => {
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleLikeEvent = () => {
+    setIsLiked(!isLiked);
+  };
+
+  return (
+    <button
+      onClick={handleLikeEvent}
+      className={cx(
+        'transition-transform duration-200 ease-in-out hover:scale-115 motion-reduce:hover:scale-100',
+        className
+      )}
+    >
+      <HeartIcon
+        aria-label={isLiked ? 'Odstranit z oblíbených' : 'Přidat do oblíbených'}
+        className={cx(isLiked ? 'fill-primary' : 'fill-smoke-glass')}
+      />
+    </button>
+  );
+};
