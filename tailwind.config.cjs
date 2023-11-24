@@ -21,6 +21,9 @@ module.exports = {
       width: {
         '100': '400px',
       },
+      maxWidth: {
+        'layout': '1470px'
+      },
       minHeight: {
         300: "300px",
       },

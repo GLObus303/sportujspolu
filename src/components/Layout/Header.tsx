@@ -14,12 +14,12 @@ export const Header: React.FC = () => {
   } = useAuth();
 
   return (
-    <header className="fixed top-0 z-header w-full bg-white">
-      <nav className="flex flex-row items-center justify-between border-b border-light-gray bg-lightest-gray">
+    <header className="fixed top-0 z-header w-full border-b border-light-gray bg-lightest-gray">
+      <nav className="mx-auto flex max-w-layout flex-row items-center justify-between">
         <Link
           href={Routes.DASHBOARD}
           aria-label="SportujSpolu - domovská stránka"
-          className="px-4 py-4 text-3xl focus:fill-primary md:px-14"
+          className="px-4 py-3.5 text-3xl focus:fill-primary md:px-14"
         >
           <LogoIcon className="h-6 hover:fill-primary md:h-7" />
         </Link>
