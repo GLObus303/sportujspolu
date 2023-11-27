@@ -36,9 +36,16 @@ module.exports = {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
         },
+        shake: {
+          '0%, 100%': { transform: 'rotate(0)' },
+          '10%, 30%, 50%, 70%, 90%': { transform: 'rotate(5deg)' },
+          '20%, 40%, 60%, 80%': { transform: 'rotate(-5deg)' }
+        },
       },
       animation: {
         spin: 'spin 1s linear infinite',
+        shake: 'shake 1s ease-in-out 3',
+        none: 'none',
       },
     },
     zIndex: {
