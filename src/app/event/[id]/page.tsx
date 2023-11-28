@@ -9,21 +9,10 @@ import { getAllEvents } from '../../../api/events';
 import { getEvent } from '../../../api/events';
 import { StarRating } from '../../../components/StarRating';
 import { mockEventHost } from './mock';
+import { defaultEvent } from '../../../utils/constants';
 
 type EventPageProps = {
   params: { id: string };
-};
-
-const defaultEvent = {
-  id: -1,
-  name: '',
-  description: '',
-  sport: '',
-  location: '',
-  date: '',
-  price: 0,
-  level: '',
-  createdAt: '',
 };
 
 const EventPage: NextPage<EventPageProps> = async ({ params }) => {
