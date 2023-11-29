@@ -19,14 +19,10 @@ type EventDetailProps = {
 };
 
 export const EventDetail: React.FC<EventDetailProps> = ({
-  event,
+  event: { id, sport, location, price, date, level },
   className,
 }) => {
-  const { id, sport, location, price, date, level } = event;
-
-  const {
-    user: { id: userId },
-  } = useAuth();
+  const isUserLoggedIn = useAuth().isUserLoggedIn;
 
   const router = useRouter();
 
@@ -43,7 +39,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({
       )}
     >
       <article className="flex flex-col rounded-md bg-white">
-        {userId === -1 ? (
+        {!isUserLoggedIn ? (
           <HeartButton className="ml-auto" />
         ) : (
           <button
@@ -101,7 +97,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({
           </tbody>
         </table>
 
-        {userId === -1 ? (
+        {!isUserLoggedIn ? (
           <button
             type="submit"
             className="ml-auto mt-6 whitespace-nowrap rounded-md bg-black px-5 py-2 text-base text-white hover:text-primary"
@@ -111,7 +107,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({
         ) : (
           <Link
             className="ml-auto mt-6 rounded bg-black px-5 py-2 text-center text-base text-white hover:text-primary"
-            href={`${Routes.EDIT_EVENT}/${event.id}`}
+            href={`${Routes.EDIT_EVENT}/${id}`}
           >
             Upravit událost
           </Link>

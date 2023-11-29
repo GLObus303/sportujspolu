@@ -2,7 +2,6 @@ import { NextPage } from 'next';
 
 import { EventForm } from '../../../components/EventForm';
 import { getEvent } from '../../../api/events';
-import { Event } from '../../../types/Event';
 import { defaultEvent } from '../../../utils/constants';
 
 type EditEventPageProps = {
@@ -10,7 +9,7 @@ type EditEventPageProps = {
 };
 
 const EditEventPage: NextPage<EditEventPageProps> = async ({ params }) => {
-  const event: Event = (await getEvent(params?.id)) || defaultEvent;
+  const event = (await getEvent(params?.id)) || defaultEvent;
 
   return (
     <div className="flex flex-col items-center justify-center lg:justify-between xl:flex-row xl:items-start">

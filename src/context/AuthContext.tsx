@@ -17,6 +17,7 @@ import { ChildrenFC } from '../utils/type';
 
 type AuthContextProps = {
   user: User;
+  isUserLoggedIn: boolean;
   login: (token: string) => void;
   logout: () => void;
 };
@@ -68,7 +69,12 @@ export const AuthProvider: ChildrenFC = ({ children }) => {
     setUser(defaultUser);
   }, []);
 
-  const value = useMemo(() => ({ user, login, logout }), [user, login, logout]);
+  const isUserLoggedIn = user.id !== -1;
+
+  const value = useMemo(
+    () => ({ user, isUserLoggedIn, login, logout }),
+    [user, isUserLoggedIn, login, logout]
+  );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
