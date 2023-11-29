@@ -22,9 +22,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({
   event: { id, sport, location, price, date, level },
   className,
 }) => {
-  const userId = useAuth().user.id;
-
-  const isUserLoggedIn = userId !== -1;
+  const isUserLoggedIn = useAuth().isUserLoggedIn;
 
   const router = useRouter();
 
