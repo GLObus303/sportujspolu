@@ -126,7 +126,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
           />
           <div className="flex w-full flex-row justify-between">
             <span className="text-normal mb-4 pt-3 md:pt-2 md:text-xl">
-              Pokročilost
+              Úroveň
             </span>
             <div className="mt-5 flex w-3/5 flex-wrap justify-end gap-4 md:justify-between">
               {levels.map((level) => (
