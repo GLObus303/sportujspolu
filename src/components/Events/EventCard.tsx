@@ -21,6 +21,8 @@ export const EventCard: React.FC<EventCardProps> = ({
   const getImagePath = (eventPrice: number) =>
     `/images/${(eventPrice % 12) + 1}.png`;
 
+  const formatedDate = date ? format(new Date(date), 'dd/MM/yyyy HH:mm') : '';
+
   return (
     <article className="relative rounded-md bg-white shadow-md">
       <HeartButton className="absolute right-3 top-3 z-button" />
@@ -28,18 +30,17 @@ export const EventCard: React.FC<EventCardProps> = ({
         <div style={{ aspectRatio: '1/1' }} className="rounded-md bg-white">
           <div className="relative h-1/3 w-full overflow-hidden">
             <Image
-              src={getImagePath(price)}
               alt=""
-              fill
+              src={getImagePath(price)}
               className="rounded-tl-md rounded-tr-md object-cover"
+              sizes="auto"
+              fill
             />
           </div>
           <div className="flex h-2/3 flex-col justify-between p-5">
             <p className="text-s flex flex-row justify-between font-light">
               <span className="w-1/2 truncate">{location}</span>{' '}
-              <time className="truncate">
-                {format(new Date(date), 'dd/MM/yyyy HH:mm')}
-              </time>
+              <time className="truncate">{formatedDate}</time>
             </p>
             <p className="line-clamp-3 overflow-hidden overflow-ellipsis">
               <span className="font-medium">{name}:</span>{' '}

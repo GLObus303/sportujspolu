@@ -31,6 +31,9 @@ export const EventDetail: React.FC<EventDetailProps> = ({
     router.push(Routes.DASHBOARD);
   };
 
+  const formatedDate = date ? format(new Date(date), 'dd/MM/yyyy') : '';
+  const formatedTime = date ? format(new Date(date), 'HH:mm') : '';
+
   return (
     <section
       className={cx(
@@ -65,17 +68,13 @@ export const EventDetail: React.FC<EventDetailProps> = ({
             <tr className="border-b border-light-gray">
               <td className="py-2 md:py-4">Datum</td>
               <td className="py-2 font-light md:py-4">
-                <time className="truncate">
-                  {format(new Date(date), 'dd/MM/yyyy')}
-                </time>
+                <time className="truncate">{formatedDate}</time>
               </td>
             </tr>
             <tr className="border-b border-light-gray">
               <td className="py-2 md:py-4">Čas</td>
               <td className="py-2 font-light md:py-4">
-                <time className="truncate">
-                  {format(new Date(date), 'HH:mm')}
-                </time>
+                <time className="truncate">{formatedTime}</time>
               </td>
             </tr>
             <tr className="border-b border-light-gray">

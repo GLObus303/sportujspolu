@@ -20,6 +20,7 @@ export const HostCard: React.FC<HostCardProps> = ({ eventHost, className }) => {
             alt={`Zobrazit profil - ${name}`}
             src="/images/2.png"
             className="rounded-full object-cover"
+            sizes="auto"
             fill
           />
         </Link>
