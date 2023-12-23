@@ -22,10 +22,10 @@ export const EventCard: React.FC<EventCardProps> = ({
     `/images/${(eventPrice % 12) + 1}.png`;
 
   return (
-    <article className="relative rounded-md bg-white shadow-md">
+    <article className="relative rounded-md bg-card shadow-md">
       <HeartButton className="absolute right-3 top-3 z-button" />
       <Link href={`${Routes.EVENT}/${id}`}>
-        <div style={{ aspectRatio: '1/1' }} className="rounded-md bg-white">
+        <div style={{ aspectRatio: '1/1' }} className="rounded-md bg-card">
           <div className="relative h-1/3 w-full overflow-hidden">
             <Image
               src={getImagePath(price)}
@@ -46,7 +46,9 @@ export const EventCard: React.FC<EventCardProps> = ({
               <span className="font-light">{description}</span>
             </p>
             <div className="flex items-center">
-              <span className="pr-1 font-light text-dark-gray">userName </span>
+              <span className="pr-1 font-light text-dark-gray dark:text-accent">
+                userName{' '}
+              </span>
               <StarRating rating={rating} />
             </div>
             <div className="flex items-center justify-between">

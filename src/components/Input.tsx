@@ -25,7 +25,7 @@ export const Input: React.FC<InputProps> = ({
   errors,
   outerClassName = 'relative w-full mb-5',
   className = 'border',
-  labelClassName = 'text-xs text-dark-gray',
+  labelClassName = 'text-xs text-dark-gray dark:text-text',
 }) => {
   const watchedValue = useWatchedValue(name);
 
@@ -38,11 +38,10 @@ export const Input: React.FC<InputProps> = ({
         aria-invalid={!!errors?.[name]}
         className={cx(
           className,
-          'w-full px-5 py-3 placeholder-light-gray focus:outline-primary',
+          'w-full bg-card px-5 py-3 placeholder-low-contrast focus:outline-primary',
           {
             'border-primary': !errors?.[name] && watchedValue,
-            'border-medium-gray text-light-gray':
-              !errors?.[name] && !watchedValue,
+            'border-medium-gray': !errors?.[name] && !watchedValue,
             'border-secondary': errors?.[name],
           }
         )}

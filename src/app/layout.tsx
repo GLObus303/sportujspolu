@@ -1,4 +1,5 @@
 import '../styles/globals.scss';
+import { ThemeProvider } from './theme-provider';
 import { AuthProvider } from '../context/AuthContext';
 import { Layout } from '../components/Layout';
 import { ChildrenFC } from '../utils/type';
@@ -13,11 +14,13 @@ const RootLayout: ChildrenFC = ({ children }) => (
     <head>
       <meta name="robots" content="noindex, nofollow" />
     </head>
-    <body className="bg-lightest-gray">
-      <AuthProvider>
-        <Layout>{children}</Layout>
-      </AuthProvider>
-    </body>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <body className="bg-background">
+        <AuthProvider>
+          <Layout>{children}</Layout>
+        </AuthProvider>
+      </body>
+    </ThemeProvider>
   </html>
 );
 

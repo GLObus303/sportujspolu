@@ -36,7 +36,7 @@ export const AuthWrapper: ChildrenFC<AuthWrapperProps> = ({
         <SocialButton Icon={FacebookIcon} label="Facebook účet" />
       </li>
     </ul>
-    <hr className="w-full max-w-sm border-t border-light-gray" />
+    <hr className="w-full max-w-sm border-t border-low-contrast" />
     <p className="pt-5">Zadat {formText} údaje:</p>
 
     {children}

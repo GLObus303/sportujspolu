@@ -35,10 +35,10 @@ export const EventDetail: React.FC<EventDetailProps> = ({
     <section
       className={cx(
         className,
-        'top-14 w-full max-w-lg rounded-md bg-white p-7 text-lg shadow-md lg:max-w-md'
+        'top-14 w-full max-w-lg rounded-md bg-card p-7 text-lg shadow-md lg:max-w-md'
       )}
     >
-      <article className="flex flex-col rounded-md bg-white">
+      <article className="flex flex-col rounded-md">
         {!isUserLoggedIn ? (
           <HeartButton className="ml-auto" />
         ) : (
@@ -47,22 +47,22 @@ export const EventDetail: React.FC<EventDetailProps> = ({
             aria-label="Smazat událost"
             onClick={handleDelete}
           >
-            <DeleteIcon className="hover:animate-shake motion-reduce:hover:animate-none" />
+            <DeleteIcon className="fill-button hover:animate-shake motion-reduce:hover:animate-none" />
           </button>
         )}
         <table className="text-s font-medium">
           <tbody>
-            <tr className="border-b border-light-gray">
+            <tr className="border-b border-low-contrast">
               <td className="py-2 md:py-4">Cena</td>
               <td className="py-2 font-light md:py-4">
                 {!!price ? `${price} Kč/osoba` : 'ZDARMA'}
               </td>
             </tr>
-            <tr className="border-b border-light-gray">
+            <tr className="border-b border-low-contrast">
               <td className="py-2 md:py-4">Místo konání</td>
               <td className="py-2 font-light md:py-4">{location}</td>
             </tr>
-            <tr className="border-b border-light-gray">
+            <tr className="border-b border-low-contrast">
               <td className="py-2 md:py-4">Datum</td>
               <td className="py-2 font-light md:py-4">
                 <time className="truncate">
@@ -70,7 +70,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({
                 </time>
               </td>
             </tr>
-            <tr className="border-b border-light-gray">
+            <tr className="border-b border-low-contrast">
               <td className="py-2 md:py-4">Čas</td>
               <td className="py-2 font-light md:py-4">
                 <time className="truncate">
@@ -78,7 +78,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({
                 </time>
               </td>
             </tr>
-            <tr className="border-b border-light-gray">
+            <tr className="border-b border-low-contrast">
               <td className="py-2 md:py-4">
                 <span>Trvání</span>
               </td>
@@ -86,11 +86,11 @@ export const EventDetail: React.FC<EventDetailProps> = ({
                 {mockEvent.duration} min
               </td>
             </tr>
-            <tr className="border-b border-light-gray">
+            <tr className="border-b border-low-contrast">
               <td className="py-2 md:py-4">Sport</td>
               <td className="py-2 font-light md:py-4">{sport}</td>
             </tr>
-            <tr className="border-b border-light-gray">
+            <tr className="border-b border-low-contrast">
               <td className="py-2 md:py-4">Pokročilost</td>
               <td className="py-2 font-light md:py-4">{level}</td>
             </tr>
@@ -100,13 +100,13 @@ export const EventDetail: React.FC<EventDetailProps> = ({
         {!isUserLoggedIn ? (
           <button
             type="submit"
-            className="ml-auto mt-6 whitespace-nowrap rounded-md bg-black px-5 py-2 text-base text-white hover:text-primary"
+            className="ml-auto mt-6 whitespace-nowrap rounded-md bg-button px-5 py-2 text-base text-white hover:text-primary"
           >
             Zúčastnit se
           </button>
         ) : (
           <Link
-            className="ml-auto mt-6 rounded bg-black px-5 py-2 text-center text-base text-white hover:text-primary"
+            className="ml-auto mt-6 rounded bg-button px-5 py-2 text-center text-base text-white hover:text-primary"
             href={`${Routes.EDIT_EVENT}/${id}`}
           >
             Upravit událost
