@@ -1,10 +1,10 @@
 'use client';
 
-import format from 'date-fns/format';
 import cx from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
+import useFormattedDate from '../../../hooks/useFormattedDate';
 import { useAuth } from '../../../context/AuthContext';
 import { HeartButton } from '../../../components/HeartButton';
 import { DeleteIcon } from '../../../components/icons/DeleteIcon';
@@ -23,16 +23,15 @@ export const EventDetail: React.FC<EventDetailProps> = ({
   className,
 }) => {
   const isUserLoggedIn = useAuth().isUserLoggedIn;
-
   const router = useRouter();
+
+  const formatedDate = useFormattedDate(date, 'dd/MM/yyyy');
+  const formatedTime = useFormattedDate(date, 'HH:mm');
 
   const handleDelete = async () => {
     await deleteEvent(id);
     router.push(Routes.DASHBOARD);
   };
-
-  const formatedDate = date ? format(new Date(date), 'dd/MM/yyyy') : '';
-  const formatedTime = date ? format(new Date(date), 'HH:mm') : '';
 
   return (
     <section
