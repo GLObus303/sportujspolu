@@ -20,7 +20,7 @@ export const LightSwitch = () => {
 
   return (
     <button
-      className="flex w-8 items-center rounded-full bg-low-contrast text-base hover:text-primary md:w-14 md:text-lg"
+      className="flex w-fit items-center rounded-full bg-low-contrast text-base hover:text-primary md:w-14 md:text-lg"
       onClick={toggleTheme}
       aria-label={`Nastavit ${theme === 'dark' ? 'světlý' : 'tmavý'} vzhled`}
     >
