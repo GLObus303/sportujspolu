@@ -43,11 +43,11 @@ export const EventDetail: React.FC<EventDetailProps> = ({
           <HeartButton className="ml-auto" />
         ) : (
           <button
-            className="ml-auto flex flex-row items-center py-1 text-sm hover:fill-secondary"
+            className="ml-auto flex flex-row items-center fill-button py-1 text-sm hover:fill-secondary"
             aria-label="Smazat událost"
             onClick={handleDelete}
           >
-            <DeleteIcon className="fill-button hover:animate-shake motion-reduce:hover:animate-none" />
+            <DeleteIcon className="hover:animate-shake motion-reduce:hover:animate-none" />
           </button>
         )}
         <table className="text-s font-medium">
