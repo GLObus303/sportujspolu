@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 const RootLayout: ChildrenFC = ({ children }) => (
-  <html lang="cs" suppressHydrationWarning>
+  <html lang="cs">
     <head>
       <meta name="robots" content="noindex, nofollow" />
     </head>
