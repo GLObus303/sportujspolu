@@ -10,17 +10,17 @@ export const metadata = {
 };
 
 const RootLayout: ChildrenFC = ({ children }) => (
-  <html lang="cs">
+  <html lang="cs" suppressHydrationWarning>
     <head>
       <meta name="robots" content="noindex, nofollow" />
     </head>
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <body className="bg-background">
+    <body>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <AuthProvider>
           <Layout>{children}</Layout>
         </AuthProvider>
-      </body>
-    </ThemeProvider>
+      </ThemeProvider>
+    </body>
   </html>
 );
 
