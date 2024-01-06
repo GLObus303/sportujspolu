@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import cx from 'classnames';
 
 export const LightSwitch = () => {
   const [mounted, setMounted] = useState(false);
+
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
@@ -25,13 +25,9 @@ export const LightSwitch = () => {
       aria-label={`Nastavit ${theme === 'dark' ? 'světlý' : 'tmavý'} vzhled`}
     >
       <span
-        className={cx(
-          'rouned flex h-full w-full items-center justify-center rounded-full bg-background text-base transition-transform duration-300 ease-in-out md:mx-1 md:h-6 md:w-6',
-          {
-            'md:translate-x-0': theme === 'dark',
-            'md:translate-x-full': theme !== 'dark',
-          }
-        )}
+        className={`rouned flex h-full w-full items-center justify-center rounded-full bg-background text-base transition-transform duration-300 ease-in-out md:mx-1 md:h-6 md:w-6 ${
+          theme === 'dark' ? 'md:translate-x-0' : 'md:translate-x-full'
+        }`}
       >
         {theme === 'dark' ? '☼' : '☾'}
       </span>
