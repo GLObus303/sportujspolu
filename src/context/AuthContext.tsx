@@ -22,7 +22,7 @@ type AuthContextProps = {
   logout: () => void;
 };
 
-const defaultUser = {
+const emptyUser = {
   id: -1,
   name: '',
   email: '',
@@ -32,7 +32,7 @@ const defaultUser = {
 export const AuthContext = createContext<AuthContextProps | null>(null);
 
 export const AuthProvider: ChildrenFC = ({ children }) => {
-  const [user, setUser] = useState(defaultUser);
+  const [user, setUser] = useState(emptyUser);
 
   useEffectAsync(async () => {
     try {
@@ -48,7 +48,7 @@ export const AuthProvider: ChildrenFC = ({ children }) => {
       }
     } catch (error) {
       nookies.destroy(null, 'token');
-      setUser(defaultUser);
+      setUser(emptyUser);
     }
   }, []);
 
@@ -68,7 +68,7 @@ export const AuthProvider: ChildrenFC = ({ children }) => {
   const logout = useCallback(() => {
     nookies.destroy(null, 'token');
 
-    setUser(defaultUser);
+    setUser(emptyUser);
   }, []);
 
   const isUserLoggedIn = user.id !== -1;

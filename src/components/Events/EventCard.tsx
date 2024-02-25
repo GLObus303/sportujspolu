@@ -3,11 +3,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import useFormattedDate from '../../hooks/useFormattedDate';
 import { StarRating } from '../StarRating';
 import { HeartButton } from '../HeartButton';
 import { Event } from '../../types/Event';
 import { Routes } from '../../utils/constants';
+import { formatDateTime } from '../../utils/dateUtils';
 
 const rating = 3.5;
 
@@ -18,7 +18,7 @@ type EventCardProps = {
 export const EventCard: React.FC<EventCardProps> = ({
   event: { id, name, sport, date, location, price, description, level },
 }) => {
-  const formattedDate = useFormattedDate(date, 'dd/MM/yyyy HH:mm');
+  const formattedDate = formatDateTime(date);
 
   const getImagePath = (eventPrice: number) =>
     `/images/${(eventPrice % 12) + 1}.png`;

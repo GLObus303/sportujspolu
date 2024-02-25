@@ -4,7 +4,6 @@ import cx from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-import useFormattedDate from '../../../hooks/useFormattedDate';
 import { useAuth } from '../../../context/AuthContext';
 import { HeartButton } from '../../../components/HeartButton';
 import { DeleteIcon } from '../../../components/icons/DeleteIcon';
@@ -12,6 +11,7 @@ import { mockEvent } from './mock';
 import { Event } from '../../../types/Event';
 import { deleteEvent } from '../../../api/events';
 import { Routes } from '../../../utils/constants';
+import { formatDate, formatTime } from '../../../utils/dateUtils';
 
 type EventDetailProps = {
   event: Event;
@@ -25,8 +25,8 @@ export const EventDetail: React.FC<EventDetailProps> = ({
   const isUserLoggedIn = useAuth().isUserLoggedIn;
   const router = useRouter();
 
-  const formatedDate = useFormattedDate(date, 'dd/MM/yyyy');
-  const formatedTime = useFormattedDate(date, 'HH:mm');
+  const formattedDate = formatDate(date);
+  const formattedTime = formatTime(date);
 
   const handleDelete = async () => {
     await deleteEvent(id);
@@ -67,13 +67,13 @@ export const EventDetail: React.FC<EventDetailProps> = ({
             <tr className="border-b border-light-gray">
               <td className="py-2 md:py-4">Datum</td>
               <td className="py-2 font-light md:py-4">
-                <time className="truncate">{formatedDate}</time>
+                <time className="truncate">{formattedDate}</time>
               </td>
             </tr>
             <tr className="border-b border-light-gray">
               <td className="py-2 md:py-4">Čas</td>
               <td className="py-2 font-light md:py-4">
-                <time className="truncate">{formatedTime}</time>
+                <time className="truncate">{formattedTime}</time>
               </td>
             </tr>
             <tr className="border-b border-light-gray">
