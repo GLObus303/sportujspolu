@@ -44,7 +44,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
               dangerouslySetInnerHTML={{ __html: description }}
             />
             <EventDetail className="mx-auto mt-8 lg:hidden" event={event} />
-            <hr className="my-16 border-t border-light-gray" />
+            <hr className="my-16 border-t border-low-contrast" />
           </section>
           <HostCard className="w-full" eventHost={mockEventHost} />
           <section className="w-full">
@@ -77,7 +77,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
                         hodnotí akci <StarRating rating={review.rating} />
                       </span>
                     </h3>
-                    <p className="font-light">{review.date}</p>
+                    <p className="font-light text-accent">{review.date}</p>
                   </div>
                 </div>
                 <p
@@ -90,7 +90,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
         </div>
         <EventDetail className="sticky hidden lg:block" event={event} />
       </div>
-      <hr className="my-16 border-t border-light-gray" />
+      <hr className="my-16 border-t border-low-contrast" />
       <section>
         <h2 className="px-20 text-center text-xl font-medium leading-normal md:px-0 lg:text-start lg:text-3xl">
           Podobné sportovní akce

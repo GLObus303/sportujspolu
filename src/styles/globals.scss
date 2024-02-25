@@ -7,14 +7,36 @@ body,
 html {
   height: 100%;
   line-height: 1.5;
+  background-color: var(--background);
 }
 
 * {
   font-family: "kanit", sans-serif;
 }
 
+:root {
+  --background: #F9F9FB;
+  --card: #ffffff;
+  --low-contrast: #D9D9D9;
+  --button: #000000;
+  --accent: #131313;
+  --text: #000000;
+  --pistachio: #94FFA9;
+}
+
+.dark {
+  --background: #131313; 
+  --card: #242222;
+  --low-contrast: #575050;
+  --button:  var(--low-contrast);
+  --accent: #a59d9d;
+  --text: #dedede;
+  --pistachio: #00550e;
+}
+
 p {
   font-size: 1rem;
+  color: var(--text);
 }
 
 button {

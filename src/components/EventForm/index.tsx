@@ -74,11 +74,11 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
   const watchedLevel = watch('level');
 
   return (
-    <article className="relative mx-5 mr-0 mt-10 flex w-full max-w-xl flex-col rounded-md bg-white text-center shadow-md lg:text-start xl:mr-28 xl:mt-14 xl:px-0">
+    <article className="relative mx-5 mr-0 mt-10 flex w-full max-w-xl flex-col rounded-md bg-card text-center shadow-md lg:text-start xl:mr-28 xl:mt-14 xl:px-0">
       <FormProvider {...formProps}>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col space-y-8 rounded-md bg-white p-7"
+          className="flex flex-col space-y-8 rounded-md bg-card p-7"
         >
           <Input
             register={register}
@@ -144,7 +144,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
                     className={`absolute w-36 rounded-full py-2 text-center leading-5 ${
                       watchedLevel === level.value
                         ? 'border border-pistachio bg-pistachio'
-                        : 'border border-light-gray bg-white hover:border-primary'
+                        : 'border border-low-contrast bg-card hover:border-primary'
                     }`}
                   >
                     {level.label}
@@ -164,7 +164,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
           />
           <button
             type="submit"
-            className="ml-auto whitespace-nowrap rounded-md bg-black px-5 py-2 text-white hover:text-primary"
+            className="ml-auto whitespace-nowrap rounded-md bg-button px-5 py-2 text-white hover:text-primary"
           >
             Odeslat
           </button>

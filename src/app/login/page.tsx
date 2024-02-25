@@ -93,7 +93,7 @@ const LoginPage: NextPage = () => {
           {!isLoading ? (
             <button
               type="submit"
-              className="mt-5 h-11 w-40 rounded-md bg-black py-2 text-white hover:text-primary focus:text-primary"
+              className="mt-5 h-11 w-40 rounded-md bg-button py-2 text-white hover:text-primary focus:text-primary"
             >
               Přihlásit se
             </button>
@@ -106,7 +106,7 @@ const LoginPage: NextPage = () => {
               errorMessage={errorMessage}
             />
           )}
-          <hr className="mt-10 w-100 border-t border-light-gray" />
+          <hr className="mt-10 w-100 border-t border-low-contrast" />
         </form>
       </FormProvider>
     </AuthWrapper>

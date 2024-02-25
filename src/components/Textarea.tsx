@@ -35,7 +35,7 @@ export const Textarea: React.FC<InputProps> = ({
         aria-invalid={!!errors?.[name]}
         className={cx(
           className,
-          'w-full border-b px-5 py-3 placeholder-light-gray focus:border-white focus:outline-primary',
+          'w-full border-b bg-card px-5 py-3 placeholder-low-contrast focus:border-white focus:outline-primary',
           {
             'border-primary': !errors?.[name] && watchedValue,
             'border-medium-gray': !errors?.[name] && !watchedValue,

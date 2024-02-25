@@ -10,7 +10,7 @@ export const SocialButton = ({ Icon, label }: SocialButtonProps) => (
     type="button"
     aria-label={label}
     title="🚀 Feature coming soon! 🌟"
-    className="focus-within:fill-primary motion-reduce:focus-within:scale-100"
+    className="fill-accent focus-within:fill-primary motion-reduce:focus-within:scale-100"
   >
     <Icon className="mx-3 transition-transform duration-200 ease-in-out hover:scale-115 hover:fill-primary motion-reduce:hover:scale-100" />
   </button>

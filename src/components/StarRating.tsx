@@ -7,7 +7,7 @@ type StarProps = {
 
 const Star: React.FC<StarProps> = ({ rating, className = 'h-3 w-3 px-2' }) => (
   <span className={`${className} relative inline-block px-2`}>
-    <StarIcon className="absolute left-0 top-0 h-full w-full fill-dark-gray" />
+    <StarIcon className="absolute left-0 top-0 h-full w-full fill-dark-gray dark:fill-low-contrast" />
     <span
       style={{ clipPath: `inset(0 ${100 - rating}% 0 0)` }}
       className="absolute left-0 top-0 h-full w-full overflow-hidden"

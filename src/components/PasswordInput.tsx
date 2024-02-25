@@ -13,6 +13,7 @@ type InputProps = {
   isVisiblePassword?: boolean;
   togglePasswordVisibility?: () => void;
   className?: string;
+  labelClassName?: string;
 };
 
 export const PasswordInput: React.FC<InputProps> = ({
@@ -22,18 +23,19 @@ export const PasswordInput: React.FC<InputProps> = ({
   isVisiblePassword = false,
   togglePasswordVisibility,
   className = '',
+  labelClassName = 'text-xs text-dark-gray dark:text-text',
 }) => {
   const watchedValue = useWatchedValue(name);
 
   return (
     <label className="relative mb-5 w-full">
-      <span className="text-xs text-dark-gray">Heslo</span>
+      <span className={labelClassName}>Heslo</span>
       <input
         aria-describedby={`${name}-error`}
         aria-invalid={!!errors?.[name]}
         className={cx(
           className,
-          'w-full border px-5 py-3 placeholder-light-gray focus:outline-primary',
+          'w-full border bg-card px-5 py-3 placeholder-low-contrast focus:outline-primary',
           {
             'border-primary': !errors?.[name] && watchedValue,
             'border-medium-gray': !errors?.[name] && !watchedValue,
@@ -51,9 +53,7 @@ export const PasswordInput: React.FC<InputProps> = ({
         onClick={togglePasswordVisibility}
       >
         <EyeIcon
-          className={cx('fill-light-gray', {
-            'fill-primary': isVisiblePassword,
-          })}
+          className={isVisiblePassword ? 'fill-primary' : 'fill-accent'}
         />
       </button>
       {errors[name] && (
