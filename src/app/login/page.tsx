@@ -24,7 +24,6 @@ const LoginPage: NextPage = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [isVisiblePassword, setVisiblePassword] = useState(false);
 
   const formProps = useForm<LoginFormData>({
     resolver: yupResolver(loginSchema),
@@ -82,14 +81,7 @@ const LoginPage: NextPage = () => {
             placeholder="Email"
             errors={errors}
           />
-          <PasswordInput
-            register={register}
-            errors={errors}
-            isVisiblePassword={isVisiblePassword}
-            togglePasswordVisibility={() =>
-              setVisiblePassword(!isVisiblePassword)
-            }
-          />
+          <PasswordInput register={register} errors={errors} />
           {!isLoading ? (
             <button
               type="submit"

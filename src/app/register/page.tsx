@@ -21,7 +21,6 @@ const RegisterPage: NextPage = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [isVisiblePassword, setVisiblePassword] = useState(false);
 
   const formProps = useForm<RegisterFormData>({
     resolver: yupResolver(registerSchema),
@@ -76,13 +75,12 @@ const RegisterPage: NextPage = () => {
             placeholder="Email"
             errors={errors}
           />
+          <PasswordInput register={register} errors={errors} />
           <PasswordInput
             register={register}
+            label="Potvrzení hesla"
+            name="passwordConfirmation"
             errors={errors}
-            isVisiblePassword={isVisiblePassword}
-            togglePasswordVisibility={() =>
-              setVisiblePassword(!isVisiblePassword)
-            }
           />
           {!isLoading ? (
             <button

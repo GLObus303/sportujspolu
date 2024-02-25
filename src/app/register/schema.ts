@@ -11,4 +11,8 @@ export const registerSchema = yup.object().shape({
     .required('Heslo je povinné.')
     .min(3, 'Heslo je příliš krátké.')
     .max(30, 'Heslo je příliš dlouhé.'),
+  passwordConfirmation: yup
+    .string()
+    .oneOf([yup.ref('password')], 'Hesla se musí shodovat.')
+    .required('Potvrzení hesla je povinné.'),
 });
