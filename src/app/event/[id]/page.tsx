@@ -18,13 +18,11 @@ type EventPageProps = {
 
 const EventPage: NextPage<EventPageProps> = async ({ params }) => {
   const events = (await getAllEvents()) || [];
-  let event = defaultEvent;
 
-  try {
-    event = (await getEvent(params?.id)) || defaultEvent;
-  } catch (error) {
-    notFound();
-  }
+  const event =
+    (await getEvent(params?.id)?.catch(() => {
+      notFound();
+    })) || defaultEvent;
 
   const { name, price, description } = event;
 
