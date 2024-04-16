@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 import { EventDetail } from './EventDetail';
 import { HostCard } from './HostCard';
@@ -17,7 +18,12 @@ type EventPageProps = {
 
 const EventPage: NextPage<EventPageProps> = async ({ params }) => {
   const events = (await getAllEvents()) || [];
-  const event = (await getEvent(params?.id)) || defaultEvent;
+
+  const event =
+    (await getEvent(params?.id)?.catch(() => {
+      notFound();
+    })) || defaultEvent;
+
   const { name, price, description } = event;
 
   return (
@@ -34,6 +40,8 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
                 alt="event image"
                 className="rounded-md object-cover"
                 fill
+                sizes="auto"
+                priority
               />
             </div>
             <h1 className="mt-12 text-center text-2xl font-medium leading-normal md:mt-9 lg:text-start lg:text-4xl">
@@ -65,6 +73,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
                       alt={`Zobrazit profil - ${review.name}`}
                       src={review.image}
                       className="rounded-full object-cover"
+                      sizes="auto"
                       fill
                     />
                   </Link>

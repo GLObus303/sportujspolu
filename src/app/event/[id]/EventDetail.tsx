@@ -1,6 +1,5 @@
 'use client';
 
-import format from 'date-fns/format';
 import cx from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -12,6 +11,7 @@ import { mockEvent } from './mock';
 import { Event } from '../../../types/Event';
 import { deleteEvent } from '../../../api/events';
 import { Routes } from '../../../utils/constants';
+import { formatDate, formatTime } from '../../../utils/dateUtils';
 
 type EventDetailProps = {
   event: Event;
@@ -23,8 +23,10 @@ export const EventDetail: React.FC<EventDetailProps> = ({
   className,
 }) => {
   const isUserLoggedIn = useAuth().isUserLoggedIn;
-
   const router = useRouter();
+
+  const formattedDate = formatDate(date);
+  const formattedTime = formatTime(date);
 
   const handleDelete = async () => {
     await deleteEvent(id);
@@ -65,17 +67,13 @@ export const EventDetail: React.FC<EventDetailProps> = ({
             <tr className="border-b border-low-contrast">
               <td className="py-2 md:py-4">Datum</td>
               <td className="py-2 font-light md:py-4">
-                <time className="truncate">
-                  {format(new Date(date), 'dd/MM/yyyy')}
-                </time>
+                <time className="truncate">{formattedDate}</time>
               </td>
             </tr>
             <tr className="border-b border-low-contrast">
               <td className="py-2 md:py-4">Čas</td>
               <td className="py-2 font-light md:py-4">
-                <time className="truncate">
-                  {format(new Date(date), 'HH:mm')}
-                </time>
+                <time className="truncate">{formattedTime}</time>
               </td>
             </tr>
             <tr className="border-b border-low-contrast">

@@ -1,5 +1,6 @@
 import cx from 'classnames';
 import { FieldErrors } from 'react-hook-form';
+import { useState } from 'react';
 
 import { AriaLiveErrorMessage } from './AriaLiveErrorMessage';
 import { EyeIcon } from './icons/EyeIcon';
@@ -7,11 +8,10 @@ import { useWatchedValue } from '../hooks/useWatchedValue';
 
 type InputProps = {
   register: any;
-  name?: 'password';
+  name?: 'password' | 'passwordConfirmation';
+  label?: string;
   errors: FieldErrors;
   watchedValue?: string;
-  isVisiblePassword?: boolean;
-  togglePasswordVisibility?: () => void;
   className?: string;
   labelClassName?: string;
 };
@@ -19,17 +19,21 @@ type InputProps = {
 export const PasswordInput: React.FC<InputProps> = ({
   register,
   name = 'password',
+  label = 'Heslo',
   errors,
-  isVisiblePassword = false,
-  togglePasswordVisibility,
   className = '',
   labelClassName = 'text-xs text-dark-gray dark:text-text',
 }) => {
   const watchedValue = useWatchedValue(name);
+  const [isVisiblePassword, setVisiblePassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setVisiblePassword(!isVisiblePassword);
+  };
 
   return (
     <label className="relative mb-5 w-full">
-      <span className={labelClassName}>Heslo</span>
+      <span className={labelClassName}>{label}</span>
       <input
         aria-describedby={`${name}-error`}
         aria-invalid={!!errors?.[name]}
@@ -49,7 +53,7 @@ export const PasswordInput: React.FC<InputProps> = ({
       <button
         type="button"
         aria-label={isVisiblePassword ? 'Skrýt heslo' : 'Ukázat heslo'}
-        className="absolute right-4 top-1/2 mt-1.5 flex"
+        className="absolute right-0 top-1/2 mt-1.5 flex translate-x-8"
         onClick={togglePasswordVisibility}
       >
         <EyeIcon
