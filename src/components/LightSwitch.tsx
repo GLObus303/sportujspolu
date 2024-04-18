@@ -1,5 +1,8 @@
-import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
+import nookies from 'nookies';
+import { useEffect, useState } from 'react';
+
+import { SECONDS_IN_MONTH } from '../utils/constants';
 
 export const LightSwitch = () => {
   const [mounted, setMounted] = useState(false);
@@ -14,8 +17,14 @@ export const LightSwitch = () => {
     return null;
   }
 
+  const nextTheme = theme === 'dark' ? 'light' : 'dark';
+
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    setTheme(nextTheme);
+    nookies.set(null, 'theme', nextTheme, {
+      path: '/',
+      maxAge: SECONDS_IN_MONTH,
+    });
   };
 
   return (

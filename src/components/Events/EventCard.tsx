@@ -48,7 +48,7 @@ export const EventCard: React.FC<EventCardProps> = ({
             </p>
             <div className="flex items-center">
               <span className="pr-1 font-light text-dark-gray dark:text-accent">
-                userName{' '}
+                userName
               </span>
               <StarRating rating={rating} />
             </div>
