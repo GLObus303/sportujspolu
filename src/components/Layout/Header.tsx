@@ -6,9 +6,13 @@ import { useAuth } from '../../context/AuthContext';
 import { LogoIcon } from '../icons/LogoIcon';
 import { ProfileIcon } from '../icons/ProfileIcon';
 import { Routes } from '../../utils/constants';
-import { LightSwitch } from '../../components/LightSwitch';
+import { LightSwitch } from '../LightSwitch';
 
-export const Header: React.FC = () => {
+type HeaderProps = {
+  defaultTheme: string;
+};
+
+export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => {
   const {
     user: { id, name, email },
     logout,
@@ -29,7 +33,7 @@ export const Header: React.FC = () => {
             <div>
               <div className="relative flex items-center">
                 <div className="absolute right-full flex">
-                  <LightSwitch />
+                  <LightSwitch defaultTheme={defaultTheme} />
                   {email ? (
                     <div className="ml-8 flex">
                       {name && (
