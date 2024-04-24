@@ -8,6 +8,7 @@ import { HeartButton } from '../HeartButton';
 import { Event } from '../../types/Event';
 import { Routes } from '../../utils/constants';
 import { formatDateTime } from '../../utils/dateUtils';
+import { getImagePath } from '../../utils/functions';
 
 const rating = 3.5;
 
@@ -20,9 +21,6 @@ export const EventCard: React.FC<EventCardProps> = ({
 }) => {
   const formattedDate = formatDateTime(date);
 
-  const getImagePath = (eventPrice: number) =>
-    `/images/${(eventPrice % 12) + 1}.png`;
-
   return (
     <article className="relative rounded-md bg-card shadow-md">
       <HeartButton className="absolute right-3 top-3 z-button" />
@@ -31,7 +29,7 @@ export const EventCard: React.FC<EventCardProps> = ({
           <div className="relative h-1/3 w-full overflow-hidden">
             <Image
               alt=""
-              src={getImagePath(price)}
+              src={getImagePath(price, sport)}
               className="rounded-tl-md rounded-tr-md object-cover"
               sizes="auto"
               fill

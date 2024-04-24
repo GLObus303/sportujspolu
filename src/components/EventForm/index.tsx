@@ -5,10 +5,12 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Input } from '../Input';
+import { Select } from '../Select';
 import { Textarea } from '../Textarea';
 import { postEvent, updateEvent } from '../../api/events';
 import { eventSchema } from './schema';
 import { Event } from '../../types/Event';
+import { levels, sports } from '../../utils/constants';
 
 type EventFormProps = {
   event?: Event;
@@ -64,13 +66,6 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
     }
   };
 
-  const levels = [
-    { value: 'Beginner', label: 'Začátečník' },
-    { value: 'Advanced', label: 'Pokročilý' },
-    { value: 'Expert', label: 'Expert' },
-    { value: 'Any', label: 'Pro každého' },
-  ];
-
   const watchedLevel = watch('level');
 
   return (
@@ -97,14 +92,13 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
             placeholder="Popis"
             errors={errors}
           />
-          <Input
+          <Select
             register={register}
-            type="text"
             name="sport"
             label="Sport"
             placeholder="Sport"
+            options={sports}
             errors={errors}
-            {...inputStyles}
           />
           <Input
             register={register}

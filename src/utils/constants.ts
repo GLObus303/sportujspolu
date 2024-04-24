@@ -32,3 +32,42 @@ export const defaultEvent = {
   level: '',
   createdAt: '',
 };
+
+export const sportsSet = new Set([
+  'Basketball',
+  'Běh',
+  'Box',
+  'Cyklistika',
+  'Fitness',
+  'Fotbal',
+  'Golf',
+  'Plavání',
+  'Skateboarding',
+  'Stolní tenis',
+  'Tenis',
+  'Volejbal',
+  'Yoga',
+]);
+
+export const levels = [
+  { value: 'Beginner', label: 'Začátečník' },
+  { value: 'Advanced', label: 'Pokročilý' },
+  { value: 'Expert', label: 'Expert' },
+  { value: 'Any', label: 'Pro každého' },
+];
+
+export const sports = [
+  { value: 'basketball', label: 'Basketbal' },
+  { value: 'running', label: 'Běh' },
+  { value: 'boxing', label: 'Box' },
+  { value: 'cycling', label: 'Cyklistika' },
+  { value: 'fitness', label: 'Fitness' },
+  { value: 'football', label: 'Fotbal' },
+  { value: 'golf', label: 'Golf' },
+  { value: 'swimming', label: 'Plavání' },
+  { value: 'skateboarding', label: 'Skateboarding' },
+  { value: 'tableTennis', label: 'Stolní tenis' },
+  { value: 'tennis', label: 'Tenis' },
+  { value: 'volleyball', label: 'Volejbal' },
+  { value: 'yoga', label: 'Yoga' },
+];
