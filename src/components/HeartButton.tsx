@@ -1,11 +1,12 @@
 'use client';
 
-import { SVGProps } from 'react';
+import { SVGProps, useEffect } from 'react';
 import { useState } from 'react';
 import cx from 'classnames';
 
 type HeartButtonProps = {
   className?: string;
+  eventId: string;
 };
 
 const HeartIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => (
@@ -24,8 +25,34 @@ const HeartIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => (
   </svg>
 );
 
-export const HeartButton: React.FC<HeartButtonProps> = ({ className }) => {
-  const [isLiked, setIsLiked] = useState(false);
+export const HeartButton: React.FC<HeartButtonProps> = ({
+  className,
+  eventId,
+}) => {
+  const [isLiked, setIsLiked] = useState(() => {
+    const likedEvents = new Set(
+      JSON.parse(localStorage.getItem('likedEvents') || '[]')
+    );
+
+    return likedEvents.has(eventId);
+  });
+
+  useEffect(() => {
+    const likedEvents = new Set(
+      JSON.parse(localStorage.getItem('likedEvents') || '[]')
+    );
+
+    if (isLiked) {
+      likedEvents.add(eventId);
+    } else {
+      likedEvents.delete(eventId);
+    }
+
+    return localStorage.setItem(
+      'likedEvents',
+      JSON.stringify(Array.from(likedEvents))
+    );
+  }, [isLiked, eventId]);
 
   const handleLikeEvent = () => {
     setIsLiked(!isLiked);

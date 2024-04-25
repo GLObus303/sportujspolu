@@ -42,7 +42,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({
     >
       <article className="flex flex-col rounded-md bg-white">
         {!isUserLoggedIn ? (
-          <HeartButton className="ml-auto" />
+          <HeartButton eventId={id} className="ml-auto" />
         ) : (
           <button
             className="ml-auto flex flex-row items-center py-1 text-sm hover:fill-secondary"
