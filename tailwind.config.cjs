@@ -10,10 +10,14 @@ module.exports = {
         white: "#FFFFFF",
         "dark-gray": "#5D5D5D",
         "medium-gray": "#848484",
-        'light-gray': '#D9D9D9',
-        'lightest-gray': '#F9F9FB',
+        'low-contrast': 'var(--low-contrast)',
+        'background': 'var(--background)',  
+        'card': 'var(--card)',
+        'button': 'var(--button)',
+        'accent': 'var(--accent)',
+        'text': 'var(--text)',
         "smoke-glass": "#00000070",
-        "pistachio": "#94FFA6",
+        "pistachio": "var(--pistachio)",
       },
       height: {
         article: "190px",
@@ -55,6 +59,7 @@ module.exports = {
   },
   variants: {},
   plugins: [],
+  darkMode: 'class',
 };
 
 

@@ -85,7 +85,7 @@ const RegisterPage: NextPage = () => {
           {!isLoading ? (
             <button
               type="submit"
-              className="mt-5 w-40 rounded-md bg-black px-5 py-2 text-white hover:text-primary focus:text-primary"
+              className="mt-5 w-40 rounded-md bg-button px-5 py-2 text-white hover:text-primary focus:text-primary"
             >
               Registrovat
             </button>
@@ -98,7 +98,7 @@ const RegisterPage: NextPage = () => {
               errorMessage={errorMessage}
             />
           )}
-          <hr className="mt-10 w-full border-t border-light-gray" />
+          <hr className="mt-10 w-full border-t border-low-contrast" />
         </form>
       </FormProvider>
     </AuthWrapper>

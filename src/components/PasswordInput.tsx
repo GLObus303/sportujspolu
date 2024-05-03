@@ -13,6 +13,7 @@ type InputProps = {
   errors: FieldErrors;
   watchedValue?: string;
   className?: string;
+  labelClassName?: string;
 };
 
 export const PasswordInput: React.FC<InputProps> = ({
@@ -21,6 +22,7 @@ export const PasswordInput: React.FC<InputProps> = ({
   label = 'Heslo',
   errors,
   className = '',
+  labelClassName = 'text-xs text-dark-gray dark:text-text',
 }) => {
   const watchedValue = useWatchedValue(name);
   const [isVisiblePassword, setVisiblePassword] = useState(false);
@@ -31,13 +33,13 @@ export const PasswordInput: React.FC<InputProps> = ({
 
   return (
     <label className="relative mb-5 w-full">
-      <span className="text-xs text-dark-gray">{label}</span>
+      <span className={labelClassName}>{label}</span>
       <input
         aria-describedby={`${name}-error`}
         aria-invalid={!!errors?.[name]}
         className={cx(
           className,
-          'w-full border px-5 py-3 placeholder-light-gray focus:outline-primary',
+          'w-full border bg-card px-5 py-3 placeholder-low-contrast focus:outline-primary',
           {
             'border-primary': !errors?.[name] && watchedValue,
             'border-medium-gray': !errors?.[name] && !watchedValue,
@@ -55,9 +57,7 @@ export const PasswordInput: React.FC<InputProps> = ({
         onClick={togglePasswordVisibility}
       >
         <EyeIcon
-          className={cx('fill-light-gray', {
-            'fill-primary': isVisiblePassword,
-          })}
+          className={isVisiblePassword ? 'fill-primary' : 'fill-accent'}
         />
       </button>
       {errors[name] && (

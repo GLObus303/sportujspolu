@@ -31,7 +31,7 @@ export const HostCard: React.FC<HostCardProps> = ({ eventHost, className }) => {
               {name}
             </Link>
           </h2>
-          <p className="font-light lg:whitespace-nowrap">
+          <p className="font-light text-accent lg:whitespace-nowrap">
             Instruktorkou na SportujSpolu od roku {since}
           </p>
         </div>
@@ -40,7 +40,7 @@ export const HostCard: React.FC<HostCardProps> = ({ eventHost, className }) => {
         htmlContent={description}
         className="mt-8 text-lg font-light"
       />
-      <hr className="my-16 w-full border-t border-light-gray" />
+      <hr className="my-16 w-full border-t border-low-contrast" />
     </section>
   );
 };

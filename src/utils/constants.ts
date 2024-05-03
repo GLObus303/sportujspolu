@@ -1,4 +1,5 @@
 export const SECONDS_IN_WEEK = 7 * 24 * 60 * 60;
+export const SECONDS_IN_YEAR = 365 * 24 * 60 * 60;
 
 export const Routes = {
   DASHBOARD: '/',
@@ -8,6 +9,11 @@ export const Routes = {
   EDIT_EVENT: '/edit-event',
   EVENT: '/event',
   USER: '/user',
+};
+
+export const THEME = {
+  LIGHT: 'light',
+  DARK: 'dark',
 };
 
 export const ERROR_MESSAGE = {
