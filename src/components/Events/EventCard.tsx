@@ -23,7 +23,6 @@ export const EventCard: React.FC<EventCardProps> = ({
 
   return (
     <article className="relative rounded-md bg-card shadow-md">
-      <HeartButton className="z-cardOverlay absolute right-3 top-3" />
       <Link href={`${Routes.EVENT}/${id}`}>
         <div style={{ aspectRatio: '1/1' }} className="rounded-md bg-card">
           <div className="relative h-1/3 w-full overflow-hidden">
@@ -65,6 +64,7 @@ export const EventCard: React.FC<EventCardProps> = ({
           </div>
         </div>
       </Link>
+      <HeartButton className="absolute right-3 top-3" />
     </article>
   );
 };

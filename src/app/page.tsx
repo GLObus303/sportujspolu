@@ -2,7 +2,7 @@ import { Events } from '../components/Events';
 import { getAllEvents } from '../api/events';
 
 const Home = async () => {
-  const events = (await getAllEvents()) || [];
+  const events = (await getAllEvents('?page=1&limit=24')) || [];
 
   return (
     <>

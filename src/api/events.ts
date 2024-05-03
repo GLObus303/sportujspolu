@@ -4,7 +4,8 @@ import { EventFormData } from '../types/Form';
 
 export const getEvent = (id: string) => apiGet<Event>(`events/${id}`);
 
-export const getAllEvents = () => apiGet<Event[]>('events');
+export const getAllEvents = (params?: string) =>
+  apiGet<Event[]>(`events/${params || ''}`);
 
 export const postEvent = (formData: EventFormData) =>
   apiPost('events', formData);
