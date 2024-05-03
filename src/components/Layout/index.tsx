@@ -2,10 +2,11 @@ import { cookies } from 'next/headers';
 
 import { Header } from './Header';
 import { ChildrenFC } from '../../utils/type';
+import { THEME } from '../../utils/constants';
 
 export const Layout: ChildrenFC = ({ children }) => {
   const cookieStore = cookies();
-  const defaultTheme = cookieStore.get('theme')?.value || 'light';
+  const defaultTheme = cookieStore.get('theme')?.value || THEME.LIGHT;
 
   return (
     <div>

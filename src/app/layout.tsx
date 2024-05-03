@@ -5,6 +5,7 @@ import { ThemeProvider } from './theme-provider';
 import { AuthProvider } from '../context/AuthContext';
 import { Layout } from '../components/Layout';
 import { ChildrenFC } from '../utils/type';
+import { THEME } from '../utils/constants';
 
 export const metadata = {
   title: 'Sportuj Spolu',
@@ -13,7 +14,7 @@ export const metadata = {
 
 const RootLayout: ChildrenFC = ({ children }) => {
   const cookieStore = cookies();
-  const defaultTheme = cookieStore.get('theme')?.value || 'light';
+  const defaultTheme = cookieStore.get('theme')?.value || THEME.LIGHT;
 
   return (
     <html
