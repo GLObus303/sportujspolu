@@ -56,8 +56,8 @@ module.exports = {
       },
     },
     zIndex: {
-      'interactiveOverlay': '10',
-      'header': '40',
+      'interactiveOverlay': '1',
+      'header': '2',
     },
   },
   variants: {},

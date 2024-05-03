@@ -25,7 +25,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
       notFound();
     })) || defaultEvent;
 
-  const { name, price, sport, description } = event;
+  const { id, name, sport, description } = event;
 
   return (
     <>
@@ -34,7 +34,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
           <section className="w-full">
             <figure className="relative aspect-3/1 h-full w-full overflow-hidden">
               <Image
-                src={getImagePath(price, sport)}
+                src={getImagePath(id, sport)}
                 alt="event image"
                 className="rounded-md object-cover"
                 sizes="auto"
