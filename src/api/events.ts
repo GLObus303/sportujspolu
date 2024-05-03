@@ -1,11 +1,14 @@
 import { apiGet, apiPost, apiDelete, apiPut } from './base';
 import { Event } from '../types/Event';
 import { EventFormData } from '../types/Form';
+import { PAGINATION } from '../utils/constants';
 
 export const getEvent = (id: string) => apiGet<Event>(`events/${id}`);
 
-export const getAllEvents = (params?: string) =>
-  apiGet<Event[]>(`events/${params || ''}`);
+export const getAllEvents = (
+  page: string | string[] = PAGINATION.PAGE,
+  limit: string | string[] = PAGINATION.LIMIT
+) => apiGet<Event[]>(`events/?page=${page}&limit=${limit}`);
 
 export const postEvent = (formData: EventFormData) =>
   apiPost('events', formData);

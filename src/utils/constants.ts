@@ -16,6 +16,11 @@ export const THEME = {
   DARK: 'dark',
 };
 
+export const PAGINATION = {
+  LIMIT: '8',
+  PAGE: '1',
+};
+
 export const ERROR_MESSAGE = {
   INVALID_CREDENTIALS: 'Nesprávné přihlašovací údaje.',
   GENERIC_ERROR: 'Vyskytla se chyba. Zkuste to znovu později.',
