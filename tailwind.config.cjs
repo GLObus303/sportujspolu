@@ -51,10 +51,13 @@ module.exports = {
         shake: 'shake 1s ease-in-out 3',
         none: 'none',
       },
+      aspectRatio: {
+        '3/1': '3 / 1',
+      },
     },
     zIndex: {
-      'button': '10',
-      'header': '40',
+      'interactiveOverlay': '1',
+      'header': '2',
     },
   },
   variants: {},
