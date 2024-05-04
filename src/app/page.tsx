@@ -20,7 +20,7 @@ const Home = async ({
       </h1>
       <Events events={events} />
       <Pagination
-        hasNextPage={Number(page) < events?.length}
+        hasNextPage={events.length === Number(limit)}
         hasPrevPage={Number(page) !== 1}
       />
     </>

@@ -2,12 +2,11 @@
 
 import cx from 'classnames';
 import Link from 'next/link';
-import { useState } from 'react';
 
-import { useAuth } from '../../../context/AuthContext';
-import { HeartButton } from '../../../components/HeartButton';
-import { Event } from '../../../types/Event';
-import { Routes } from '../../../utils/constants';
+import { useAuth } from '../context/AuthContext';
+import { HeartButton } from './HeartButton';
+import { Event } from '../types/Event';
+import { Routes } from '../utils/constants';
 
 type EventDetailProps = {
   event: Event;
@@ -26,12 +25,6 @@ export const EventDetail: React.FC<EventDetailProps> = ({
   const isUserLoggedIn = useAuth().isUserLoggedIn;
   const { id: userId } = useAuth().user;
 
-  const [isAttending, setIsAttending] = useState(false);
-
-  const handleClick = () => {
-    setIsAttending(!isAttending);
-  };
-
   return (
     <section
       className={cx(
@@ -41,7 +34,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({
     >
       <article className="flex flex-col rounded-md">
         <HeartButton className="ml-auto" />
-        <table className="text-s font-medium">
+        <table className="text-s mb-6 font-medium">
           <tbody>
             <tr className="border-b border-low-contrast">
               <td className="py-2 md:py-4">Cena</td>
@@ -76,23 +69,13 @@ export const EventDetail: React.FC<EventDetailProps> = ({
           </tbody>
         </table>
 
-        {isUserLoggedIn && ownerId === userId ? (
+        {isUserLoggedIn && ownerId === userId && (
           <Link
-            className="ml-auto mt-6 rounded bg-button px-5 py-2 text-center text-base text-white hover:text-primary"
+            className="ml-auto rounded bg-button px-5 py-2 text-center text-base text-white hover:text-primary"
             href={`${Routes.EDIT_EVENT}/${id}`}
           >
             Upravit událost
           </Link>
-        ) : (
-          <button
-            type="submit"
-            onClick={handleClick}
-            className={`ml-auto mt-6 whitespace-nowrap rounded-md bg-button px-5 py-2 text-base text-white ${
-              isAttending ? 'hover:text-secondary' : 'hover:text-primary'
-            }`}
-          >
-            {isAttending ? 'Neúčastnit' : 'Zúčastnit se'}
-          </button>
         )}
       </article>
     </section>

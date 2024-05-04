@@ -109,6 +109,7 @@ export const EventForm: React.FC<EventFormProps> = ({
             label="Popis"
             placeholder="Popis"
             errors={errors}
+            {...inputStyles}
           />
           <Select
             register={register}

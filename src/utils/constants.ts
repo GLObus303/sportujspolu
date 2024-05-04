@@ -3,12 +3,13 @@ export const SECONDS_IN_YEAR = 365 * 24 * 60 * 60;
 
 export const Routes = {
   DASHBOARD: '/',
-  LOGIN: '/login',
-  REGISTER: '/register',
-  CREATE_EVENT: '/create-event',
-  EDIT_EVENT: '/edit-event',
-  EVENT: '/event',
-  USER: '/user',
+  LOGIN: '/prihlasit',
+  REGISTER: '/registrovat',
+  CREATE_EVENT: '/vytvorit-akci',
+  EDIT_EVENT: '/upravit-akci',
+  ATTEND_EVENT: '/zucastnit-se',
+  EVENT: '/sportovni-akce',
+  USER: '/uzivatel',
 };
 
 export const THEME = {

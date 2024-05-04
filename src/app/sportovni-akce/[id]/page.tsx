@@ -3,16 +3,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { EventDetail } from './EventDetail';
+import { EventDetail } from '../../../components/EventDetail';
 import { OwnerCard } from './OwnerCard';
 import { Events } from '../../../components/Events';
 import { getAllEvents } from '../../../api/events';
 import { getEvent } from '../../../api/events';
 import { StarRating } from '../../../components/StarRating';
 import { mockEventOwner } from './mock';
-import { defaultEvent } from '../../../utils/constants';
+import { Routes, defaultEvent } from '../../../utils/constants';
 import { getImagePath } from '../../../utils/functions';
 import { formatDate, formatTime } from '../../../utils/dateUtils';
+import { EmailForm } from '../../../components/EmailForm';
 
 type EventPageProps = {
   params: { id: string };
@@ -57,7 +58,37 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
             />
             <hr className="my-16 border-t border-low-contrast" />
           </section>
+
+          <section className="w-full">
+            <h2 className="flex flex-col px-20 text-center text-xl font-medium leading-normal md:flex-row md:px-0 lg:text-start lg:text-3xl">
+              Chceš se zúčastnit? Registruj se na akci u instruktora!
+            </h2>
+            <div className="relative mt-10 flex flex-row">
+              <Link
+                href={`${Routes.USER}/2tjsxi7028a7`}
+                className="relative mr-4 h-12 w-12"
+              >
+                <Image
+                  alt={`Zobrazit profil - ${name}`}
+                  src="/images/Běh/7.avif"
+                  className="rounded-full object-cover"
+                  sizes="auto"
+                  fill
+                />
+              </Link>
+              <div className="mr-2">
+                <h3 className="items-center text-base md:text-lg">Tereza</h3>
+                <p className="font-light text-accent">
+                  Napiš nyní a sportuj spolu!
+                </p>
+              </div>
+            </div>
+            <EmailForm eventName={name} />
+            <hr className="my-16 border-t border-low-contrast" />
+          </section>
+
           <OwnerCard className="w-full" eventOwner={mockEventOwner} />
+
           <section className="w-full">
             <h2 className="flex flex-col px-20 text-center text-xl font-medium leading-normal md:flex-row md:px-0 lg:text-start lg:text-3xl">
               <StarRating
@@ -72,7 +103,10 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
             {mockEventOwner.reviews.map((review, ownerId) => (
               <div key={ownerId}>
                 <div key={review.id} className="relative mt-10 flex flex-row">
-                  <Link href="/" className="relative mr-4 h-12 w-12">
+                  <Link
+                    href={`${Routes.USER}/2tjsxi7028a7`}
+                    className="relative mr-4 h-12 w-12"
+                  >
                     <Image
                       alt={`Zobrazit profil - ${review.name}`}
                       src={review.image}
@@ -107,6 +141,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
         />
       </div>
       <hr className="my-16 border-t border-low-contrast" />
+
       <section>
         <h2 className="px-20 text-center text-xl font-medium leading-normal md:px-0 lg:text-start lg:text-3xl">
           Podobné sportovní akce
