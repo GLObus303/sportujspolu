@@ -33,9 +33,9 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
 
   return (
     <>
-      <div className="mt-14 flex flex-col items-start px-4 md:flex-row md:px-0 lg:mt-0">
+      <div className="relative mt-14 flex flex-col items-start px-4 md:flex-row md:px-0 lg:mt-0">
         <div className="relative flex h-full w-full flex-col items-center justify-center pr-0 lg:pr-14">
-          <section className="w-full">
+          <section className="relative w-full">
             <figure className="relative aspect-3/1 h-full w-full overflow-hidden">
               <Image
                 src={getImagePath(id, sport)}

@@ -38,6 +38,7 @@ export const defaultEvent = {
   price: 0,
   level: '',
   createdAt: '',
+  ownerId: '',
 };
 
 export const sportsSet = new Set([

@@ -8,11 +8,9 @@ export type Event = {
   description: string;
   level: string;
   createdAt: string;
+  ownerId: string;
   // not in API
   rating?: number;
   image?: string;
-  allSpots?: number;
-  freeSpots?: number;
   duration?: number;
-  allDates?: string[];
 };

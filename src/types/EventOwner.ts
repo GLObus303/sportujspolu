@@ -6,7 +6,7 @@ export type EventOwner = {
   rating: number;
   reviewsCount: number;
   reviews: {
-    id: number;
+    id: string;
     name: string;
     date: string;
     image: string;

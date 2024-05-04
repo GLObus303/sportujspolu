@@ -131,7 +131,7 @@ export const mockEventOwner = {
   reviewsCount: 16,
   reviews: [
     {
-      id: 1,
+      id: '1',
       name: 'Petr',
       date: 'červen 2023',
       image: '/images/Běh/3.avif',
@@ -140,7 +140,7 @@ export const mockEventOwner = {
         'Měl jsem úžasný zážitek, který mě opravdu oslovil. Doporučuji všem, kteří hledají kvalitní zábavu. Celkově to byl nezapomenutelný zážitek.',
     },
     {
-      id: 2,
+      id: '2',
       name: 'Jana',
       image: '/images/Běh/2.avif',
       date: 'červen 2023',
@@ -149,7 +149,7 @@ export const mockEventOwner = {
         'Tento zážitek byl skutečně skvělý a překonal mé očekávání. Moc se mi líbilo vše od začátku do konce. Určitě bych se ráda zúčastnila znovu. Tento zážitek byl skutečně skvělý a překonal mé očekávání. Moc se mi líbilo vše od začátku do konce. Určitě bych se ráda zúčastnila znovu. Tento zážitek byl skutečně skvělý a překonal mé očekávání. Moc se mi líbilo vše od začátku do konce. Určitě bych se ráda zúčastnila znovu.',
     },
     {
-      id: 3,
+      id: '3',
       name: 'Pavel',
       image: '/images/Běh/1.avif',
       date: 'červen 2023',

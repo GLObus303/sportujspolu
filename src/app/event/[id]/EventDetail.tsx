@@ -3,13 +3,10 @@
 import cx from 'classnames';
 import Link from 'next/link';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 import { useAuth } from '../../../context/AuthContext';
 import { HeartButton } from '../../../components/HeartButton';
-import { DeleteIcon } from '../../../components/icons/DeleteIcon';
 import { Event } from '../../../types/Event';
-import { deleteEvent } from '../../../api/events';
 import { Routes } from '../../../utils/constants';
 
 type EventDetailProps = {
@@ -22,19 +19,14 @@ type EventDetailProps = {
 };
 
 export const EventDetail: React.FC<EventDetailProps> = ({
-  event: { id, sport, location, price, level },
+  event: { id, sport, location, price, level, ownerId },
   className,
   formattedDateTime: { formattedDate, formattedTime },
 }) => {
   const isUserLoggedIn = useAuth().isUserLoggedIn;
-  const router = useRouter();
+  const { id: userId } = useAuth().user;
 
   const [isAttending, setIsAttending] = useState(false);
-
-  const handleDelete = async () => {
-    await deleteEvent(id);
-    router.push(Routes.DASHBOARD);
-  };
 
   const handleClick = () => {
     setIsAttending(!isAttending);
@@ -48,17 +40,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({
       )}
     >
       <article className="flex flex-col rounded-md">
-        {!isUserLoggedIn ? (
-          <HeartButton className="ml-auto" />
-        ) : (
-          <button
-            className="ml-auto flex flex-row items-center fill-button py-1 text-sm hover:fill-secondary"
-            aria-label="Smazat událost"
-            onClick={handleDelete}
-          >
-            <DeleteIcon className="hover:animate-shake motion-reduce:hover:animate-none" />
-          </button>
-        )}
+        <HeartButton className="ml-auto" />
         <table className="text-s font-medium">
           <tbody>
             <tr className="border-b border-low-contrast">
@@ -94,7 +76,14 @@ export const EventDetail: React.FC<EventDetailProps> = ({
           </tbody>
         </table>
 
-        {!isUserLoggedIn ? (
+        {isUserLoggedIn && ownerId === userId ? (
+          <Link
+            className="ml-auto mt-6 rounded bg-button px-5 py-2 text-center text-base text-white hover:text-primary"
+            href={`${Routes.EDIT_EVENT}/${id}`}
+          >
+            Upravit událost
+          </Link>
+        ) : (
           <button
             type="submit"
             onClick={handleClick}
@@ -104,13 +93,6 @@ export const EventDetail: React.FC<EventDetailProps> = ({
           >
             {isAttending ? 'Neúčastnit' : 'Zúčastnit se'}
           </button>
-        ) : (
-          <Link
-            className="ml-auto mt-6 rounded bg-button px-5 py-2 text-center text-base text-white hover:text-primary"
-            href={`${Routes.EDIT_EVENT}/${id}`}
-          >
-            Upravit událost
-          </Link>
         )}
       </article>
     </section>

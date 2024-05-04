@@ -2,6 +2,9 @@
 
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import cx from 'classnames';
 
 import { Input } from '../Input';
 import { Select } from '../Select';
@@ -9,7 +12,9 @@ import { Textarea } from '../Textarea';
 import { postEvent, updateEvent } from '../../api/events';
 import { eventSchema } from './schema';
 import { Event } from '../../types/Event';
-import { levels, sports } from '../../utils/constants';
+import { Routes, levels, sports } from '../../utils/constants';
+import { deleteEvent } from '../../api/events';
+import { DeleteIcon } from '../icons/DeleteIcon';
 
 type EventFormProps = {
   event?: Event;
@@ -36,6 +41,9 @@ export const EventForm: React.FC<EventFormProps> = ({
   event,
   dateTimeIso = '',
 }) => {
+  const [isDeleting, setIsDeleting] = useState(false);
+  const router = useRouter();
+
   const formProps = useForm<CreateEventValues>({
     resolver: yupResolver(eventSchema),
     defaultValues: {
@@ -65,6 +73,15 @@ export const EventForm: React.FC<EventFormProps> = ({
     } else {
       postEvent(eventDataFormatted);
     }
+  };
+
+  const handleisDeleting = () => {
+    setIsDeleting(!isDeleting);
+  };
+
+  const handleDelete = () => {
+    deleteEvent(event?.id || '');
+    router.push(Routes.DASHBOARD);
   };
 
   const watchedLevel = watch('level');
@@ -157,12 +174,38 @@ export const EventForm: React.FC<EventFormProps> = ({
             errors={errors}
             {...inputStyles}
           />
-          <button
-            type="submit"
-            className="ml-auto whitespace-nowrap rounded-md bg-button px-5 py-2 text-white hover:text-primary"
-          >
-            Odeslat
-          </button>
+          <div className="ml-auto flex flex-row items-center justify-center">
+            {isDeleting ? (
+              <button
+                type="button"
+                onClick={handleDelete}
+                className="flex flex-row whitespace-nowrap rounded-md border border-secondary px-5 py-2 text-base text-secondary hover:text-secondary"
+              >
+                <DeleteIcon className="mr-2.5 fill-secondary hover:animate-shake motion-reduce:hover:animate-none" />{' '}
+                Smazat navždy
+              </button>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  className={cx(
+                    'mx-11 flex flex-row items-center fill-button py-1 text-sm hover:fill-secondary',
+                    { hidden: !event?.id }
+                  )}
+                  aria-label="Smazat událost"
+                  onClick={handleisDeleting}
+                >
+                  <DeleteIcon className="mt-0.5 hover:animate-shake motion-reduce:hover:animate-none" />
+                </button>
+                <button
+                  type="submit"
+                  className="whitespace-nowrap rounded-md bg-button px-5 py-2 text-white hover:text-primary"
+                >
+                  Odeslat
+                </button>
+              </>
+            )}
+          </div>
         </form>
       </FormProvider>
     </article>
