@@ -12,6 +12,7 @@ import { StarRating } from '../../../components/StarRating';
 import { mockEventOwner } from './mock';
 import { defaultEvent } from '../../../utils/constants';
 import { getImagePath } from '../../../utils/functions';
+import { formatDate, formatTime } from '../../../utils/dateUtils';
 
 type EventPageProps = {
   params: { id: string };
@@ -25,7 +26,10 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
       notFound();
     })) || defaultEvent;
 
-  const { id, name, sport, description } = event;
+  const { id, name, date, sport, description } = event;
+
+  const formattedDate = formatDate(date);
+  const formattedTime = formatTime(date);
 
   return (
     <>
@@ -46,7 +50,11 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
               {name}
             </h1>
             <p className="mt-8 text-lg font-light">{description}</p>
-            <EventDetail className="mx-auto mt-8 lg:hidden" event={event} />
+            <EventDetail
+              className="mx-auto mt-8 lg:hidden"
+              event={event}
+              formattedDateTime={{ formattedDate, formattedTime }}
+            />
             <hr className="my-16 border-t border-low-contrast" />
           </section>
           <OwnerCard className="w-full" eventOwner={mockEventOwner} />
@@ -92,7 +100,11 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
             ))}
           </section>
         </div>
-        <EventDetail className="sticky hidden lg:block" event={event} />
+        <EventDetail
+          className="sticky hidden lg:block"
+          event={event}
+          formattedDateTime={{ formattedDate, formattedTime }}
+        />
       </div>
       <hr className="my-16 border-t border-low-contrast" />
       <section>

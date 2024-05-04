@@ -1,6 +1,5 @@
 'use client';
 
-import { format } from 'date-fns';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -14,6 +13,7 @@ import { levels, sports } from '../../utils/constants';
 
 type EventFormProps = {
   event?: Event;
+  dateTimeIso?: string;
 };
 
 const inputStyles = {
@@ -32,7 +32,10 @@ type CreateEventValues = {
   price: number;
 };
 
-export const EventForm: React.FC<EventFormProps> = ({ event }) => {
+export const EventForm: React.FC<EventFormProps> = ({
+  event,
+  dateTimeIso = '',
+}) => {
   const formProps = useForm<CreateEventValues>({
     resolver: yupResolver(eventSchema),
     defaultValues: {
@@ -52,8 +55,6 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
   } = formProps;
 
   const onSubmit = async (data: CreateEventValues) => {
-    const dateTimeIso = format(new Date(data.date), "yyyy-MM-dd'T'HH:mm:ss'Z'");
-
     const eventDataFormatted = {
       ...data,
       date: dateTimeIso,

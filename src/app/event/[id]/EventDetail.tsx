@@ -2,7 +2,7 @@
 
 import cx from 'classnames';
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { useAuth } from '../../../context/AuthContext';
@@ -11,24 +11,25 @@ import { DeleteIcon } from '../../../components/icons/DeleteIcon';
 import { Event } from '../../../types/Event';
 import { deleteEvent } from '../../../api/events';
 import { Routes } from '../../../utils/constants';
-import { formatDate, formatTime } from '../../../utils/dateUtils';
 
 type EventDetailProps = {
   event: Event;
   className?: string;
+  formattedDateTime: {
+    formattedDate: string;
+    formattedTime: string;
+  };
 };
 
 export const EventDetail: React.FC<EventDetailProps> = ({
-  event: { id, sport, location, price, date, level },
+  event: { id, sport, location, price, level },
   className,
+  formattedDateTime: { formattedDate, formattedTime },
 }) => {
   const isUserLoggedIn = useAuth().isUserLoggedIn;
   const router = useRouter();
 
   const [isAttending, setIsAttending] = useState(false);
-
-  const formattedDate = useMemo(() => formatDate(date), [date]);
-  const formattedTime = useMemo(() => formatTime(date), [date]);
 
   const handleDelete = async () => {
     await deleteEvent(id);

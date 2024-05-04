@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import { format } from 'date-fns';
 
 import { EventForm } from '../../../components/EventForm';
 import { getEvent } from '../../../api/events';
@@ -16,7 +17,10 @@ const EditEventPage: NextPage<EditEventPageProps> = async ({ params }) => {
       <h1 className="mt-24 px-20 text-center text-2xl font-medium leading-normal md:mt-14 md:px-0 xl:text-start xl:text-4xl">
         Upravit sportovní událost
       </h1>
-      <EventForm event={event} />
+      <EventForm
+        event={event}
+        dateTimeIso={format(new Date(event?.date), "yyyy-MM-dd'T'HH:mm:ss'Z'")}
+      />
     </div>
   );
 };
