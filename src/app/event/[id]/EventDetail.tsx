@@ -2,7 +2,7 @@
 
 import cx from 'classnames';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { useAuth } from '../../../context/AuthContext';
@@ -27,8 +27,8 @@ export const EventDetail: React.FC<EventDetailProps> = ({
 
   const [isAttending, setIsAttending] = useState(false);
 
-  const formattedDate = formatDate(date);
-  const formattedTime = formatTime(date);
+  const formattedDate = useMemo(() => formatDate(date), [date]);
+  const formattedTime = useMemo(() => formatTime(date), [date]);
 
   const handleDelete = async () => {
     await deleteEvent(id);

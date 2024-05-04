@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useMemo } from 'react';
 
 import { StarRating } from '../StarRating';
 import { HeartButton } from '../HeartButton';
@@ -21,7 +22,7 @@ export const EventCard: React.FC<EventCardProps> = ({
   event: { id, name, sport, date, location, price, description, level },
   index,
 }) => {
-  const formattedDate = formatDateTime(date);
+  const formattedDate = useMemo(() => formatDateTime(date), [date]);
 
   return (
     <article className="relative rounded-md bg-card shadow-md">
