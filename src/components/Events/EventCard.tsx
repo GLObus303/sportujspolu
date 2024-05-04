@@ -14,10 +14,12 @@ const rating = 3.5;
 
 type EventCardProps = {
   event: Event;
+  index: number;
 };
 
 export const EventCard: React.FC<EventCardProps> = ({
   event: { id, name, sport, date, location, price, description, level },
+  index,
 }) => {
   const formattedDate = formatDateTime(date);
 
@@ -31,6 +33,7 @@ export const EventCard: React.FC<EventCardProps> = ({
               src={getImagePath(id, sport)}
               className="rounded-tl-md rounded-tr-md object-cover"
               sizes="auto"
+              priority={index < 5}
               fill
             />
           </div>
