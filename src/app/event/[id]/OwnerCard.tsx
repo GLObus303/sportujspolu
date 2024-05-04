@@ -18,7 +18,7 @@ export const OwnerCard: React.FC<OwnerCardProps> = ({
   return (
     <section className={className}>
       <div className="relative flex flex-col items-center md:mt-0 lg:flex-row">
-        <Link href="/" className="relative h-16 w-16 lg:mr-5">
+        <Link href="/user/2tjsxi7028a7" className="relative h-16 w-16 lg:mr-5">
           <Image
             alt={`Zobrazit profil - ${name}`}
             src="/images/Běh/7.avif"
@@ -30,7 +30,7 @@ export const OwnerCard: React.FC<OwnerCardProps> = ({
         <div>
           <h2 className="mt-4 text-center text-xl font-medium leading-normal lg:mt-0 lg:whitespace-nowrap lg:text-start lg:text-3xl">
             Sportuj s Instruktorkou{' '}
-            <Link href="/" className="hover:text-primary">
+            <Link href="/user/2tjsxi7028a7" className="hover:text-primary">
               {name}
             </Link>
           </h2>

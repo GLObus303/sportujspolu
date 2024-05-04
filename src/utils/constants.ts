@@ -24,6 +24,8 @@ export const PAGINATION = {
 export const ERROR_MESSAGE = {
   INVALID_CREDENTIALS: 'Nesprávné přihlašovací údaje.',
   GENERIC_ERROR: 'Vyskytla se chyba. Zkuste to znovu později.',
+  BAD_CREDENTIALS_EN: 'email or password is incorrect.',
+  BAD_CREDENTIALS_CS: 'Zadaný email nebo heslo není správné.',
 };
 
 export const defaultEvent = {

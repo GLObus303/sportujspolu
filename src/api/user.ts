@@ -6,7 +6,10 @@ import { User } from '../types/User';
 
 export const loginUser = (formData: LoginFormData, onError?: OnErrorType) => {
   try {
-    return apiPost<{ token: string }>('user/login', formData, onError);
+    return apiPost<{
+      error: string | undefined;
+      token: string;
+    }>('user/login', formData, onError);
   } catch (error: unknown) {
     if ((error as ApiError).status === 400) {
       onError?.({

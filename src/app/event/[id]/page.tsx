@@ -45,10 +45,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
             <h1 className="mt-12 text-center text-2xl font-medium leading-normal md:mt-9 lg:text-start lg:text-4xl">
               {name}
             </h1>
-            <p
-              className="mt-8 text-lg font-light"
-              dangerouslySetInnerHTML={{ __html: description }}
-            />
+            <p className="mt-8 text-lg font-light">{description}</p>
             <EventDetail className="mx-auto mt-8 lg:hidden" event={event} />
             <hr className="my-16 border-t border-low-contrast" />
           </section>
@@ -88,10 +85,9 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
                     <p className="font-light text-accent">{review.date}</p>
                   </div>
                 </div>
-                <p
-                  className="ml-16 mt-4 line-clamp-6 text-lg font-light"
-                  dangerouslySetInnerHTML={{ __html: review.comment }}
-                />
+                <p className="ml-16 mt-4 line-clamp-6 text-lg font-light">
+                  {review.comment}
+                </p>
               </div>
             ))}
           </section>

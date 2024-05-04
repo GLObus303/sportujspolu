@@ -2,12 +2,12 @@
 
 import cx from 'classnames';
 import Link from 'next/link';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { useAuth } from '../../../context/AuthContext';
 import { HeartButton } from '../../../components/HeartButton';
 import { DeleteIcon } from '../../../components/icons/DeleteIcon';
-import { mockEvent } from './mock';
 import { Event } from '../../../types/Event';
 import { deleteEvent } from '../../../api/events';
 import { Routes } from '../../../utils/constants';
@@ -25,12 +25,18 @@ export const EventDetail: React.FC<EventDetailProps> = ({
   const isUserLoggedIn = useAuth().isUserLoggedIn;
   const router = useRouter();
 
+  const [isAttending, setIsAttending] = useState(false);
+
   const formattedDate = formatDate(date);
   const formattedTime = formatTime(date);
 
   const handleDelete = async () => {
     await deleteEvent(id);
     router.push(Routes.DASHBOARD);
+  };
+
+  const handleClick = () => {
+    setIsAttending(!isAttending);
   };
 
   return (
@@ -77,14 +83,6 @@ export const EventDetail: React.FC<EventDetailProps> = ({
               </td>
             </tr>
             <tr className="border-b border-low-contrast">
-              <td className="py-2 md:py-4">
-                <span>Trvání</span>
-              </td>
-              <td className="py-2 font-light md:py-4">
-                {mockEvent.duration} min
-              </td>
-            </tr>
-            <tr className="border-b border-low-contrast">
               <td className="py-2 md:py-4">Sport</td>
               <td className="py-2 font-light md:py-4">{sport}</td>
             </tr>
@@ -98,9 +96,12 @@ export const EventDetail: React.FC<EventDetailProps> = ({
         {!isUserLoggedIn ? (
           <button
             type="submit"
-            className="ml-auto mt-6 whitespace-nowrap rounded-md bg-button px-5 py-2 text-base text-white hover:text-primary"
+            onClick={handleClick}
+            className={`ml-auto mt-6 whitespace-nowrap rounded-md bg-button px-5 py-2 text-base text-white ${
+              isAttending ? 'hover:text-secondary' : 'hover:text-primary'
+            }`}
           >
-            Zúčastnit se
+            {isAttending ? 'Neúčastnit' : 'Zúčastnit se'}
           </button>
         ) : (
           <Link
