@@ -70,7 +70,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
               >
                 <Image
                   alt={`Zobrazit profil - ${name}`}
-                  src="/images/Běh/7.avif"
+                  src="/images/running/7.avif"
                   className="rounded-full object-cover"
                   sizes="auto"
                   fill
