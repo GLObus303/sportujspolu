@@ -17,5 +17,5 @@ export const getImagePath = (eventId: string, eventSport: string) => {
 
   return sportsSet.has(eventSport)
     ? `/images/${eventSport}/${randomNumber}.avif`
-    : `/images/running/${randomNumber}.avif`;
+    : `/images/ssBackground.avif`;
 };
