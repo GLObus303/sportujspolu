@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { EventOwner } from '../../../types/EventOwner';
-import { SanitizedHTML } from '../../../components/SanitizedHTML';
-import { Routes } from '../../../utils/constants';
+import { EventOwner } from '../../../../types/EventOwner';
+import { SanitizedHTML } from '../../../../components/SanitizedHTML';
+import { Routes } from '../../../../utils/constants';
 
 type OwnerCardProps = {
   eventOwner: EventOwner;

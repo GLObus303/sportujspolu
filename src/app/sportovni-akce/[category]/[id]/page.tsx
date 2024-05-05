@@ -3,31 +3,53 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { EventDetail } from '../../../components/EventDetail';
+import { EventDetail } from '../../../../components/EventDetail';
 import { OwnerCard } from './OwnerCard';
-import { Events } from '../../../components/Events';
-import { getAllEvents } from '../../../api/events';
-import { getEvent } from '../../../api/events';
-import { StarRating } from '../../../components/StarRating';
+import { Events } from '../../../../components/Events';
+import { getAllEvents } from '../../../../api/events';
+import { getEvent } from '../../../../api/events';
+import { StarRating } from '../../../../components/StarRating';
 import { mockEventOwner } from './mock';
-import { Routes, defaultEvent } from '../../../utils/constants';
-import { getImagePath } from '../../../utils/functions';
-import { formatDate, formatTime } from '../../../utils/dateUtils';
-import { EmailForm } from '../../../components/EmailForm';
+import {
+  Routes,
+  defaultEvent,
+  levelLabels,
+  sportsLabels,
+} from '../../../../utils/constants';
+import { getImagePath } from '../../../../utils/functions';
+import { formatDate, formatTime } from '../../../../utils/dateUtils';
+import { EmailForm } from '../../../../components/EmailForm';
+import { slugifyCategory } from '../../../../utils/slugifyUtils';
 
 type EventPageProps = {
-  params: { id: string };
+  params: {
+    category: string;
+    id: string;
+  };
 };
 
 const EventPage: NextPage<EventPageProps> = async ({ params }) => {
   const events = (await getAllEvents()) || [];
 
+  const { category, id } = params;
+
   const event =
-    (await getEvent(params?.id)?.catch(() => {
+    (await getEvent(id)?.catch(() => {
       notFound();
     })) || defaultEvent;
 
-  const { id, name, date, sport, description } = event;
+  const { name, date, location, sport, description, level } = event;
+
+  const sportLabel = sportsLabels[sport] || 'Nezařazeno';
+  const levelLabel = levelLabels[level];
+
+  const expectedCategory = slugifyCategory(
+    `${sportLabel} ${location} ${levelLabel}`
+  );
+
+  if (category !== expectedCategory) {
+    return notFound();
+  }
 
   const formattedDate = formatDate(date);
   const formattedTime = formatTime(date);
