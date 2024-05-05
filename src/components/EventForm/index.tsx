@@ -12,7 +12,7 @@ import { Textarea } from '../Textarea';
 import { postEvent, updateEvent } from '../../api/events';
 import { eventSchema } from './schema';
 import { Event } from '../../types/Event';
-import { Routes, levels, sports } from '../../utils/constants';
+import { Routes, levelLabels, sportsOptions } from '../../utils/constants';
 import { deleteEvent } from '../../api/events';
 import { DeleteIcon } from '../icons/DeleteIcon';
 
@@ -116,7 +116,7 @@ export const EventForm: React.FC<EventFormProps> = ({
             name="sport"
             label="Sport"
             placeholder="Sport"
-            options={sports}
+            options={sportsOptions}
             errors={errors}
           />
           <Input
@@ -142,25 +142,22 @@ export const EventForm: React.FC<EventFormProps> = ({
               Úroveň
             </span>
             <div className="mt-5 flex w-3/5 flex-wrap justify-end gap-4 md:justify-between">
-              {levels.map((level) => (
-                <label
-                  key={level.value}
-                  className="flex cursor-pointer items-center"
-                >
+              {Object.entries(levelLabels).map(([value, label]) => (
+                <label key={value} className="flex cursor-pointer items-center">
                   <input
                     {...register('level')}
                     type="radio"
-                    value={level.value}
+                    value={value}
                     className="h-9 w-36 focus:outline-primary"
                   />
                   <span
                     className={`absolute w-36 rounded-full py-2 text-center leading-5 ${
-                      watchedLevel === level.value
+                      watchedLevel === value
                         ? 'border border-pistachio bg-pistachio'
                         : 'border border-low-contrast bg-card hover:border-primary'
                     }`}
                   >
-                    {level.label}
+                    {label}
                   </span>
                 </label>
               ))}

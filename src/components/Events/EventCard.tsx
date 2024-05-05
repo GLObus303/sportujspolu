@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { StarRating } from '../StarRating';
 import { HeartButton } from '../HeartButton';
 import { Event } from '../../types/Event';
-import { Routes } from '../../utils/constants';
+import { Routes, sportsLabels } from '../../utils/constants';
 import { getImagePath } from '../../utils/functions';
 
 const rating = 3.5;
@@ -52,7 +52,9 @@ export const EventCard: React.FC<EventCardProps> = ({
           </div>
           <div className="flex items-center justify-between">
             <p>
-              <span className="font-medium">{sport}</span>
+              <span className="font-medium">
+                {sportsLabels[sport] || 'Běh'}
+              </span>
               <span className="font-light">
                 {' | '}
                 {level === 'Any' ? 'All Levels' : level}

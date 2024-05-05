@@ -42,41 +42,45 @@ export const defaultEvent = {
   ownerId: '',
 };
 
+export const levelLabels: Record<string, string> = {
+  Beginner: 'Začátečník',
+  Advanced: 'Pokročilý',
+  Expert: 'Expert',
+  Any: 'Pro každého',
+};
+
 export const sportsSet = new Set([
-  'Basketball',
-  'Běh',
-  'Box',
-  'Cyklistika',
-  'Fitness',
-  'Fotbal',
-  'Golf',
-  'Plavání',
-  'Skateboarding',
-  'Stolní tenis',
-  'Tenis',
-  'Volejbal',
-  'Yoga',
+  'basketball',
+  'running',
+  'boxing',
+  'cycling',
+  'fitness',
+  'football',
+  'golf',
+  'swimming',
+  'skateboarding',
+  'tableTennis',
+  'tennis',
+  'volleyball',
+  'yoga',
 ]);
 
-export const levels = [
-  { value: 'Beginner', label: 'Začátečník' },
-  { value: 'Advanced', label: 'Pokročilý' },
-  { value: 'Expert', label: 'Expert' },
-  { value: 'Any', label: 'Pro každého' },
-];
+export const sportsLabels: Record<string, string> = {
+  basketball: 'Basketbal',
+  running: 'Běh',
+  boxing: 'Box',
+  cycling: 'Cyklistika',
+  fitness: 'Fitness',
+  football: 'Fotbal',
+  golf: 'Golf',
+  swimming: 'Plavání',
+  skateboarding: 'Skateboarding',
+  tableTennis: 'Stolní tenis',
+  tennis: 'Tenis',
+  volleyball: 'Volejbal',
+  yoga: 'Yoga',
+};
 
-export const sports = [
-  { value: 'basketball', label: 'Basketbal' },
-  { value: 'running', label: 'Běh' },
-  { value: 'boxing', label: 'Box' },
-  { value: 'cycling', label: 'Cyklistika' },
-  { value: 'fitness', label: 'Fitness' },
-  { value: 'football', label: 'Fotbal' },
-  { value: 'golf', label: 'Golf' },
-  { value: 'swimming', label: 'Plavání' },
-  { value: 'skateboarding', label: 'Skateboarding' },
-  { value: 'tableTennis', label: 'Stolní tenis' },
-  { value: 'tennis', label: 'Tenis' },
-  { value: 'volleyball', label: 'Volejbal' },
-  { value: 'yoga', label: 'Yoga' },
-];
+export const sportsOptions = Object.entries(sportsLabels).map(
+  ([value, label]) => ({ value, label })
+);

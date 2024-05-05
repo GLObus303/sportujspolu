@@ -7,15 +7,15 @@ export const getHash = (string: string) => {
     string.split('').reduce((hash, char) => {
       const updatedHash = hash * prime + char.charCodeAt(0);
 
-      return updatedHash % 2147483647;
+      return updatedHash % 21483647;
     }, 0)
   );
 };
 
 export const getImagePath = (eventId: string, eventSport: string) => {
-  const randomNumber = getHash(eventId);
+  const randomNumber = (getHash(eventId) % 8) + 1;
 
   return sportsSet.has(eventSport)
-    ? `/images/${eventSport}/${(randomNumber % 8) + 1}.avif`
-    : '/images/Yoga/1.avif';
+    ? `/images/${eventSport}/${randomNumber}.avif`
+    : `/images/running/${randomNumber}.avif`;
 };

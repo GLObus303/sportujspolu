@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useAuth } from '../context/AuthContext';
 import { HeartButton } from './HeartButton';
 import { Event } from '../types/Event';
-import { Routes } from '../utils/constants';
+import { Routes, sportsLabels } from '../utils/constants';
 
 type EventDetailProps = {
   event: Event;
@@ -60,7 +60,9 @@ export const EventDetail: React.FC<EventDetailProps> = ({
             </tr>
             <tr className="border-b border-low-contrast">
               <td className="py-2 md:py-4">Sport</td>
-              <td className="py-2 font-light md:py-4">{sport}</td>
+              <td className="py-2 font-light md:py-4">
+                {sportsLabels[sport] || 'Běh'}
+              </td>
             </tr>
             <tr className="border-b border-low-contrast">
               <td className="py-2 md:py-4">Pokročilost</td>
