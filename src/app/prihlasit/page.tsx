@@ -42,26 +42,27 @@ const LoginPage: NextPage = () => {
     setIsLoading(true);
 
     try {
-      const response = await loginUser(formData, (error: any) =>
-        setErrorMessage(error.message)
-      );
+      const response = await loginUser(formData);
 
-      if (response?.token) {
-        nookies.set(null, 'token', response.token, {
-          path: Routes.DASHBOARD,
-          maxAge: SECONDS_IN_WEEK,
-        });
-
-        login(response.token);
-        router.push(Routes.DASHBOARD);
-      }
-      if (!response?.token) {
-        setErrorMessage(ERROR_MESSAGE.GENERIC_ERROR);
-      }
-    } catch (error: any) {
-      if (error?.response?.status === 400) {
+      if (response?.error?.status === 400) {
         setErrorMessage(ERROR_MESSAGE.BAD_CREDENTIALS_CS);
+
+        return;
       }
+
+      if (!response?.token || !!response?.error) {
+        setErrorMessage(ERROR_MESSAGE.GENERIC_ERROR);
+
+        return;
+      }
+
+      nookies.set(null, 'token', response.token, {
+        path: Routes.DASHBOARD,
+        maxAge: SECONDS_IN_WEEK,
+      });
+
+      login(response.token);
+      router.push(Routes.DASHBOARD);
     } finally {
       setIsLoading(false);
     }

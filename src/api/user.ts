@@ -1,24 +1,28 @@
+import { HTTPError } from 'ky';
+
 import { apiPost, apiGet } from './base';
 import { ApiError, OnErrorType } from '../types/Api';
 import { LoginFormData, RegisterFormData } from '../types/Form';
-import { ERROR_MESSAGE } from '../utils/constants';
 import { User } from '../types/User';
 
-export const loginUser = (formData: LoginFormData, onError?: OnErrorType) => {
+export const loginUser = async (formData: LoginFormData) => {
   try {
-    return apiPost<{
-      error: string | undefined;
+    const data = await apiPost<{
+      error?: ApiError;
       token: string;
-    }>('user/login', formData, onError);
-  } catch (error: unknown) {
-    if ((error as ApiError).status === 400) {
-      onError?.({
-        status: 400,
-        message: ERROR_MESSAGE.INVALID_CREDENTIALS,
-      });
-    }
+    }>('user/login', formData);
 
-    return null;
+    return data;
+  } catch (error: any) {
+    const { response, message } = error as HTTPError;
+
+    return {
+      error: {
+        status: response.status,
+        message,
+      } as ApiError,
+      token: '',
+    };
   }
 };
 
