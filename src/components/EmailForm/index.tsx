@@ -13,10 +13,11 @@ type EmailBody = {
 };
 
 type EmailFormProps = {
-  eventName?: string;
+  eventName: string;
+  mail: string;
 };
 
-export const EmailForm: React.FC<EmailFormProps> = ({ eventName }) => {
+export const EmailForm: React.FC<EmailFormProps> = ({ eventName, mail }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [emailData, setEmailData] = useState({
     subject: '',
@@ -38,7 +39,6 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventName }) => {
 
   const onSubmit = async (body: EmailBody) => {
     const subject = `Registrace na sportovní akci ${eventName}`;
-    const mail = 'john.doe';
 
     const encodedSubject = encodeURIComponent(subject);
     const encodedBody = encodeURIComponent(body.email_body);

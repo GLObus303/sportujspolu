@@ -3,12 +3,13 @@ import { Event } from '../types/Event';
 import { EventFormData } from '../types/Form';
 import { PAGINATION } from '../utils/constants';
 
-export const getEvent = (id: string) => apiGet<Event>(`events/${id}`);
+export const getEvent = (id: string) =>
+  apiGet<Event>(`events/${id}?includes=owner`);
 
 export const getAllEvents = (
-  page: string | string[] = PAGINATION.PAGE,
-  limit: string | string[] = PAGINATION.LIMIT
-) => apiGet<Event[]>(`events/?page=${page}&limit=${limit}`);
+  page: string = PAGINATION.PAGE,
+  limit: string = PAGINATION.LIMIT
+) => apiGet<Event[]>(`events/?page=${page}&limit=${limit}&includes=owner`);
 
 export const postEvent = (formData: EventFormData) =>
   apiPost('events', formData);

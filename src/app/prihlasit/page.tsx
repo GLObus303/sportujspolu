@@ -54,18 +54,13 @@ const LoginPage: NextPage = () => {
 
         login(response.token);
         router.push(Routes.DASHBOARD);
-      } else if (response) {
-        throw new Error(response?.error);
+      }
+      if (!response?.token) {
+        setErrorMessage(ERROR_MESSAGE.GENERIC_ERROR);
       }
     } catch (error: any) {
-      if (error?.response) {
-        error?.response.json().then((data: { error: string }) => {
-          const serverMessage =
-            data?.error === ERROR_MESSAGE.BAD_CREDENTIALS_EN
-              ? ERROR_MESSAGE.BAD_CREDENTIALS_CS
-              : ERROR_MESSAGE.GENERIC_ERROR;
-          setErrorMessage(serverMessage);
-        });
+      if (error?.response?.status === 400) {
+        setErrorMessage(ERROR_MESSAGE.BAD_CREDENTIALS_CS);
       }
     } finally {
       setIsLoading(false);
@@ -95,12 +90,10 @@ const LoginPage: NextPage = () => {
             errors={errors}
           />
           <PasswordInput register={register} errors={errors} />
-          {errorMessage && (
-            <AriaLiveErrorMessage
-              className="py-4 text-center"
-              errorMessage={errorMessage}
-            />
-          )}
+          <AriaLiveErrorMessage
+            className="py-4 text-center"
+            errorMessage={errorMessage}
+          />
           {!isLoading ? (
             <button
               type="submit"

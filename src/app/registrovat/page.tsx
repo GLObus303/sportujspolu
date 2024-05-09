@@ -82,12 +82,10 @@ const RegisterPage: NextPage = () => {
             name="passwordConfirmation"
             errors={errors}
           />
-          {errorMessage && (
-            <AriaLiveErrorMessage
-              className="py-4 text-center"
-              errorMessage={errorMessage}
-            />
-          )}
+          <AriaLiveErrorMessage
+            className="py-4 text-center"
+            errorMessage={errorMessage}
+          />
           {!isLoading ? (
             <button
               type="submit"

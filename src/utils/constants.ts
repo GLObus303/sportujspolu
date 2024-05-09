@@ -25,31 +25,21 @@ export const PAGINATION = {
 export const ERROR_MESSAGE = {
   INVALID_CREDENTIALS: 'Nesprávné přihlašovací údaje.',
   GENERIC_ERROR: 'Vyskytla se chyba. Zkuste to znovu později.',
-  BAD_CREDENTIALS_EN: 'email or password is incorrect.',
   BAD_CREDENTIALS_CS: 'Zadaný email nebo heslo není správné.',
 };
 
-export const defaultEvent = {
-  id: '-1',
-  name: '',
-  description: '',
-  sport: '',
-  location: '',
-  date: '',
-  price: 0,
-  level: '',
-  createdAt: '',
-  ownerId: '',
-};
+const levelArray = ['Beginner', 'Advanced', 'Expert', 'Any'] as const;
 
-export const levelLabels: Record<string, string> = {
+export type LevelType = (typeof levelArray)[number];
+
+export const levelLabels: Record<LevelType, string> = {
   Beginner: 'Začátečník',
   Advanced: 'Pokročilý',
   Expert: 'Expert',
   Any: 'Pro každého',
 };
 
-export const sportsSet = new Set([
+const sportsArray = [
   'basketball',
   'running',
   'boxing',
@@ -63,9 +53,13 @@ export const sportsSet = new Set([
   'tennis',
   'volleyball',
   'yoga',
-]);
+] as const;
 
-export const sportsLabels: Record<string, string> = {
+export const sportsSet = new Set(sportsArray);
+
+export type SportsType = (typeof sportsArray)[number];
+
+export const sportsLabels: Record<SportsType, string> = {
   basketball: 'Basketbal',
   running: 'Běh',
   boxing: 'Box',
@@ -84,3 +78,29 @@ export const sportsLabels: Record<string, string> = {
 export const sportsOptions = Object.entries(sportsLabels).map(
   ([value, label]) => ({ value, label })
 );
+
+export const defaultOwner = {
+  id: '',
+  name: '',
+  email: '',
+  rating: 0,
+  since: '',
+  description: '',
+  image: '',
+  reviewsCount: 0,
+  reviews: [],
+};
+
+export const defaultEvent = {
+  id: '',
+  name: '',
+  description: '',
+  sport: sportsArray[1],
+  location: '',
+  date: '',
+  price: 0,
+  level: levelArray[3],
+  createdAt: '',
+  ownerId: '',
+  owner: defaultOwner,
+};

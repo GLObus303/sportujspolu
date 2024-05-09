@@ -122,6 +122,8 @@ export const mockEvent = {
 };
 
 export const mockEventOwner = {
+  id: '2tjsxi7028a7',
+  email: 'tereza@beh.cz',
   name: 'Terezou',
   since: '2021',
   description:

@@ -7,7 +7,7 @@ import { StarRating } from '../StarRating';
 import { HeartButton } from '../HeartButton';
 import { Event } from '../../types/Event';
 import { Routes, levelLabels, sportsLabels } from '../../utils/constants';
-import { getImagePath } from '../../utils/functions';
+import { getImagePath, getSportLabel } from '../../utils/functions';
 import { slugifyCategory } from '../../utils/slugifyUtils';
 
 const rating = 3.5;
@@ -19,11 +19,11 @@ type EventCardProps = {
 };
 
 export const EventCard: React.FC<EventCardProps> = ({
-  event: { id, name, sport, location, price, description, level },
+  event: { id, name, sport, location, price, description, level, owner },
   index,
   formattedDate,
 }) => {
-  const sportLabel = sportsLabels[sport] || 'Nezařazeno';
+  const sportLabel = getSportLabel(sport);
   const levelLabel = levelLabels[level];
 
   const category = slugifyCategory(`${sportLabel} ${location} ${levelLabel}`);
@@ -53,9 +53,9 @@ export const EventCard: React.FC<EventCardProps> = ({
             </p>
             <div className="flex items-center">
               <span className="pr-1 font-light text-dark-gray dark:text-accent">
-                userName
+                {owner?.name}
               </span>
-              <StarRating rating={rating} />
+              {owner?.rating !== 0 && <StarRating rating={rating} />}
             </div>
             <div className="flex items-center justify-between">
               <p>

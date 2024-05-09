@@ -11,6 +11,7 @@ module.exports = {
         "dark-gray": "#5D5D5D",
         "medium-gray": "#848484",
         'low-contrast': 'var(--low-contrast)',
+        'faded': 'var(--faded)',
         'background': 'var(--background)',  
         'card': 'var(--card)',
         'button': 'var(--button)',

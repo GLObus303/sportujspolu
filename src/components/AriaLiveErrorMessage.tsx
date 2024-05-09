@@ -2,13 +2,13 @@ import { LiveMessage } from 'react-aria-live';
 import cx from 'classnames';
 
 type ErrorMessageProps = {
-  errorMessage: string | undefined;
+  errorMessage: string;
   className?: string;
   id?: string;
 };
 
 export const AriaLiveErrorMessage: React.FC<ErrorMessageProps> = ({
-  errorMessage,
+  errorMessage = '',
   className,
   id,
 }) => (
@@ -16,6 +16,6 @@ export const AriaLiveErrorMessage: React.FC<ErrorMessageProps> = ({
     <p id={id} role="alert" className={cx(className, 'text-secondary')}>
       {errorMessage}
     </p>
-    <LiveMessage aria-live="polite" message={errorMessage || ''} />
+    <LiveMessage aria-live="polite" message={errorMessage} />
   </>
 );

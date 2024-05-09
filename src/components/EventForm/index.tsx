@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import cx from 'classnames';
+import { format } from 'date-fns';
 
 import { Input } from '../Input';
 import { Select } from '../Select';
@@ -37,11 +38,8 @@ type CreateEventValues = {
   price: number;
 };
 
-export const EventForm: React.FC<EventFormProps> = ({
-  event,
-  dateTimeIso = '',
-}) => {
-  const [isDeleting, setIsDeleting] = useState(false);
+export const EventForm: React.FC<EventFormProps> = ({ event }) => {
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
   const router = useRouter();
 
   const formProps = useForm<CreateEventValues>({
@@ -63,6 +61,8 @@ export const EventForm: React.FC<EventFormProps> = ({
   } = formProps;
 
   const onSubmit = async (data: CreateEventValues) => {
+    const dateTimeIso = format(new Date(data.date), "yyyy-MM-dd'T'HH:mm:ss'Z'");
+
     const eventDataFormatted = {
       ...data,
       date: dateTimeIso,
@@ -75,8 +75,8 @@ export const EventForm: React.FC<EventFormProps> = ({
     }
   };
 
-  const handleisDeleting = () => {
-    setIsDeleting(!isDeleting);
+  const openDeleteConfirmation = () => {
+    setIsConfirmationModalOpen(!isConfirmationModalOpen);
   };
 
   const handleDelete = () => {
@@ -173,7 +173,7 @@ export const EventForm: React.FC<EventFormProps> = ({
             {...inputStyles}
           />
           <div className="ml-auto flex flex-row items-center justify-center">
-            {isDeleting ? (
+            {isConfirmationModalOpen ? (
               <button
                 type="button"
                 onClick={handleDelete}
@@ -191,7 +191,7 @@ export const EventForm: React.FC<EventFormProps> = ({
                     { hidden: !event?.id }
                   )}
                   aria-label="Smazat událost"
-                  onClick={handleisDeleting}
+                  onClick={openDeleteConfirmation}
                 >
                   <DeleteIcon className="mt-0.5 hover:animate-shake motion-reduce:hover:animate-none" />
                 </button>

@@ -8,8 +8,14 @@ const Home = async ({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
-  const page = searchParams?.page || PAGINATION.PAGE;
-  const limit = searchParams?.limit || PAGINATION.LIMIT;
+  const page: string =
+    typeof searchParams?.page === 'string'
+      ? searchParams.page
+      : PAGINATION.PAGE;
+  const limit: string =
+    typeof searchParams?.limit === 'string'
+      ? searchParams.limit
+      : PAGINATION.LIMIT;
 
   const events = (await getAllEvents(page, limit)) || [];
 

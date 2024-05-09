@@ -1,11 +1,13 @@
 export type EventOwner = {
+  id: string;
   name: string;
-  since: string;
-  description: string;
-  image: string;
+  email: string;
   rating: number;
-  reviewsCount: number;
-  reviews: {
+  since?: string;
+  description?: string;
+  image?: string;
+  reviewsCount?: number;
+  reviews?: {
     id: string;
     name: string;
     date: string;

@@ -29,10 +29,10 @@ export const Pagination: React.FC<PaginationProps> = ({
       <button
         aria-label="Předchozí stránka"
         type="button"
-        className={cx(
-          'group rounded-full bg-button p-2',
-          !hasPrevPage && 'bg-low-contrast'
-        )}
+        className={cx('group rounded-full p-2', {
+          'bg-faded': !hasPrevPage,
+          'bg-button': hasPrevPage,
+        })}
         disabled={!hasPrevPage}
         onClick={() => {
           router.push(`/?page=${prev}&limit=${limit}`);
@@ -48,10 +48,10 @@ export const Pagination: React.FC<PaginationProps> = ({
       <button
         aria-label="Následující stránka"
         type="button"
-        className={cx(
-          'group rounded-full bg-button p-2',
-          !hasNextPage && 'bg-low-contrast'
-        )}
+        className={cx('group rounded-full p-2', {
+          'bg-faded': !hasNextPage,
+          'bg-button': hasNextPage,
+        })}
         disabled={!hasNextPage}
         onClick={() => {
           router.push(`/?page=${next}&limit=${limit}`);

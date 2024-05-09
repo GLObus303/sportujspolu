@@ -60,13 +60,11 @@ export const PasswordInput: React.FC<InputProps> = ({
           className={isVisiblePassword ? 'fill-primary' : 'fill-accent'}
         />
       </button>
-      {errors[name] && (
-        <AriaLiveErrorMessage
-          className="absolute right-0 pt-1 text-xs"
-          errorMessage={String(errors?.[name]?.message)}
-          id={`${name}-error`}
-        />
-      )}
+      <AriaLiveErrorMessage
+        className="absolute right-0 pt-1 text-xs"
+        errorMessage={String(errors?.[name]?.message || '')}
+        id={`${name}-error`}
+      />
     </label>
   );
 };

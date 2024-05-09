@@ -23,7 +23,7 @@ type AuthContextProps = {
 };
 
 const emptyUser = {
-  id: '-1',
+  id: '',
   name: '',
   email: '',
   rating: 0,

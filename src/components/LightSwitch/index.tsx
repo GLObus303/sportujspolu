@@ -38,7 +38,7 @@ export const LightSwitch: React.FC<LightSwitchProps> = ({ defaultTheme }) => {
             : 'md:translate-x-full'
         }`}
       >
-        {currentTheme === THEME.DARK ? <SunIcon /> : <MoonIcon />}
+        {currentTheme === THEME.DARK ? <MoonIcon /> : <SunIcon />}
       </span>
     </button>
   );
