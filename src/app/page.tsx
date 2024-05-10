@@ -2,22 +2,20 @@ import { Events } from '../components/Events';
 import { getAllEvents } from '../api/events';
 import { Pagination } from '../components/Pagination';
 import { PAGINATION } from '../utils/constants';
+import { getFirstQueryParam, parseToNumber } from '../utils/functions';
 
 const Home = async ({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
-  const page: string =
-    typeof searchParams?.page === 'string'
-      ? searchParams.page
-      : PAGINATION.PAGE;
-  const limit: string =
-    typeof searchParams?.limit === 'string'
-      ? searchParams.limit
-      : PAGINATION.LIMIT;
+  const page = getFirstQueryParam(searchParams?.page, PAGINATION.PAGE);
+  const limit = getFirstQueryParam(searchParams?.limit, PAGINATION.LIMIT);
 
-  const events = (await getAllEvents(page, limit)) || [];
+  const events = await getAllEvents(page, limit);
+
+  const limitNumber = parseToNumber(limit);
+  const pageNumber = parseToNumber(page);
 
   return (
     <>
@@ -26,8 +24,10 @@ const Home = async ({
       </h1>
       <Events events={events} />
       <Pagination
-        hasNextPage={events.length === Number(limit)}
-        hasPrevPage={Number(page) !== 1}
+        hasNextPage={events.length === limitNumber}
+        hasPrevPage={pageNumber !== 1}
+        page={pageNumber}
+        limit={limit}
       />
     </>
   );

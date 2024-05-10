@@ -71,7 +71,7 @@ export const AuthProvider: ChildrenFC = ({ children }) => {
     setUser(emptyUser);
   }, []);
 
-  const isUserLoggedIn = user.id !== '-1';
+  const isUserLoggedIn = user.id !== '';
 
   const value = useMemo(
     () => ({ user, isUserLoggedIn, login, logout }),

@@ -5,7 +5,7 @@ export const eventSchema = yup.object().shape({
     .string()
     .required('Název události je povinný.')
     .min(5, 'Název musí obsahovat alespoň 5 znaků.')
-    .max(30, 'Název nesmí přesáhnout 30 znaků'),
+    .max(100, 'Název nesmí přesáhnout 100 znaků'),
   description: yup
     .string()
     .required('Popis je povinný.')

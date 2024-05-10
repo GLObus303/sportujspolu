@@ -10,3 +10,14 @@ export const getImagePath = (eventId: string, eventSport: SportsType) => {
 
 export const getSportLabel = (sport: SportsType) =>
   sportsLabels[sport] || 'Nezařazeno';
+
+export const parseToNumber = (value: string) => Number(value) || 0;
+
+export const getFirstQueryParam = (
+  param: string | string[] | undefined,
+  defaultParam: string
+) => {
+  const firstParam = Array.isArray(param) ? param[0] : param;
+
+  return firstParam || defaultParam;
+};

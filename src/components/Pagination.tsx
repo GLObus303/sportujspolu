@@ -1,25 +1,24 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import cx from 'classnames';
 
-import { PAGINATION } from '../utils/constants';
 import { ArrowIcon } from './icons/ArrowIcon';
 
 type PaginationProps = {
   hasNextPage: boolean;
   hasPrevPage: boolean;
+  page: number;
+  limit: string;
 };
 
 export const Pagination: React.FC<PaginationProps> = ({
   hasNextPage,
   hasPrevPage,
+  page,
+  limit,
 }) => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const page = Number(searchParams.get('page') || PAGINATION.PAGE);
-  const limit = searchParams.get('limit') || PAGINATION.LIMIT;
 
   const prev = page > 1 ? page - 1 : 1;
   const next = page + 1;

@@ -24,7 +24,7 @@ type EventPageProps = {
 };
 
 const EventPage: NextPage<EventPageProps> = async ({ params }) => {
-  const events = (await getAllEvents()) || [];
+  const events = await getAllEvents();
 
   const { category, id } = params;
 
@@ -73,7 +73,8 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
             <EventDetail
               className="mx-auto mt-8 lg:hidden"
               event={event}
-              formattedDateTime={{ formattedDate, formattedTime }}
+              formattedDate={formattedDate}
+              formattedTime={formattedTime}
             />
             <hr className="my-16 border-t border-low-contrast" />
           </section>
@@ -160,7 +161,8 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
         <EventDetail
           className="sticky hidden lg:block"
           event={event}
-          formattedDateTime={{ formattedDate, formattedTime }}
+          formattedDate={formattedDate}
+          formattedTime={formattedTime}
         />
       </div>
       <hr className="my-16 border-t border-low-contrast" />

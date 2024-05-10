@@ -6,11 +6,9 @@ import Image from 'next/image';
 import { StarRating } from '../StarRating';
 import { HeartButton } from '../HeartButton';
 import { Event } from '../../types/Event';
-import { Routes, levelLabels, sportsLabels } from '../../utils/constants';
+import { Routes, levelLabels } from '../../utils/constants';
 import { getImagePath, getSportLabel } from '../../utils/functions';
 import { slugifyCategory } from '../../utils/slugifyUtils';
-
-const rating = 3.5;
 
 type EventCardProps = {
   event: Event;
@@ -55,21 +53,18 @@ export const EventCard: React.FC<EventCardProps> = ({
               <span className="pr-1 font-light text-dark-gray dark:text-accent">
                 {owner?.name}
               </span>
-              {owner?.rating !== 0 && <StarRating rating={rating} />}
+              {owner?.rating !== 0 ||
+                (undefined && <StarRating rating={owner?.rating} />)}
             </div>
             <div className="flex items-center justify-between">
               <p>
-                <span className="font-medium">
-                  {sportsLabels[sport] || 'Nezařazeno'}
-                </span>
+                <span className="font-medium">{sportLabel}</span>
                 <span className="font-light">
                   {' | '}
-                  {levelLabels[level]}
+                  {levelLabel}
                 </span>
               </p>
-              <p className="font-medium">
-                {price === 0 ? 'ZDARMA' : `${price} Kč`}
-              </p>
+              {!!price && <p className="font-medium">{price} Kč</p>}
             </div>
           </div>
         </div>
