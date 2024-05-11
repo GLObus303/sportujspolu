@@ -5,6 +5,7 @@ import { Event } from '../../../../../types/Event';
 import { EditLink } from './EditLink';
 import { getSportLabel } from '../../../../../utils/functions';
 import { levelLabels } from '../../../../../utils/constants';
+import { TableRow } from './TableRow';
 
 type EventDetailProps = {
   event: Event;
@@ -33,36 +34,18 @@ export const EventDetail: React.FC<EventDetailProps> = ({
         <HeartButton className="ml-auto" />
         <table className="text-s mb-6 font-medium">
           <tbody>
-            {!!price && (
-              <tr className="border-b border-low-contrast">
-                <td className="py-2 md:py-4">Cena</td>
-                <td className="py-2 font-light md:py-4">{price} Kč/osoba</td>
-              </tr>
-            )}
-            <tr className="border-b border-low-contrast">
-              <td className="py-2 md:py-4">Místo konání</td>
-              <td className="py-2 font-light md:py-4">{location}</td>
-            </tr>
-            <tr className="border-b border-low-contrast">
-              <td className="py-2 md:py-4">Datum</td>
-              <td className="py-2 font-light md:py-4">
-                <time className="truncate">{formattedDate}</time>
-              </td>
-            </tr>
-            <tr className="border-b border-low-contrast">
-              <td className="py-2 md:py-4">Čas</td>
-              <td className="py-2 font-light md:py-4">
-                <time className="truncate">{formattedTime}</time>
-              </td>
-            </tr>
-            <tr className="border-b border-low-contrast">
-              <td className="py-2 md:py-4">Sport</td>
-              <td className="py-2 font-light md:py-4">{sportLabel}</td>
-            </tr>
-            <tr className="border-b border-low-contrast">
-              <td className="py-2 md:py-4">Pokročilost</td>
-              <td className="py-2 font-light md:py-4">{levelLabel}</td>
-            </tr>
+            {!!price && <TableRow label="Cena" value={`${price} Kč/osoba`} />}
+            <TableRow label="Místo konání" value={location} />
+            <TableRow
+              label="Datum"
+              value={<time className="truncate">{formattedDate}</time>}
+            />
+            <TableRow
+              label="Čas"
+              value={<time className="truncate">{formattedTime}</time>}
+            />
+            <TableRow label="Sport" value={sportLabel} />
+            <TableRow label="Pokročilost" value={levelLabel} />
           </tbody>
         </table>
 

@@ -2,7 +2,7 @@ import { Events } from '../components/Events';
 import { getAllEvents } from '../api/events';
 import { Pagination } from '../components/Pagination';
 import { PAGINATION } from '../utils/constants';
-import { getFirstQueryParam, parseToNumber } from '../utils/functions';
+import { getFirstQueryParam } from '../utils/functions';
 
 const Home = async ({
   searchParams,
@@ -14,8 +14,8 @@ const Home = async ({
 
   const events = await getAllEvents(page, limit);
 
-  const limitNumber = parseToNumber(limit);
-  const pageNumber = parseToNumber(page);
+  const limitNumber = Number(limit) || 1;
+  const pageNumber = Number(page) || 1;
 
   return (
     <>
