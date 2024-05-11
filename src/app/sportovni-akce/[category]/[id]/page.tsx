@@ -23,10 +23,10 @@ type EventPageProps = {
   };
 };
 
-const EventPage: NextPage<EventPageProps> = async ({ params }) => {
+const EventPage: NextPage<EventPageProps> = async ({
+  params: { category, id },
+}) => {
   const events = await getAllEvents();
-
-  const { category, id } = params;
 
   const event = await getEvent(id);
 
