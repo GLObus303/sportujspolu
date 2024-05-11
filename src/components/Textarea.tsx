@@ -12,6 +12,8 @@ type InputProps = {
   placeholder?: string;
   errors: FieldErrors;
   className?: string;
+  outerClassName?: string;
+  labelClassName?: string;
 };
 
 export const Textarea: React.FC<InputProps> = ({
@@ -21,21 +23,21 @@ export const Textarea: React.FC<InputProps> = ({
   placeholder,
   label,
   errors,
-  className = '',
+  outerClassName = 'relative w-full mb-5',
+  className = 'border',
+  labelClassName = 'text-xs text-dark-gray dark:text-text',
 }) => {
   const watchedValue = useWatchedValue(name);
 
   return (
-    <label className="relative flex w-full flex-row justify-between">
-      <span className="text-normal w-3/5 pt-3 text-start md:pt-2 md:text-xl">
-        {label}
-      </span>
+    <label className={outerClassName}>
+      <span className={labelClassName}>{label}</span>
       <textarea
         aria-describedby={`${name}-error`}
         aria-invalid={!!errors?.[name]}
         className={cx(
           className,
-          'w-full border-b bg-card px-5 py-3 placeholder-low-contrast focus:border-white focus:outline-primary',
+          'h-40 w-full border-b bg-card px-5 py-3 placeholder-low-contrast focus:border-white focus:outline-primary',
           {
             'border-primary': !errors?.[name] && watchedValue,
             'border-medium-gray': !errors?.[name] && !watchedValue,
@@ -47,13 +49,11 @@ export const Textarea: React.FC<InputProps> = ({
         {...register(name)}
         rows={3}
       />
-      {errors[name] && (
-        <AriaLiveErrorMessage
-          className="absolute bottom-0 right-0 translate-y-5 text-xs"
-          errorMessage={String(errors?.[name]?.message)}
-          id={`${name}-error`}
-        />
-      )}
+      <AriaLiveErrorMessage
+        className="absolute bottom-0 right-0 translate-y-5 text-xs"
+        errorMessage={String(errors?.[name]?.message || '')}
+        id={`${name}-error`}
+      />
     </label>
   );
 };

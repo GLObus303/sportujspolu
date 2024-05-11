@@ -41,7 +41,7 @@ export const AuthWrapper: ChildrenFC<AuthWrapperProps> = ({
 
     {children}
 
-    <p className="py-5 font-light">
+    <p className="mt-2 py-5 font-light">
       {redirectText}{' '}
       <Link
         href={redirectRoute}

@@ -14,7 +14,7 @@ import { Loading } from '../../components/Loading';
 import { AriaLiveErrorMessage } from '../../components/AriaLiveErrorMessage';
 import { Input } from '../../components/Input';
 import { PasswordInput } from '../../components/PasswordInput';
-import { SECONDS_IN_WEEK, Routes } from '../../utils/constants';
+import { SECONDS_IN_WEEK, Routes, ERROR_MESSAGE } from '../../utils/constants';
 import { LoginFormData } from '../../types/Form';
 import { AuthWrapper } from '../../components/AuthWrapper';
 
@@ -42,18 +42,27 @@ const LoginPage: NextPage = () => {
     setIsLoading(true);
 
     try {
-      const response = await loginUser(formData, (error: any) =>
-        setErrorMessage(error.message)
-      );
-      if (response?.token) {
-        nookies.set(null, 'token', response.token, {
-          path: Routes.DASHBOARD,
-          maxAge: SECONDS_IN_WEEK,
-        });
+      const response = await loginUser(formData);
 
-        login(response.token);
-        router.push(Routes.DASHBOARD);
+      if (response?.error?.status === 400) {
+        setErrorMessage(ERROR_MESSAGE.BAD_CREDENTIALS_CS);
+
+        return;
       }
+
+      if (!response?.token || !!response?.error) {
+        setErrorMessage(ERROR_MESSAGE.GENERIC_ERROR);
+
+        return;
+      }
+
+      nookies.set(null, 'token', response.token, {
+        path: Routes.DASHBOARD,
+        maxAge: SECONDS_IN_WEEK,
+      });
+
+      login(response.token);
+      router.push(Routes.DASHBOARD);
     } finally {
       setIsLoading(false);
     }
@@ -82,6 +91,10 @@ const LoginPage: NextPage = () => {
             errors={errors}
           />
           <PasswordInput register={register} errors={errors} />
+          <AriaLiveErrorMessage
+            className="py-4 text-center"
+            errorMessage={errorMessage}
+          />
           {!isLoading ? (
             <button
               type="submit"
@@ -91,12 +104,6 @@ const LoginPage: NextPage = () => {
             </button>
           ) : (
             <Loading className="mt-5" />
-          )}
-          {errorMessage && (
-            <AriaLiveErrorMessage
-              className="mt-8 text-center"
-              errorMessage={errorMessage}
-            />
           )}
           <hr className="mt-10 w-100 border-t border-low-contrast" />
         </form>

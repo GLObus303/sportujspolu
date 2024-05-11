@@ -110,7 +110,7 @@ export const mockEvent = {
   createdAt: '2023-05-15T11:30:00Z',
   // not in API
   rating: 3.7,
-  image: '/images/Běh/5.avif',
+  image: '/images/running/5.avif',
   allSpots: 10,
   freeSpots: 5,
   duration: 60,
@@ -122,36 +122,38 @@ export const mockEvent = {
 };
 
 export const mockEventOwner = {
+  id: '2tjsxi7028a7',
+  email: 'tereza@beh.cz',
   name: 'Terezou',
   since: '2021',
   description:
     'Ahoj, jsem Tereza, váš průvodce světem běhu. Běh pro mě není jen sport, ale cesta k sebepoznání a osobní svobodě. Před deseti lety jsem si obula své první běžecké boty a nebyla jsem si tehdy ještě vědoma, jak velkou změnu to přinese do mého života. <br><br> Od té doby jsem v běhu našla nejen své štěstí a sílu, ale také nekonečnou inspiraci a životní rovnováhu, kterou se s vámi chci podělit. Když se rozjímám nad svým běžeckým putováním, vidím, jak každý kilometr, který jsem uběhla, mě něčemu naučil. <br><br> O pocitu svobody, když si protáhnete nohy na čerstvém vzduchu, o odhodlání, které je potřeba pro zdolání dalšího kopce, o radosti z překonání vlastních hranic a o významu odpočinku a regenerace. A právě tyto zkušenosti a poznatky chci předávat dál.',
-  image: '/images/Běh/1.avif',
+  image: '/images/running/1.avif',
   rating: 4.8,
   reviewsCount: 16,
   reviews: [
     {
-      id: 1,
+      id: '1',
       name: 'Petr',
       date: 'červen 2023',
-      image: '/images/Běh/3.avif',
+      image: '/images/running/3.avif',
       rating: 4.5,
       comment:
         'Měl jsem úžasný zážitek, který mě opravdu oslovil. Doporučuji všem, kteří hledají kvalitní zábavu. Celkově to byl nezapomenutelný zážitek.',
     },
     {
-      id: 2,
+      id: '2',
       name: 'Jana',
-      image: '/images/Běh/2.avif',
+      image: '/images/running/2.avif',
       date: 'červen 2023',
       rating: 5,
       comment:
         'Tento zážitek byl skutečně skvělý a překonal mé očekávání. Moc se mi líbilo vše od začátku do konce. Určitě bych se ráda zúčastnila znovu. Tento zážitek byl skutečně skvělý a překonal mé očekávání. Moc se mi líbilo vše od začátku do konce. Určitě bych se ráda zúčastnila znovu. Tento zážitek byl skutečně skvělý a překonal mé očekávání. Moc se mi líbilo vše od začátku do konce. Určitě bych se ráda zúčastnila znovu.',
     },
     {
-      id: 3,
+      id: '3',
       name: 'Pavel',
-      image: '/images/Běh/1.avif',
+      image: '/images/running/1.avif',
       date: 'červen 2023',
       rating: 3.9,
       comment:

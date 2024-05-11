@@ -49,13 +49,11 @@ export const Input: React.FC<InputProps> = ({
         type={type}
         {...register(name)}
       />
-      {errors[name] && (
-        <AriaLiveErrorMessage
-          className="absolute bottom-0 right-0 translate-y-5 text-xs"
-          errorMessage={String(errors?.[name]?.message)}
-          id={`${name}-error`}
-        />
-      )}
+      <AriaLiveErrorMessage
+        className="absolute bottom-0 right-0 translate-y-5 text-xs"
+        errorMessage={String(errors?.[name]?.message || '')}
+        id={`${name}-error`}
+      />
     </label>
   );
 };

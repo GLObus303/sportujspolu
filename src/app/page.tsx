@@ -1,8 +1,21 @@
 import { Events } from '../components/Events';
 import { getAllEvents } from '../api/events';
+import { Pagination } from '../components/Pagination';
+import { PAGINATION } from '../utils/constants';
+import { getFirstQueryParam } from '../utils/functions';
 
-const Home = async () => {
-  const events = (await getAllEvents()) || [];
+const Home = async ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) => {
+  const page = getFirstQueryParam(searchParams?.page, PAGINATION.PAGE);
+  const limit = getFirstQueryParam(searchParams?.limit, PAGINATION.LIMIT);
+
+  const events = await getAllEvents(page, limit);
+
+  const limitNumber = Number(limit) || 1;
+  const pageNumber = Number(page) || 1;
 
   return (
     <>
@@ -10,6 +23,12 @@ const Home = async () => {
         Všechny sportovní akce v&nbsp;Česku
       </h1>
       <Events events={events} />
+      <Pagination
+        hasNextPage={events.length === limitNumber}
+        hasPrevPage={pageNumber !== 1}
+        page={pageNumber}
+        limit={limit}
+      />
     </>
   );
 };

@@ -1,21 +1,21 @@
-import { sportsSet } from './constants';
+import { sportsLabels, sportsSet, SportsType } from './constants';
 
-export const getHash = (string: string) => {
-  const prime = 31;
-
-  return Math.abs(
-    string.split('').reduce((hash, char) => {
-      const updatedHash = hash * prime + char.charCodeAt(0);
-
-      return updatedHash % 2147483647;
-    }, 0)
-  );
-};
-
-export const getImagePath = (eventId: string, eventSport: string) => {
-  const randomNumber = getHash(eventId);
+export const getImagePath = (eventId: string, eventSport: SportsType) => {
+  const randomNumber = (eventId.charCodeAt(0) % 8) + 1;
 
   return sportsSet.has(eventSport)
-    ? `/images/${eventSport}/${(randomNumber % 8) + 1}.avif`
-    : '/images/Yoga/1.avif';
+    ? `/images/${eventSport}/${randomNumber}.avif`
+    : `/images/running/${randomNumber}.avif`;
+};
+
+export const getSportLabel = (sport: SportsType) =>
+  sportsLabels[sport] || 'Nezařazeno';
+
+export const getFirstQueryParam = (
+  param: string | string[] | undefined,
+  defaultParam: string
+) => {
+  const firstParam = Array.isArray(param) ? param[0] : param;
+
+  return firstParam || defaultParam;
 };

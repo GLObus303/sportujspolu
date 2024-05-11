@@ -1,8 +1,11 @@
 'use client';
 
-import { format } from 'date-fns';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import cx from 'classnames';
+import { format } from 'date-fns';
 
 import { Input } from '../Input';
 import { Select } from '../Select';
@@ -10,10 +13,13 @@ import { Textarea } from '../Textarea';
 import { postEvent, updateEvent } from '../../api/events';
 import { eventSchema } from './schema';
 import { Event } from '../../types/Event';
-import { levels, sports } from '../../utils/constants';
+import { Routes, levelLabels, sportsOptions } from '../../utils/constants';
+import { deleteEvent } from '../../api/events';
+import { DeleteIcon } from '../icons/DeleteIcon';
 
 type EventFormProps = {
   event?: Event;
+  dateTimeIso?: string;
 };
 
 const inputStyles = {
@@ -33,6 +39,9 @@ type CreateEventValues = {
 };
 
 export const EventForm: React.FC<EventFormProps> = ({ event }) => {
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
+  const router = useRouter();
+
   const formProps = useForm<CreateEventValues>({
     resolver: yupResolver(eventSchema),
     defaultValues: {
@@ -66,6 +75,15 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
     }
   };
 
+  const openDeleteConfirmation = () => {
+    setIsConfirmationModalOpen(!isConfirmationModalOpen);
+  };
+
+  const handleDelete = () => {
+    deleteEvent(event?.id || '');
+    router.push(Routes.DASHBOARD);
+  };
+
   const watchedLevel = watch('level');
 
   return (
@@ -91,13 +109,14 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
             label="Popis"
             placeholder="Popis"
             errors={errors}
+            {...inputStyles}
           />
           <Select
             register={register}
             name="sport"
             label="Sport"
             placeholder="Sport"
-            options={sports}
+            options={sportsOptions}
             errors={errors}
           />
           <Input
@@ -123,25 +142,22 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
               Úroveň
             </span>
             <div className="mt-5 flex w-3/5 flex-wrap justify-end gap-4 md:justify-between">
-              {levels.map((level) => (
-                <label
-                  key={level.value}
-                  className="flex cursor-pointer items-center"
-                >
+              {Object.entries(levelLabels).map(([value, label]) => (
+                <label key={value} className="flex cursor-pointer items-center">
                   <input
                     {...register('level')}
                     type="radio"
-                    value={level.value}
+                    value={value}
                     className="h-9 w-36 focus:outline-primary"
                   />
                   <span
                     className={`absolute w-36 rounded-full py-2 text-center leading-5 ${
-                      watchedLevel === level.value
+                      watchedLevel === value
                         ? 'border border-pistachio bg-pistachio'
                         : 'border border-low-contrast bg-card hover:border-primary'
                     }`}
                   >
-                    {level.label}
+                    {label}
                   </span>
                 </label>
               ))}
@@ -156,12 +172,38 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
             errors={errors}
             {...inputStyles}
           />
-          <button
-            type="submit"
-            className="ml-auto whitespace-nowrap rounded-md bg-button px-5 py-2 text-white hover:text-primary"
-          >
-            Odeslat
-          </button>
+          <div className="ml-auto flex flex-row items-center justify-center">
+            {isConfirmationModalOpen ? (
+              <button
+                type="button"
+                onClick={handleDelete}
+                className="flex flex-row whitespace-nowrap rounded-md border border-secondary px-5 py-2 text-base text-secondary hover:text-secondary"
+              >
+                <DeleteIcon className="mr-2.5 fill-secondary hover:animate-shake motion-reduce:hover:animate-none" />{' '}
+                Smazat navždy
+              </button>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  className={cx(
+                    'mx-11 flex flex-row items-center fill-button py-1 text-sm hover:fill-secondary',
+                    { hidden: !event?.id }
+                  )}
+                  aria-label="Smazat událost"
+                  onClick={openDeleteConfirmation}
+                >
+                  <DeleteIcon className="mt-0.5 hover:animate-shake motion-reduce:hover:animate-none" />
+                </button>
+                <button
+                  type="submit"
+                  className="whitespace-nowrap rounded-md bg-button px-5 py-2 text-white hover:text-primary"
+                >
+                  Odeslat
+                </button>
+              </>
+            )}
+          </div>
         </form>
       </FormProvider>
     </article>

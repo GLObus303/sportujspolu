@@ -1,10 +1,10 @@
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 
-export const formatDate = (date: string) =>
-  date ? format(new Date(date), 'dd/MM/yyyy') : '';
+export const formatDate = (isoDate: string) =>
+  isoDate ? format(parseISO(isoDate), 'dd/MM/yyyy') : '';
 
-export const formatTime = (date: string) =>
-  date ? format(new Date(date), 'HH:mm') : '';
+export const formatTime = (isoDate: string) =>
+  isoDate ? format(parseISO(isoDate), 'HH:mm') : '';
 
-export const formatDateTime = (date: string) =>
-  date ? format(new Date(date), 'dd/MM/yyyy HH:mm') : '';
+export const formatDateTime = (isoDate: string) =>
+  isoDate ? format(parseISO(isoDate), 'dd/MM/yyyy HH:mm') : '';

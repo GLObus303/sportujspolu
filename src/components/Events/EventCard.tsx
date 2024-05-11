@@ -6,25 +6,29 @@ import Image from 'next/image';
 import { StarRating } from '../StarRating';
 import { HeartButton } from '../HeartButton';
 import { Event } from '../../types/Event';
-import { Routes } from '../../utils/constants';
-import { formatDateTime } from '../../utils/dateUtils';
-import { getImagePath } from '../../utils/functions';
-
-const rating = 3.5;
+import { Routes, levelLabels } from '../../utils/constants';
+import { getImagePath, getSportLabel } from '../../utils/functions';
+import { slugifyCategory } from '../../utils/slugifyUtils';
 
 type EventCardProps = {
   event: Event;
+  index: number;
+  formattedDate: string;
 };
 
 export const EventCard: React.FC<EventCardProps> = ({
-  event: { id, name, sport, date, location, price, description, level },
+  event: { id, name, sport, location, price, description, level, owner },
+  index,
+  formattedDate,
 }) => {
-  const formattedDate = formatDateTime(date);
+  const sportLabel = getSportLabel(sport);
+  const levelLabel = levelLabels[level];
+
+  const category = slugifyCategory(`${sportLabel} ${location} ${levelLabel}`);
 
   return (
     <article className="relative rounded-md bg-card shadow-md">
-      <HeartButton className="z-cardOverlay absolute right-3 top-3" />
-      <Link href={`${Routes.EVENT}/${id}`}>
+      <Link href={`${Routes.EVENT}/${category}/${id}`}>
         <div style={{ aspectRatio: '1/1' }} className="rounded-md bg-card">
           <div className="relative h-1/3 w-full overflow-hidden">
             <Image
@@ -32,6 +36,7 @@ export const EventCard: React.FC<EventCardProps> = ({
               src={getImagePath(id, sport)}
               className="rounded-tl-md rounded-tr-md object-cover"
               sizes="auto"
+              priority={index < 5}
               fill
             />
           </div>
@@ -46,25 +51,25 @@ export const EventCard: React.FC<EventCardProps> = ({
             </p>
             <div className="flex items-center">
               <span className="pr-1 font-light text-dark-gray dark:text-accent">
-                userName
+                {owner?.name}
               </span>
-              <StarRating rating={rating} />
+              {owner?.rating !== 0 ||
+                (undefined && <StarRating rating={owner?.rating} />)}
             </div>
             <div className="flex items-center justify-between">
               <p>
-                <span className="font-medium">{sport}</span>
+                <span className="font-medium">{sportLabel}</span>
                 <span className="font-light">
                   {' | '}
-                  {level === 'Any' ? 'All Levels' : level}
+                  {levelLabel}
                 </span>
               </p>
-              <p className="font-medium">
-                {price === 0 ? 'ZDARMA' : `${price} Kč`}
-              </p>
+              {!!price && <p className="font-medium">{price} Kč</p>}
             </div>
           </div>
         </div>
       </Link>
+      <HeartButton className="absolute right-3 top-3" />
     </article>
   );
 };

@@ -23,7 +23,7 @@ type AuthContextProps = {
 };
 
 const emptyUser = {
-  id: -1,
+  id: '',
   name: '',
   email: '',
   rating: 0,
@@ -71,7 +71,7 @@ export const AuthProvider: ChildrenFC = ({ children }) => {
     setUser(emptyUser);
   }, []);
 
-  const isUserLoggedIn = user.id !== -1;
+  const isUserLoggedIn = user.id !== '';
 
   const value = useMemo(
     () => ({ user, isUserLoggedIn, login, logout }),

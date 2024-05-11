@@ -40,7 +40,7 @@ export const Select: React.FC<SelectProps> = ({
         aria-invalid={!!errors?.[name]}
         className={cx(
           className,
-          'w-full border-b px-5 py-3 placeholder-light-gray focus:border-white focus:outline-primary',
+          'placeholder-light-gray w-full border-b px-5 py-3 focus:border-white focus:outline-primary',
           {
             'border-primary': !errors?.[name] && watchedValue,
             'border-medium-gray': !errors?.[name] && !watchedValue,
@@ -61,13 +61,11 @@ export const Select: React.FC<SelectProps> = ({
           </option>
         ))}
       </select>
-      {errors[name] && (
-        <AriaLiveErrorMessage
-          className="absolute bottom-0 right-0 translate-y-5 text-xs"
-          errorMessage={String(errors?.[name]?.message)}
-          id={`${name}-error`}
-        />
-      )}
+      <AriaLiveErrorMessage
+        className="absolute bottom-0 right-0 translate-y-5 text-xs"
+        errorMessage={String(errors?.[name]?.message || '')}
+        id={`${name}-error`}
+      />
     </label>
   );
 };

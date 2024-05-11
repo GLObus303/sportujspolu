@@ -82,6 +82,10 @@ const RegisterPage: NextPage = () => {
             name="passwordConfirmation"
             errors={errors}
           />
+          <AriaLiveErrorMessage
+            className="py-4 text-center"
+            errorMessage={errorMessage}
+          />
           {!isLoading ? (
             <button
               type="submit"
@@ -91,12 +95,6 @@ const RegisterPage: NextPage = () => {
             </button>
           ) : (
             <Loading className="mt-5" />
-          )}
-          {errorMessage && (
-            <AriaLiveErrorMessage
-              className="mt-8 text-center"
-              errorMessage={errorMessage}
-            />
           )}
           <hr className="mt-10 w-full border-t border-low-contrast" />
         </form>

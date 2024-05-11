@@ -1,18 +1,37 @@
+import { SportsType, LevelType } from '../utils/constants';
+
 export type Event = {
   id: string;
   name: string;
-  sport: string;
+  sport: SportsType;
   date: string;
   location: string;
   price: number;
   description: string;
-  level: string;
+  level: LevelType;
   createdAt: string;
+  ownerId: string;
+  owner?: EventOwner;
   // not in API
-  rating?: number;
   image?: string;
-  allSpots?: number;
-  freeSpots?: number;
   duration?: number;
-  allDates?: string[];
+};
+
+export type EventOwner = {
+  id: string;
+  name: string;
+  email: string;
+  rating: number;
+  since?: string;
+  description?: string;
+  image?: string;
+  reviewsCount?: number;
+  reviews?: {
+    id: string;
+    name: string;
+    date: string;
+    image: string;
+    rating: number;
+    comment: string;
+  }[];
 };
