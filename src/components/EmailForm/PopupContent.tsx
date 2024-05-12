@@ -1,5 +1,3 @@
-import cx from 'classnames';
-
 import { ERROR_MESSAGE, SUCCESS_MESSAGE } from '../../utils/constants';
 import { Button } from '../Button';
 
@@ -31,10 +29,9 @@ export const PopupContent: React.FC<PopupContentProps> = ({
   return (
     <>
       <h2
-        className={cx('mt-5', {
-          'text-primary': status === undefined,
-          'text-secondary': status !== undefined,
-        })}
+        className={`mt-5 ${
+          status === undefined ? 'text-primary' : 'text-secondary'
+        }`}
       >
         {title}
       </h2>
