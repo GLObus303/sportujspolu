@@ -1,9 +1,9 @@
 import * as yup from 'yup';
 
-export const emailSchema = yup.object().shape({
-  email_body: yup
+export const textSchema = yup.object().shape({
+  text: yup
     .string()
-    .required('Text emailu je povinný.')
-    .min(5, 'Text emailu musí obsahovat alespoň 5 znaků.')
-    .max(3600, 'Text emailu nesmí přesáhnout délku dvou normostran.'),
+    .required('Text zprávy je povinný.')
+    .min(5, 'Text zprávy musí obsahovat alespoň 5 znaků.')
+    .max(3600, 'Text zprávy nesmí přesáhnout délku dvou normostran.'),
 });

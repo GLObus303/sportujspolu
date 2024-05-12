@@ -58,6 +58,7 @@ module.exports = {
     },
     zIndex: {
       'header': '2',
+      'popup': '3',
     },
   },
   variants: {},

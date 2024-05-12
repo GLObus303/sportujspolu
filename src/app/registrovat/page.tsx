@@ -15,6 +15,7 @@ import { AriaLiveErrorMessage } from '../../components/AriaLiveErrorMessage';
 import { Routes } from '../../utils/constants';
 import { RegisterFormData } from '../../types/Form';
 import { AuthWrapper } from '../../components/AuthWrapper';
+import { Button } from '../../components/Button';
 
 const RegisterPage: NextPage = () => {
   const router = useRouter();
@@ -87,12 +88,9 @@ const RegisterPage: NextPage = () => {
             errorMessage={errorMessage}
           />
           {!isLoading ? (
-            <button
-              type="submit"
-              className="mt-5 w-40 rounded-md bg-button px-5 py-2 text-white hover:text-primary focus:text-primary"
-            >
+            <Button type="submit" className="mt-5">
               Registrovat
-            </button>
+            </Button>
           ) : (
             <Loading className="mt-5" />
           )}

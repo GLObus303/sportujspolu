@@ -17,6 +17,7 @@ import { PasswordInput } from '../../components/PasswordInput';
 import { SECONDS_IN_WEEK, Routes, ERROR_MESSAGE } from '../../utils/constants';
 import { LoginFormData } from '../../types/Form';
 import { AuthWrapper } from '../../components/AuthWrapper';
+import { Button } from '../../components/Button';
 
 const LoginPage: NextPage = () => {
   const router = useRouter();
@@ -96,12 +97,9 @@ const LoginPage: NextPage = () => {
             errorMessage={errorMessage}
           />
           {!isLoading ? (
-            <button
-              type="submit"
-              className="mt-5 h-11 w-40 rounded-md bg-button py-2 text-white hover:text-primary focus:text-primary"
-            >
+            <Button type="submit" className="mt-5">
               Přihlásit se
-            </button>
+            </Button>
           ) : (
             <Loading className="mt-5" />
           )}
