@@ -47,7 +47,13 @@ export const EmailForm: React.FC<EmailFormProps> = ({ event_id }) => {
     try {
       const response = await postMessage(messageDataFormatted);
 
-      setStatus(response?.error?.status);
+      if (response && !response.error) {
+        setStatus(200);
+      }
+
+      if (response?.error) {
+        setStatus(response.error?.status);
+      }
     } finally {
       setIsLoading(false);
       setIsModalOpen(true);

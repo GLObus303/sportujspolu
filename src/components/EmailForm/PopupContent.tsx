@@ -19,7 +19,7 @@ export const PopupContent: React.FC<PopupContentProps> = ({
     case 409:
       title = ERROR_MESSAGE.REQUEST_ALREADY_SENT;
       break;
-    case undefined:
+    case 200:
       title = SUCCESS_MESSAGE.REQUEST_SENT;
       break;
     default:
@@ -29,9 +29,7 @@ export const PopupContent: React.FC<PopupContentProps> = ({
   return (
     <>
       <h2
-        className={`mt-5 ${
-          status === undefined ? 'text-primary' : 'text-secondary'
-        }`}
+        className={`mt-5 ${status === 200 ? 'text-primary' : 'text-secondary'}`}
       >
         {title}
       </h2>
