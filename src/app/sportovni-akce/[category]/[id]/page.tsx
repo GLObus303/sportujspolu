@@ -4,12 +4,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { EventDetail } from './EventDetail';
-import { OwnerCard } from './OwnerCard';
 import { Events } from '../../../../components/Events';
 import { getAllEvents } from '../../../../api/events';
 import { getEvent } from '../../../../api/events';
-import { StarRating } from '../../../../components/StarRating';
-import { mockEventOwner } from './mock';
 import { Routes, defaultOwner, levelLabels } from '../../../../utils/constants';
 import { getImagePath, getSportLabel } from '../../../../utils/functions';
 import { formatDate, formatTime } from '../../../../utils/dateUtils';
@@ -85,7 +82,7 @@ const EventPage: NextPage<EventPageProps> = async ({
             </h2>
             <div className="relative mt-10 flex flex-row">
               <Link
-                href={`${Routes.USER}/${eventOwner.id}`}
+                href={`${Routes.USER}/${eventOwner.id}?event=${id}`}
                 className="relative mr-4 h-12 w-12"
               >
                 <Image
@@ -106,58 +103,9 @@ const EventPage: NextPage<EventPageProps> = async ({
               </div>
             </div>
             <EmailForm eventId={id} />
-            <hr className="my-16 border-t border-low-contrast" />
           </section>
-
-          <OwnerCard className="w-full" eventOwner={eventOwner} />
-
-          {owner?.rating !== 0 && (
-            <section className="w-full">
-              <h2 className="flex flex-col px-20 text-center text-xl font-medium leading-normal md:flex-row md:px-0 lg:text-start lg:text-3xl">
-                <StarRating
-                  className="h-6 w-6 whitespace-nowrap px-4"
-                  rating={mockEventOwner.rating}
-                />
-                <span>
-                  {mockEventOwner.rating} ({mockEventOwner.reviewsCount}{' '}
-                  hodnocení)
-                </span>
-              </h2>
-              {mockEventOwner.reviews.map((review, ownerId) => (
-                <div key={ownerId}>
-                  <div key={review.id} className="relative mt-10 flex flex-row">
-                    <Link
-                      href={`${Routes.USER}/`}
-                      className="relative mr-4 h-12 w-12"
-                    >
-                      <Image
-                        alt={`Zobrazit profil - ${review.name}`}
-                        src={review.image}
-                        className="rounded-full object-cover"
-                        sizes="auto"
-                        fill
-                      />
-                    </Link>
-                    <div className="mr-2">
-                      <h3 className="items-center text-base md:text-lg">
-                        <span className="text-center font-medium leading-normal lg:text-start">
-                          {review.name}{' '}
-                        </span>
-                        <span className="font-light">
-                          hodnotí akci <StarRating rating={review.rating} />
-                        </span>
-                      </h3>
-                      <p className="font-light text-accent">{review.date}</p>
-                    </div>
-                  </div>
-                  <p className="ml-16 mt-4 line-clamp-6 text-lg font-light">
-                    {review.comment}
-                  </p>
-                </div>
-              ))}
-            </section>
-          )}
         </div>
+
         <EventDetail
           className="sticky hidden lg:block"
           event={event}

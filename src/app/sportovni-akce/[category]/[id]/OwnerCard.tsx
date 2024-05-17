@@ -7,18 +7,23 @@ import { Routes } from '../../../../utils/constants';
 import { EventOwner } from '../../../../types/Event';
 
 type OwnerCardProps = {
+  eventId: string;
   eventOwner: EventOwner;
   className?: string;
 };
 
-export const OwnerCard: FC<OwnerCardProps> = ({ eventOwner, className }) => {
+export const OwnerCard: FC<OwnerCardProps> = ({
+  eventId,
+  eventOwner,
+  className,
+}) => {
   const { name, id, image, since, description } = eventOwner || {};
 
   return (
     <section className={className}>
       <div className="relative flex flex-col items-center md:mt-0 lg:flex-row">
         <Link
-          href={`${Routes.USER}/${eventOwner.id}`}
+          href={`${Routes.USER}/${eventOwner.id}?event=${eventId}`}
           className="relative h-16 w-16 lg:mr-5"
         >
           <Image
