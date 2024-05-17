@@ -1,6 +1,5 @@
 'use client';
 
-import { FC } from 'react';
 import Link from 'next/link';
 
 import { useAuth } from '../../context/AuthContext';
@@ -13,7 +12,7 @@ type HeaderProps = {
   defaultTheme: string;
 };
 
-export const Header: FC<HeaderProps> = ({ defaultTheme }) => {
+export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => {
   const {
     user: { id, name, email },
     logout,

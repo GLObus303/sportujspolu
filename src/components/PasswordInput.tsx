@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import cx from 'classnames';
 import { useFormContext } from 'react-hook-form';
-import { FC, useState } from 'react';
 
 import { AriaLiveErrorMessage } from './AriaLiveErrorMessage';
 import { EyeIcon } from './icons/EyeIcon';
@@ -14,7 +14,7 @@ type InputProps = {
   labelClassName?: string;
 };
 
-export const PasswordInput: FC<InputProps> = ({
+export const PasswordInput: React.FC<InputProps> = ({
   name = 'password',
   label = 'Heslo',
   className = '',

@@ -1,6 +1,5 @@
 'use client';
 
-import { FC } from 'react';
 import Link from 'next/link';
 
 import { Routes } from '../../../../../utils/constants';
@@ -11,7 +10,7 @@ type EditLinkProps = {
   ownerId: string;
 };
 
-export const EditLink: FC<EditLinkProps> = ({ eventId, ownerId }) => {
+export const EditLink: React.FC<EditLinkProps> = ({ eventId, ownerId }) => {
   const { id: userId } = useAuth().user;
 
   if (ownerId !== userId) {

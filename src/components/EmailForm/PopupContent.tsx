@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import { ERROR_MESSAGE, SUCCESS_MESSAGE } from '../../utils/constants';
 import { Button } from '../Button';
 
@@ -21,7 +19,10 @@ type PopupContentProps = {
   onClose: () => void;
 };
 
-export const PopupContent: FC<PopupContentProps> = ({ status, onClose }) => (
+export const PopupContent: React.FC<PopupContentProps> = ({
+  status,
+  onClose,
+}) => (
   <>
     <h2
       className={`mt-5 ${status === 200 ? 'text-primary' : 'text-secondary'}`}

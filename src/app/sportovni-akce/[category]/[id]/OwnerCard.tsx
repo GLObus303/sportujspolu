@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,7 +11,7 @@ type OwnerCardProps = {
   className?: string;
 };
 
-export const OwnerCard: FC<OwnerCardProps> = ({
+export const OwnerCard: React.FC<OwnerCardProps> = ({
   eventId,
   eventOwner,
   className,

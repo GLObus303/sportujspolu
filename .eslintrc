@@ -57,10 +57,27 @@
     "import/order": [
       1,
       {
-        "groups": ["builtin", "external"],
-        "newlines-between": "always"
+        "groups": [
+          ["builtin", "external"],
+          ["internal", "parent", "sibling", "index"]
+        ],
+        "newlines-between": "always",
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "builtin",
+            "position": "before"
+          },
+          {
+            "pattern": "./**/*.{scss,css}",
+            "group": "sibling",
+            "position": "after"
+          }
+        ],
+        "distinctGroup": false,
+        "pathGroupsExcludedImportTypes": ["react", "scss"]
       }
-    ], // Sort imports in groups, built-in first and external after, delimit with a newline
+    ], // Sort imports in groups, react first, then external. After a new line, components and lastly in the same group scss import
     "import/extensions": [
       0,
       "ignorePackages",
@@ -77,6 +94,8 @@
     "react/jsx-curly-brace-presence": [2, { "propElementValues": "always" }], // Enforce curly braces for variable/element props. Disallow curly braces for string props
     "react/no-unused-prop-types": 2, // Forbid unused types for component props
     "react/self-closing-comp": 2, // Empty JSX tags will collapse. Example: <div></div> to <div/>
+    "no-unsafe-optional-chaining": 2, // Forbid optional chaining when it could cause TypeError
+    "yoda": 2, // Forbid yoda conditions - if (1 === x) results to if (x === 1)
 
     "no-shadow": 0, // Allow variable shadowing (handled by TS)
     "no-unused-vars": 0, // Allow unused variables (handled by TS)

@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import cx from 'classnames';
 import { useFormContext } from 'react-hook-form';
 
@@ -14,7 +13,7 @@ type InputProps = {
   labelClassName?: string;
 };
 
-export const Textarea: FC<InputProps> = ({
+export const Textarea: React.FC<InputProps> = ({
   name,
   placeholder,
   label,

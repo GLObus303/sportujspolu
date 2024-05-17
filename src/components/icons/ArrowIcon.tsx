@@ -1,7 +1,7 @@
-import { FC, SVGProps } from 'react';
+import { SVGProps } from 'react';
 import cx from 'classnames';
 
-export const ArrowIcon: FC<SVGProps<SVGSVGElement>> = (props) => {
+export const ArrowIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
   const { className, ...otherProps } = props;
 
   return (

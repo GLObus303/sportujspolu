@@ -1,9 +1,9 @@
 'use client';
 
+import { useState } from 'react';
+import { ReactNode } from 'react'; // Add this import
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
-import { FC, useState } from 'react';
-import { ReactNode } from 'react'; // Add this import
 
 import { postMessage } from '../../api/messages';
 import { Textarea } from '../Textarea';
@@ -20,7 +20,7 @@ type EmailData = {
   text: string;
 };
 
-export const EmailForm: FC<EmailFormProps> = ({ eventId }): ReactNode => {
+export const EmailForm: React.FC<EmailFormProps> = ({ eventId }): ReactNode => {
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [status, setStatus] = useState<number>();

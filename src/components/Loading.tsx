@@ -1,7 +1,7 @@
-import { FC, SVGProps } from 'react';
+import { SVGProps } from 'react';
 import cx from 'classnames';
 
-export const Loading: FC<SVGProps<SVGSVGElement>> = (props) => {
+export const Loading: React.FC<SVGProps<SVGSVGElement>> = (props) => {
   const { className, ...restProps } = props;
 
   return (

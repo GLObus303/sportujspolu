@@ -1,6 +1,5 @@
 'use client';
 
-import { FC } from 'react';
 import { useRouter } from 'next/navigation';
 import cx from 'classnames';
 
@@ -13,7 +12,7 @@ type PaginationProps = {
   limit: string;
 };
 
-export const Pagination: FC<PaginationProps> = ({
+export const Pagination: React.FC<PaginationProps> = ({
   hasNextPage,
   hasPrevPage,
   page,

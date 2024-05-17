@@ -1,5 +1,5 @@
-import cx from 'classnames';
 import { ComponentProps } from 'react';
+import cx from 'classnames';
 
 type ButtonProps = {
   ariaLabel?: string;

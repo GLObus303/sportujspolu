@@ -1,6 +1,5 @@
 'use client';
 
-import nookies from 'nookies';
 import {
   createContext,
   useState,
@@ -8,6 +7,7 @@ import {
   useMemo,
   useCallback,
 } from 'react';
+import nookies from 'nookies';
 
 import { getUser } from '../api/user';
 import { User } from '../types/User';

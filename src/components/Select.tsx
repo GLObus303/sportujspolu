@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import cx from 'classnames';
 import { useFormContext } from 'react-hook-form';
 
@@ -16,7 +15,7 @@ type SelectProps = {
   className?: string;
 };
 
-export const Select: FC<SelectProps> = ({
+export const Select: React.FC<SelectProps> = ({
   name,
   label,
   placeholder,
