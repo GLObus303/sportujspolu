@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import cx from 'classnames';
 
 import { HeartButton } from '../../../../../components/HeartButton';
@@ -14,7 +15,7 @@ type EventDetailProps = {
   formattedTime: string;
 };
 
-export const EventDetail: React.FC<EventDetailProps> = ({
+export const EventDetail: FC<EventDetailProps> = ({
   event: { id, sport, location, price, level, ownerId },
   className,
   formattedDate,

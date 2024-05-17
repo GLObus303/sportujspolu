@@ -1,37 +1,31 @@
 import cx from 'classnames';
+import { ComponentProps } from 'react';
 
 type ButtonProps = {
-  children: React.ReactNode | string;
-  onClick?: () => void;
-  disabled?: boolean;
   ariaLabel?: string;
-  className?: string;
   variant?: 'primary' | 'secondary';
-  type?: 'button' | 'submit' | 'reset';
-};
+} & ComponentProps<'button'>;
 
 export const Button = ({
   children,
-  onClick,
-  disabled,
   ariaLabel,
   className,
   variant = 'primary',
   type = 'button',
+  ...rest
 }: ButtonProps) => (
   <button
-    onClick={onClick}
-    disabled={disabled}
     aria-label={ariaLabel}
-    type={type}
     className={cx(
-      'min-w-[10em] rounded-md bg-button p-2 text-white',
+      'min-w-[10rem] rounded-md bg-button p-2 text-white',
       className,
       {
         'hover:text-primary focus:text-primary': variant === 'primary',
         'hover:text-secondary focus:text-secondary': variant === 'secondary',
       }
     )}
+    type={type}
+    {...rest}
   >
     {children}
   </button>

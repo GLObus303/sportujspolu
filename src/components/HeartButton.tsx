@@ -1,6 +1,6 @@
 'use client';
 
-import { SVGProps } from 'react';
+import { FC, SVGProps } from 'react';
 import { useState } from 'react';
 import cx from 'classnames';
 
@@ -8,7 +8,7 @@ type HeartButtonProps = {
   className?: string;
 };
 
-const HeartIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => (
+const HeartIcon: FC<SVGProps<SVGSVGElement>> = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
@@ -24,7 +24,7 @@ const HeartIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => (
   </svg>
 );
 
-export const HeartButton: React.FC<HeartButtonProps> = ({ className }) => {
+export const HeartButton: FC<HeartButtonProps> = ({ className }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLikeEvent = () => {

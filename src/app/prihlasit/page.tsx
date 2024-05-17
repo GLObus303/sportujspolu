@@ -33,11 +33,6 @@ const LoginPage: NextPage = () => {
       password: '',
     },
   });
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = formProps;
 
   const onSubmit = async (formData: LoginFormData) => {
     setIsLoading(true);
@@ -81,17 +76,10 @@ const LoginPage: NextPage = () => {
       <FormProvider {...formProps}>
         <form
           className="mt-5 flex w-full max-w-sm flex-col items-center"
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={formProps.handleSubmit(onSubmit)}
         >
-          <Input
-            register={register}
-            type="email"
-            name="email"
-            label="Email"
-            placeholder="Email"
-            errors={errors}
-          />
-          <PasswordInput register={register} errors={errors} />
+          <Input type="email" name="email" label="Email" placeholder="Email" />
+          <PasswordInput />
           <AriaLiveErrorMessage
             className="py-4 text-center"
             errorMessage={errorMessage}

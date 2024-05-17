@@ -1,30 +1,31 @@
 import cx from 'classnames';
-import { FieldErrors } from 'react-hook-form';
-import { useState } from 'react';
+import { useFormContext } from 'react-hook-form';
+import { FC, useState } from 'react';
 
 import { AriaLiveErrorMessage } from './AriaLiveErrorMessage';
 import { EyeIcon } from './icons/EyeIcon';
 import { useWatchedValue } from '../hooks/useWatchedValue';
 
 type InputProps = {
-  register: any;
   name?: 'password' | 'passwordConfirmation';
   label?: string;
-  errors: FieldErrors;
   watchedValue?: string;
   className?: string;
   labelClassName?: string;
 };
 
-export const PasswordInput: React.FC<InputProps> = ({
-  register,
+export const PasswordInput: FC<InputProps> = ({
   name = 'password',
   label = 'Heslo',
-  errors,
   className = '',
   labelClassName = 'text-xs text-dark-gray dark:text-text',
 }) => {
   const watchedValue = useWatchedValue(name);
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
   const [isVisiblePassword, setVisiblePassword] = useState(false);
 
   const togglePasswordVisibility = () => {

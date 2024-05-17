@@ -1,12 +1,11 @@
+import { FC } from 'react';
 import cx from 'classnames';
-import { FieldErrors } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
 import { AriaLiveErrorMessage } from './AriaLiveErrorMessage';
 import { useWatchedValue } from '../hooks/useWatchedValue';
 
 type SelectProps = {
-  register: any;
-  type?: string;
   label: string;
   name: string;
   options: {
@@ -14,21 +13,21 @@ type SelectProps = {
     label: string;
   }[];
   placeholder?: string;
-  errors: FieldErrors;
   className?: string;
 };
 
-export const Select: React.FC<SelectProps> = ({
-  register,
-  type = 'text',
+export const Select: FC<SelectProps> = ({
   name,
   label,
   placeholder,
   options,
-  errors,
   className = '',
 }) => {
   const watchedValue = useWatchedValue(name);
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   return (
     <label className="relative flex w-full flex-row justify-between">
@@ -48,9 +47,7 @@ export const Select: React.FC<SelectProps> = ({
           }
         )}
         placeholder={placeholder}
-        type={type}
         {...register(name)}
-        rows={3}
       >
         <option value="" disabled selected={!watchedValue}>
           {placeholder || 'Select an option'}

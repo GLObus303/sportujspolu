@@ -1,11 +1,12 @@
 import DOMPurify from 'dompurify';
+import { FC } from 'react';
 
 type SanitizedHTMProps = {
   htmlContent: string;
   className?: string;
 };
 
-export const SanitizedHTML: React.FC<SanitizedHTMProps> = ({
+export const SanitizedHTML: FC<SanitizedHTMProps> = ({
   htmlContent,
   className,
 }) => {

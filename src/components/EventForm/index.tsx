@@ -3,7 +3,7 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import cx from 'classnames';
 import { format } from 'date-fns';
 
@@ -38,7 +38,7 @@ type CreateEventValues = {
   price: number;
 };
 
-export const EventForm: React.FC<EventFormProps> = ({ event }) => {
+export const EventForm: FC<EventFormProps> = ({ event }) => {
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
   const router = useRouter();
 
@@ -53,12 +53,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
       price: event?.price,
     },
   });
-  const {
-    register,
-    watch,
-    handleSubmit,
-    formState: { errors },
-  } = formProps;
+  const { watch } = formProps;
 
   const onSubmit = async (data: CreateEventValues) => {
     const dateTimeIso = format(new Date(data.date), "yyyy-MM-dd'T'HH:mm:ss'Z'");
@@ -90,51 +85,40 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
     <article className="relative mx-5 mr-0 mt-10 flex w-full max-w-xl flex-col rounded-md bg-card text-center shadow-md lg:text-start xl:mr-28 xl:mt-14 xl:px-0">
       <FormProvider {...formProps}>
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={formProps.handleSubmit(onSubmit)}
           className="flex flex-col space-y-8 rounded-md bg-card p-7"
         >
           <Input
-            register={register}
             type="name"
             name="name"
             label="Název události"
             placeholder="Název události"
-            errors={errors}
             {...inputStyles}
           />
           <Textarea
-            register={register}
-            type="text"
             name="description"
             label="Popis"
             placeholder="Popis"
-            errors={errors}
             {...inputStyles}
           />
           <Select
-            register={register}
             name="sport"
             label="Sport"
             placeholder="Sport"
             options={sportsOptions}
-            errors={errors}
           />
           <Input
-            register={register}
             type="datetime-local"
             name="date"
             label="Kdy proběhne"
             placeholder="Kdy proběhne"
-            errors={errors}
             {...inputStyles}
           />
           <Input
-            register={register}
             type="text"
             name="location"
             label="Místo konání"
             placeholder="Místo konání"
-            errors={errors}
             {...inputStyles}
           />
           <div className="flex w-full flex-row justify-between">
@@ -145,7 +129,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
               {Object.entries(levelLabels).map(([value, label]) => (
                 <label key={value} className="flex cursor-pointer items-center">
                   <input
-                    {...register('level')}
+                    {...formProps.register('level')}
                     type="radio"
                     value={value}
                     className="h-9 w-36 focus:outline-primary"
@@ -164,12 +148,10 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
             </div>
           </div>
           <Input
-            register={register}
             type="number"
             name="price"
             label="Cena v Kč"
             placeholder="Cena"
-            errors={errors}
             {...inputStyles}
           />
           <div className="ml-auto flex flex-row items-center justify-center">

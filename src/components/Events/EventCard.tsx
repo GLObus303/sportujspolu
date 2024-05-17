@@ -1,5 +1,6 @@
 'use client';
 
+import { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -16,7 +17,7 @@ type EventCardProps = {
   formattedDate: string;
 };
 
-export const EventCard: React.FC<EventCardProps> = ({
+export const EventCard: FC<EventCardProps> = ({
   event: { id, name, sport, location, price, description, level, owner },
   index,
   formattedDate,

@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const textSchema = yup.object().shape({
+export const emailSchema = yup.object().shape({
   text: yup
     .string()
     .required('Text zprávy je povinný.')

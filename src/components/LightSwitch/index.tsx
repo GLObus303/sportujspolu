@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { useTheme } from 'next-themes';
 import nookies from 'nookies';
 
@@ -9,7 +10,7 @@ type LightSwitchProps = {
   defaultTheme: string;
 };
 
-export const LightSwitch: React.FC<LightSwitchProps> = ({ defaultTheme }) => {
+export const LightSwitch: FC<LightSwitchProps> = ({ defaultTheme }) => {
   const { theme, setTheme } = useTheme();
 
   const currentTheme = theme || defaultTheme;

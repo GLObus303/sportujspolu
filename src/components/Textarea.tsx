@@ -1,33 +1,32 @@
+import { FC } from 'react';
 import cx from 'classnames';
-import { FieldErrors } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
 import { AriaLiveErrorMessage } from './AriaLiveErrorMessage';
 import { useWatchedValue } from '../hooks/useWatchedValue';
 
 type InputProps = {
-  register: any;
-  type?: string;
   label: string;
   name: string;
   placeholder?: string;
-  errors: FieldErrors;
   className?: string;
   outerClassName?: string;
   labelClassName?: string;
 };
 
-export const Textarea: React.FC<InputProps> = ({
-  register,
-  type = 'text',
+export const Textarea: FC<InputProps> = ({
   name,
   placeholder,
   label,
-  errors,
   outerClassName = 'relative w-full mb-5',
   className = 'border',
   labelClassName = 'text-xs text-dark-gray dark:text-text',
 }) => {
   const watchedValue = useWatchedValue(name);
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   return (
     <label className={outerClassName}>
@@ -45,7 +44,6 @@ export const Textarea: React.FC<InputProps> = ({
           }
         )}
         placeholder={placeholder}
-        type={type}
         {...register(name)}
         rows={3}
       />

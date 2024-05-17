@@ -2,44 +2,40 @@
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { FC, useState } from 'react';
+import { ReactNode } from 'react'; // Add this import
 
 import { postMessage } from '../../api/messages';
 import { Textarea } from '../Textarea';
-import { textSchema } from './schema';
+import { emailSchema } from './schema';
 import { Popup } from '../Popup';
 import { PopupContent } from './PopupContent';
 import { Button } from '../Button';
 
 type EmailFormProps = {
-  event_id: string;
+  eventId: string;
 };
 
-type Text = {
+type EmailData = {
   text: string;
 };
 
-export const EmailForm: React.FC<EmailFormProps> = ({ event_id }) => {
+export const EmailForm: FC<EmailFormProps> = ({ eventId }): ReactNode => {
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [status, setStatus] = useState<number | undefined>(undefined);
+  const [status, setStatus] = useState<number>();
 
   const formProps = useForm({
-    resolver: yupResolver(textSchema),
+    resolver: yupResolver(emailSchema),
     defaultValues: {
       text: '',
     },
   });
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = formProps;
 
-  const onSubmit = async (text: Text) => {
+  const onSubmit = async (emailData: EmailData) => {
     const messageDataFormatted = {
-      ...text,
-      event_id,
+      ...emailData,
+      eventId,
     };
 
     setIsLoading(true);
@@ -67,14 +63,14 @@ export const EmailForm: React.FC<EmailFormProps> = ({ event_id }) => {
   return (
     <>
       <FormProvider {...formProps}>
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-6 flex flex-col">
+        <form
+          onSubmit={formProps.handleSubmit(onSubmit)}
+          className="mt-6 flex flex-col"
+        >
           <Textarea
-            register={register}
-            type="text"
             name="text"
             label="Emailová zpráva"
             placeholder="Ahoj, můžeš mi poslat bližší informace..."
-            errors={errors}
           />
           <Button type="submit" disabled={isLoading} className="ml-auto mt-5">
             Zúčastnit se

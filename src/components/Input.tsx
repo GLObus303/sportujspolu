@@ -1,33 +1,34 @@
+import { FC } from 'react';
 import cx from 'classnames';
-import { FieldErrors } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
 import { useWatchedValue } from '../hooks/useWatchedValue';
 import { AriaLiveErrorMessage } from './AriaLiveErrorMessage';
 
 type InputProps = {
-  register: any;
   type?: string;
   name: string;
   label: string;
   placeholder?: string;
-  errors: FieldErrors;
   outerClassName?: string;
   className?: string;
   labelClassName?: string;
 };
 
-export const Input: React.FC<InputProps> = ({
-  register,
+export const Input: FC<InputProps> = ({
   type = 'text',
   name,
   label,
   placeholder,
-  errors,
   outerClassName = 'relative w-full mb-5',
   className = 'border',
   labelClassName = 'text-xs text-dark-gray dark:text-text',
 }) => {
   const watchedValue = useWatchedValue(name);
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   return (
     <label htmlFor={name} className={outerClassName}>

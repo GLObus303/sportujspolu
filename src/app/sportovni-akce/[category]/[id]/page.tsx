@@ -105,7 +105,7 @@ const EventPage: NextPage<EventPageProps> = async ({
                 </p>
               </div>
             </div>
-            <EmailForm event_id={id} />
+            <EmailForm eventId={id} />
             <hr className="my-16 border-t border-low-contrast" />
           </section>
 

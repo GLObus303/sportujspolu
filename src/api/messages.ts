@@ -1,16 +1,13 @@
 import { HTTPError } from 'ky';
 
 import { apiPost } from './base';
-import { ApiError } from '../types/Api';
 
 export const postMessage = async (formData: {
-  event_id: string;
+  eventId: string;
   text: string;
 }) => {
   try {
-    const data = await apiPost<{
-      error?: ApiError;
-    }>('messages/email/request', formData);
+    const data = await apiPost('messages/email/request', formData);
 
     return data;
   } catch (error: any) {
@@ -18,9 +15,9 @@ export const postMessage = async (formData: {
 
     return {
       error: {
-        status: response.status,
+        status: response?.status,
         message,
-      } as ApiError,
+      },
     };
   }
 };

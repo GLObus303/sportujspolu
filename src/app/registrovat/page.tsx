@@ -26,11 +26,6 @@ const RegisterPage: NextPage = () => {
   const formProps = useForm<RegisterFormData>({
     resolver: yupResolver(registerSchema),
   });
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = formProps;
 
   const onSubmit = async (formData: RegisterFormData) => {
     setIsLoading(true);
@@ -58,31 +53,12 @@ const RegisterPage: NextPage = () => {
       <FormProvider {...formProps}>
         <form
           className="mt-5 flex w-full max-w-sm flex-col items-center"
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={formProps.handleSubmit(onSubmit)}
         >
-          <Input
-            register={register}
-            type="text"
-            name="name"
-            label="Jméno"
-            placeholder="Jméno"
-            errors={errors}
-          />
-          <Input
-            register={register}
-            type="email"
-            name="email"
-            label="Email"
-            placeholder="Email"
-            errors={errors}
-          />
-          <PasswordInput register={register} errors={errors} />
-          <PasswordInput
-            register={register}
-            label="Potvrzení hesla"
-            name="passwordConfirmation"
-            errors={errors}
-          />
+          <Input type="text" name="name" label="Jméno" placeholder="Jméno" />
+          <Input type="email" name="email" label="Email" placeholder="Email" />
+          <PasswordInput />
+          <PasswordInput label="Potvrzení hesla" name="passwordConfirmation" />
           <AriaLiveErrorMessage
             className="py-4 text-center"
             errorMessage={errorMessage}

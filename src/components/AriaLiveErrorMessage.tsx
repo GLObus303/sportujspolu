@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { LiveMessage } from 'react-aria-live';
 import cx from 'classnames';
 
@@ -7,7 +8,7 @@ type ErrorMessageProps = {
   id?: string;
 };
 
-export const AriaLiveErrorMessage: React.FC<ErrorMessageProps> = ({
+export const AriaLiveErrorMessage: FC<ErrorMessageProps> = ({
   errorMessage = '',
   className,
   id,
