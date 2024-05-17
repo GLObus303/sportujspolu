@@ -6,7 +6,7 @@ import { useAuth } from '../../../context/AuthContext';
 
 type ProfileContentProps = {
   ownerId: string;
-  ownerName: string | undefined;
+  ownerName?: string;
 };
 
 export const ProfileContent: FC<ProfileContentProps> = ({

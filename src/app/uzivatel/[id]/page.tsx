@@ -20,7 +20,7 @@ const UserPage: NextPage<UserPageProps> = async ({
 
   const event = await getEvent(eventId);
 
-  const { name } = event?.owner || {};
+  const name = event?.owner?.name;
 
   return (
     <section className="mt-20">

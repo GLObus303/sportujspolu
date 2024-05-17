@@ -1,15 +1,14 @@
-import { ReactNode } from 'react';
 import cx from 'classnames';
 
 import { CrossButton } from './CrossButton';
+import { ChildrenFC } from '../utils/type';
 
 type PopupProps = {
-  children: ReactNode;
   onClose: () => void;
   className?: string;
 };
 
-export const Popup: React.FC<PopupProps> = ({
+export const Popup: ChildrenFC<PopupProps> = ({
   children,
   className,
   onClose,

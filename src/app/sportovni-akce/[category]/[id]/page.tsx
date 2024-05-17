@@ -1,13 +1,12 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { EventDetail } from './EventDetail';
 import { Events } from '../../../../components/Events';
 import { getAllEvents } from '../../../../api/events';
 import { getEvent } from '../../../../api/events';
-import { Routes, defaultOwner, levelLabels } from '../../../../utils/constants';
+import { defaultOwner, levelLabels } from '../../../../utils/constants';
 import { getImagePath, getSportLabel } from '../../../../utils/functions';
 import { formatDate, formatTime } from '../../../../utils/dateUtils';
 import { EmailForm } from '../../../../components/EmailForm';
@@ -81,18 +80,15 @@ const EventPage: NextPage<EventPageProps> = async ({
               Chceš se zúčastnit? Registruj se na akci!
             </h2>
             <div className="relative mt-10 flex flex-row">
-              <Link
-                href={`${Routes.USER}/${eventOwner.id}?event=${id}`}
-                className="relative mr-4 h-12 w-12"
-              >
+              <figure className="relative mr-4 h-12 w-12">
                 <Image
-                  alt={`Zobrazit profil - ${name}`}
+                  alt={name}
                   src={eventOwner.image || '/images/running/7.avif'}
                   className="rounded-full object-cover"
                   sizes="auto"
                   fill
                 />
-              </Link>
+              </figure>
               <div className="mr-2">
                 <h3 className="items-center text-base md:text-lg">
                   {eventOwner.name}
