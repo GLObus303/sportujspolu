@@ -1,6 +1,8 @@
+import { ReactNode } from 'react';
+
 type TableRowProps = {
   label: string;
-  value: React.ReactNode;
+  value: ReactNode;
 };
 
 export const TableRow: React.FC<TableRowProps> = ({ label, value }) => (

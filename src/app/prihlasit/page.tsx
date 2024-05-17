@@ -1,8 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, FormProvider } from 'react-hook-form';
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import nookies from 'nookies';
 import { NextPage } from 'next';
@@ -17,6 +17,7 @@ import { PasswordInput } from '../../components/PasswordInput';
 import { SECONDS_IN_WEEK, Routes, ERROR_MESSAGE } from '../../utils/constants';
 import { LoginFormData } from '../../types/Form';
 import { AuthWrapper } from '../../components/AuthWrapper';
+import { Button } from '../../components/Button';
 
 const LoginPage: NextPage = () => {
   const router = useRouter();
@@ -32,11 +33,6 @@ const LoginPage: NextPage = () => {
       password: '',
     },
   });
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = formProps;
 
   const onSubmit = async (formData: LoginFormData) => {
     setIsLoading(true);
@@ -80,28 +76,18 @@ const LoginPage: NextPage = () => {
       <FormProvider {...formProps}>
         <form
           className="mt-5 flex w-full max-w-sm flex-col items-center"
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={formProps.handleSubmit(onSubmit)}
         >
-          <Input
-            register={register}
-            type="email"
-            name="email"
-            label="Email"
-            placeholder="Email"
-            errors={errors}
-          />
-          <PasswordInput register={register} errors={errors} />
+          <Input type="email" name="email" label="Email" placeholder="Email" />
+          <PasswordInput />
           <AriaLiveErrorMessage
             className="py-4 text-center"
             errorMessage={errorMessage}
           />
           {!isLoading ? (
-            <button
-              type="submit"
-              className="mt-5 h-11 w-40 rounded-md bg-button py-2 text-white hover:text-primary focus:text-primary"
-            >
+            <Button type="submit" className="mt-5">
               Přihlásit se
-            </button>
+            </Button>
           ) : (
             <Loading className="mt-5" />
           )}

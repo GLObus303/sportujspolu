@@ -26,6 +26,12 @@ export const ERROR_MESSAGE = {
   INVALID_CREDENTIALS: 'Nesprávné přihlašovací údaje.',
   GENERIC_ERROR: 'Vyskytla se chyba. Zkuste to znovu později.',
   BAD_CREDENTIALS_CS: 'Zadaný email nebo heslo není správné.',
+  REQUEST_ALREADY_SENT: 'Žádost již byla odeslána',
+  AUTHENTICATION_REQUIRED: 'Pro tuto akci je vyžadováno přihlášení.',
+};
+
+export const SUCCESS_MESSAGE = {
+  REQUEST_SENT: 'Žádost byla úspěšně odeslána.',
 };
 
 const levelArray = ['Beginner', 'Advanced', 'Expert', 'Any'] as const;

@@ -1,8 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, FormProvider } from 'react-hook-form';
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { NextPage } from 'next';
 
@@ -15,6 +15,7 @@ import { AriaLiveErrorMessage } from '../../components/AriaLiveErrorMessage';
 import { Routes } from '../../utils/constants';
 import { RegisterFormData } from '../../types/Form';
 import { AuthWrapper } from '../../components/AuthWrapper';
+import { Button } from '../../components/Button';
 
 const RegisterPage: NextPage = () => {
   const router = useRouter();
@@ -25,11 +26,6 @@ const RegisterPage: NextPage = () => {
   const formProps = useForm<RegisterFormData>({
     resolver: yupResolver(registerSchema),
   });
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = formProps;
 
   const onSubmit = async (formData: RegisterFormData) => {
     setIsLoading(true);
@@ -57,42 +53,20 @@ const RegisterPage: NextPage = () => {
       <FormProvider {...formProps}>
         <form
           className="mt-5 flex w-full max-w-sm flex-col items-center"
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={formProps.handleSubmit(onSubmit)}
         >
-          <Input
-            register={register}
-            type="text"
-            name="name"
-            label="Jméno"
-            placeholder="Jméno"
-            errors={errors}
-          />
-          <Input
-            register={register}
-            type="email"
-            name="email"
-            label="Email"
-            placeholder="Email"
-            errors={errors}
-          />
-          <PasswordInput register={register} errors={errors} />
-          <PasswordInput
-            register={register}
-            label="Potvrzení hesla"
-            name="passwordConfirmation"
-            errors={errors}
-          />
+          <Input type="text" name="name" label="Jméno" placeholder="Jméno" />
+          <Input type="email" name="email" label="Email" placeholder="Email" />
+          <PasswordInput />
+          <PasswordInput label="Potvrzení hesla" name="passwordConfirmation" />
           <AriaLiveErrorMessage
             className="py-4 text-center"
             errorMessage={errorMessage}
           />
           {!isLoading ? (
-            <button
-              type="submit"
-              className="mt-5 w-40 rounded-md bg-button px-5 py-2 text-white hover:text-primary focus:text-primary"
-            >
+            <Button type="submit" className="mt-5">
               Registrovat
-            </button>
+            </Button>
           ) : (
             <Loading className="mt-5" />
           )}

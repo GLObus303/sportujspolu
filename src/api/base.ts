@@ -8,14 +8,10 @@ const apiUrl =
   process.env.NEXT_PUBLIC_API_URL ||
   'https://sportujspolu-api.onrender.com/api/v1/';
 
-export const api = ky.create({
-  prefixUrl: apiUrl,
-  headers: {},
-});
-
 export const privateApi = () =>
   ky.create({
     prefixUrl: apiUrl,
+    headers: { cache: 'no-store' },
     hooks: {
       beforeRequest: [
         (request) => {
