@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form';
 import { AriaLiveErrorMessage } from './AriaLiveErrorMessage';
 import { useWatchedValue } from '../hooks/useWatchedValue';
 
-type InputProps = {
+type TextareaProps = {
   label: string;
   name: string;
   placeholder?: string;
@@ -13,7 +13,7 @@ type InputProps = {
   labelClassName?: string;
 };
 
-export const Textarea: React.FC<InputProps> = ({
+export const Textarea: React.FC<TextareaProps> = ({
   name,
   placeholder,
   label,

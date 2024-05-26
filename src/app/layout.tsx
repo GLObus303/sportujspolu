@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 
 import { ThemeProvider } from './theme-provider';
 import { AuthProvider } from '../context/AuthContext';
+import { EntryModalProvider } from '../context/EntryModalContext';
 import { Layout } from '../components/Layout';
 import { ChildrenFC } from '../utils/type';
 import { THEME } from '../utils/constants';
@@ -27,9 +28,11 @@ const RootLayout: ChildrenFC = ({ children }) => {
       </head>
       <body>
         <ThemeProvider defaultTheme={defaultTheme}>
-          <AuthProvider>
-            <Layout>{children}</Layout>
-          </AuthProvider>
+          <EntryModalProvider>
+            <AuthProvider>
+              <Layout>{children}</Layout>
+            </AuthProvider>
+          </EntryModalProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -3,7 +3,7 @@ import { HTTPError } from 'ky';
 import { apiPost } from './base';
 
 export const postMessage = async (formData: {
-  eventId: string;
+  event_id: string;
   text: string;
 }) => {
   try {

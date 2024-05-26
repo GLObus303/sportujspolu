@@ -7,6 +7,8 @@ import { LogoIcon } from '../icons/LogoIcon';
 import { ProfileIcon } from '../icons/ProfileIcon';
 import { Routes } from '../../utils/constants';
 import { LightSwitch } from '../LightSwitch';
+import { useEntryModal } from '../../context/EntryModalContext';
+import { Button } from '../Button';
 
 type HeaderProps = {
   defaultTheme: string;
@@ -18,13 +20,15 @@ export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => {
     logout,
   } = useAuth();
 
+  const { openEntryModal } = useEntryModal();
+
   return (
     <header className="fixed top-0 z-header w-full border-b border-low-contrast bg-background">
-      <nav className="mx-auto flex max-w-layout flex-row items-center justify-between">
+      <nav className="mx-auto flex max-w-layout flex-row items-center justify-between py-3.5">
         <Link
           href={Routes.DASHBOARD}
           aria-label="SportujSpolu - domovská stránka"
-          className="px-4 py-3.5 text-3xl focus:fill-primary md:px-14"
+          className="px-4 text-3xl focus:fill-primary md:px-14"
         >
           <LogoIcon className="h-6 hover:fill-primary dark:fill-white dark:hover:fill-primary md:h-7" />
         </Link>
@@ -32,10 +36,10 @@ export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => {
           <div className="flex items-center">
             <div>
               <div className="relative flex items-center">
-                <div className="absolute right-full flex">
+                <div className="absolute right-full flex items-center gap-x-6">
                   <LightSwitch defaultTheme={defaultTheme} />
                   {email ? (
-                    <div className="ml-8 flex">
+                    <>
                       {name && (
                         <Link
                           href={`${Routes.USER}/${id}`}
@@ -43,37 +47,17 @@ export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => {
                         >
                           <ProfileIcon
                             aria-label="User profile"
-                            className="inline h-6 w-6 hover:fill-primary focus:fill-primary sm:hidden"
+                            className="inline h-6 w-6 fill-text hover:fill-primary focus:fill-primary sm:hidden"
                           />
                           <span className="hidden whitespace-nowrap sm:inline">
                             {name}
                           </span>
                         </Link>
                       )}
-                      <button
-                        type="button"
-                        className="ml-8 rounded-md bg-button px-5 py-1 text-white hover:text-primary focus:text-primary"
-                        onClick={logout}
-                      >
-                        Sign&nbsp;out
-                      </button>
-                    </div>
+                      <Button onClick={logout}>Odhlásit&nbsp;se</Button>
+                    </>
                   ) : (
-                    <div className="ml-8 rounded-md bg-button px-4 py-1 text-white">
-                      <Link
-                        href={Routes.REGISTER}
-                        className="hover:text-primary focus:text-primary"
-                      >
-                        Register
-                      </Link>
-                      &nbsp;/&nbsp;
-                      <Link
-                        href={Routes.LOGIN}
-                        className="hover:text-primary focus:text-primary"
-                      >
-                        Login
-                      </Link>
-                    </div>
+                    <Button onClick={openEntryModal}>Přihlásit&nbsp;se</Button>
                   )}
                 </div>
               </div>

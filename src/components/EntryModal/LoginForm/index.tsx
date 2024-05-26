@@ -3,25 +3,32 @@
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, FormProvider } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
 import nookies from 'nookies';
-import { NextPage } from 'next';
 
+import { useAuth } from '../../../context/AuthContext';
 import { loginSchema } from './schema';
-import { useAuth } from '../../context/AuthContext';
-import { loginUser } from '../../api/user';
-import { Loading } from '../../components/Loading';
-import { AriaLiveErrorMessage } from '../../components/AriaLiveErrorMessage';
-import { Input } from '../../components/Input';
-import { PasswordInput } from '../../components/PasswordInput';
-import { SECONDS_IN_WEEK, Routes, ERROR_MESSAGE } from '../../utils/constants';
-import { LoginFormData } from '../../types/Form';
-import { AuthWrapper } from '../../components/AuthWrapper';
-import { Button } from '../../components/Button';
+import { loginUser } from '../../../api/user';
+import { Loading } from '../../Loading';
+import { AriaLiveErrorMessage } from '../../AriaLiveErrorMessage';
+import { Input } from '../../Input';
+import { PasswordInput } from '../../PasswordInput';
+import {
+  SECONDS_IN_WEEK,
+  Routes,
+  ERROR_MESSAGE,
+} from '../../../utils/constants';
+import { LoginFormData } from '../../../types/Form';
+import { AuthWrapper } from '../../AuthWrapper';
+import { Button } from '../../Button';
+import { useEntryModal } from '../../../context/EntryModalContext';
 
-const LoginPage: NextPage = () => {
-  const router = useRouter();
+type LoginFormProps = {
+  onToggleForm: () => void;
+};
+
+export const LoginForm: React.FC<LoginFormProps> = ({ onToggleForm }) => {
   const { login } = useAuth();
+  const { onSignedUp, closeEntryModal } = useEntryModal();
 
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -58,7 +65,9 @@ const LoginPage: NextPage = () => {
       });
 
       login(response.token);
-      router.push(Routes.DASHBOARD);
+
+      onSignedUp?.();
+      closeEntryModal();
     } finally {
       setIsLoading(false);
     }
@@ -70,12 +79,12 @@ const LoginPage: NextPage = () => {
       subtitleText="Chci se přihlásit přes:"
       formText="přihlašovací"
       redirectText="Ještě nemáš účet?"
-      redirectRoute={Routes.REGISTER}
-      redirectLinkText="Vytvoř si profil!"
+      onToggleForm={onToggleForm}
+      redirectButtonText="Vytvoř si profil!"
     >
       <FormProvider {...formProps}>
         <form
-          className="mt-5 flex w-full max-w-sm flex-col items-center"
+          className="mt-5 flex w-full max-w-sm flex-col items-center text-start text-base"
           onSubmit={formProps.handleSubmit(onSubmit)}
         >
           <Input type="email" name="email" label="Email" placeholder="Email" />
@@ -91,11 +100,9 @@ const LoginPage: NextPage = () => {
           ) : (
             <Loading className="mt-5" />
           )}
-          <hr className="mt-10 w-100 border-t border-low-contrast" />
+          <hr className="mt-10 w-full border-t border-low-contrast md:w-100" />
         </form>
       </FormProvider>
     </AuthWrapper>
   );
 };
-
-export default LoginPage;

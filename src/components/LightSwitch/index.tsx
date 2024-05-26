@@ -25,7 +25,7 @@ export const LightSwitch: React.FC<LightSwitchProps> = ({ defaultTheme }) => {
 
   return (
     <button
-      className="group flex w-fit items-center rounded-full bg-low-contrast text-base hover:text-primary md:w-14 md:text-lg"
+      className="group flex h-8 w-fit items-center rounded-full bg-low-contrast text-base hover:text-primary md:w-14 md:text-lg"
       onClick={toggleTheme}
       aria-label={`Nastavit ${
         currentTheme === THEME.DARK ? 'světlý' : 'tmavý'

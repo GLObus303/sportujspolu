@@ -3,8 +3,6 @@ export const SECONDS_IN_YEAR = 365 * 24 * 60 * 60;
 
 export const Routes = {
   DASHBOARD: '/',
-  LOGIN: '/prihlasit',
-  REGISTER: '/registrovat',
   CREATE_EVENT: '/vytvorit-akci',
   EDIT_EVENT: '/upravit-akci',
   ATTEND_EVENT: '/zucastnit-se',

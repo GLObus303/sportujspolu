@@ -17,7 +17,7 @@ export const Button = ({
   <button
     aria-label={ariaLabel}
     className={cx(
-      'min-w-[10rem] rounded-md bg-button p-2 text-white',
+      'min-w-[5rem] rounded-md bg-button px-4 py-2 text-white',
       className,
       {
         'hover:text-primary focus:text-primary': variant === 'primary',

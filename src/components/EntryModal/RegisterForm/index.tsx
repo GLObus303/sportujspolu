@@ -3,23 +3,22 @@
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, FormProvider } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
-import { NextPage } from 'next';
 
 import { registerSchema } from './schema';
-import { registerUser } from '../../api/user';
-import { Loading } from '../../components/Loading';
-import { Input } from '../../components/Input';
-import { PasswordInput } from '../../components/PasswordInput';
-import { AriaLiveErrorMessage } from '../../components/AriaLiveErrorMessage';
-import { Routes } from '../../utils/constants';
-import { RegisterFormData } from '../../types/Form';
-import { AuthWrapper } from '../../components/AuthWrapper';
-import { Button } from '../../components/Button';
+import { registerUser } from '../../../api/user';
+import { Loading } from '../../Loading';
+import { Input } from '../../Input';
+import { PasswordInput } from '../../PasswordInput';
+import { AriaLiveErrorMessage } from '../../AriaLiveErrorMessage';
+import { RegisterFormData } from '../../../types/Form';
+import { AuthWrapper } from '../../AuthWrapper';
+import { Button } from '../../Button';
 
-const RegisterPage: NextPage = () => {
-  const router = useRouter();
+type RegisterFormProps = {
+  onToggleForm: () => void;
+};
 
+export const RegisterForm: React.FC<RegisterFormProps> = ({ onToggleForm }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -35,7 +34,7 @@ const RegisterPage: NextPage = () => {
         setErrorMessage(error.message)
       );
 
-      router.push(Routes.LOGIN);
+      onToggleForm();
     } finally {
       setIsLoading(false);
     }
@@ -47,12 +46,12 @@ const RegisterPage: NextPage = () => {
       subtitleText="Chci se registrovat přes:"
       formText="registrační"
       redirectText="Už máš účet?"
-      redirectRoute={Routes.LOGIN}
-      redirectLinkText="Přihlaš se!"
+      onToggleForm={onToggleForm}
+      redirectButtonText="Přihlaš se!"
     >
       <FormProvider {...formProps}>
         <form
-          className="mt-5 flex w-full max-w-sm flex-col items-center"
+          className="mt-5 flex w-full max-w-sm flex-col items-center text-start text-base"
           onSubmit={formProps.handleSubmit(onSubmit)}
         >
           <Input type="text" name="name" label="Jméno" placeholder="Jméno" />
@@ -70,11 +69,9 @@ const RegisterPage: NextPage = () => {
           ) : (
             <Loading className="mt-5" />
           )}
-          <hr className="mt-10 w-full border-t border-low-contrast" />
+          <hr className="mt-10 w-full border-t border-low-contrast md:w-100" />
         </form>
       </FormProvider>
     </AuthWrapper>
   );
 };
-
-export default RegisterPage;
