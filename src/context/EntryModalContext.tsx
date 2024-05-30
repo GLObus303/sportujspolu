@@ -44,7 +44,7 @@ export const EntryModalProvider: ChildrenFC = ({ children }) => {
       closeEntryModal,
       onSignedUp,
       onSignedUpComplete,
-    ]
+    ],
   );
 
   return (

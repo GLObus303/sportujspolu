@@ -16,7 +16,7 @@ export const OverlayWrapper: ChildrenFC<OverlayWrapperProps> = ({
   <section
     className={cx(
       'fixed inset-0 z-popup grid h-full w-full place-items-center overflow-auto bg-smoke-glass px-5 py-10',
-      className
+      className,
     )}
   >
     <article className="relative mx-auto flex h-fit w-fit flex-col items-center justify-center rounded-md bg-card p-7 text-center text-xl">

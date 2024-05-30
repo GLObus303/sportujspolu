@@ -80,7 +80,7 @@ export const sportsLabels: Record<SportsType, string> = {
 };
 
 export const sportsOptions = Object.entries(sportsLabels).map(
-  ([value, label]) => ({ value, label })
+  ([value, label]) => ({ value, label }),
 );
 
 export const defaultOwner = {

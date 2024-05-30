@@ -40,7 +40,7 @@ export const Textarea: React.FC<TextareaProps> = ({
             'border-primary': !errors?.[name] && watchedValue,
             'border-medium-gray': !errors?.[name] && !watchedValue,
             'border-secondary': errors?.[name],
-          }
+          },
         )}
         placeholder={placeholder}
         {...register(name)}

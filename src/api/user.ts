@@ -27,7 +27,7 @@ export const loginUser = async (formData: LoginFormData) => {
 
 export const registerUser = async (
   formData: RegisterFormData,
-  onError?: OnErrorType
+  onError?: OnErrorType,
 ) => apiPost('user/register', formData, onError);
 
 export const getUser = (onError?: OnErrorType) =>

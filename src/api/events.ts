@@ -8,7 +8,7 @@ export const getEvent = (id: string) =>
 
 export const getAllEvents = (
   page: string = PAGINATION.PAGE,
-  limit: string = PAGINATION.LIMIT
+  limit: string = PAGINATION.LIMIT,
 ) =>
   apiGet<Event[]>(`events/?page=${page}&limit=${limit}&includes=owner`) || [];
 

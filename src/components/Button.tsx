@@ -22,7 +22,7 @@ export const Button = ({
       {
         'hover:text-primary focus:text-primary': variant === 'primary',
         'hover:text-secondary focus:text-secondary': variant === 'secondary',
-      }
+      },
     )}
     type={type}
     {...rest}

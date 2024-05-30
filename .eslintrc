@@ -3,7 +3,7 @@
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "plugin:css-modules/recommended",
-    "next/core-web-vitals"
+    "next/core-web-vitals",
   ],
   "plugins": ["@typescript-eslint", "css-modules"],
   "overrides": [
@@ -13,8 +13,9 @@
       "plugins": ["@typescript-eslint"],
       "parserOptions": { "project": "./tsconfig.json" },
       "rules": {
-        "@typescript-eslint/await-thenable": 2 // Disallow await statements that are not thenable, must be only applied to TS files
-      }
+        "@typescript-eslint/await-thenable": 2, // Disallow await statements that are not thenable, must be only applied to TS files
+        "@typescript-eslint/require-await": 2, // Forbid functions that do not have an await statement inside to have the async keyword
+      },
     },
     {
       "files": ["*.test.ts", "*.test.tsx"],
@@ -22,16 +23,16 @@
       "rules": {
         "no-unused-expressions": 0, // Allow unused expressions in tests
         "@typescript-eslint/no-unused-expressions": 0, // Allow unused expressions in tests
-        "jest/no-focused-tests": 2 // Forbid focused tests
-      }
-    }
+        "jest/no-focused-tests": 2, // Forbid focused tests
+      },
+    },
   ],
 
   "rules": {
     "@typescript-eslint/typedef": "off",
     "@typescript-eslint/consistent-type-imports": [
       "error",
-      { "prefer": "no-type-imports" }
+      { "prefer": "no-type-imports" },
     ],
     "arrow-body-style": [2, "as-needed"], // Remove all explicit returns that are not necessary
     "curly": 2, // Avoid single line IFs, force curly brace on the same line
@@ -59,24 +60,24 @@
       {
         "groups": [
           ["builtin", "external"],
-          ["internal", "parent", "sibling", "index"]
+          ["internal", "parent", "sibling", "index"],
         ],
         "newlines-between": "always",
         "pathGroups": [
           {
             "pattern": "react",
             "group": "builtin",
-            "position": "before"
+            "position": "before",
           },
           {
             "pattern": "./**/*.{scss,css}",
             "group": "sibling",
-            "position": "after"
-          }
+            "position": "after",
+          },
         ],
         "distinctGroup": false,
-        "pathGroupsExcludedImportTypes": ["react", "scss"]
-      }
+        "pathGroupsExcludedImportTypes": ["react", "scss"],
+      },
     ], // Sort imports in groups, react first, then external. After a new line, components and lastly in the same group scss import
     "import/extensions": [
       0,
@@ -84,8 +85,8 @@
       {
         "js": "never",
         "ts": "never",
-        "tsx": "never"
-      }
+        "tsx": "never",
+      },
     ], // Force extensions on imports apart from the JS/TS related ones
 
     "react-hooks/exhaustive-deps": 0, // Allow missing dependencies in useEffect
@@ -97,9 +98,10 @@
     "no-unsafe-optional-chaining": 2, // Forbid optional chaining when it could cause TypeError
     "yoda": 2, // Forbid yoda conditions - if (1 === x) results to if (x === 1)
 
-    "no-shadow": 0, // Allow variable shadowing (handled by TS)
-    "no-unused-vars": 0, // Allow unused variables (handled by TS)
-    "no-use-before-define": 0, // Allow use of variables before they are defined (handled by TS)
+    "no-shadow": 0, // Forbid variable shadowing (handled by TS)
+    "no-unused-vars": 0, // Forbid unused variables (handled by TS)
+    "no-use-before-define": 0, // Forbid use of variables before they are defined (handled by TS)
+    "require-await": 0, // Forbid non-async functions to have async keyword (handled by TS above)
 
     "@typescript-eslint/explicit-module-boundary-types": 0, // Allow functions without explicit return type
     "@typescript-eslint/no-empty-function": 0, // Allow empty functions
@@ -107,9 +109,9 @@
     "@typescript-eslint/no-shadow": 2, // Forbid variable shadowing
     "@typescript-eslint/no-unused-vars": [
       2,
-      { "ignoreRestSiblings": true, "args": "all", "argsIgnorePattern": "^_" }
+      { "ignoreRestSiblings": true, "args": "all", "argsIgnorePattern": "^_" },
     ], // Forbid unused variables except for those starting with _
     "@typescript-eslint/no-use-before-define": 2, // Require variables to be defined before they are used
-    "@typescript-eslint/no-var-requires": 0 // Allow require statements
-  }
+    "@typescript-eslint/no-var-requires": 0, // Allow require statements
+  },
 }

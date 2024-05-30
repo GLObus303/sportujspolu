@@ -75,7 +75,7 @@ export const AuthProvider: ChildrenFC = ({ children }) => {
 
   const value = useMemo(
     () => ({ user, isUserLoggedIn, login, logout }),
-    [user, isUserLoggedIn, login, logout]
+    [user, isUserLoggedIn, login, logout],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

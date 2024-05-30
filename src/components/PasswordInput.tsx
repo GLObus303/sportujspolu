@@ -45,7 +45,7 @@ export const PasswordInput: React.FC<InputProps> = ({
             'border-primary': !errors?.[name] && watchedValue,
             'border-medium-gray': !errors?.[name] && !watchedValue,
             'border-secondary': errors?.[name],
-          }
+          },
         )}
         placeholder="Heslo"
         type={isVisiblePassword ? 'text' : 'password'}

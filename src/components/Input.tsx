@@ -43,7 +43,7 @@ export const Input: React.FC<InputProps> = ({
             'border-primary': !errors?.[name] && watchedValue,
             'border-medium-gray': !errors?.[name] && !watchedValue,
             'border-secondary': errors?.[name],
-          }
+          },
         )}
         placeholder={placeholder}
         type={type}
