@@ -35,7 +35,7 @@ export const AuthModalProvider: ChildrenFC = ({ children }) => {
       openAuthModal,
       closeAuthModal,
     }),
-    [isAuthModalOpen, openAuthModal, closeAuthModal]
+    [isAuthModalOpen, openAuthModal, closeAuthModal],
   );
 
   return (

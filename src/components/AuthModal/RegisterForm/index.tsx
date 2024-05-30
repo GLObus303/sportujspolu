@@ -31,7 +31,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onToggleForm }) => {
 
     try {
       await registerUser(formData, (error: any) =>
-        setErrorMessage(error.message)
+        setErrorMessage(error.message),
       );
 
       onToggleForm();

@@ -25,7 +25,7 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
   const [isPopupInfoOpen, setIsPopupInfoOpen] = useState(false);
   const [status, setStatus] = useState<number>();
   const [pendingEmailData, setPendingEmailData] = useState<EmailData | null>(
-    null
+    null,
   );
 
   const { isUserLoggedIn } = useAuth();
@@ -62,7 +62,7 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
         setIsLoading(false);
       }
     },
-    [eventId]
+    [eventId],
   );
 
   useEffect(() => {
