@@ -23,13 +23,7 @@ type PopupProps = {
 export const Popup: React.FC<PopupProps> = ({ status, onClose }) => (
   <OverlayWrapper onClose={onClose}>
     <div className="w-full py-5 md:w-96">
-      <h2
-        className={`w- my-5 ${
-          status === 200 ? 'text-primary' : 'text-secondary'
-        }`}
-      >
-        {getTitle(status)}
-      </h2>
+      <h2 className="my-5">{getTitle(status)}</h2>
       <Button className="mx-auto mt-5" onClick={onClose}>
         Zavřít
       </Button>

@@ -9,6 +9,7 @@ import { RegisterForm } from './RegisterForm';
 
 export const EntryModal: React.FC = () => {
   const { closeEntryModal, isEntryModalOpen } = useEntryModal();
+
   const [isRegisterForm, setIsRegisterForm] = useState(false);
 
   const handleToggleForm = () => {

@@ -25,7 +25,7 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
   const [isPopupInfoOpen, setIsPopupInfoOpen] = useState(false);
   const [status, setStatus] = useState<number>();
   const [pendingEmailData, setPendingEmailData] = useState<EmailData | null>(
-    null,
+    null
   );
 
   const { isUserLoggedIn } = useAuth();
@@ -41,7 +41,7 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
   const submitMessage = async (emailData: EmailData) => {
     const messageDataFormatted = {
       ...emailData,
-      event_id: eventId,
+      eventId,
     };
 
     setIsLoading(true);
@@ -74,17 +74,19 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
   };
 
   const handleSignedUp = useCallback(async () => {
-    if (pendingEmailData) {
-      await submitMessage(pendingEmailData);
-      setPendingEmailData(null);
+    if (!pendingEmailData) {
+      return;
     }
+
+    await submitMessage(pendingEmailData);
+    setPendingEmailData(null);
   }, [pendingEmailData]);
 
   const handlePopupClose = () => {
     setIsPopupInfoOpen(false);
   };
 
-  onSignedUpComplete?.(handleSignedUp);
+  onSignedUpComplete(handleSignedUp);
 
   return (
     <>
