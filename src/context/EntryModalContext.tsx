@@ -1,26 +1,27 @@
 'use client';
 
-import { createContext, useContext, useMemo, useState } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { ChildrenFC } from '../utils/type';
+import { useAuth } from './AuthContext';
 
-type ModalContextProps = {
+type ModalContextValue = {
   isEntryModalOpen: boolean;
   openEntryModal: () => void;
   closeEntryModal: () => void;
-  onSignedUp: (() => void) | undefined;
-  onSignedUpComplete: (callback: () => void) => void;
 };
 
-const ModalContext = createContext<ModalContextProps | null>(null);
+const ModalContext = createContext<ModalContextValue | null>(null);
 
 export const EntryModalProvider: ChildrenFC = ({ children }) => {
   const [isEntryModalOpen, setIsModalOpen] = useState(false);
-  const [onSignedUp, setOnSignedUp] = useState<() => void>();
-
-  const onSignedUpComplete = (callback: () => void) => {
-    setOnSignedUp(() => callback);
-  };
 
   const openEntryModal = () => {
     setIsModalOpen(true);
@@ -35,16 +36,8 @@ export const EntryModalProvider: ChildrenFC = ({ children }) => {
       isEntryModalOpen,
       openEntryModal,
       closeEntryModal,
-      onSignedUp,
-      onSignedUpComplete,
     }),
-    [
-      isEntryModalOpen,
-      openEntryModal,
-      closeEntryModal,
-      onSignedUp,
-      onSignedUpComplete,
-    ],
+    [isEntryModalOpen, openEntryModal, closeEntryModal],
   );
 
   return (
@@ -52,11 +45,34 @@ export const EntryModalProvider: ChildrenFC = ({ children }) => {
   );
 };
 
-export const useEntryModal = (): ModalContextProps => {
+type UseEntryModal = (props?: { onSignedUp?: () => void }) => ModalContextValue;
+
+export const useEntryModal: UseEntryModal = ({ onSignedUp } = {}) => {
   const context = useContext(ModalContext);
   if (!context) {
     throw new Error('useEntryModal must be used within a ModalProvider');
   }
 
-  return context;
+  const { isUserLoggedIn } = useAuth();
+  const prevIsUserLoggedIn = useRef(isUserLoggedIn);
+
+  const { isEntryModalOpen, openEntryModal, closeEntryModal } = context;
+
+  useEffect(() => {
+    if (!prevIsUserLoggedIn.current && isUserLoggedIn) {
+      onSignedUp?.();
+    }
+
+    prevIsUserLoggedIn.current = isUserLoggedIn;
+  }, [isUserLoggedIn]);
+
+  return useMemo(
+    () => ({
+      isEntryModalOpen,
+      openEntryModal,
+      closeEntryModal,
+      onSignedUp,
+    }),
+    [isEntryModalOpen, openEntryModal, closeEntryModal, onSignedUp],
+  );
 };

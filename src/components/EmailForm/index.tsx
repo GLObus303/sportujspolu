@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -29,14 +29,6 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
   );
 
   const { isUserLoggedIn } = useAuth();
-  const { openEntryModal, onSignedUpComplete } = useEntryModal();
-
-  const formProps = useForm<EmailData>({
-    resolver: yupResolver(emailSchema),
-    defaultValues: {
-      text: '',
-    },
-  });
 
   const submitMessage = async (emailData: EmailData) => {
     const messageDataFormatted = {
@@ -62,6 +54,22 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
     }
   };
 
+  const { openEntryModal } = useEntryModal({
+    onSignedUp: async () => {
+      if (pendingEmailData) {
+        await submitMessage(pendingEmailData);
+        setPendingEmailData(null);
+      }
+    },
+  });
+
+  const formProps = useForm<EmailData>({
+    resolver: yupResolver(emailSchema),
+    defaultValues: {
+      text: '',
+    },
+  });
+
   const onSubmit = async (emailData: EmailData) => {
     if (!isUserLoggedIn) {
       setPendingEmailData(emailData);
@@ -73,18 +81,9 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
     await submitMessage(emailData);
   };
 
-  const handleSignedUp = useCallback(async () => {
-    if (pendingEmailData) {
-      await submitMessage(pendingEmailData);
-      setPendingEmailData(null);
-    }
-  }, [pendingEmailData]);
-
   const handlePopupClose = () => {
     setIsPopupInfoOpen(false);
   };
-
-  onSignedUpComplete?.(handleSignedUp);
 
   return (
     <>
