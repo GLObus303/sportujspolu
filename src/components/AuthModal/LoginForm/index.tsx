@@ -20,7 +20,6 @@ import {
 import { LoginFormData } from '../../../types/Form';
 import { AuthWrapper } from '../../AuthWrapper';
 import { Button } from '../../Button';
-import { useEntryModal } from '../../../context/EntryModalContext';
 
 type LoginFormProps = {
   onToggleForm: () => void;
@@ -28,7 +27,6 @@ type LoginFormProps = {
 
 export const LoginForm: React.FC<LoginFormProps> = ({ onToggleForm }) => {
   const { login } = useAuth();
-  const { onSignedUp, closeEntryModal } = useEntryModal();
 
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -65,9 +63,6 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onToggleForm }) => {
       });
 
       login(response.token);
-
-      onSignedUp?.();
-      closeEntryModal();
     } finally {
       setIsLoading(false);
     }

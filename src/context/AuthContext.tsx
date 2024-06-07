@@ -66,7 +66,9 @@ export const AuthProvider: ChildrenFC = ({ children }) => {
   }, []);
 
   const logout = useCallback(() => {
-    nookies.destroy(null, 'token');
+    nookies.destroy(null, 'token', {
+      path: '/',
+    });
 
     setUser(emptyUser);
   }, []);
@@ -75,7 +77,7 @@ export const AuthProvider: ChildrenFC = ({ children }) => {
 
   const value = useMemo(
     () => ({ user, isUserLoggedIn, login, logout }),
-    [user, isUserLoggedIn, login, logout],
+    [user, isUserLoggedIn, login, logout]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

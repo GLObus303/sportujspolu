@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 import { Header } from './Header';
 import { ChildrenFC } from '../../utils/type';
 import { THEME } from '../../utils/constants';
-import { EntryModal } from '../EntryModal';
+import { AuthModal } from '../AuthModal';
 
 export const Layout: ChildrenFC = ({ children }) => {
   const cookieStore = cookies();
@@ -14,7 +14,7 @@ export const Layout: ChildrenFC = ({ children }) => {
       <Header defaultTheme={defaultTheme} />
       <main className="mx-auto max-w-layout p-0 md:p-14">
         {children}
-        <EntryModal />
+        <AuthModal />
       </main>
     </>
   );

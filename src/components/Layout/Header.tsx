@@ -7,7 +7,7 @@ import { LogoIcon } from '../icons/LogoIcon';
 import { ProfileIcon } from '../icons/ProfileIcon';
 import { Routes } from '../../utils/constants';
 import { LightSwitch } from '../LightSwitch';
-import { useEntryModal } from '../../context/EntryModalContext';
+import { useAuthModal } from '../../context/AuthModalContext';
 import { Button } from '../Button';
 
 type HeaderProps = {
@@ -20,7 +20,7 @@ export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => {
     logout,
   } = useAuth();
 
-  const { openEntryModal } = useEntryModal();
+  const { openAuthModal } = useAuthModal();
 
   return (
     <header className="fixed top-0 z-header w-full border-b border-low-contrast bg-background">
@@ -57,7 +57,7 @@ export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => {
                       <Button onClick={logout}>Odhlásit&nbsp;se</Button>
                     </>
                   ) : (
-                    <Button onClick={openEntryModal}>Přihlásit&nbsp;se</Button>
+                    <Button onClick={openAuthModal}>Přihlásit&nbsp;se</Button>
                   )}
                 </div>
               </div>
