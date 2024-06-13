@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useAuthModal } from '../../context/AuthModalContext';
 import { OverlayWrapper } from '../OverlayWrapper';
@@ -14,16 +14,18 @@ export const AuthModal: React.FC = () => {
 
   const [isRegisterForm, setIsRegisterForm] = useState(false);
 
+  useEffect(() => {
+    if (isUserLoggedIn) {
+      closeAuthModal();
+    }
+  }, [isUserLoggedIn]);
+
   const handleToggleForm = () => {
     setIsRegisterForm(!isRegisterForm);
   };
 
   if (!isAuthModalOpen) {
     return null;
-  }
-
-  if (isUserLoggedIn) {
-    closeAuthModal();
   }
 
   return (
