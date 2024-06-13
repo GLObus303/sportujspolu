@@ -1,6 +1,7 @@
 import { HTTPError } from 'ky';
 
-import { apiPost } from './base';
+import { apiGet, apiPatch, apiPost } from './base';
+import { Approval, Message } from '../types/Message';
 
 export const postMessage = async (formData: {
   eventId: string;
@@ -20,4 +21,15 @@ export const postMessage = async (formData: {
       },
     };
   }
+};
+
+export const getAllMessages = async () => apiGet('messages/email/u/') || [];
+
+export const patchMessageRequest = async (id: string, approval: Approval) => {
+  const data = await apiPatch<Message>(
+    `messages/email/${id}/approve`,
+    approval,
+  );
+
+  return data;
 };

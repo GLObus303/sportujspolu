@@ -1,28 +1,26 @@
 'use client';
 
-import { FC } from 'react';
-import { useRouter } from 'next/navigation';
-
 import { useAuth } from '../../../context/AuthContext';
-import { Routes } from '../../../utils/constants';
+import { MessageRequestCard } from '../../../components/MessageRequestCard';
+import { Message } from '../../../types/Message';
 
-export const ProfileContent: FC = () => {
-  const router = useRouter();
-  const {
-    isUserLoggedIn,
-    user: { name, email },
-  } = useAuth();
+export const ProfileContent: React.FC = () => {
+  const { messages } = useAuth();
 
-  if (!isUserLoggedIn) {
-    router.push(Routes.DASHBOARD);
-
+  if (!messages?.length) {
     return null;
   }
 
   return (
-    <p className="mt-20 flex flex-col py-10 text-center">
-      <span className="text-3xl font-medium">{name}</span>
-      <span className="text-xl font-light">{email}</span>
-    </p>
+    <section className="w-full pt-5 md:pt-0 md:pl-14 md:max-w-2xl">
+      <h1 className="mt-24 px-28 text-center text-2xl font-medium leading-normal md:mt-14 md:px-0 lg:text-start lg:text-4xl">
+        Žádosti o zprávy
+      </h1>
+      <ul className="mt-10 space-y-5 md:mt-14">
+        {messages.map((message: Message) => (
+          <MessageRequestCard key={message?.id} message={message} />
+        ))}
+      </ul>
+    </section>
   );
 };
