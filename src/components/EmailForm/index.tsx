@@ -1,16 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-import { ReactNode } from 'react'; // Add this import
+import { useState, useEffect, useCallback } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 
+import { useAuth } from '../../context/AuthContext';
+import { useAuthModal } from '../../context/AuthModalContext';
 import { postMessage } from '../../api/messages';
 import { Textarea } from '../Textarea';
 import { emailSchema } from './schema';
-import { Popup } from '../Popup';
-import { PopupContent } from './PopupContent';
 import { Button } from '../Button';
+import { Popup } from './Popup';
 
 type EmailFormProps = {
   eventId: string;
@@ -20,44 +20,70 @@ type EmailData = {
   text: string;
 };
 
-export const EmailForm: React.FC<EmailFormProps> = ({ eventId }): ReactNode => {
+export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPopupInfoOpen, setIsPopupInfoOpen] = useState(false);
   const [status, setStatus] = useState<number>();
+  const [pendingEmailData, setPendingEmailData] = useState<EmailData | null>(
+    null,
+  );
 
-  const formProps = useForm({
+  const { isUserLoggedIn } = useAuth();
+  const { openAuthModal } = useAuthModal();
+
+  const formProps = useForm<EmailData>({
     resolver: yupResolver(emailSchema),
     defaultValues: {
       text: '',
     },
   });
 
-  const onSubmit = async (emailData: EmailData) => {
-    const messageDataFormatted = {
-      ...emailData,
-      eventId,
-    };
+  const submitMessage = useCallback(
+    async (emailData: EmailData) => {
+      const messageDataFormatted = {
+        ...emailData,
+        eventId,
+      };
 
-    setIsLoading(true);
+      setIsLoading(true);
 
-    try {
-      const response = await postMessage(messageDataFormatted);
+      try {
+        const response = await postMessage(messageDataFormatted);
 
-      if (response && !response.error) {
-        setStatus(200);
+        if (response && !response.error) {
+          setStatus(200);
+        }
+
+        if (response?.error) {
+          setStatus(response.error?.status);
+        }
+      } finally {
+        setIsPopupInfoOpen(true);
+        setIsLoading(false);
       }
+    },
+    [eventId],
+  );
 
-      if (response?.error) {
-        setStatus(response.error?.status);
-      }
-    } finally {
-      setIsLoading(false);
-      setIsModalOpen(true);
+  useEffect(() => {
+    if (isUserLoggedIn && pendingEmailData) {
+      submitMessage(pendingEmailData);
     }
+  }, [isUserLoggedIn, pendingEmailData, submitMessage]);
+
+  const onSubmit = async (emailData: EmailData) => {
+    if (!isUserLoggedIn) {
+      setPendingEmailData(emailData);
+      openAuthModal();
+
+      return;
+    }
+
+    await submitMessage(emailData);
   };
 
-  const handleClose = () => {
-    setIsModalOpen(false);
+  const handlePopupClose = () => {
+    setIsPopupInfoOpen(false);
   };
 
   return (
@@ -77,11 +103,8 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }): ReactNode => {
           </Button>
         </form>
       </FormProvider>
-      {isModalOpen && (
-        <Popup onClose={handleClose}>
-          <PopupContent status={status} onClose={handleClose} />
-        </Popup>
-      )}
+
+      {isPopupInfoOpen && <Popup status={status} onClose={handlePopupClose} />}
     </>
   );
 };

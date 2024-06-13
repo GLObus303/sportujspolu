@@ -43,7 +43,7 @@ export const Select: React.FC<SelectProps> = ({
             'border-primary': !errors?.[name] && watchedValue,
             'border-medium-gray': !errors?.[name] && !watchedValue,
             'border-secondary': errors?.[name],
-          }
+          },
         )}
         placeholder={placeholder}
         {...register(name)}

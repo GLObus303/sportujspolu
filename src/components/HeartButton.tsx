@@ -36,7 +36,7 @@ export const HeartButton: React.FC<HeartButtonProps> = ({ className }) => {
       onClick={handleLikeEvent}
       className={cx(
         'transition-transform duration-200 ease-in-out hover:scale-115 motion-reduce:hover:scale-100',
-        className
+        className,
       )}
     >
       <HeartIcon

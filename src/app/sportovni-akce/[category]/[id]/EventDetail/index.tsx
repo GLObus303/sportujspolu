@@ -27,7 +27,7 @@ export const EventDetail: React.FC<EventDetailProps> = ({
     <section
       className={cx(
         className,
-        'top-14 w-full max-w-lg rounded-md bg-card p-7 text-lg shadow-md lg:max-w-md'
+        'top-14 w-full max-w-lg rounded-md bg-card p-7 text-lg shadow-md lg:max-w-md',
       )}
     >
       <article className="flex flex-col rounded-md">

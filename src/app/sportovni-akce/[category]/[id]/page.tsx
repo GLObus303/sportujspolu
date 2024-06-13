@@ -37,7 +37,7 @@ const EventPage: NextPage<EventPageProps> = async ({
   const levelLabel = levelLabels[level];
 
   const expectedCategory = slugifyCategory(
-    `${sportLabel} ${location} ${levelLabel}`
+    `${sportLabel} ${location} ${levelLabel}`,
   );
 
   if (category !== expectedCategory) {

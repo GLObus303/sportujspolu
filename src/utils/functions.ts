@@ -13,7 +13,7 @@ export const getSportLabel = (sport: SportsType) =>
 
 export const getFirstQueryParam = (
   param: string | string[] | undefined,
-  defaultParam: string
+  defaultParam: string,
 ) => {
   const firstParam = Array.isArray(param) ? param[0] : param;
 

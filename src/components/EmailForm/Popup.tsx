@@ -1,5 +1,6 @@
 import { ERROR_MESSAGE, SUCCESS_MESSAGE } from '../../utils/constants';
 import { Button } from '../Button';
+import { OverlayWrapper } from '../OverlayWrapper';
 
 const getTitle = (status: number | undefined) => {
   switch (status) {
@@ -14,23 +15,18 @@ const getTitle = (status: number | undefined) => {
   }
 };
 
-type PopupContentProps = {
+type PopupProps = {
   status: number | undefined;
   onClose: () => void;
 };
 
-export const PopupContent: React.FC<PopupContentProps> = ({
-  status,
-  onClose,
-}) => (
-  <>
-    <h2
-      className={`mt-5 ${status === 200 ? 'text-primary' : 'text-secondary'}`}
-    >
-      {getTitle(status)}
-    </h2>
-    <Button className="mx-auto mt-5" onClick={onClose}>
-      Zavřít
-    </Button>
-  </>
+export const Popup: React.FC<PopupProps> = ({ status, onClose }) => (
+  <OverlayWrapper onClose={onClose}>
+    <div className="w-full py-5 md:w-96">
+      <h2 className="my-5">{getTitle(status)}</h2>
+      <Button className="mx-auto mt-5" onClick={onClose}>
+        Zavřít
+      </Button>
+    </div>
+  </OverlayWrapper>
 );

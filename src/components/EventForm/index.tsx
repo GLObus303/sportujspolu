@@ -55,7 +55,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
   });
   const { watch } = formProps;
 
-  const onSubmit = async (data: CreateEventValues) => {
+  const onSubmit = (data: CreateEventValues) => {
     const dateTimeIso = format(new Date(data.date), "yyyy-MM-dd'T'HH:mm:ss'Z'");
 
     const eventDataFormatted = {
@@ -170,7 +170,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
                   type="button"
                   className={cx(
                     'mx-11 flex flex-row items-center fill-button py-1 text-sm hover:fill-secondary',
-                    { hidden: !event?.id }
+                    { hidden: !event?.id },
                   )}
                   aria-label="Smazat událost"
                   onClick={openDeleteConfirmation}

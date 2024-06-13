@@ -27,7 +27,7 @@ export const privateApi = () =>
 export const apiPost = <T = void>(
   endpoint: string,
   body: unknown,
-  onError?: OnErrorType
+  onError?: OnErrorType,
 ) => {
   const apiInstance = privateApi();
 
@@ -46,7 +46,7 @@ export const apiPost = <T = void>(
 export const apiPut = <T = void>(
   endpoint: string,
   body: unknown,
-  onError?: OnErrorType
+  onError?: OnErrorType,
 ) => {
   const apiInstance = privateApi();
 
@@ -79,7 +79,7 @@ export const apiGet = <T = void>(endpoint: string, onError?: OnErrorType) => {
 
 export const apiDelete = <T = void>(
   endpoint: string,
-  onError?: OnErrorType
+  onError?: OnErrorType,
 ) => {
   const apiInstance = privateApi();
 
