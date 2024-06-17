@@ -23,7 +23,8 @@ export const postMessage = async (formData: {
   }
 };
 
-export const getAllMessages = async () => apiGet('messages/email/u/') || [];
+export const getAllMessages = async () =>
+  apiGet('messages/email/user-requests') || [];
 
 export const patchMessageRequest = async (id: string, approval: Approval) => {
   const data = await apiPatch<Message>(
