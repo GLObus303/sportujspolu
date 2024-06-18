@@ -94,3 +94,22 @@ export const apiDelete = <T = void>(
     return null;
   }
 };
+
+export const apiPatch = <T = void>(
+  endpoint: string,
+  body: unknown,
+  onError?: OnErrorType,
+) => {
+  const apiInstance = privateApi();
+
+  try {
+    return apiInstance.patch(endpoint, { json: body }).json<T>();
+  } catch (error: any) {
+    onError?.({
+      status: error.response?.status,
+      message: ERROR_MESSAGE.GENERIC_ERROR,
+    });
+
+    return null;
+  }
+};
