@@ -22,6 +22,8 @@ type AuthContextProps = {
   logout: () => void;
 };
 
+// comment
+
 const emptyUser = {
   id: '',
   name: '',
