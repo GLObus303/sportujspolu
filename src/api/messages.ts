@@ -23,8 +23,21 @@ export const postMessage = async (formData: {
   }
 };
 
-export const getAllMessages = async () =>
-  apiGet('messages/email/user-requests') || [];
+export const getMessages = async (isApproved?: boolean | null) => {
+  const data =
+    (await apiGet<Message[]>(
+      `messages/email/received-owner-requests?approvedFilter=${isApproved}`,
+    )) || [];
+
+  return data;
+};
+
+export const getRequests = async () => {
+  const data =
+    (await apiGet<Message[]>('messages/email/sent-user-requests')) || [];
+
+  return data;
+};
 
 export const patchMessageRequest = async (id: string, approval: Approval) => {
   const data = await apiPatch<Message>(

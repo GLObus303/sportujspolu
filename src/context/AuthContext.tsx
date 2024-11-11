@@ -14,12 +14,9 @@ import { User } from '../types/User';
 import { SECONDS_IN_WEEK } from '../utils/constants';
 import { useEffectAsync } from '../hooks/useEffectAsync';
 import { ChildrenFC } from '../utils/type';
-import { getAllMessages } from '../api/messages';
-import { Message } from '../types/Message';
 
 type AuthContextProps = {
   user: User;
-  messages: Message[];
   isUserLoggedIn: boolean;
   login: (token: string) => void;
   logout: () => void;
@@ -36,7 +33,6 @@ export const AuthContext = createContext<AuthContextProps | null>(null);
 
 export const AuthProvider: ChildrenFC = ({ children }) => {
   const [user, setUser] = useState(emptyUser);
-  const [messages, setMessages] = useState([]);
 
   useEffectAsync(async () => {
     try {
@@ -50,15 +46,9 @@ export const AuthProvider: ChildrenFC = ({ children }) => {
       if (userData) {
         setUser(userData);
       }
-
-      const messagesData = await getAllMessages();
-      if (messagesData) {
-        setMessages(messagesData);
-      }
     } catch (error) {
       nookies.destroy(null, 'token');
       setUser(emptyUser);
-      setMessages([]);
     }
   }, []);
 
@@ -86,8 +76,13 @@ export const AuthProvider: ChildrenFC = ({ children }) => {
   const isUserLoggedIn = user.id !== '';
 
   const value = useMemo(
-    () => ({ user, messages, isUserLoggedIn, login, logout }),
-    [user, messages, isUserLoggedIn, login, logout],
+    () => ({
+      user,
+      isUserLoggedIn,
+      login,
+      logout,
+    }),
+    [user, isUserLoggedIn, login, logout],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 
 import { useAuth } from '../../context/AuthContext';
@@ -9,6 +10,9 @@ import { Routes } from '../../utils/constants';
 import { LightSwitch } from '../LightSwitch';
 import { useAuthModal } from '../../context/AuthModalContext';
 import { Button } from '../Button';
+import { useEffectAsync } from '../../hooks/useEffectAsync';
+import { getMessages } from '../../api/messages';
+import { Message } from '../../types/Message';
 
 type HeaderProps = {
   defaultTheme: string;
@@ -20,7 +24,21 @@ export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => {
     logout,
   } = useAuth();
 
+  const [notifications, setNotifications] = useState<Message[]>([]);
+
   const { openAuthModal } = useAuthModal();
+
+  useEffectAsync(async () => {
+    try {
+      const notificationsData = await getMessages(true);
+
+      if (notificationsData) {
+        setNotifications(notificationsData);
+      }
+    } catch (error) {
+      setNotifications([]);
+    }
+  }, []);
 
   return (
     <header className="fixed top-0 z-header w-full border-b border-low-contrast bg-background">
@@ -43,7 +61,7 @@ export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => {
                       {name && (
                         <Link
                           href={`${Routes.USER}/${id}`}
-                          className="items-center justify-center text-xl hover:text-primary focus:text-primary"
+                          className="items-center justify-center text-xl hover:text-primary focus:text-primary relative"
                         >
                           <ProfileIcon
                             aria-label="User profile"
@@ -52,6 +70,13 @@ export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => {
                           <span className="hidden whitespace-nowrap sm:inline">
                             {name}
                           </span>
+                          {notifications?.length > 0 && (
+                            <span className="text-xs bg-mandarin text-white absolute -top-1 -right-3 p-0.5 min-w-5 min-h-5 rounded-full flex justify-center items-center">
+                              {notifications.length > 9
+                                ? '9+'
+                                : notifications.length}
+                            </span>
+                          )}
                         </Link>
                       )}
                       <Button onClick={logout}>Odhlásit&nbsp;se</Button>

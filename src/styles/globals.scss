@@ -11,29 +11,35 @@ html {
 }
 
 * {
-  font-family: "kanit", sans-serif;
+  font-family: 'kanit', sans-serif;
 }
 
 :root {
-  --background: #F9F9FB;
+  --background: #f9f9fb;
   --card: #ffffff;
-  --low-contrast: #D9D9D9;
+  --low-contrast: #d9d9d9;
   --faded: var(--low-contrast);
   --button: #000000;
   --accent: #131313;
   --text: #000000;
-  --pistachio: #94FFA9;
+  --pistachio: #94ffa9;
+  --pale-aloe: #e2ffe7;
+  --soft-cheek: #ffeef5;
+  --baby-fox: #fff2e9;
 }
 
 .dark {
-  --background: #131313; 
+  --background: #131313;
   --card: #242222;
   --faded: var(--card);
   --low-contrast: #575050;
-  --button:  var(--low-contrast);
+  --button: var(--low-contrast);
   --accent: #a59d9d;
   --text: #ffffff;
   --pistachio: #00550e;
+  --pale-aloe: #303830;
+  --soft-cheek: #3a2f33;
+  --baby-fox: #3a332c;
 }
 
 p {

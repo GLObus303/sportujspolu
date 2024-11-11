@@ -1,19 +1,18 @@
 import { NextPage } from 'next';
 
-import { ProfileContent } from './ProfileContent';
 import { UserInfo } from './UserInfo';
-import { ProfileIcon } from '../../../components/icons/ProfileIcon';
+import { UserMessageBox } from './UserMessageBox';
 
 const UserPage: NextPage = () => (
-  <section className="relative flex h-full flex-col md:flex-row px-5">
-    <article className="relative md:sticky top-[208px] md:mt-[150px] block h-fit w-full items-center justify-center rounded-md bg-card shadow-md mb-40">
-      <figure className="absolute -top-24 left-1/2 flex h-48 w-48 -translate-x-1/2 transform items-center justify-center rounded-full bg-low-contrast">
-        <ProfileIcon className="h-32 w-32" />
-      </figure>
+  <div className="relative flex flex-col items-start px-4 md:flex-row md:px-0 gap-5 lg:gap-14">
+    <div className="top-[28px] relative md:sticky block w-full md:max-w-lg lg:max-w-md">
+      <h1 className="mt-24 px-28 text-center text-2xl font-medium leading-normal md:mt-14 md:px-0 md:text-start lg:text-4xl">
+        Můj profil
+      </h1>
       <UserInfo />
-    </article>
-    <ProfileContent />
-  </section>
+    </div>
+    <UserMessageBox />
+  </div>
 );
 
 export default UserPage;
