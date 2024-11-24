@@ -4,8 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { EventDetail } from './EventDetail';
 import { Events } from '../../../../components/Events';
-import { getAllEvents } from '../../../../api/events';
-import { getEvent } from '../../../../api/events';
+import { getEvent, getAllEvents } from '../../../../api/events';
 import { defaultOwner, levelLabels } from '../../../../utils/constants';
 import { getImagePath, getSportLabel } from '../../../../utils/functions';
 import { formatDate, formatTime } from '../../../../utils/dateUtils';

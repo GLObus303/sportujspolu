@@ -11,7 +11,7 @@ import { EmailWithCopy } from './EmailWithCopy';
 import { slugifyCategory } from '../utils/slugifyUtils';
 import { getSportLabel } from '../utils/functions';
 import { Message } from '../types/Message';
-import { patchMessageRequest } from '../api/messages';
+import { approveMessageRequest } from '../api/messages';
 import { Button } from './Button';
 
 type MessageCardProps = {
@@ -81,7 +81,7 @@ export const MessageCard: React.FC<MessageCardProps> = ({ message }) => {
 
   const handleApprove = async () => {
     try {
-      const response = await patchMessageRequest(id, { approved: true });
+      const response = await approveMessageRequest(id, { approved: true });
 
       setIsApproved(true);
       setUpdatedRequesterEmail(response?.requesterEmail);
@@ -92,7 +92,7 @@ export const MessageCard: React.FC<MessageCardProps> = ({ message }) => {
 
   const handleReject = () => {
     try {
-      patchMessageRequest(id, { approved: false });
+      approveMessageRequest(id, { approved: false });
 
       setIsApproved(false);
     } catch (error) {

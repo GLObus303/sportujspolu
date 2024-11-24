@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { MessageBox } from '../../../components/MessageBox';
 import { Loading } from '../../../components/Loading';
 import { useEffectAsync } from '../../../hooks/useEffectAsync';
-import { getMessages, getRequests } from '../../../api/messages';
+import { getOwnerRequests, getUserRequests } from '../../../api/messages';
 import { Message } from '../../../types/Message';
 import { useAuth } from '../../../context/AuthContext';
 
@@ -27,8 +27,8 @@ export const UserMessageBox: React.FC = () => {
 
     try {
       const [messagesData, requestsData] = await Promise.all([
-        getMessages(),
-        getRequests(),
+        getOwnerRequests(),
+        getUserRequests(),
       ]);
 
       setMessages(messagesData);

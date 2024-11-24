@@ -6,7 +6,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { useAuth } from '../../context/AuthContext';
 import { useAuthModal } from '../../context/AuthModalContext';
-import { postMessage } from '../../api/messages';
+import { sendEmailRequest } from '../../api/messages';
 import { Textarea } from '../Textarea';
 import { emailSchema } from './schema';
 import { Button } from '../Button';
@@ -48,7 +48,7 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
       setIsLoading(true);
 
       try {
-        const response = await postMessage(messageDataFormatted);
+        const response = await sendEmailRequest(messageDataFormatted);
 
         if (response && !response.error) {
           setStatus(200);

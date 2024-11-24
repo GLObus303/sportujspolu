@@ -11,7 +11,7 @@ import { LightSwitch } from '../LightSwitch';
 import { useAuthModal } from '../../context/AuthModalContext';
 import { Button } from '../Button';
 import { useEffectAsync } from '../../hooks/useEffectAsync';
-import { getMessages } from '../../api/messages';
+import { getOwnerRequests } from '../../api/messages';
 import { Message } from '../../types/Message';
 
 type HeaderProps = {
@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => {
 
   useEffectAsync(async () => {
     try {
-      const notificationsData = await getMessages(true);
+      const notificationsData = await getOwnerRequests(true);
 
       if (notificationsData) {
         setNotifications(notificationsData);

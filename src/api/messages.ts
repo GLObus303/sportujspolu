@@ -3,7 +3,7 @@ import { HTTPError } from 'ky';
 import { apiGet, apiPatch, apiPost } from './base';
 import { Approval, Message } from '../types/Message';
 
-export const postMessage = async (formData: {
+export const sendEmailRequest = async (formData: {
   eventId: string;
   text: string;
 }) => {
@@ -23,23 +23,21 @@ export const postMessage = async (formData: {
   }
 };
 
-export const getMessages = async (isApproved?: boolean | null) => {
-  const data =
-    (await apiGet<Message[]>(
-      `messages/email/received-owner-requests?approvedFilter=${isApproved}`,
-    )) || [];
+export const getOwnerRequests = async (isApproved?: boolean | null) => {
+  const data = await apiGet<Message[]>(
+    `messages/email/received-owner-requests?approvedFilter=${isApproved}`,
+  );
 
-  return data;
+  return data || [];
 };
 
-export const getRequests = async () => {
-  const data =
-    (await apiGet<Message[]>('messages/email/sent-user-requests')) || [];
+export const getUserRequests = async () => {
+  const data = await apiGet<Message[]>('messages/email/sent-user-requests');
 
-  return data;
+  return data || [];
 };
 
-export const patchMessageRequest = async (id: string, approval: Approval) => {
+export const approveMessageRequest = async (id: string, approval: Approval) => {
   const data = await apiPatch<Message>(
     `messages/email/${id}/approve`,
     approval,

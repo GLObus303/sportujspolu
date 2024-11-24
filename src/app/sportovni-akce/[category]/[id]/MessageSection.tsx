@@ -8,7 +8,7 @@ import { useAuth } from '../../../../context/AuthContext';
 import { Loading } from '../../../../components/Loading';
 import { MessageBox } from '../../../../components/MessageBox';
 import { Message } from '../../../../types/Message';
-import { getMessages } from '../../../../api/messages';
+import { getOwnerRequests } from '../../../../api/messages';
 import { useEffectAsync } from '../../../../hooks/useEffectAsync';
 
 type MessageSectionProps = {
@@ -35,7 +35,7 @@ export const MessageSection: React.FC<MessageSectionProps> = ({
 
   useEffectAsync(async () => {
     try {
-      const messagesData = await getMessages();
+      const messagesData = await getOwnerRequests();
 
       setMessages(messagesData);
     } catch (error) {

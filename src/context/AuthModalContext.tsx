@@ -19,14 +19,14 @@ type ModalContextProps = {
 const ModalContext = createContext<ModalContextProps | null>(null);
 
 export const AuthModalProvider: ChildrenFC = ({ children }) => {
-  const [isAuthModalOpen, setIsModalOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   const openAuthModal = useCallback(() => {
-    setIsModalOpen(true);
+    setIsAuthModalOpen(true);
   }, []);
 
   const closeAuthModal = useCallback(() => {
-    setIsModalOpen(false);
+    setIsAuthModalOpen(false);
   }, []);
 
   const value = useMemo(

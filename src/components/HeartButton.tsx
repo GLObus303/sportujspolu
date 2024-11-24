@@ -1,7 +1,6 @@
 'use client';
 
-import { SVGProps } from 'react';
-import { useState } from 'react';
+import { useState, SVGProps } from 'react';
 import cx from 'classnames';
 
 type HeartButtonProps = {
