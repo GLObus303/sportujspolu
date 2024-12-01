@@ -6,36 +6,37 @@ import { MessageBox } from '../../../components/MessageBox';
 import { Loading } from '../../../components/Loading';
 import { useEffectAsync } from '../../../hooks/useEffectAsync';
 import { getOwnerRequests, getUserRequests } from '../../../api/messages';
-import { Message } from '../../../types/Message';
+import { OwnerRequestType, UserRequestType } from '../../../types/Message';
 import { useAuth } from '../../../context/AuthContext';
 
 export const UserMessageBox: React.FC = () => {
   const {
     user: { id },
   } = useAuth();
+
   const [isLoading, setIsLoading] = useState(true);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [requests, setRequests] = useState<Message[]>([]);
+  const [ownerRequest, setOwnerRequest] = useState<OwnerRequestType[]>([]);
+  const [userRequests, setUserRequests] = useState<UserRequestType[]>([]);
 
   useEffectAsync(async () => {
     if (!id) {
-      setMessages([]);
-      setRequests([]);
+      setOwnerRequest([]);
+      setUserRequests([]);
 
       return;
     }
 
     try {
-      const [messagesData, requestsData] = await Promise.all([
+      const [ownerRequestData, requestsData] = await Promise.all([
         getOwnerRequests(),
         getUserRequests(),
       ]);
 
-      setMessages(messagesData);
-      setRequests(requestsData);
+      setOwnerRequest(ownerRequestData);
+      setUserRequests(requestsData);
     } catch (error) {
-      setMessages([]);
-      setRequests([]);
+      setOwnerRequest([]);
+      setUserRequests([]);
     } finally {
       setIsLoading(false);
     }
@@ -48,8 +49,8 @@ export const UserMessageBox: React.FC = () => {
   return (
     <MessageBox
       className="mt-10 md:mt-14"
-      messages={messages}
-      requests={requests}
+      ownerRequest={ownerRequest}
+      userRequests={userRequests}
     />
   );
 };

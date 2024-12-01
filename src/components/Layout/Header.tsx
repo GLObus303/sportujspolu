@@ -12,7 +12,7 @@ import { useAuthModal } from '../../context/AuthModalContext';
 import { Button } from '../Button';
 import { useEffectAsync } from '../../hooks/useEffectAsync';
 import { getOwnerRequests } from '../../api/messages';
-import { Message } from '../../types/Message';
+import { OwnerRequestType } from '../../types/Message';
 
 type HeaderProps = {
   defaultTheme: string;
@@ -24,13 +24,13 @@ export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => {
     logout,
   } = useAuth();
 
-  const [notifications, setNotifications] = useState<Message[]>([]);
+  const [notifications, setNotifications] = useState<OwnerRequestType[]>([]);
 
   const { openAuthModal } = useAuthModal();
 
   useEffectAsync(async () => {
     try {
-      const notificationsData = await getOwnerRequests(true);
+      const notificationsData = await getOwnerRequests({ isApproved: null });
 
       if (notificationsData) {
         setNotifications(notificationsData);
@@ -58,27 +58,26 @@ export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => {
                   <LightSwitch defaultTheme={defaultTheme} />
                   {email ? (
                     <>
-                      {name && (
-                        <Link
-                          href={`${Routes.USER}/${id}`}
-                          className="items-center justify-center text-xl hover:text-primary focus:text-primary relative"
-                        >
-                          <ProfileIcon
-                            aria-label="User profile"
-                            className="inline h-6 w-6 fill-text hover:fill-primary focus:fill-primary sm:hidden"
-                          />
-                          <span className="hidden whitespace-nowrap sm:inline">
-                            {name}
+                      <Link
+                        href={`${Routes.USER}/${id}`}
+                        className="items-center justify-center text-xl hover:text-primary focus:text-primary relative"
+                      >
+                        <ProfileIcon
+                          aria-label="User profile"
+                          className="inline h-6 w-6 fill-text hover:fill-primary focus:fill-primary sm:hidden"
+                        />
+                        <span className="hidden whitespace-nowrap sm:inline">
+                          {name}
+                        </span>
+                        {notifications?.length > 0 && (
+                          <span className="text-xs bg-mandarin text-white absolute -top-1 -right-3 p-0.5 min-w-5 min-h-5 rounded-full flex justify-center items-center">
+                            {notifications.length > 9
+                              ? '9+'
+                              : notifications.length}
                           </span>
-                          {notifications?.length > 0 && (
-                            <span className="text-xs bg-mandarin text-white absolute -top-1 -right-3 p-0.5 min-w-5 min-h-5 rounded-full flex justify-center items-center">
-                              {notifications.length > 9
-                                ? '9+'
-                                : notifications.length}
-                            </span>
-                          )}
-                        </Link>
-                      )}
+                        )}
+                      </Link>
+
                       <Button onClick={logout}>Odhlásit&nbsp;se</Button>
                     </>
                   ) : (

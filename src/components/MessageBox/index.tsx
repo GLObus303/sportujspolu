@@ -3,26 +3,22 @@
 import { useMemo, useState } from 'react';
 import cx from 'classnames';
 
-import { Message } from '../../types/Message';
+import { OwnerRequestType, UserRequestType } from '../../types/Message';
 import { MessageCard } from '../MessageCard';
-
-type MessageBoxProps = {
-  messages?: Message[];
-  requests?: Message[];
-  className?: string;
-};
 
 const tabs: { value: 'received' | 'sent'; label: string }[] = [
   { value: 'received', label: 'Příchozí žádosti' },
   { value: 'sent', label: 'Poslané žádosti' },
 ];
 
-const subTabs: {
+type SubTabType = {
   value: 'pending' | 'accepted' | 'rejected';
   label: string;
   colorClass: string;
   hoverClass: string;
-}[] = [
+};
+
+const subTabs: SubTabType[] = [
   {
     value: 'pending',
     label: 'nevyřízené',
@@ -43,29 +39,38 @@ const subTabs: {
   },
 ];
 
-export const MessageBox = ({
-  messages,
-  requests,
+type MessageBoxProps = {
+  ownerRequest?: OwnerRequestType[];
+  userRequests?: UserRequestType[];
+  className?: string;
+};
+
+export const MessageBox: React.FC<MessageBoxProps> = ({
+  ownerRequest,
+  userRequests,
   className,
-}: MessageBoxProps) => {
+}) => {
   const [activeTab, setActiveTab] = useState<'received' | 'sent'>('received');
-  const [activeSubTab, setActiveSubTab] = useState<
-    'pending' | 'accepted' | 'rejected'
-  >('pending');
+  const [activeSubTab, setActiveSubTab] =
+    useState<SubTabType['value']>('pending');
 
   const activeSubTabLabel =
     subTabs.find((tab) => tab.value === activeSubTab)?.label || '';
 
   const filteredItems = useMemo(() => {
-    const items = activeTab === 'received' ? messages : requests;
+    const items = activeTab === 'received' ? ownerRequest : userRequests;
 
-    const filterByApprovalState = (item: Message) => {
+    const filterByApprovalState = (
+      item: UserRequestType | OwnerRequestType,
+    ) => {
       if (activeSubTab === 'pending') {
         return item.approved === null;
       }
+
       if (activeSubTab === 'accepted') {
         return item.approved === true;
       }
+
       if (activeSubTab === 'rejected') {
         return item.approved === false;
       }
@@ -74,9 +79,9 @@ export const MessageBox = ({
     };
 
     return items ? items.filter(filterByApprovalState) : [];
-  }, [messages, requests, activeTab, activeSubTab]);
+  }, [ownerRequest, userRequests, activeTab, activeSubTab]);
 
-  if (!messages && !requests) {
+  if (!ownerRequest && !userRequests) {
     return null;
   }
 
@@ -116,7 +121,7 @@ export const MessageBox = ({
 
       <ul className="mt-10 space-y-5 w-full">
         {filteredItems.length > 0 ? (
-          filteredItems.map((item: Message) => (
+          filteredItems.map((item: OwnerRequestType | UserRequestType) => (
             <MessageCard key={item.id} message={item} />
           ))
         ) : (

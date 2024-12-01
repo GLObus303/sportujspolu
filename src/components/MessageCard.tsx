@@ -10,16 +10,29 @@ import { formatDate, formatTime } from '../utils/dateUtils';
 import { EmailWithCopy } from './EmailWithCopy';
 import { slugifyCategory } from '../utils/slugifyUtils';
 import { getSportLabel } from '../utils/functions';
-import { Message } from '../types/Message';
+import { OwnerRequestType, UserRequestType } from '../types/Message';
 import { approveMessageRequest } from '../api/messages';
 import { Button } from './Button';
 
-type MessageCardProps = {
-  message: Message;
+const getMessageStatus = (isApproved: boolean | null) => {
+  switch (isApproved) {
+    case null:
+      return 'čeká na schválení';
+
+    case true:
+      return 'Schváleno';
+
+    case false:
+      return 'Zamítnuto';
+  }
 };
 
-export const MessageCard: React.FC<MessageCardProps> = ({ message }) => {
-  const {
+type MessageCardProps = {
+  message: OwnerRequestType | UserRequestType;
+};
+
+export const MessageCard: React.FC<MessageCardProps> = ({
+  message: {
     id,
     approved,
     approvedAt,
@@ -34,57 +47,18 @@ export const MessageCard: React.FC<MessageCardProps> = ({ message }) => {
     requesterEmail,
     text,
     eventId,
-  } = message;
+  },
+}) => {
   const [isApproved, setIsApproved] = useState(approved);
-  const [updatedRequesterEmail, setUpdatedRequesterEmail] = useState<
-    string | undefined
-  >(requesterEmail);
-
-  const formattedDate = formatDate(createdAt);
-  const formattedTime = formatTime(createdAt);
-
-  const sportLabel = getSportLabel(eventSport);
-  const levelLabel = levelLabels[eventLevel];
-
-  const category = slugifyCategory(
-    `${sportLabel} ${eventLocation} ${levelLabel}`,
-  );
-
-  let messageStatus;
-
-  switch (isApproved) {
-    case null:
-      messageStatus = 'čeká na schválení';
-      break;
-    case true:
-      messageStatus = 'Schváleno';
-      break;
-    case false:
-      messageStatus = 'Zamítnuto';
-      break;
-  }
-
-  const messageType = requesterName ? 'received' : 'sent';
-
-  const { email, approvedCaption, messageTitle } =
-    messageType === 'sent'
-      ? {
-          email: eventOwnerEmail,
-          approvedCaption: `${eventOwnerName} schvaluje žádost a zasílá svou emailovou adresu. Nyní můžete sportovat spolu!`,
-          messageTitle: `Vaše žádost k účasti na akci '${eventName}'`,
-        }
-      : {
-          email: updatedRequesterEmail,
-          approvedCaption: `${requesterName}, zájemce o akci '${eventName}', vás nyní může kontaktovat, nebo zájemci napište na e-mail.`,
-          messageTitle: `${requesterName} má zájem o vaši akci '${eventName}'`,
-        };
+  const [updatedRequesterEmail, setUpdatedRequesterEmail] =
+    useState(requesterEmail);
 
   const handleApprove = async () => {
     try {
       const response = await approveMessageRequest(id, { approved: true });
 
       setIsApproved(true);
-      setUpdatedRequesterEmail(response?.requesterEmail);
+      setUpdatedRequesterEmail(response?.requesterEmail || '');
     } catch (error) {
       setIsApproved(false);
     }
@@ -100,6 +74,19 @@ export const MessageCard: React.FC<MessageCardProps> = ({ message }) => {
     }
   };
 
+  const formattedDate = formatDate(createdAt);
+  const formattedTime = formatTime(createdAt);
+
+  const sportLabel = getSportLabel(eventSport);
+  const levelLabel = levelLabels[eventLevel];
+
+  const category = slugifyCategory(
+    `${sportLabel} ${eventLocation} ${levelLabel}`,
+  );
+
+  const messageType = requesterName ? 'received' : 'sent';
+  const isSentType = messageType === 'sent';
+
   return (
     <li>
       <article className="relative w-full bg-card rounded-md shadow-md flex flex-col">
@@ -108,7 +95,11 @@ export const MessageCard: React.FC<MessageCardProps> = ({ message }) => {
             href={`${Routes.EVENT}/${category}/${eventId}`}
             className="w-full flex-1 p-5 flex flex-col"
           >
-            <p className="text-xl font-medium">{messageTitle}</p>
+            <p className="text-xl font-medium">
+              {isSentType
+                ? `Vaše žádost k účasti na akci '${eventName}'`
+                : `${requesterName} má zájem o vaši akci '${eventName}'`}
+            </p>
             <p className="text-dark-gray text-sm">
               Zpráva ze dne {formattedDate} {formattedTime}
             </p>
@@ -137,7 +128,7 @@ export const MessageCard: React.FC<MessageCardProps> = ({ message }) => {
                   'text-mandarin bg-baby-fox': isApproved === null,
                 })}
               >
-                {messageStatus}
+                {getMessageStatus(isApproved)}
               </p>
             )}
           </div>
@@ -152,13 +143,18 @@ export const MessageCard: React.FC<MessageCardProps> = ({ message }) => {
               height="30"
             />
             <p className="max-w-md text-center font-medium flex flex-col gap-1">
-              {approvedCaption}
+              {isSentType
+                ? `${eventOwnerName} schvaluje žádost a zasílá svou emailovou adresu. Nyní můžete sportovat spolu!`
+                : `${requesterName}, zájemce o akci '${eventName}', vás nyní může kontaktovat, nebo zájemci napište na e-mail.`}
               <span className="text-dark-gray text-sm text-center">
                 potvrzeno: {formatDate(approvedAt)} {formatTime(approvedAt)}
               </span>
             </p>
 
-            <EmailWithCopy email={email} className="text-xl" />
+            <EmailWithCopy
+              email={isSentType ? eventOwnerEmail : updatedRequesterEmail}
+              className="text-xl"
+            />
           </div>
         )}
       </article>

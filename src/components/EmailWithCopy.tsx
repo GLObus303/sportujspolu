@@ -2,12 +2,14 @@ import { useState } from 'react';
 import cx from 'classnames';
 import Link from 'next/link';
 
-export const EmailWithCopy = ({
-  email,
-  className,
-}: {
+type EmailWithCopyProps = {
   email?: string;
   className?: string;
+};
+
+export const EmailWithCopy: React.FC<EmailWithCopyProps> = ({
+  email,
+  className,
 }) => {
   const [caption, setCaption] = useState('[Copy]');
 
@@ -29,6 +31,7 @@ export const EmailWithCopy = ({
       <Link href={`mailto:${email}`} className="font-medium hover:text-primary">
         {email}
       </Link>
+
       <button
         onClick={handleCopy}
         className="cursor-pointer text-primary hover:text-primary font-medium"

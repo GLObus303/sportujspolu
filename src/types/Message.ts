@@ -4,10 +4,9 @@ export type Approval = {
   approved: boolean | null;
 };
 
-export type Message = {
+type Message = {
   approved: boolean | null;
-  true: boolean;
-  approvedAt: string;
+  approvedAt?: string;
   createdAt: string;
   eventId: string;
   eventLevel: LevelType;
@@ -16,11 +15,18 @@ export type Message = {
   eventName: string;
   eventOwnerId: string;
   id: string;
-  requesterEmail: string;
   requesterId: string;
   requesterName: string;
   eventOwnerName: string;
-  eventOwnerEmail: string;
   text: string;
   updatedAt: string;
+};
+
+export type OwnerRequestType = Message & {
+  eventOwnerEmail: string;
+  requesterEmail?: string;
+};
+
+export type UserRequestType = Message & {
+  eventOwnerEmail?: string;
 };
