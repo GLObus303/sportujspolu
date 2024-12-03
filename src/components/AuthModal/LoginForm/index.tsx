@@ -12,11 +12,7 @@ import { Loading } from '../../Loading';
 import { AriaLiveErrorMessage } from '../../AriaLiveErrorMessage';
 import { Input } from '../../Input';
 import { PasswordInput } from '../../PasswordInput';
-import {
-  SECONDS_IN_WEEK,
-  Routes,
-  ERROR_MESSAGE,
-} from '../../../utils/constants';
+import { SECONDS_IN_WEEK, ERROR_MESSAGE } from '../../../utils/constants';
 import { LoginFormData } from '../../../types/Form';
 import { AuthWrapper } from '../../AuthWrapper';
 import { Button } from '../../Button';
@@ -58,7 +54,6 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onToggleForm }) => {
       }
 
       nookies.set(null, 'token', response.token, {
-        path: Routes.DASHBOARD,
         maxAge: SECONDS_IN_WEEK,
       });
 

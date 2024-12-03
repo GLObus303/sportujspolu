@@ -10,11 +10,10 @@ import { format } from 'date-fns';
 import { Input } from '../Input';
 import { Select } from '../Select';
 import { Textarea } from '../Textarea';
-import { postEvent, updateEvent } from '../../api/events';
+import { deleteEvent, postEvent, updateEvent } from '../../api/events';
 import { eventSchema } from './schema';
 import { Event } from '../../types/Event';
 import { Routes, levelLabels, sportsOptions } from '../../utils/constants';
-import { deleteEvent } from '../../api/events';
 import { DeleteIcon } from '../icons/DeleteIcon';
 
 type EventFormProps = {

@@ -18,7 +18,11 @@ module.exports = {
         'accent': 'var(--accent)',
         'text': 'var(--text)',
         "smoke-glass": "#00000070",
+        "mandarin": "#FF9500",
         "pistachio": "var(--pistachio)",
+        "pale-aloe": "var(--pale-aloe)",
+        "soft-cheek": "var(--soft-cheek)",
+        "baby-fox": "var(--baby-fox)",
       },
       height: {
         article: "190px",

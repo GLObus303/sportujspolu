@@ -7,7 +7,7 @@ import { getFirstQueryParam } from '../utils/functions';
 const Home = async ({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Record<string, string | string[] | undefined>;
 }) => {
   const page = getFirstQueryParam(searchParams?.page, PAGINATION.PAGE);
   const limit = getFirstQueryParam(searchParams?.limit, PAGINATION.LIMIT);

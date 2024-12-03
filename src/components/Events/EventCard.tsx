@@ -30,7 +30,7 @@ export const EventCard: React.FC<EventCardProps> = ({
     <article className="relative rounded-md bg-card shadow-md">
       <Link href={`${Routes.EVENT}/${category}/${id}`}>
         <div style={{ aspectRatio: '1/1' }} className="rounded-md bg-card">
-          <div className="relative h-1/3 w-full overflow-hidden">
+          <figure className="relative h-1/3 w-full overflow-hidden">
             <Image
               alt=""
               src={getImagePath(id, sport)}
@@ -39,7 +39,7 @@ export const EventCard: React.FC<EventCardProps> = ({
               priority={index < 5}
               fill
             />
-          </div>
+          </figure>
           <div className="flex h-2/3 flex-col justify-between p-5">
             <p className="text-s flex flex-row justify-between font-light">
               <span className="w-1/2 truncate">{location}</span>{' '}
