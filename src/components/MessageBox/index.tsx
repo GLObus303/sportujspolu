@@ -28,18 +28,18 @@ type SubTabType = {
 const getTabs = (
   ownerRequest?: OwnerRequestType[],
   userRequests?: UserRequestType[],
-): Tab[] => {
-  const tabs: (Tab | null)[] = [
-    ownerRequest?.length
-      ? { value: 'received', label: 'Příchozí žádosti', items: ownerRequest }
-      : null,
-    userRequests?.length
-      ? { value: 'sent', label: 'Poslané žádosti', items: userRequests }
-      : null,
-  ];
-
-  return tabs.filter((tab): tab is Tab => tab !== null);
-};
+): Tab[] => [
+  ...(ownerRequest?.length
+    ? ([
+        { value: 'received', label: 'Příchozí žádosti', items: ownerRequest },
+      ] as const)
+    : []),
+  ...(userRequests?.length
+    ? ([
+        { value: 'sent', label: 'Poslané žádosti', items: userRequests },
+      ] as const)
+    : []),
+];
 
 const subTabs: SubTabType[] = [
   {
