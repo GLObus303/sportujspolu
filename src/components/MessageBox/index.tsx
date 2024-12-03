@@ -6,16 +6,39 @@ import cx from 'classnames';
 import { OwnerRequestType, UserRequestType } from '../../types/Message';
 import { MessageCard } from '../MessageCard';
 
-const tabs: { value: 'received' | 'sent'; label: string }[] = [
-  { value: 'received', label: 'Příchozí žádosti' },
-  { value: 'sent', label: 'Poslané žádosti' },
-];
+type MessageBoxProps = {
+  ownerRequest?: OwnerRequestType[];
+  userRequests?: UserRequestType[];
+  className?: string;
+};
+
+type Tab = {
+  value: 'received' | 'sent';
+  label: string;
+  items: OwnerRequestType[] | UserRequestType[];
+};
 
 type SubTabType = {
   value: 'pending' | 'accepted' | 'rejected';
   label: string;
   colorClass: string;
   hoverClass: string;
+};
+
+const getTabs = (
+  ownerRequest?: OwnerRequestType[],
+  userRequests?: UserRequestType[],
+): Tab[] => {
+  const tabs: (Tab | null)[] = [
+    ownerRequest?.length
+      ? { value: 'received', label: 'Příchozí žádosti', items: ownerRequest }
+      : null,
+    userRequests?.length
+      ? { value: 'sent', label: 'Poslané žádosti', items: userRequests }
+      : null,
+  ];
+
+  return tabs.filter((tab): tab is Tab => tab !== null);
 };
 
 const subTabs: SubTabType[] = [
@@ -39,12 +62,6 @@ const subTabs: SubTabType[] = [
   },
 ];
 
-type MessageBoxProps = {
-  ownerRequest?: OwnerRequestType[];
-  userRequests?: UserRequestType[];
-  className?: string;
-};
-
 export const MessageBox: React.FC<MessageBoxProps> = ({
   ownerRequest,
   userRequests,
@@ -53,6 +70,8 @@ export const MessageBox: React.FC<MessageBoxProps> = ({
   const [activeTab, setActiveTab] = useState<'received' | 'sent'>('received');
   const [activeSubTab, setActiveSubTab] =
     useState<SubTabType['value']>('pending');
+
+  const tabs = getTabs(ownerRequest, userRequests);
 
   const activeSubTabLabel =
     subTabs.find((tab) => tab.value === activeSubTab)?.label || '';

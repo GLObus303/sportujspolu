@@ -31,34 +31,33 @@ type MessageCardProps = {
   message: OwnerRequestType | UserRequestType;
 };
 
-export const MessageCard: React.FC<MessageCardProps> = ({
-  message: {
-    id,
+export const MessageCard: React.FC<MessageCardProps> = ({ message }) => {
+  const {
     approved,
     approvedAt,
-    eventLevel,
-    eventSport,
-    eventLocation,
     createdAt,
+    eventId,
+    eventLevel,
+    eventLocation,
+    eventSport,
     eventName,
     eventOwnerName,
-    eventOwnerEmail,
+    id,
     requesterName,
-    requesterEmail,
     text,
-    eventId,
-  },
-}) => {
+  } = message;
+
   const [isApproved, setIsApproved] = useState(approved);
-  const [updatedRequesterEmail, setUpdatedRequesterEmail] =
-    useState(requesterEmail);
+  const [updatedRequesterEmail, setUpdatedRequesterEmail] = useState(
+    'requesterEmail' in message && message.requesterEmail,
+  );
 
   const handleApprove = async () => {
     try {
       const response = await approveMessageRequest(id, { approved: true });
 
       setIsApproved(true);
-      setUpdatedRequesterEmail(response?.requesterEmail || '');
+      setUpdatedRequesterEmail(response?.requesterEmail);
     } catch (error) {
       setIsApproved(false);
     }
@@ -87,6 +86,10 @@ export const MessageCard: React.FC<MessageCardProps> = ({
   const messageType = requesterName ? 'received' : 'sent';
   const isSentType = messageType === 'sent';
 
+  const email = isSentType
+    ? ('eventOwnerEmail' in message && message.eventOwnerEmail) || ''
+    : updatedRequesterEmail || '';
+
   return (
     <li>
       <article className="relative w-full bg-card rounded-md shadow-md flex flex-col">
@@ -107,7 +110,7 @@ export const MessageCard: React.FC<MessageCardProps> = ({
           </Link>
 
           <div className="p-5 flex flex-col text-sm items-end gap-4 justify-start">
-            {isApproved === null && messageType === 'received' ? (
+            {isApproved === null && !isSentType ? (
               <div className="gap-4 flex mt-auto flex-col">
                 <Button onClick={handleApprove} className="w-full">
                   Schválit
@@ -151,10 +154,7 @@ export const MessageCard: React.FC<MessageCardProps> = ({
               </span>
             </p>
 
-            <EmailWithCopy
-              email={isSentType ? eventOwnerEmail : updatedRequesterEmail}
-              className="text-xl"
-            />
+            <EmailWithCopy email={email} className="text-xl" />
           </div>
         )}
       </article>

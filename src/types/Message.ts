@@ -23,10 +23,11 @@ type Message = {
 };
 
 export type OwnerRequestType = Message & {
-  eventOwnerEmail: string;
+  requesterName: string;
   requesterEmail?: string;
 };
 
 export type UserRequestType = Message & {
+  eventOwnerName: string;
   eventOwnerEmail?: string;
 };
