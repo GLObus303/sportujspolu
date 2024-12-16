@@ -1,4 +1,5 @@
-import { SportsType, LevelType } from '../utils/constants';
+import { SportsType, LevelType } from '../constants';
+import { EventOwner } from './EventOwner';
 
 export type Event = {
   id: string;
@@ -15,23 +16,4 @@ export type Event = {
   // not in API
   image?: string;
   duration?: number;
-};
-
-export type EventOwner = {
-  id: string;
-  name: string;
-  email: string;
-  rating: number;
-  since?: string;
-  description?: string;
-  image?: string;
-  reviewsCount?: number;
-  reviews?: {
-    id: string;
-    name: string;
-    date: string;
-    image: string;
-    rating: number;
-    comment: string;
-  }[];
 };

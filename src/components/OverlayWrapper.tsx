@@ -21,6 +21,7 @@ export const OverlayWrapper: ChildrenFC<OverlayWrapperProps> = ({
   >
     <article className="relative mx-auto flex h-fit w-fit flex-col items-center justify-center rounded-md bg-card p-7 text-center text-xl">
       {children}
+
       <CrossButton onClick={onClose} className="absolute right-5 top-5" />
     </article>
   </section>

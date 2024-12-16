@@ -6,7 +6,7 @@ import { AuthProvider } from '../context/AuthContext';
 import { AuthModalProvider } from '../context/AuthModalContext';
 import { Layout } from '../components/Layout';
 import { ChildrenFC } from '../utils/type';
-import { THEME } from '../utils/constants';
+import { THEME } from '../constants';
 
 export const metadata = {
   title: 'Sportuj Spolu',

@@ -13,7 +13,7 @@ import { Textarea } from '../Textarea';
 import { deleteEvent, postEvent, updateEvent } from '../../api/events';
 import { eventSchema } from './schema';
 import { Event } from '../../types/Event';
-import { Routes, levelLabels, sportsOptions } from '../../utils/constants';
+import { Routes, levelLabels, sportsOptions } from '../../constants';
 import { DeleteIcon } from '../icons/DeleteIcon';
 
 type EventFormProps = {
