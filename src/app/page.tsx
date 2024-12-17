@@ -1,14 +1,16 @@
+import { NextPage } from 'next';
+
 import { Events } from '../components/Events';
 import { getAllEvents } from '../api/events';
 import { Pagination } from '../components/Pagination';
-import { PAGINATION } from '../utils/constants';
-import { getFirstQueryParam } from '../utils/functions';
+import { PAGINATION } from '../constants';
+import { getFirstQueryParam } from '../utils/getFirstQueryParam';
 
-const Home = async ({
-  searchParams,
-}: {
+type HomeProps = {
   searchParams: Record<string, string | string[] | undefined>;
-}) => {
+};
+
+const Home: NextPage<HomeProps> = async ({ searchParams }) => {
   const page = getFirstQueryParam(searchParams?.page, PAGINATION.PAGE);
   const limit = getFirstQueryParam(searchParams?.limit, PAGINATION.LIMIT);
 

@@ -3,8 +3,8 @@ import cx from 'classnames';
 import { HeartButton } from '../../../../../components/HeartButton';
 import { Event } from '../../../../../types/Event';
 import { EditLink } from './EditLink';
-import { getSportLabel } from '../../../../../utils/functions';
-import { levelLabels } from '../../../../../utils/constants';
+import { getSportLabel } from '../../../../../utils/getSportLabel';
+import { levelLabels } from '../../../../../constants';
 import { TableRow } from './TableRow';
 
 type EventDetailProps = {

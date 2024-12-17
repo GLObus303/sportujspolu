@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 
 import { Header } from './Header';
 import { ChildrenFC } from '../../utils/type';
-import { THEME } from '../../utils/constants';
+import { THEME } from '../../constants';
 import { AuthModal } from '../AuthModal';
 
 export const Layout: ChildrenFC = ({ children }) => {

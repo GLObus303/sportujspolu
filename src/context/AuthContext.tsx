@@ -11,7 +11,7 @@ import nookies from 'nookies';
 
 import { getUser } from '../api/user';
 import { User } from '../types/User';
-import { SECONDS_IN_WEEK } from '../utils/constants';
+import { SECONDS_IN_WEEK } from '../constants';
 import { useEffectAsync } from '../hooks/useEffectAsync';
 import { ChildrenFC } from '../utils/type';
 
@@ -29,7 +29,7 @@ const emptyUser = {
   rating: 0,
 };
 
-export const AuthContext = createContext<AuthContextProps | null>(null);
+const AuthContext = createContext<AuthContextProps | null>(null);
 
 export const AuthProvider: ChildrenFC = ({ children }) => {
   const [user, setUser] = useState(emptyUser);

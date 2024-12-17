@@ -3,11 +3,13 @@
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { ThemeProviderProps } from 'next-themes/dist/types';
 
-export const ThemeProvider = ({
+import { ChildrenFC } from '../utils/type';
+
+export const ThemeProvider: ChildrenFC<ThemeProviderProps> = ({
   children,
   defaultTheme,
   ...props
-}: ThemeProviderProps) => (
+}) => (
   <NextThemesProvider
     {...props}
     enableSystem={false}

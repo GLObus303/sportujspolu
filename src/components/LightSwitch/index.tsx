@@ -1,7 +1,7 @@
 import { useTheme } from 'next-themes';
 import nookies from 'nookies';
 
-import { SECONDS_IN_YEAR, THEME } from '../../utils/constants';
+import { SECONDS_IN_YEAR, THEME } from '../../constants';
 import { SunIcon } from './SunIcon';
 import { MoonIcon } from './MoonIcon';
 

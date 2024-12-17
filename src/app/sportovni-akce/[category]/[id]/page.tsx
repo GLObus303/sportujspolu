@@ -5,11 +5,12 @@ import { notFound } from 'next/navigation';
 import { EventDetail } from './EventDetail';
 import { Events } from '../../../../components/Events';
 import { getEvent, getAllEvents } from '../../../../api/events';
-import { defaultOwner, levelLabels } from '../../../../utils/constants';
-import { getImagePath, getSportLabel } from '../../../../utils/functions';
-import { formatDate, formatTime } from '../../../../utils/dateUtils';
-import { slugifyCategory } from '../../../../utils/slugifyUtils';
+import { defaultOwner, levelLabels } from '../../../../constants';
+import { getSportLabel } from '../../../../utils/getSportLabel';
+import { formatDate, formatTime } from '../../../../utils/formatDate';
+import { slugifyCategory } from '../../../../utils/slugifyCategory';
 import { MessageSection } from './MessageSection';
+import { getImagePath } from '../../../../utils/getImagePath';
 
 type EventPageProps = {
   params: {

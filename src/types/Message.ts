@@ -1,4 +1,4 @@
-import { LevelType, SportsType } from '../utils/constants';
+import { LevelType, SportsType } from '../constants';
 
 export type Approval = {
   approved: boolean | null;

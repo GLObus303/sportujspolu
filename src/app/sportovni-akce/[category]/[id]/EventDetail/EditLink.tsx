@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { Routes } from '../../../../../utils/constants';
+import { Routes } from '../../../../../constants';
 import { useAuth } from '../../../../../context/AuthContext';
 
 type EditLinkProps = {
