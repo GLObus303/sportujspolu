@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE, SUCCESS_MESSAGE } from '../../utils/constants';
+import { ERROR_MESSAGE, SUCCESS_MESSAGE } from '../../constants';
 import { Button } from '../Button';
 import { OverlayWrapper } from '../OverlayWrapper';
 

@@ -6,14 +6,14 @@ type ButtonProps = {
   variant?: 'primary' | 'secondary';
 } & ComponentProps<'button'>;
 
-export const Button = ({
+export const Button: React.FC<ButtonProps> = ({
   children,
   ariaLabel,
   className,
   variant = 'primary',
   type = 'button',
   ...rest
-}: ButtonProps) => (
+}) => (
   <button
     aria-label={ariaLabel}
     className={cx(

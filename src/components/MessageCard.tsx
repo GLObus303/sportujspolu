@@ -5,11 +5,11 @@ import Link from 'next/link';
 import cx from 'classnames';
 import Image from 'next/image';
 
-import { Routes, levelLabels } from '../utils/constants';
-import { formatDate, formatTime } from '../utils/dateUtils';
+import { Routes, levelLabels } from '../constants';
+import { formatDate, formatTime } from '../utils/formatDate';
 import { EmailWithCopy } from './EmailWithCopy';
-import { slugifyCategory } from '../utils/slugifyUtils';
-import { getSportLabel } from '../utils/functions';
+import { slugifyCategory } from '../utils/slugifyCategory';
+import { getSportLabel } from '../utils/getSportLabel';
 import { OwnerRequestType, UserRequestType } from '../types/Message';
 import { approveMessageRequest } from '../api/messages';
 import { Button } from './Button';

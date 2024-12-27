@@ -12,7 +12,7 @@ import { Loading } from '../../Loading';
 import { AriaLiveErrorMessage } from '../../AriaLiveErrorMessage';
 import { Input } from '../../Input';
 import { PasswordInput } from '../../PasswordInput';
-import { SECONDS_IN_WEEK, ERROR_MESSAGE } from '../../../utils/constants';
+import { SECONDS_IN_WEEK, ERROR_MESSAGE } from '../../../constants';
 import { LoginFormData } from '../../../types/Form';
 import { AuthWrapper } from '../../AuthWrapper';
 import { Button } from '../../Button';

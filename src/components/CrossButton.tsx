@@ -5,7 +5,10 @@ type CrossButtonProps = {
   className?: string;
 };
 
-export const CrossButton = ({ onClick, className }: CrossButtonProps) => (
+export const CrossButton: React.FC<CrossButtonProps> = ({
+  onClick,
+  className,
+}) => (
   <button
     type="button"
     aria-label="Zavřít"

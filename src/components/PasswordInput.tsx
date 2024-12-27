@@ -26,10 +26,10 @@ export const PasswordInput: React.FC<InputProps> = ({
     formState: { errors },
   } = useFormContext();
 
-  const [isVisiblePassword, setVisiblePassword] = useState(false);
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
 
   const togglePasswordVisibility = () => {
-    setVisiblePassword(!isVisiblePassword);
+    setIsVisiblePassword(!isVisiblePassword);
   };
 
   return (

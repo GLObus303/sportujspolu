@@ -5,6 +5,3 @@ export const formatDate = (isoDate?: string) =>
 
 export const formatTime = (isoDate?: string) =>
   isoDate ? format(parseISO(isoDate), 'HH:mm') : '';
-
-export const formatDateTime = (isoDate?: string) =>
-  isoDate ? format(parseISO(isoDate), 'dd/MM/yyyy HH:mm') : '';

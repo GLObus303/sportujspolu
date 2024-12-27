@@ -1,7 +1,7 @@
 import { apiGet, apiPost, apiDelete, apiPut } from './base';
 import { Event } from '../types/Event';
 import { EventFormData } from '../types/Form';
-import { PAGINATION, defaultEvent } from '../utils/constants';
+import { PAGINATION, defaultEvent } from '../constants';
 
 export const getEvent = (id: string) =>
   apiGet<Event>(`events/${id}?includes=owner`) || defaultEvent;

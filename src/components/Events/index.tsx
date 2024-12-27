@@ -1,5 +1,5 @@
 import { Event } from '../../types/Event';
-import { formatDate } from '../../utils/dateUtils';
+import { formatDate } from '../../utils/formatDate';
 import { EventCard } from './EventCard';
 
 type EventsProps = {

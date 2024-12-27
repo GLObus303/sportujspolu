@@ -1,14 +1,14 @@
 import ky from 'ky';
 import nookies from 'nookies';
 
-import { ERROR_MESSAGE } from '../utils/constants';
+import { ERROR_MESSAGE } from '../constants';
 import { OnErrorType } from '../types/Api';
 
 const apiUrl =
   process.env.NEXT_PUBLIC_API_URL ||
   'https://sportujspolu-api.onrender.com/api/v1/';
 
-export const privateApi = () =>
+const privateApi = () =>
   ky.create({
     prefixUrl: apiUrl,
     headers: { cache: 'no-store' },
