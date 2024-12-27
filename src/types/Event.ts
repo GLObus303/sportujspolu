@@ -13,7 +13,4 @@ export type Event = {
   createdAt: string;
   ownerId: string;
   owner?: EventOwner;
-  // not in API
-  image?: string;
-  duration?: number;
 };
