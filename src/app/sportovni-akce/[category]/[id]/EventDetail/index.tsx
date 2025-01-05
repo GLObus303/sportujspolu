@@ -1,10 +1,9 @@
 import cx from 'classnames';
 
-import { HeartButton } from '../../../../../components/HeartButton';
 import { Event } from '../../../../../types/Event';
-import { EditLink } from './EditLink';
 import { getSportLabel } from '../../../../../utils/getSportLabel';
 import { levelLabels } from '../../../../../constants';
+import { EditLink } from '../../../../../components/EditLink';
 import { TableRow } from './TableRow';
 
 type EventDetailProps = {
@@ -31,7 +30,6 @@ export const EventDetail: React.FC<EventDetailProps> = ({
       )}
     >
       <article className="flex flex-col rounded-md">
-        <HeartButton className="ml-auto" />
         <table className="text-s mb-6 font-medium">
           <tbody>
             {!!price && <TableRow label="Cena" value={`${price} Kč/osoba`} />}

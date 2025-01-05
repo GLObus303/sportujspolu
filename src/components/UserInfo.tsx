@@ -1,7 +1,7 @@
 'use client';
 
-import { useAuth } from '../../../context/AuthContext';
-import { ProfileIcon } from '../../../components/icons/ProfileIcon';
+import { useAuth } from '../context/AuthContext';
+import { ProfileIcon } from './icons/ProfileIcon';
 
 export const UserInfo: React.FC = () => {
   const {
@@ -18,10 +18,10 @@ export const UserInfo: React.FC = () => {
       <figure className="absolute -top-16 left-1/2 flex h-32 w-32 -translate-x-1/2 transform items-center justify-center rounded-full bg-low-contrast">
         <ProfileIcon className="h-20 w-20" />
       </figure>
-      <p className="flex flex-col pt-24 pb-10 text-center">
-        <span className="text-3xl font-medium">{name}</span>
-        <span className="text-xl font-light">{email}</span>
-      </p>
+      <div className="flex flex-col pt-24 pb-10 text-center">
+        <h2 className="text-3xl font-medium">{name}</h2>
+        <p className="text-xl font-light">{email}</p>
+      </div>
     </article>
   );
 };

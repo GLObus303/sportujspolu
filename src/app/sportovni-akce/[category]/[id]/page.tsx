@@ -4,13 +4,15 @@ import { notFound } from 'next/navigation';
 
 import { EventDetail } from './EventDetail';
 import { Events } from '../../../../components/Events';
-import { getEvent, getAllEvents } from '../../../../api/events';
+import { getEvent, getPaginatedEvents } from '../../../../api/events';
 import { defaultOwner, levelLabels } from '../../../../constants';
 import { getSportLabel } from '../../../../utils/getSportLabel';
 import { formatDate, formatTime } from '../../../../utils/formatDate';
 import { slugifyCategory } from '../../../../utils/slugifyCategory';
 import { MessageSection } from './MessageSection';
 import { getImagePath } from '../../../../utils/getImagePath';
+import { Container } from '../../../../components/Container';
+import { MainHeading } from '../../../../components/MainHeading';
 
 type EventPageProps = {
   params: {
@@ -22,7 +24,10 @@ type EventPageProps = {
 const EventPage: NextPage<EventPageProps> = async ({
   params: { category, id },
 }) => {
-  const [events, event] = await Promise.all([getAllEvents(), getEvent(id)]);
+  const [events, event] = await Promise.all([
+    getPaginatedEvents('1', '4'),
+    getEvent(id),
+  ]);
 
   if (!event) {
     return notFound();
@@ -46,7 +51,7 @@ const EventPage: NextPage<EventPageProps> = async ({
   const formattedTime = formatTime(date);
 
   return (
-    <>
+    <Container>
       <div className="relative mt-14 flex flex-col items-start px-4 md:flex-row md:px-0 lg:mt-0">
         <div className="relative flex h-full w-full flex-col pr-0 lg:pr-14">
           <section className="relative w-full">
@@ -60,9 +65,7 @@ const EventPage: NextPage<EventPageProps> = async ({
                 priority
               />
             </figure>
-            <h1 className="mt-12 text-center text-2xl font-medium leading-normal md:mt-9 lg:text-start lg:text-4xl">
-              {name}
-            </h1>
+            <MainHeading className="lg:text-start">{name}</MainHeading>
             <p className="mt-8 text-lg font-light">{description}</p>
             <EventDetail
               className="mx-auto mt-8 lg:hidden"
@@ -86,9 +89,9 @@ const EventPage: NextPage<EventPageProps> = async ({
         <h2 className="px-20 text-center text-xl font-medium leading-normal md:px-0 lg:text-start lg:text-3xl">
           Podobné sportovní akce
         </h2>
-        <Events events={events.slice(0, 4)} />
+        <Events events={events} />
       </section>
-    </>
+    </Container>
   );
 };
 

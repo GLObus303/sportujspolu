@@ -4,10 +4,15 @@ export const SECONDS_IN_YEAR = 365 * 24 * 60 * 60;
 export const Routes = {
   DASHBOARD: '/',
   CREATE_EVENT: '/vytvorit-akci',
+  DICTIONARY: '/slovnik',
   EDIT_EVENT: '/upravit-akci',
   ATTEND_EVENT: '/zucastnit-se',
   EVENT: '/sportovni-akce',
-  USER: '/uzivatel',
+  MESSAGES: '/zpravy',
+  GUIDELINES: '/zasady-platformy',
+  BLOG: '/blog',
+  CONTACT: '/kontakt',
+  FAQ: '/faq',
 };
 
 export const THEME = {
@@ -30,6 +35,12 @@ export const ERROR_MESSAGE = {
 
 export const SUCCESS_MESSAGE = {
   REQUEST_SENT: 'Žádost byla úspěšně odeslána.',
+  GENERIC_SUCCESS: 'Operace byla dokončena úspěšně.',
+};
+
+export const SUCCESS_EVENT = {
+  NEW_EVENT: 'Událost byla úspěšně vytvořena.',
+  UPDATE_EVENT: 'Událost byla úspěšně upravena.',
 };
 
 const levelArray = ['Beginner', 'Advanced', 'Expert', 'Any'] as const;

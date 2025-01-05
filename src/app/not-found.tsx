@@ -1,14 +1,17 @@
 import Link from 'next/link';
 
+import { Container } from '../components/Container';
+import { MainHeading } from '../components/MainHeading';
+
 const NotFound = () => (
-  <section>
-    <h1 className="my-24 px-20 text-center text-2xl font-medium leading-normal md:mt-14 md:px-0 xl:text-start xl:text-4xl">
+  <Container>
+    <MainHeading className="xl:text-start">
       <span className="text-secondary">404 </span>- Stránka nenalezena
-    </h1>
-    <p className="text-xl underline hover:text-primary">
+    </MainHeading>
+    <p className="text-xl underline hover:text-primary text-center xl:text-start">
       <Link href="/">Zpět na domovskou stránku</Link>
     </p>
-  </section>
+  </Container>
 );
 
 export default NotFound;

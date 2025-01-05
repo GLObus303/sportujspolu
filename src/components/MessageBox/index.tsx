@@ -29,11 +29,7 @@ const getTabs = (
   ownerRequest?: OwnerRequestType[],
   userRequests?: UserRequestType[],
 ): Tab[] => [
-  ...(ownerRequest?.length
-    ? ([
-        { value: 'received', label: 'Příchozí žádosti', items: ownerRequest },
-      ] as const)
-    : []),
+  { value: 'received', label: 'Příchozí žádosti', items: ownerRequest || [] },
   ...(userRequests?.length
     ? ([
         { value: 'sent', label: 'Poslané žádosti', items: userRequests },

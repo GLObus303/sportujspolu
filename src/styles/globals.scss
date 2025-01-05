@@ -10,10 +10,6 @@ html {
   background-color: var(--background);
 }
 
-* {
-  font-family: 'kanit', sans-serif;
-}
-
 :root {
   --background: #f9f9fb;
   --card: #ffffff;
@@ -22,6 +18,7 @@ html {
   --button: #000000;
   --accent: #131313;
   --text: #000000;
+  --lemon-grass: #00e526;
   --pistachio: #94ffa9;
   --pale-aloe: #e2ffe7;
   --soft-cheek: #ffeef5;
@@ -49,4 +46,61 @@ p {
 
 button {
   font-size: 1rem;
+}
+
+.prose {
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  h4 {
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+
+  h5,
+  h6 {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+
+  a {
+    color: var(--lemon-grass);
+    font-weight: 400;
+  }
+
+  strong {
+    font-weight: 500;
+    color: var(--lemon-grass);
+  }
+
+  b {
+    font-weight: 500;
+  }
+
+  ul {
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+
+    &::before {
+      content: '●';
+      color: var(--lemon-grass);
+      margin-right: 0.5rem;
+    }
+  }
 }

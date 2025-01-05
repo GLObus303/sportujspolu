@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { StarRating } from '../StarRating';
-import { HeartButton } from '../HeartButton';
 import { Event } from '../../types/Event';
 import { Routes, levelLabels } from '../../constants';
 import { getSportLabel } from '../../utils/getSportLabel';
@@ -42,14 +41,14 @@ export const EventCard: React.FC<EventCardProps> = ({
             />
           </figure>
           <div className="flex h-2/3 flex-col justify-between p-5">
-            <p className="text-s flex flex-row justify-between font-light">
+            <p className="text-sm flex flex-row justify-between font-light">
               <span className="w-1/2 truncate">{location}</span>{' '}
               <time className="truncate">{formattedDate}</time>
             </p>
-            <p className="line-clamp-3 overflow-hidden overflow-ellipsis">
-              <span className="font-medium">{name}:</span>{' '}
-              <span className="font-light">{description}</span>
-            </p>
+            <div className="line-clamp-3 overflow-hidden overflow-ellipsis">
+              <p className="font-medium text-lg">{name}</p>{' '}
+              <p className="font-light">{description}</p>
+            </div>
             <div className="flex items-center">
               <span className="pr-1 font-light text-dark-gray dark:text-accent">
                 {owner?.name}
@@ -71,7 +70,6 @@ export const EventCard: React.FC<EventCardProps> = ({
           </div>
         </div>
       </Link>
-      <HeartButton className="absolute right-3 top-3" />
     </article>
   );
 };

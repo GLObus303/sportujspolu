@@ -10,7 +10,8 @@ import { sendEmailRequest } from '../../api/messages';
 import { Textarea } from '../Textarea';
 import { emailSchema } from './schema';
 import { Button } from '../Button';
-import { Popup } from './Popup';
+import { Popup } from '../Popup';
+import { ERROR_MESSAGE, SUCCESS_MESSAGE } from '../../constants';
 
 type EmailFormProps = {
   eventId: string;
@@ -18,6 +19,19 @@ type EmailFormProps = {
 
 type EmailData = {
   text: string;
+};
+
+const getTitle = (status: number | undefined) => {
+  switch (status) {
+    case 401:
+      return ERROR_MESSAGE.AUTHENTICATION_REQUIRED;
+    case 409:
+      return ERROR_MESSAGE.REQUEST_ALREADY_SENT;
+    case 200:
+      return SUCCESS_MESSAGE.REQUEST_SENT;
+    default:
+      return ERROR_MESSAGE.GENERIC_ERROR;
+  }
 };
 
 export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
@@ -95,7 +109,7 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
         >
           <Textarea
             name="text"
-            label="Emailová zpráva"
+            label="Zpráva pro pořadatele"
             placeholder="Ahoj, můžeš mi poslat bližší informace..."
           />
           <Button type="submit" disabled={isLoading} className="ml-auto mt-5">
@@ -104,7 +118,14 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
         </form>
       </FormProvider>
 
-      {isPopupInfoOpen && <Popup status={status} onClose={handlePopupClose} />}
+      {isPopupInfoOpen && (
+        <Popup onClose={handlePopupClose}>
+          {getTitle(status)}
+          <Button className="mx-auto mt-5" onClick={handlePopupClose}>
+            Zavřít
+          </Button>
+        </Popup>
+      )}
     </>
   );
 };
