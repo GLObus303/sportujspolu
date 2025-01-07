@@ -1,6 +1,7 @@
 import '../styles/globals.scss';
 import { cookies } from 'next/headers';
 import { Kanit } from 'next/font/google';
+import cx from 'classnames';
 
 import { ThemeProvider } from './theme-provider';
 import { AuthProvider } from '../context/AuthContext';
@@ -28,7 +29,7 @@ const RootLayout: ChildrenFC = ({ children }) => {
   return (
     <html
       lang="cs"
-      className={`${kanit.variable} ${defaultTheme}`}
+      className={cx(kanit.variable, defaultTheme)}
       style={{ colorScheme: defaultTheme }}
     >
       <head>

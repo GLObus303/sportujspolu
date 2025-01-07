@@ -16,7 +16,7 @@ const Home: NextPage<HomeProps> = async ({ searchParams }) => {
   const page = getFirstQueryParam(searchParams?.page, PAGINATION.PAGE);
   const limit = getFirstQueryParam(searchParams?.limit, PAGINATION.LIMIT);
 
-  const events = await getPaginatedEvents(page, limit);
+  const events = await getPaginatedEvents({ page, limit });
 
   const limitNumber = Number(limit) || 1;
   const pageNumber = Number(page) || 1;

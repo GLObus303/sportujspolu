@@ -10,7 +10,7 @@ const PlatformGuideLines: NextPage = () => (
     <MainHeading>Zásady platformy SportujSpolu</MainHeading>
     <SanitizedHTML
       htmlContent={guidelineData}
-      className="prose space-y-10 mt-8"
+      className="content space-y-10 mt-8"
     />
   </Container>
 );

@@ -5,7 +5,7 @@ import { Routes } from '../../constants';
 export const Footer: React.FC = () => (
   <footer className="border-t border-low-contrast min-h-max">
     <section className="mx-auto max-w-layout px-5 py-10 justify-between flex-col md:flex-row flex gap-5 md:gap-10">
-      <p className="">© 2021 SportujSpolu.cz</p>
+      <p className="">&copy; {new Date().getFullYear()} SportujSpolu.cz</p>
       <ul className="flex gap-5 md:gap-10 flex-col md:flex-row">
         <li>
           <Link

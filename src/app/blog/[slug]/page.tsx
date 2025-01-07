@@ -28,7 +28,7 @@ const BlogPost: NextPage<BlogPostProps> = ({ params: { slug } }) => {
       <MainHeading className="lg:text-start">{post?.title}</MainHeading>
       <SanitizedHTML
         htmlContent={post?.content}
-        className="prose space-y-10 mt-8"
+        className="content space-y-10 mt-8"
       />
     </Container>
   );

@@ -25,7 +25,7 @@ const EventPage: NextPage<EventPageProps> = async ({
   params: { category, id },
 }) => {
   const [events, event] = await Promise.all([
-    getPaginatedEvents('1', '4'),
+    getPaginatedEvents({ page: '1', limit: '4' }),
     getEvent(id),
   ]);
 

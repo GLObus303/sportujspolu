@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import cx from 'classnames';
 
@@ -9,10 +10,10 @@ import { Routes } from '../../constants';
 import { OwnerRequestType } from '../../types/Message';
 import { LightSwitch } from '../LightSwitch';
 import { useAuthModal } from '../../context/AuthModalContext';
-import { useClickOutside } from '../../hooks/useClickOutside';
 import { getOwnerRequests } from '../../api/messages';
 import { useEffectAsync } from '../../hooks/useEffectAsync';
 import { useAuth } from '../../context/AuthContext';
+import { useClickOutside } from '../../hooks/useClickOutside';
 
 type UserControls = {
   defaultTheme: string;
@@ -23,14 +24,13 @@ export const UserControls: React.FC<UserControls> = ({ defaultTheme }) => {
     user: { id, name, email },
     logout,
   } = useAuth();
-
-  const [isNavigationOpen, setIsNavigationOpen] = useState(false);
-
-  const [notifications, setNotifications] = useState<OwnerRequestType[]>([]);
-
   const { openAuthModal } = useAuthModal();
+  const router = useRouter();
 
   const ref = useRef<HTMLDivElement>(null);
+
+  const [isNavigationOpen, setIsNavigationOpen] = useState(false);
+  const [notifications, setNotifications] = useState<OwnerRequestType[]>([]);
 
   const isUserLoggedIn = !!email;
 
@@ -56,15 +56,21 @@ export const UserControls: React.FC<UserControls> = ({ defaultTheme }) => {
     setIsNavigationOpen(!isNavigationOpen);
   };
 
+  const handleLogout = () => {
+    logout();
+    router.push(Routes.DASHBOARD);
+  };
+
   return (
     <div ref={ref} className="flex items-center">
       <button
-        className="items-center h-full justify-center text-xl hover:text-primary focus:text-primary relative"
+        aria-label={isNavigationOpen ? 'Zavřít menu' : 'Otevřít menu'}
+        className="items-center h-full justify-center text-xl hover:fill-primary fill-text focus:fill-primary hover:text-primary focus:text-primary relative"
         onClick={isUserLoggedIn ? handleOpenNavigation : openAuthModal}
       >
-        <div className="flex gap-4 items-center">
+        <div className="flex group gap-4 items-center">
           <span className="hidden whitespace-nowrap sm:inline">{name}</span>
-          <ProfileIcon className="inline h-6 w-6 fill-text hover:fill-primary focus:fill-primary" />
+          <ProfileIcon className="inline h-6 w-6" />
         </div>
 
         {notifications?.length > 0 && (
@@ -75,8 +81,8 @@ export const UserControls: React.FC<UserControls> = ({ defaultTheme }) => {
       </button>
       <div
         className={cx(
-          'absolute top-14 right-0 w-48 bg-background border border-low-contrast flex-col gap-3 rounded-md p-5',
-          isNavigationOpen ? 'flex' : 'hidden',
+          'absolute top-14 right-0 w-48 bg-background border border-low-contrast flex flex-col gap-3 rounded-md p-5',
+          { hidden: !isNavigationOpen },
         )}
       >
         <LightSwitch defaultTheme={defaultTheme} />
@@ -88,7 +94,7 @@ export const UserControls: React.FC<UserControls> = ({ defaultTheme }) => {
         </Link>
         <button
           className="flex font-semibold hover:text-primary"
-          onClick={logout}
+          onClick={handleLogout}
         >
           Odhlásit&nbsp;se
         </button>

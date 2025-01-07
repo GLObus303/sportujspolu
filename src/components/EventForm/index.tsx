@@ -59,21 +59,17 @@ const getTitle = (status: number | undefined, isNewEvent?: boolean) => {
 };
 
 export const EventForm: React.FC<EventFormProps> = ({ event }) => {
+  const {
+    user: { email },
+  } = useAuth();
+  const { openAuthModal } = useAuthModal();
+  const router = useRouter();
+
   const [status, setStatus] = useState<number>();
   const [isDeleteForeverVisible, setIsDeleteForeverVisible] = useState(false);
   const [isPopupInfoOpen, setIsPopupInfoOpen] = useState(false);
 
-  const {
-    user: { email },
-  } = useAuth();
-
-  const { openAuthModal } = useAuthModal();
-
-  const router = useRouter();
-
   const isUserLoggedIn = !!email;
-
-  const isNewEvent = !event?.id;
 
   useEffect(() => {
     if (!isUserLoggedIn) {
@@ -93,6 +89,8 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
     },
   });
   const { watch } = formProps;
+
+  const isNewEvent = !event?.id;
 
   const onSubmit = async (data: CreateEventValues) => {
     const dateTimeIso = format(new Date(data.date), "yyyy-MM-dd'T'HH:mm:ss'Z'");

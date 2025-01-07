@@ -8,10 +8,10 @@ import { PAGINATION, defaultEvent } from '../constants';
 export const getEvent = (id: string) =>
   apiGet<Event>(`events/${id}?includes=owner`) || defaultEvent;
 
-export const getPaginatedEvents = (
-  page: string = PAGINATION.PAGE,
-  limit: string = PAGINATION.LIMIT,
-) =>
+export const getPaginatedEvents = ({
+  page = PAGINATION.PAGE,
+  limit = PAGINATION.LIMIT,
+}) =>
   apiGet<Event[]>(`events/?page=${page}&limit=${limit}&includes=owner`) || [];
 
 export const postEvent = async (formData: EventFormData) => {
