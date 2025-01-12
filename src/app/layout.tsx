@@ -2,6 +2,7 @@ import '../styles/globals.scss';
 import { cookies } from 'next/headers';
 import { Kanit } from 'next/font/google';
 import cx from 'classnames';
+import Script from 'next/script';
 
 import { ThemeProvider } from './theme-provider';
 import { AuthProvider } from '../context/AuthContext';
@@ -18,12 +19,13 @@ const kanit = Kanit({
 });
 
 export const metadata = {
-  title: 'Sportuj Spolu',
-  description: 'Už nikdy nesportuj sám',
+  title: 'Spojujeme lidi ke společnému sportování | SportujSpolu',
+  description:
+    'SportujSpolu ti pomůže najít parťáky na sport. Zakládej události, připojuj se k akcím a už nikdy nesportuj sám.',
 };
 
-const RootLayout: ChildrenFC = ({ children }) => {
-  const cookieStore = cookies();
+const RootLayout: ChildrenFC = async ({ children }) => {
+  const cookieStore = await cookies();
   const defaultTheme = cookieStore.get('theme')?.value || THEME.LIGHT;
 
   return (
@@ -33,6 +35,18 @@ const RootLayout: ChildrenFC = ({ children }) => {
       style={{ colorScheme: defaultTheme }}
     >
       <head>
+        <Script id="hotjar-script" strategy="afterInteractive">
+          {`
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:5264674,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    `}
+        </Script>
         <meta name="robots" content="index, follow" />
       </head>
       <body>
@@ -43,6 +57,8 @@ const RootLayout: ChildrenFC = ({ children }) => {
             </AuthModalProvider>
           </AuthProvider>
         </ThemeProvider>
+
+        <Script async src="https://scripts.simpleanalyticscdn.com/latest.js" />
       </body>
     </html>
   );

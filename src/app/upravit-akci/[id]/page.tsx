@@ -6,11 +6,12 @@ import { Container } from '../../../components/Container';
 import { MainHeading } from '../../../components/MainHeading';
 
 type EditEventPageProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 const EditEventPage: NextPage<EditEventPageProps> = async ({ params }) => {
-  const event = await getEvent(params?.id);
+  const { id } = await params;
+  const event = await getEvent(id);
 
   return (
     <Container className="flex flex-col items-center justify-center lg:justify-between xl:flex-row xl:items-start">
