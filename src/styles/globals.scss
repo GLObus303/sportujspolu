@@ -10,8 +10,9 @@ html {
   background-color: var(--background);
 }
 
-* {
-  font-family: 'kanit', sans-serif;
+body {
+  display: flex;
+  flex-direction: column;
 }
 
 :root {
@@ -22,6 +23,7 @@ html {
   --button: #000000;
   --accent: #131313;
   --text: #000000;
+  --lemon-grass: #00e526;
   --pistachio: #94ffa9;
   --pale-aloe: #e2ffe7;
   --soft-cheek: #ffeef5;
@@ -50,3 +52,4 @@ p {
 button {
   font-size: 1rem;
 }
+

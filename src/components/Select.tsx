@@ -48,7 +48,7 @@ export const Select: React.FC<SelectProps> = ({
         placeholder={placeholder}
         {...register(name)}
       >
-        <option value="" disabled selected={!watchedValue}>
+        <option value="" disabled>
           {placeholder || 'Select an option'}
         </option>
         {options?.map((option) => (

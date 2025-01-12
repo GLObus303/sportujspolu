@@ -13,9 +13,9 @@ export const OverlayWrapper: ChildrenFC<OverlayWrapperProps> = ({
   className,
   onClose,
 }) => (
-  <section
+  <div
     className={cx(
-      'fixed inset-0 z-popup grid h-full w-full place-items-center overflow-auto bg-smoke-glass px-5 py-10',
+      'fixed inset-0 z-modal grid h-full w-full place-items-center overflow-auto bg-smoke-glass px-5 py-10',
       className,
     )}
   >
@@ -24,5 +24,5 @@ export const OverlayWrapper: ChildrenFC<OverlayWrapperProps> = ({
 
       <CrossButton onClick={onClose} className="absolute right-5 top-5" />
     </article>
-  </section>
+  </div>
 );

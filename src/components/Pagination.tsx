@@ -9,6 +9,7 @@ type PaginationProps = {
   hasNextPage: boolean;
   hasPrevPage: boolean;
   page: number;
+  route: string;
   limit: string;
 };
 
@@ -16,6 +17,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   hasNextPage,
   hasPrevPage,
   page,
+  route,
   limit,
 }) => {
   const router = useRouter();
@@ -34,7 +36,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         })}
         disabled={!hasPrevPage}
         onClick={() => {
-          router.push(`/?page=${prev}&limit=${limit}`);
+          router.push(`${route}?page=${prev}&limit=${limit}`);
         }}
       >
         <ArrowIcon
@@ -53,7 +55,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         })}
         disabled={!hasNextPage}
         onClick={() => {
-          router.push(`/?page=${next}&limit=${limit}`);
+          router.push(`${route}?page=${next}&limit=${limit}`);
         }}
       >
         <ArrowIcon

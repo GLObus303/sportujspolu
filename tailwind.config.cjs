@@ -3,8 +3,11 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-kanit)', 'sans-serif'],
+      },
       colors: {
-        primary: "#00E526",
+        primary: 'var(--lemon-grass)',
         secondary: "#FF006B",
         tertiary: "#822e2e",
         white: "#FFFFFF",
@@ -62,7 +65,7 @@ module.exports = {
     },
     zIndex: {
       'header': '1',
-      'popup': '2',
+      'modal': '2',
     },
   },
   variants: {},
