@@ -8,12 +8,14 @@ import { MainHeading } from '../../../components/MainHeading';
 import { TextContent } from '../../../components/TextContent/TextContent';
 
 type BlogPostProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
-const BlogPost: NextPage<BlogPostProps> = ({ params: { slug } }) => {
+const BlogPost: NextPage<BlogPostProps> = async ({ params }) => {
+  const { slug } = await params;
+
   const post =
     postsData.find(({ slug: postSlug }) => postSlug === slug) || defaultPost;
 

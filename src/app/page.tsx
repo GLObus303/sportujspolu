@@ -9,12 +9,13 @@ import { Container } from '../components/Container';
 import { MainHeading } from '../components/MainHeading';
 
 type HomeProps = {
-  searchParams: Record<string, string | string[] | undefined>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
 
 const Home: NextPage<HomeProps> = async ({ searchParams }) => {
-  const page = getFirstQueryParam(searchParams?.page, PAGINATION.PAGE);
-  const limit = getFirstQueryParam(searchParams?.limit, PAGINATION.LIMIT);
+  const { page: pageParam, limit: limitParam } = (await searchParams) || {};
+  const page = getFirstQueryParam(pageParam, PAGINATION.PAGE);
+  const limit = getFirstQueryParam(limitParam, PAGINATION.LIMIT);
 
   const events = await getPaginatedEvents({ page, limit });
 

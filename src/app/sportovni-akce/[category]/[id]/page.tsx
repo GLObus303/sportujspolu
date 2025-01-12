@@ -14,16 +14,22 @@ import { getImagePath } from '../../../../utils/getImagePath';
 import { Container } from '../../../../components/Container';
 import { MainHeading } from '../../../../components/MainHeading';
 
-type EventPageProps = {
-  params: {
-    category: string;
-    id: string;
-  };
+export const metadata = {
+  title: 'Sportovní akce | SportujSpolu',
+  description:
+    'SportujSpolu ti pomůže najít parťáky na sport. Zakládej události, připojuj se k akcím a už nikdy nesportuj sám.',
 };
 
-const EventPage: NextPage<EventPageProps> = async ({
-  params: { category, id },
-}) => {
+type EventPageProps = {
+  params: Promise<{
+    category: string;
+    id: string;
+  }>;
+};
+
+const EventPage: NextPage<EventPageProps> = async ({ params }) => {
+  const { category, id } = await params;
+
   const [events, event] = await Promise.all([
     getPaginatedEvents({ page: '1', limit: '4' }),
     getEvent(id),
