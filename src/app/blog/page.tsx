@@ -36,7 +36,7 @@ const Blog: NextPage = () => (
               </h2>
               <SanitizedHTML
                 htmlContent={post.content}
-                className="mt-2 line-clamp-4 content"
+                className="mt-2 line-clamp-4"
               />
             </div>
           </Link>

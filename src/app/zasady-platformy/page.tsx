@@ -4,12 +4,13 @@ import { Container } from '../../components/Container';
 import { SanitizedHTML } from '../../components/SanitizedHTML';
 import { guidelineData } from './guidelineData';
 import { MainHeading } from '../../components/MainHeading';
+import { TextContent } from '../../components/TextContent/TextContent';
 
 const PlatformGuideLines: NextPage = () => (
   <Container className="max-w-4xl">
     <MainHeading className="mb-12">Zásady platformy SportujSpolu</MainHeading>
     {guidelineData.map((item) => (
-      <div key={item.title} className="content">
+      <TextContent key={item.title}>
         <h2>{item.title}</h2>
         {item.description.text.map((text, index) => (
           <SanitizedHTML
@@ -25,7 +26,7 @@ const PlatformGuideLines: NextPage = () => (
             </li>
           ))}
         </ul>
-      </div>
+      </TextContent>
     ))}
   </Container>
 );

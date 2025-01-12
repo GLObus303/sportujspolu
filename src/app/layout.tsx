@@ -33,7 +33,7 @@ const RootLayout: ChildrenFC = ({ children }) => {
       style={{ colorScheme: defaultTheme }}
     >
       <head>
-        <meta name="robots" content="noindex, nofollow" />
+        <meta name="robots" content="index, follow" />
       </head>
       <body>
         <ThemeProvider defaultTheme={defaultTheme}>
