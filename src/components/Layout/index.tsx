@@ -13,7 +13,7 @@ export const Layout: ChildrenFC = ({ children }) => {
   return (
     <>
       <Header defaultTheme={defaultTheme} />
-      <main className="mx-auto max-w-layout min-h-full">
+      <main className="flex-grow flex-shrink-0 basis-auto w-full mx-auto max-w-layout">
         {children}
         <AuthModal />
       </main>

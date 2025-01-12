@@ -5,7 +5,7 @@ type PopupProps = {
   onClose: () => void;
 };
 
-export const Popup: ChildrenFC<PopupProps> = ({ onClose, children }) => (
+export const Modal: ChildrenFC<PopupProps> = ({ onClose, children }) => (
   <OverlayWrapper onClose={onClose}>
     <div className="w-full py-5 md:w-96">{children}</div>
   </OverlayWrapper>

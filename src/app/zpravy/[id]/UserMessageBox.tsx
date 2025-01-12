@@ -58,7 +58,7 @@ export const UserMessageBox: React.FC = () => {
 
   return (
     <MessageBox
-      className="mt-10 md:mt-14"
+      className="mt-10 md:mt-14 w-full"
       ownerRequest={ownerRequest}
       userRequests={userRequests}
     />

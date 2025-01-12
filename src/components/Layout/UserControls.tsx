@@ -52,13 +52,14 @@ export const UserControls: React.FC<UserControls> = ({ defaultTheme }) => {
 
   useClickOutside(ref, () => setIsNavigationOpen(false), isNavigationOpen);
 
-  const handleOpenNavigation = () => {
+  const handleToggleNavigation = () => {
     setIsNavigationOpen(!isNavigationOpen);
   };
 
   const handleLogout = () => {
-    logout();
     router.push(Routes.DASHBOARD);
+    setIsNavigationOpen(false);
+    logout();
   };
 
   return (
@@ -66,7 +67,7 @@ export const UserControls: React.FC<UserControls> = ({ defaultTheme }) => {
       <button
         aria-label={isNavigationOpen ? 'Zavřít menu' : 'Otevřít menu'}
         className="items-center h-full justify-center text-xl hover:fill-primary fill-text focus:fill-primary hover:text-primary focus:text-primary relative"
-        onClick={isUserLoggedIn ? handleOpenNavigation : openAuthModal}
+        onClick={isUserLoggedIn ? handleToggleNavigation : openAuthModal}
       >
         <div className="flex group gap-4 items-center">
           <span className="hidden whitespace-nowrap sm:inline">{name}</span>
@@ -89,6 +90,7 @@ export const UserControls: React.FC<UserControls> = ({ defaultTheme }) => {
         <Link
           className="font-semibold hover:text-primary"
           href={`${Routes.MESSAGES}/${id}`}
+          onClick={handleToggleNavigation}
         >
           Zprávy
         </Link>

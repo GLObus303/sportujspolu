@@ -38,7 +38,7 @@ export const Input: React.FC<InputProps> = ({
         aria-invalid={!!errors?.[name]}
         className={cx(
           className,
-          'w-full bg-card px-5 py-3 placeholder-low-contrast focus:outline-primary',
+          'w-full bg-card px-2 sm:px-5 py-3 placeholder-low-contrast focus:outline-primary',
           {
             'border-primary': !errors?.[name] && watchedValue,
             'border-medium-gray': !errors?.[name] && !watchedValue,

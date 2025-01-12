@@ -10,7 +10,7 @@ import { sendEmailRequest } from '../../api/messages';
 import { Textarea } from '../Textarea';
 import { emailSchema } from './schema';
 import { Button } from '../Button';
-import { Popup } from '../Popup';
+import { Modal } from '../Modal';
 import { ERROR_MESSAGE, SUCCESS_MESSAGE } from '../../constants';
 
 type EmailFormProps = {
@@ -36,7 +36,7 @@ const getTitle = (status: number | undefined) => {
 
 export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [isPopupInfoOpen, setIsPopupInfoOpen] = useState(false);
+  const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
   const [status, setStatus] = useState<number>();
   const [pendingEmailData, setPendingEmailData] = useState<EmailData | null>(
     null,
@@ -72,7 +72,7 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
           setStatus(response.error?.status);
         }
       } finally {
-        setIsPopupInfoOpen(true);
+        setIsModalInfoOpen(true);
         setIsLoading(false);
       }
     },
@@ -96,8 +96,8 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
     await submitMessage(emailData);
   };
 
-  const handlePopupClose = () => {
-    setIsPopupInfoOpen(false);
+  const handleModalClose = () => {
+    setIsModalInfoOpen(false);
   };
 
   return (
@@ -118,13 +118,13 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
         </form>
       </FormProvider>
 
-      {isPopupInfoOpen && (
-        <Popup onClose={handlePopupClose}>
+      {isModalInfoOpen && (
+        <Modal onClose={handleModalClose}>
           {getTitle(status)}
-          <Button className="mx-auto mt-5" onClick={handlePopupClose}>
+          <Button className="mx-auto mt-5" onClick={handleModalClose}>
             Zavřít
           </Button>
-        </Popup>
+        </Modal>
       )}
     </>
   );

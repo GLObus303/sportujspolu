@@ -12,7 +12,11 @@ export const SanitizedHTML: React.FC<SanitizedHTMLProps> = ({
   const sanitizedContent = sanitizeHtml(htmlContent, {
     allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
     allowedAttributes: {
-      '*': [...(sanitizeHtml.defaults.allowedAttributes['*'] || []), 'id'],
+      '*': [
+        ...(sanitizeHtml.defaults.allowedAttributes['*'] || []),
+        'id',
+        'href',
+      ],
       img: ['src', 'alt', 'title', 'width', 'height'],
     },
   });

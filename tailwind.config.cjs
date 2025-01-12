@@ -65,7 +65,7 @@ module.exports = {
     },
     zIndex: {
       'header': '1',
-      'popup': '2',
+      'modal': '2',
     },
   },
   variants: {},

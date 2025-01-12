@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
 import cx from 'classnames';
 import { format } from 'date-fns';
+import Link from 'next/link';
 
 import { useAuth } from '../../context/AuthContext';
 import { Input } from '../Input';
@@ -22,7 +23,7 @@ import {
   sportsOptions,
 } from '../../constants';
 import { DeleteIcon } from '../icons/DeleteIcon';
-import { Popup } from '../Popup';
+import { Modal } from '../Modal';
 import { useAuthModal } from '../../context/AuthModalContext';
 import { Button } from '../Button';
 
@@ -67,7 +68,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
 
   const [status, setStatus] = useState<number>();
   const [isDeleteForeverVisible, setIsDeleteForeverVisible] = useState(false);
-  const [isPopupInfoOpen, setIsPopupInfoOpen] = useState(false);
+  const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
 
   const isUserLoggedIn = !!email;
 
@@ -112,7 +113,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
       setStatus(response.error?.status);
     }
 
-    setIsPopupInfoOpen(true);
+    setIsModalInfoOpen(true);
   };
 
   const toggleDeleteConfirmation = () => {
@@ -124,19 +125,30 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
     router.push(Routes.DASHBOARD);
   };
 
-  const handlePopupClose = () => {
-    setIsPopupInfoOpen(false);
+  const handleModalClose = () => {
+    setIsModalInfoOpen(false);
+  };
+
+  const handleCleanForm = () => {
+    formProps.reset({
+      name: '',
+      description: '',
+      sport: '',
+      location: '',
+      price: undefined,
+    });
+    setStatus(undefined);
   };
 
   const watchedLevel = watch('level');
 
   return (
     <>
-      <article className="relative mx-5 mr-0 mt-10 flex w-full max-w-xl flex-col rounded-md bg-card text-center shadow-md lg:text-start xl:mr-28 xl:mt-14 xl:px-0">
+      <article className="relative mr-0 mt-10 flex w-full max-w-xl flex-col rounded-md bg-card text-center shadow-md lg:text-start xl:mr-28 xl:mt-14 xl:px-0">
         <FormProvider {...formProps}>
           <form
             onSubmit={formProps.handleSubmit(onSubmit)}
-            className="flex flex-col space-y-8 rounded-md bg-card p-7"
+            className="flex flex-col space-y-8 rounded-md bg-card p-4 sm:p-7 overflow-hidden"
           >
             <Input
               type="name"
@@ -176,7 +188,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
                 Úroveň
               </span>
               <div className="mt-5 flex w-3/5 flex-wrap justify-end gap-4 md:justify-between">
-                {Object.entries(levelLabels).map(([value, label]) => (
+                {Object.entries(levelLabels).map(([value, label], index) => (
                   <label
                     key={value}
                     className="flex cursor-pointer items-center"
@@ -185,6 +197,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
                       {...formProps.register('level')}
                       type="radio"
                       value={value}
+                      defaultChecked={index === 0}
                       className="h-9 w-36 focus:outline-primary"
                     />
                     <span
@@ -209,12 +222,12 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
             />
             <div className="ml-auto flex flex-row items-center justify-center">
               {isDeleteForeverVisible ? (
-                <Popup onClose={toggleDeleteConfirmation}>
+                <Modal onClose={toggleDeleteConfirmation}>
                   <h2 className="my-5">Po potvrzení nelze akci vrátit zpět.</h2>
                   <Button className="mt-5" onClick={handleDelete}>
                     Smazat navždy
                   </Button>
-                </Popup>
+                </Modal>
               ) : (
                 <>
                   <button
@@ -240,21 +253,40 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
           </form>
         </FormProvider>
       </article>
-      {isPopupInfoOpen && (
-        <Popup onClose={handlePopupClose}>
+
+      {isModalInfoOpen && (
+        <Modal onClose={handleModalClose}>
           {getTitle(status, isNewEvent)}
           {status === 401 && (
             <Button
               className="mt-5"
               onClick={() => {
                 openAuthModal();
-                handlePopupClose();
+                handleModalClose();
               }}
             >
               Přihlásit se
             </Button>
           )}
-        </Popup>
+          {status === 200 && (
+            <div className="flex mt-5 flex-col items-center justify-center gap-5">
+              <Button
+                onClick={() => {
+                  handleModalClose();
+                  handleCleanForm();
+                }}
+              >
+                Vytvořit další akci
+              </Button>
+              <Link
+                href={Routes.DASHBOARD}
+                className="text-base hover:text-primary focus:text-primary"
+              >
+                Zpět na domovskou stránku
+              </Link>
+            </div>
+          )}
+        </Modal>
       )}
     </>
   );

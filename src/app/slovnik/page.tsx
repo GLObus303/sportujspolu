@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Container } from '../../components/Container';
 import { dictionaryData, dictionaryLetters } from './dictionaryData';
 import { MainHeading } from '../../components/MainHeading';
+import '../../styles/content.scss';
 
 const Dictionary: NextPage = () => (
   <Container className="max-w-4xl">
@@ -21,7 +22,7 @@ const Dictionary: NextPage = () => (
     </nav>
 
     {dictionaryData.map((letterSection, letter) => (
-      <section key={letter} className="content mb-12">
+      <section key={letter} className="mb-12 content">
         <h2 id={letterSection.letter} className="mb-5">
           <strong>{letterSection.letter}</strong>
         </h2>
