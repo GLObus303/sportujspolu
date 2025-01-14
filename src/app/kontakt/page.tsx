@@ -17,7 +17,7 @@ const Contact: NextPage = () => (
       <Link
         href="https://www.instagram.com/sportujspolu/#"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         className="hover:text-primary font-medium"
       >
         Instagram
