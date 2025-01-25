@@ -6,8 +6,8 @@ import { ChildrenFC } from '../../utils/type';
 import { THEME } from '../../constants';
 import { AuthModal } from '../AuthModal';
 
-export const Layout: ChildrenFC = async ({ children }) => {
-  const cookieStore = await cookies();
+export const Layout: ChildrenFC = ({ children }) => {
+  const cookieStore = cookies();
   const defaultTheme = cookieStore.get('theme')?.value || THEME.LIGHT;
 
   return (
