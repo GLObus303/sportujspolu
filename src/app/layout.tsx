@@ -24,8 +24,8 @@ export const metadata = {
     'SportujSpolu ti pomůže najít parťáky na sport. Zakládej události, připojuj se k akcím a už nikdy nesportuj sám.',
 };
 
-const RootLayout: ChildrenFC = ({ children }) => {
-  const cookieStore = cookies();
+const RootLayout: ChildrenFC = async ({ children }) => {
+  const cookieStore = await cookies();
   const defaultTheme = cookieStore.get('theme')?.value || THEME.LIGHT;
 
   return (
