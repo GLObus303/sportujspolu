@@ -7,6 +7,8 @@ import { PAGINATION, Routes } from '../constants';
 import { getFirstQueryParam } from '../utils/getFirstQueryParam';
 import { Container } from '../components/Container';
 import { MainHeading } from '../components/MainHeading';
+import { BlogPreview } from '../components/BlogPreview';
+import { BannerSection } from '../components/BannerSection';
 
 type HomeProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
@@ -35,6 +37,10 @@ const Home: NextPage<HomeProps> = async ({ searchParams }) => {
         route={Routes.DASHBOARD}
         limit={limit}
       />
+      <hr className="my-16 border-t border-low-contrast" />
+      <BannerSection />
+      <hr className="my-16 border-t border-low-contrast" />
+      <BlogPreview />
     </Container>
   );
 };

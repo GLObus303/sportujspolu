@@ -8,7 +8,7 @@ module.exports = {
       },
       colors: {
         primary: 'var(--lemon-grass)',
-        secondary: "#FF006B",
+        secondary: 'var(--cherry-heart)',
         tertiary: "#822e2e",
         white: "#FFFFFF",
         "dark-gray": "#5D5D5D",
@@ -26,6 +26,10 @@ module.exports = {
         "pale-aloe": "var(--pale-aloe)",
         "soft-cheek": "var(--soft-cheek)",
         "baby-fox": "var(--baby-fox)",
+      },
+      backgroundImage: {
+        'gradient-banner-primary': 'linear-gradient(135deg, var(--pistachio), var(--faded))',
+        'gradient-banner-secondary': 'linear-gradient(135deg, var(--soft-cheek), var(--faded))',
       },
       height: {
         article: "190px",
