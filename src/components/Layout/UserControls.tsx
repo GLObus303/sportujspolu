@@ -87,13 +87,15 @@ export const UserControls: React.FC<UserControls> = ({ defaultTheme }) => {
         )}
       >
         <LightSwitch defaultTheme={defaultTheme} />
-        <Link
-          className="font-semibold hover:text-primary"
-          href={`${Routes.MESSAGES}/${id}`}
-          onClick={handleToggleNavigation}
-        >
-          Zprávy
-        </Link>
+        {isUserLoggedIn && (
+          <Link
+            className="font-semibold hover:text-primary"
+            href={`${Routes.MESSAGES}/${id}`}
+            onClick={handleToggleNavigation}
+          >
+            Zprávy
+          </Link>
+        )}
         <button
           className="flex font-semibold hover:text-primary"
           onClick={handleLogout}
