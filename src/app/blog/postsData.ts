@@ -12,6 +12,8 @@ export const postsData = [
     slug: 'top-strategie-jak-zustat-motivovany-v-posilovne-v-novem-roce-2025',
     title: 'Top Strategie, Jak Zůstat Motivovaný V Posilovně V Novém Roce 2025',
     image: '/images/fitness/3.avif',
+    preview:
+      'Nový rok přináší nové cíle a odhodlání, a jedno z nejčastějších je zlepšení fyzické kondice prostřednictvím pravidelného cvičení v posilovně. Avšak udržet si motivaci může být výzvou, zejména když výsledky nejsou okamžité nebo když...',
     content: `
     <div>
       <p>
@@ -198,6 +200,8 @@ export const postsData = [
     slug: '5-duvodu-proc-sportovani-s-prateli-zlepsi-vase-vysledky',
     image: '/images/yoga/2.avif',
     title: '5 Důvodů, Proč Sportování S Přáteli Zlepší Vaše Výsledky',
+    preview:
+      'Sportování s přáteli není jen o fyzické aktivitě – je to také o motivaci, podpoře a zábavě. Když se spojíte s kamarádem nebo přítelkyní, sportování se stává mnohem příjemnějším a efektivnějším. Společné...',
     content: `
     <div>
       <p>
@@ -353,6 +357,8 @@ export const postsData = [
     slug: 'nejlepsi-teamove-sporty-pro-zlepseni-motivace-a-vykonu',
     image: '/images/volleyball/3.avif',
     title: 'Nejlepší Teamové Sporty pro Zlepšení Motivace a Výkonu',
+    preview:
+      'Teamové sporty nejsou jen o fyzické aktivitě – jsou také o spolupráci, komunikaci a společném cíli. Hraní ve skupině může výrazně zvýšit vaši motivaci, zlepšit výkon a posílit vztahy s ostatními. Společné úsilí...',
     content: `
     <div>
       <p>
@@ -760,7 +766,7 @@ export const postsData = [
           V tomto článku se podíváme na konkrétní přínosy meditace pro sportovce, jak začít s meditací a jak ji efektivně začlenit do svého tréninkového režimu.
         </p>
       </div>
-      
+
       <div>
         <h2>1. Zklidnění mysli</h2>
         <p>
@@ -784,7 +790,7 @@ export const postsData = [
           <li>Pravidelně cvičte, abyste si vytvořili meditaci jako součást své denní rutiny.</li>
         </ul>
       </div>
-      
+
       <div>
         <h2>2. Zvýšení soustředění</h2>
         <p>
@@ -808,7 +814,7 @@ export const postsData = [
           <li>Učte se techniky rychlého návratu k soustředění po přerušení, například hlubokým dýcháním.</li>
         </ul>
       </div>
-      
+
       <div>
         <h2>3. Zlepšení fyzického výkonu</h2>
         <p>
@@ -832,7 +838,7 @@ export const postsData = [
           <li>Učte se techniky relaxace, které pomohou uvolnit svalové napětí po tréninku.</li>
         </ul>
       </div>
-      
+
       <div>
         <h2>4. Zvýšení odolnosti a vytrvalosti</h2>
         <p>
@@ -856,7 +862,7 @@ export const postsData = [
           <li>Vytvořte si rutinu, která kombinuje meditaci s fyzickým tréninkem pro maximální efekt.</li>
         </ul>
       </div>
-      
+
       <div>
         <h2>5. Zlepšení spánku a regenerace</h2>
         <p>
@@ -880,7 +886,7 @@ export const postsData = [
           <li>Užívejte si klidné a pohodlné prostředí pro meditaci, které podporuje uvolnění.</li>
         </ul>
       </div>
-      
+
       <div>
         <h2>Jak začít s meditací: Praktický průvodce pro sportovce</h2>
         <p>
@@ -897,7 +903,7 @@ export const postsData = [
           Pamatujte, že meditace je dovednost, kterou je třeba trénovat a rozvíjet. S časem a praxí se budete cítit klidnější, soustředěnější a připravenější na výzvy, které vám sport přinese.
         </p>
       </div>
-      
+
       <div>
         <h2>Závěr</h2>
         <p>

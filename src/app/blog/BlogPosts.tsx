@@ -10,7 +10,9 @@ type BlogPostsProps = {
 };
 
 export const BlogPosts: React.FC<BlogPostsProps> = ({ variant = 'full' }) => {
-  const posts = variant === 'preview' ? postsData.slice(0, 3) : postsData;
+  const isPreview = variant === 'preview';
+
+  const posts = isPreview ? postsData.slice(0, 3) : postsData;
 
   return (
     <section className="mt-10 grid grid-cols-1 gap-5 gap-y-5 sm:grid-cols-2 sm:px-5 md:mt-14 md:px-0 lg:grid-cols-3">
@@ -37,7 +39,7 @@ export const BlogPosts: React.FC<BlogPostsProps> = ({ variant = 'full' }) => {
                 {post.title}
               </h2>
               <SanitizedHTML
-                htmlContent={post.content}
+                htmlContent={(isPreview ? post.preview : post.content) || ''}
                 className="mt-2 line-clamp-4"
               />
             </div>
