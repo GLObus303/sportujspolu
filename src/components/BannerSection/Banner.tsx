@@ -18,12 +18,12 @@ export const Banner: React.FC<BannerProps> = ({
 }) => (
   <article
     className={cx(
-      'p-20 rounded-lg lg:text-start text-center',
+      'p-5 md:p-20 rounded-lg lg:text-start text-center',
       variant === 'primary' && 'bg-gradient-banner-primary',
       variant === 'secondary' && 'bg-gradient-banner-secondary',
     )}
   >
-    <h2 className="px-20 mb-2 text-xl font-medium max-w-2xl leading-normal md:px-0 lg:text-3xl">
+    <h2 className="px-5 0 mb-2 text-xl font-medium max-w-2xl leading-normal md:px-0 lg:text-3xl">
       {content.title}
     </h2>
     <p className="max-w-2xl text-lg mb-10">{content.description}</p>
