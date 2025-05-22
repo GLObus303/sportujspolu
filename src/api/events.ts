@@ -31,6 +31,8 @@ export const postEvent = async (formData: EventFormData) => {
   }
 };
 
+export const getAllEvents = () => apiGet<Event[]>(`events`) || [];
+
 export const updateEvent = async (formData: EventFormData, id: string) => {
   try {
     const data = await apiPut(`events/${id}`, formData);

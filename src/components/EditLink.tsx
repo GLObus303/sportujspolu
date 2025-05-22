@@ -26,7 +26,7 @@ export const EditLink: React.FC<EditLinkProps> = ({
   return (
     <Link
       className={cx(
-        'ml-auto rounded bg-button px-5 py-2 text-center text-base text-white hover:text-primary',
+        'ml-auto rounded-full bg-button px-5 py-2 text-center text-base text-reverse-text hover:text-primary',
         className,
       )}
       href={`${Routes.EDIT_EVENT}/${eventId}`}

@@ -17,7 +17,7 @@ export const Button: React.FC<ButtonProps> = ({
   <button
     aria-label={ariaLabel}
     className={cx(
-      'min-w-[5rem] rounded-md bg-button px-4 py-2 text-white',
+      'min-w-[5rem] rounded-full bg-button px-4 py-2 text-reverse-text',
       className,
       {
         'hover:text-primary focus:text-primary': variant === 'primary',

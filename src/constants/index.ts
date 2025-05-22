@@ -8,11 +8,13 @@ export const Routes = {
   EDIT_EVENT: '/upravit-akci',
   ATTEND_EVENT: '/zucastnit-se',
   EVENT: '/sportovni-akce',
+  FAVORITES: '/oblibene-akce',
   MESSAGES: '/zpravy',
   GUIDELINES: '/zasady-platformy',
   BLOG: '/blog',
   CONTACT: '/kontakt',
   FAQ: '/faq',
+  SPORT: '/sport',
 };
 
 export const THEME = {
@@ -54,7 +56,7 @@ export const levelLabels: Record<LevelType, string> = {
   Any: 'Pro každého',
 };
 
-const sportsArray = [
+export const sportsArray = [
   'basketball',
   'running',
   'boxing',
@@ -66,6 +68,7 @@ const sportsArray = [
   'skateboarding',
   'tableTennis',
   'tennis',
+  'dancing',
   'volleyball',
   'yoga',
 ] as const;
@@ -86,6 +89,7 @@ export const sportsLabels: Record<SportsType, string> = {
   skateboarding: 'Skateboarding',
   tableTennis: 'Stolní tenis',
   tennis: 'Tenis',
+  dancing: 'Tanec',
   volleyball: 'Volejbal',
   yoga: 'Yoga',
 };

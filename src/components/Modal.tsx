@@ -7,6 +7,8 @@ type PopupProps = {
 
 export const Modal: ChildrenFC<PopupProps> = ({ onClose, children }) => (
   <OverlayWrapper onClose={onClose}>
-    <div className="w-full py-5 md:w-96">{children}</div>
+    <div className="w-full flex flex-col items-center py-5 md:w-96">
+      {children}
+    </div>
   </OverlayWrapper>
 );

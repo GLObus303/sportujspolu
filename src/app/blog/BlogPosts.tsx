@@ -31,10 +31,13 @@ export const BlogPosts: React.FC<BlogPostsProps> = ({ variant = 'full' }) => {
                 objectFit="cover"
               />
             </div>
+            <p className="absolute top-4 left-4 text-sm px-3 py-1 bg-pistachio rounded-full mb-2 inline-block">
+              {post.category}
+            </p>
             <div className="p-4">
               <h2
                 id={`post-title-${post.id}`}
-                className="text-2xl font-semibold line-clamp-2"
+                className="text-2xl font-medium line-clamp-2"
               >
                 {post.title}
               </h2>

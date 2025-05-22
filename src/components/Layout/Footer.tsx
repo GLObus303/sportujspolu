@@ -12,43 +12,34 @@ export const Footer: React.FC = () => (
             href="https://www.instagram.com/sportujspolu/#"
             target="_blank"
             rel="noopener noreferrer nofollow"
-            className="hover:text-primary font-medium"
+            className="hover-marker font-medium"
           >
-            Instagram
+            <span>Instagram</span>
           </Link>
         </li>
         <li>
-          <Link href={Routes.BLOG} className="hover:text-primary font-medium">
-            Blog
+          <Link href={Routes.BLOG} className="hover-marker font-medium">
+            <span>Blog</span>
           </Link>
         </li>
         <li>
-          <Link
-            href={Routes.GUIDELINES}
-            className="hover:text-primary font-medium"
-          >
-            Zásady platformy
+          <Link href={Routes.GUIDELINES} className="hover-marker font-medium">
+            <span>Zásady platformy</span>
           </Link>
         </li>
         <li>
-          <Link
-            href={Routes.CONTACT}
-            className="hover:text-primary font-medium"
-          >
-            Kontakt
+          <Link href={Routes.CONTACT} className="hover-marker font-medium">
+            <span>Kontakt</span>
           </Link>
         </li>
         <li>
-          <Link
-            href={Routes.DICTIONARY}
-            className="hover:text-primary font-medium"
-          >
-            Slovník
+          <Link href={Routes.DICTIONARY} className="hover-marker font-medium">
+            <span>Slovník</span>
           </Link>
         </li>
         <li>
-          <Link href={Routes.FAQ} className="hover:text-primary font-medium">
-            FAQ
+          <Link href={Routes.FAQ} className="hover-marker font-medium">
+            <span>FAQ</span>
           </Link>
         </li>
       </ul>

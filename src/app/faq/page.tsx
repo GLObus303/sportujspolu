@@ -14,7 +14,12 @@ const FAQ: NextPage = () => (
       <dl>
         {faqData.map((question, index) => (
           <Fragment key={index}>
-            <dt className="text-2xl font-medium">{question.title}</dt>
+            <dt className="text-2xl font-medium">
+              <span className="text-2xl pr-2 font-black text-pistachio [-webkit-text-stroke:1px_black]">
+                {index + 1}.
+              </span>
+              {question.title}
+            </dt>
             <dd>
               <SanitizedHTML
                 htmlContent={question.description}
