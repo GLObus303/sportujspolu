@@ -7,7 +7,7 @@ export const HomeHero = () => (
     <div className="w-full lg:w-1/2 lg:mr-20">
       <h1 className="text-4xl md:text-6xl leading-snug font-medium mb-4 max-w-xl md:leading-tight">
         <span className="relative">
-          <span className="absolute bottom-0 left-0 w-full h-[60%] bg-pistachio rounded-full translate-x-1" />
+          <span className="absolute bottom-0 left-0 w-full h-[60%] bg-pistachio rounded-full translate-x-2" />
           <span className="relative px-2">SportujSpolu</span>
         </span>{' '}
         – zážitky začínají pohybem.
