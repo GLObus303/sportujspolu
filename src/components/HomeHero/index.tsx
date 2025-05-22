@@ -5,7 +5,7 @@ import { HeroImage } from './HeroImage';
 export const HomeHero = () => (
   <section className="flex flex-col items-center justify-between gap-20 lg:flex-row w-full rounded-lg pt-36 pr-10 pl-10 pb-10 bg-soft-background">
     <div className="w-full lg:w-1/2 lg:mr-20">
-      <h1 className="text-5xl font-semibold mb-4 max-w-xl hover-marker">
+      <h1 className="text-5xl font-semibold mb-4 max-w-xl">
         SportujSpolu – zážitky začínají pohybem.
       </h1>
       <p className="text-xl mb-10 max-w-xl">
