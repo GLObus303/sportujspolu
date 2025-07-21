@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { BlogPosts } from '../../app/blog/BlogPosts';
 import { Routes } from '../../constants';
+import { CustomLink } from '../CustomLink';
 
 export const BlogPreview = () => (
   <section>
@@ -12,5 +13,8 @@ export const BlogPreview = () => (
       </Link>
     </h2>
     <BlogPosts variant="preview" />
+    <div className="flex justify-center mt-10">
+      <CustomLink href={Routes.BLOG}>Všechny články</CustomLink>
+    </div>
   </section>
 );

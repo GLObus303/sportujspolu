@@ -8,10 +8,166 @@ export const defaultPost = {
 
 export const postsData = [
   {
-    id: 1,
+    id: 9,
+    slug: 'jak-se-efektivne-hodit-do-formy-na-leto-7-zpusobu-jak-zacit-a-vydrzet',
+    title:
+      'Jak se efektivně hodit do formy na léto? 7 způsobů, jak začít (a vydržet)',
+    image: '/images/running/7.avif',
+    category: 'motivace',
+    preview:
+      'Léto se blíží a s ním i touha cítit se dobře ve vlastním těle. Nepotřebuješ drastické diety ani nekonečné hodiny ve fitku. Stačí chytře začít – ideálně s někým, kdo tě podpoří. Tady je 7 způsobů, jak nastartovat formu na léto a nepolevit po týdnu.',
+    content: `
+      <div>
+        <p>
+          Léto je pro většinu z nás přirozenou motivací rozhýbat se, zlepšit kondici a cítit se skvěle ve vlastním těle. Často ale spadneme do pasti
+          přehnaných cílů a extrémních metod, které nás za pár dní spíše vyčerpají, než posunou kupředu.
+        </p>
+        <p>
+          Klíč k dlouhodobému úspěchu spočívá v malých, udržitelných krůčcích a v podpůrném prostředí. Sdílené cíle se drží lépe
+          – a právě proto může být léto ideální dobou přibrat kamaráda či nového parťáka ze <b>SportujSpolu</b> a začít společně.
+        </p>
+      </div>
+  
+      <div>
+        <h2>1. Začni postupně</h2>
+        <p>
+          Namísto radikální proměny životního stylu si nastav jeden či dva realistické zvyky navíc.
+          Po týdnu je zhodnoť a teprve poté přidej další. Trpělivost je zárukou konzistence.
+        </p>
+        <p>
+          <b>Proč to funguje?</b> Postupné zvyšování zátěže dává tělu čas adaptovat se a
+          z nového rituálu se stává zvyk – ne okamžitá šoková terapie.
+        </p>
+        <ul>
+          <li>Přidej 2000 kroků denně navíc ke svému průměru.</li>
+          <li>Dvakrát týdně vyměň výtah za schody.</li>
+          <li>Každý víkend naplánuj jednu 30minutovou aktivitu na čerstvém vzduchu.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>2. Vyber si sport, který tě baví</h2>
+        <p>
+          Pokud tě aktivita nenaplňuje, dlouho u ní nevydržíš. Neboj se experimentovat: kolektivní sporty
+          pro soutěživce, tanec pro milovníky rytmu, paddleboard pro ty, kdo rádi kombinují relax a pohyb.
+        </p>
+        <p>
+          <b>Tip:</b> Využij zkušební lekce ve fitcentrech nebo komunitní akce ve tvém okolí a ochutnej různé sportovní styly.
+        </p>
+        <ul>
+          <li>Napiš si seznam aktivit, které tě lákají, a zkus jednu týdně.</li>
+          <li>Zapoj se do komunitních běhů nebo cyklojízd – poznáš podobně naladěné lidi.</li>
+          <li>Sleduj místní facebookové skupiny se sportovní tematikou pro spontánní akce.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>3. Najdi si parťáka</h2>
+        <p>
+          Odpovědnost vůči druhému člověku zvyšuje pravděpodobnost, že trénink nevynecháš.
+          Navíc se můžete navzájem motivovat, sdílet pokroky a střídat role „tahouna“.
+        </p>
+        <p>
+          <b>Kde hledat?</b> Domluv se s kamarádem, kolegou nebo využij platformy, jako je
+          <b>SportujSpolu</b>, kde najdeš sportovce ve svém okolí během pár kliknutí.
+        </p>
+        <ul>
+          <li>Naplánujte si pevný den a čas a držte se ho jako důležitého pracovního meetingu.</li>
+          <li>Stanovte si společný mini-cíl (např. 5km běh za měsíc) a oslavte jeho splnění.</li>
+          <li>Střídejte aktivity, aby si každý přišel na své a učení bylo zábavné.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>4. Stanov si konkrétní, ale malé cíle</h2>
+        <p>
+          Abstraktní přání „zhubnout“ se rychle rozplývá. Nahraď ho měřitelnými mini-úkoly,
+          které se vejdou do kalendáře a lze je odškrtávat.
+        </p>
+        <p>
+          <b>Příklad SMART cíle:</b> „Každé úterý a čtvrtek uběhnu 2 km a v neděli přidám 20min
+          posilování s vlastní vahou.“
+        </p>
+        <ul>
+          <li>Rozděl dlouhodobý cíl (např. 10 km běh) do týdenních milníků.</li>
+          <li>Používej digitální nástroj nebo papírový tracker pro vizuální motivaci.</li>
+          <li>Jednou za měsíc cíle reviduj a případně uprav podle aktuální kondice.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>5. Sportuj venku</h2>
+        <p>
+          Sluneční světlo a čerstvý vzduch stimulují tvorbu serotoninu, což přirozeně zvyšuje
+          dobrou náladu a chuť k pohybu. Navíc je to často zdarma.
+        </p>
+        <p>
+          <b>Nápady na venkovní aktivity:</b> běh po stezkách, intervalový trénink na workout
+          hřišti, jízda na longboardu, plážový volejbal, jóga v parku či plavání v přírodní nádrži.
+        </p>
+        <ul>
+          <li>Vytipuj si tři nové venkovní lokality a střídej je, ať prostředí nezevšední.</li>
+          <li>Zapoj do aktivity rodinu nebo přátele – společný piknik po tréninku je skvělá odměna.</li>
+          <li>V horkých dnech plánuj trénink brzy ráno nebo k večeru kvůli teplotě a UV indexu.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>6. Neřeš váhu, řeš pocit</h2>
+        <p>
+          Číslo na váze neodráží sílu, energii ani radost z pohybu. Soustřeď se spíše na
+          „měkké“ ukazatele – lépe se vyspíš, máš víc energie, zvládneš vyjít schody bez
+          funění. Tyto signály ti potvrdí, že jsi na správné cestě.
+        </p>
+        <p>
+          <b>Jak měřit neviditelné pokroky?</b> Zaznamenávej si kvalitu spánku,
+          úroveň stresu, náladu a subjektivní pocit síly na škále 1–10 jednou týdně.
+        </p>
+        <ul>
+          <li>Všímej si, zda se ti zlepšuje držení těla a celková mobilita.</li>
+          <li>Porovnej, jak rychle se regeneruješ po náročném dni.</li>
+          <li>Ptej se sám sebe: „Cítím se lépe než minulý týden?“ – jednoduchý, ale účinný test.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>7. Odpusť si pauzy, ale vždy se vrať</h2>
+        <p>
+          Dovolená, nachlazení nebo náročný pracovní týden občas přeruší rozjetý režim.
+          Pauza není selhání – klíčem je nevracet se na startovní čáru, ale pokračovat tam, kde jsi přestal.
+        </p>
+        <p>
+          <b>Mentalita „restartu“:</b> Dej si první trénink po pauze kratší a lehčí, aby sis
+          znovu připomněl správnou techniku a tělo se adaptovalo. Úspěch spočívá ve
+          schopnosti navazovat, nikoli začínat stále od nuly.
+        </p>
+        <ul>
+          <li>Nastav si připomínku v kalendáři na první dostupný trénink po návratu.</li>
+          <li>Domluv se předem s parťákem, aby tě „odtáhl“ zpět do hry.</li>
+          <li>Oslav každý návrat – i třídenní pauza je vítězství, pokud se vrátíš.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>Závěr</h2>
+        <p>
+          Forma na léto není sprint k dokonalosti, ale cesta k lepší verzi sebe sama.
+          Malé kroky, vhodně zvolená aktivita a silná podpora okolí ti pomohou vydržet
+          i po prázdninách. Nepodceňuj sílu dobrého pocitu – ten je nejlepším měřítkem pokroku.
+        </p>
+        <p>
+          Vyber si první drobný cíl, přihlas se na <b>SportujSpolu</b>, najdi parťáka a začni už dnes.
+          Za pár týdnů poděkuješ sám sobě, že jsi udělal právě tenhle malý, ale rozhodující krok.
+        </p>
+      </div>
+    `,
+  },
+  {
+    id: 8,
     slug: 'top-strategie-jak-zustat-motivovany-v-posilovne-v-novem-roce-2025',
     title: 'Top Strategie, Jak Zůstat Motivovaný V Posilovně V Novém Roce 2025',
     image: '/images/fitness/3.avif',
+    category: 'fitness',
     preview:
       'Nový rok přináší nové cíle a odhodlání, a jedno z nejčastějších je zlepšení fyzické kondice prostřednictvím pravidelného cvičení v posilovně. Avšak udržet si motivaci může být výzvou, zejména když výsledky nejsou okamžité nebo když...',
     content: `
@@ -196,9 +352,10 @@ export const postsData = [
   `,
   },
   {
-    id: 2,
+    id: 7,
     slug: '5-duvodu-proc-sportovani-s-prateli-zlepsi-vase-vysledky',
     image: '/images/yoga/2.avif',
+    category: 'společné aktivity',
     title: '5 Důvodů, Proč Sportování S Přáteli Zlepší Vaše Výsledky',
     preview:
       'Sportování s přáteli není jen o fyzické aktivitě – je to také o motivaci, podpoře a zábavě. Když se spojíte s kamarádem nebo přítelkyní, sportování se stává mnohem příjemnějším a efektivnějším. Společné...',
@@ -353,9 +510,10 @@ export const postsData = [
   `,
   },
   {
-    id: 3,
+    id: 6,
     slug: 'nejlepsi-teamove-sporty-pro-zlepseni-motivace-a-vykonu',
     image: '/images/volleyball/3.avif',
+    category: 'motivace',
     title: 'Nejlepší Teamové Sporty pro Zlepšení Motivace a Výkonu',
     preview:
       'Teamové sporty nejsou jen o fyzické aktivitě – jsou také o spolupráci, komunikaci a společném cíli. Hraní ve skupině může výrazně zvýšit vaši motivaci, zlepšit výkon a posílit vztahy s ostatními. Společné úsilí...',
@@ -574,9 +732,10 @@ export const postsData = [
   `,
   },
   {
-    id: 4,
+    id: 5,
     slug: 'top-5-nejoblibenejsich-sportu-ktere-si-uzijete-ve-dvojici',
     image: '/images/tennis/3.avif',
+    category: 'top nej...',
     title: 'Top 5 Nejoblíbenějších Sportů, Které Si Užijete Ve Dvojici',
     content: `
       <div>
@@ -752,9 +911,10 @@ export const postsData = [
     `,
   },
   {
-    id: 5,
+    id: 4,
     slug: 'prinyosy-meditace-pro-sportovce-zklidneni-mysli-a-zvyseni-soustredeni',
     image: '/images/yoga/4.avif',
+    category: 'zdraví',
     title:
       'Přínosy Meditace pro Sportovce: Zklidnění Mysli a Zvýšení Soustředění',
     content: `
@@ -916,9 +1076,10 @@ export const postsData = [
     `,
   },
   {
-    id: 6,
+    id: 3,
     slug: 'ultimativni-pruvodce-vyzivou-pro-sportovce-jak-spravne-jist-pro-lepsi-vykon',
     image: '/images/fitness/8.avif',
+    category: 'výživa',
     title:
       'Ultimátní Průvodce Výživou pro Sportovce: Jak Správně Jíst pro Maximální Výkon',
     content: `
@@ -1184,9 +1345,10 @@ export const postsData = [
     `,
   },
   {
-    id: 7,
+    id: 2,
     slug: 'jak-si-najit-partaka-na-behani',
     image: '/images/running/1.avif',
+    category: 'společné aktivity',
     title: 'Jak si Najít Ideálního Parťáka na Běhání: Společně Krok za Krokem',
     content: `
       <div>
@@ -1288,9 +1450,10 @@ export const postsData = [
     `,
   },
   {
-    id: 8,
+    id: 1,
     slug: 'jak-si-vytvorit-zdravy-navyk-ktery-vydrzi',
     image: '/images/volleyball/5.avif',
+    category: 'motivace',
     title:
       'Jak si Vytvořit Zdravý Návyk, Který Vydrží? Sportuj s Někým, Sportuj Spolu!',
     content: `

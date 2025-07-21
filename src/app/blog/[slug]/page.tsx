@@ -6,6 +6,7 @@ import { postsData, defaultPost } from '../postsData';
 import { Container } from '../../../components/Container';
 import { MainHeading } from '../../../components/MainHeading';
 import { TextContent } from '../../../components/TextContent/TextContent';
+import { CTABanner } from '../../../components/CTABanner';
 
 type BlogPostProps = {
   params: Promise<{
@@ -35,6 +36,7 @@ const BlogPost: NextPage<BlogPostProps> = async ({ params }) => {
           className="space-y-10 mt-8"
         />
       </TextContent>
+      <CTABanner />
     </Container>
   );
 };

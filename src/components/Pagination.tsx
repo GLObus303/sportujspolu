@@ -30,7 +30,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       <button
         aria-label="Předchozí stránka"
         type="button"
-        className={cx('group rounded-full p-2', {
+        className={cx('group text-reverse-text rounded-full p-2', {
           'bg-faded': !hasPrevPage,
           'bg-button': hasPrevPage,
         })}
@@ -40,12 +40,14 @@ export const Pagination: React.FC<PaginationProps> = ({
         }}
       >
         <ArrowIcon
-          className={cx('rotate-90 fill-white', {
+          className={cx('rotate-90 fill-reverse-text', {
             'focus:fill-primary group-hover:fill-primary': hasPrevPage,
           })}
         />
       </button>
-      <span className="text-bold mx-4 text-3xl text-primary">{page}</span>
+      <span className="font-black mx-4 text-3xl text-pistachio [-webkit-text-stroke:1px_black]">
+        {page}
+      </span>
       <button
         aria-label="Následující stránka"
         type="button"
@@ -59,7 +61,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         }}
       >
         <ArrowIcon
-          className={cx('-rotate-90 fill-white', {
+          className={cx('-rotate-90 fill-reverse-text', {
             'focus:fill-primary group-hover:fill-primary': hasNextPage,
           })}
         />

@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
-import Image from 'next/image';
 
 import { Routes, levelLabels } from '../constants';
 import { formatDate, formatTime } from '../utils/formatDate';
@@ -13,6 +12,7 @@ import { getSportLabel } from '../utils/getSportLabel';
 import { OwnerRequestType, UserRequestType } from '../types/Message';
 import { approveMessageRequest } from '../api/messages';
 import { Button } from './Button';
+import { EmailIcon } from './icons/EmailIcon';
 
 const getMessageStatus = (isApproved: boolean | null) => {
   switch (isApproved) {
@@ -139,12 +139,8 @@ export const MessageCard: React.FC<MessageCardProps> = ({ message }) => {
 
         {isApproved && (
           <div className="mx-5 mb-5 px-5 py-10 bg-pale-aloe w-auto rounded-md flex flex-col items-center justify-center gap-5">
-            <Image
-              alt=""
-              src="/images/icons/message.svg"
-              width="40"
-              height="30"
-            />
+            <EmailIcon />
+            <EmailWithCopy email={email} className="text-xl" />
             <p className="max-w-md text-center font-medium flex flex-col gap-1">
               {isSentType
                 ? `${eventOwnerName} schvaluje žádost a zasílá svou emailovou adresu. Nyní můžete sportovat spolu!`
@@ -153,8 +149,6 @@ export const MessageCard: React.FC<MessageCardProps> = ({ message }) => {
                 potvrzeno: {formatDate(approvedAt)} {formatTime(approvedAt)}
               </span>
             </p>
-
-            <EmailWithCopy email={email} className="text-xl" />
           </div>
         )}
       </article>

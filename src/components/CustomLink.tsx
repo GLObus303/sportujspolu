@@ -18,7 +18,7 @@ export const CustomLink: ChildrenFC<CustomLinkProps> = ({
   <Link
     className={cx(
       className,
-      `shrink-0 h-min rounded bg-button px-5 py-2 text-center text-base text-white hover:text-primary`,
+      `shrink-0 h-min rounded-full bg-button px-5 py-2 text-center text-base text-reverse-text hover:text-primary`,
     )}
     href={href}
   >

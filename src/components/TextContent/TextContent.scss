@@ -30,13 +30,11 @@
     }
 
     a {
-      color: var(--lemon-grass);
       font-weight: 400;
     }
 
     strong {
       font-weight: 500;
-      color: var(--lemon-grass);
     }
 
     b {
@@ -53,7 +51,7 @@
 
       &::before {
         content: '●';
-        color: var(--lemon-grass);
+        color: var(--pistachio);
         margin-right: 0.5rem;
       }
     }

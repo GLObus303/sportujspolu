@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import cx from 'classnames';
 import { format } from 'date-fns';
 import Link from 'next/link';
@@ -20,6 +20,7 @@ import {
   Routes,
   SUCCESS_EVENT,
   levelLabels,
+  sportsArray,
   sportsOptions,
 } from '../../constants';
 import { DeleteIcon } from '../icons/DeleteIcon';
@@ -65,6 +66,8 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
   } = useAuth();
   const { openAuthModal } = useAuthModal();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const sportFromUrl = searchParams.get('sport') || sportsArray[0];
 
   const [status, setStatus] = useState<number>();
   const [isDeleteForeverVisible, setIsDeleteForeverVisible] = useState(false);
@@ -83,7 +86,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
     defaultValues: {
       name: event?.name,
       description: event?.description,
-      sport: event?.sport,
+      sport: event?.sport || sportFromUrl,
       location: event?.location,
       level: event?.level,
       price: event?.price,
@@ -243,7 +246,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
                   </button>
                   <button
                     type="submit"
-                    className="whitespace-nowrap rounded-md bg-button px-5 py-2 text-white hover:text-primary"
+                    className="whitespace-nowrap rounded-md bg-button px-5 py-2 text-reverse-text hover:text-primary"
                   >
                     Odeslat
                   </button>

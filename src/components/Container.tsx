@@ -10,5 +10,5 @@ export const Container: ChildrenFC<ContainerProps> = ({
   children,
   className,
 }) => (
-  <div className={cx('mx-auto px-5 py-14 md:px-14', className)}>{children}</div>
+  <div className={cx('mx-auto py-14 px-5 md:px-14', className)}>{children}</div>
 );

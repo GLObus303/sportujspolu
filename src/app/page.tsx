@@ -1,14 +1,14 @@
 import { NextPage } from 'next';
 
-import { Events } from '../components/Events';
 import { getPaginatedEvents } from '../api/events';
-import { Pagination } from '../components/Pagination';
-import { PAGINATION, Routes } from '../constants';
+import { PAGINATION } from '../constants';
 import { getFirstQueryParam } from '../utils/getFirstQueryParam';
 import { Container } from '../components/Container';
-import { MainHeading } from '../components/MainHeading';
 import { BlogPreview } from '../components/BlogPreview';
-import { BannerSection } from '../components/BannerSection';
+import { SportsNavigation } from '../components/SportsNavigation';
+import { FaqSection } from '../components/FaqSection';
+import { HomeHero } from '../components/HomeHero';
+import { EventSection } from '../components/EventSection';
 
 type HomeProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
@@ -25,23 +25,23 @@ const Home: NextPage<HomeProps> = async ({ searchParams }) => {
   const pageNumber = Number(page) || 1;
 
   return (
-    <Container>
-      <MainHeading className="lg:text-start">
-        Všechny sportovní akce v&nbsp;Česku
-      </MainHeading>
-      <Events events={events} className="grid-rows-2" />
-      <Pagination
-        hasNextPage={events.length === limitNumber}
-        hasPrevPage={pageNumber !== 1}
-        page={pageNumber}
-        route={Routes.DASHBOARD}
-        limit={limit}
-      />
-      <hr className="my-16 border-t border-low-contrast" />
-      <BannerSection />
-      <hr className="my-16 border-t border-low-contrast" />
-      <BlogPreview />
-    </Container>
+    <>
+      <HomeHero />
+      <Container className="pt-0">
+        <SportsNavigation />
+        <EventSection
+          events={events}
+          headline="Všechny sportovní akce v&nbsp;Česku"
+          limitNumber={limitNumber}
+          pageNumber={pageNumber}
+          limit={limit}
+        />
+        <hr className="my-16 border-t border-low-contrast" />
+        <BlogPreview />
+        <hr className="my-16 border-t border-low-contrast" />
+        <FaqSection />
+      </Container>
+    </>
   );
 };
 

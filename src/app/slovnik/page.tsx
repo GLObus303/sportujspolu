@@ -1,31 +1,22 @@
 import { NextPage } from 'next';
-import Link from 'next/link';
 
 import { Container } from '../../components/Container';
-import { dictionaryData, dictionaryLetters } from './dictionaryData';
+import { dictionaryData } from './dictionaryData';
 import { MainHeading } from '../../components/MainHeading';
 import { TextContent } from '../../components/TextContent/TextContent';
+import { DictionaryNavigation } from './DictionaryNavigation';
 
 const Dictionary: NextPage = () => (
   <Container className="max-w-4xl">
     <MainHeading>Slovník Pojmů</MainHeading>
-    <nav className="mb-20">
-      <ul className="flex px-5 lg:px-0 justify-center text-lg mx-auto md:max-w-md lg:max-w-full space-x-4 lg:justify-between flex-wrap mt-8">
-        {dictionaryLetters.map((letter) => (
-          <li key={letter}>
-            <Link className="hover:text-primary" href={`#${letter}`}>
-              {letter}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
-
+    <DictionaryNavigation />
     <TextContent>
       {dictionaryData.map((letterSection, letter) => (
         <section key={letter} className="mb-12">
           <h2 id={letterSection.letter} className="mb-5">
-            <strong>{letterSection.letter}</strong>
+            <span className="text-4xl pr-2 text-pistachio font-black [-webkit-text-stroke:1px_black]">
+              {letterSection.letter}
+            </span>
           </h2>
           {!!letterSection.terms.length && (
             <dl>

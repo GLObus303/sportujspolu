@@ -18,15 +18,15 @@ export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => (
         aria-label="SportujSpolu - domovská stránka"
         className="px-4 text-3xl hover:fill-primary md:px-14"
       >
-        <LogoIcon className="h-6 block md:hidden hover:fill-primary dark:fill-white dark:hover:fill-primary md:h-7" />
-        <LogoType className="h-6 hidden md:block hover:fill-primary dark:fill-white dark:hover:fill-primary md:h-7" />
+        <LogoIcon className="h-6 block md:hidden dark:fill-white md:h-7" />
+        <LogoType className="h-6 hidden md:block dark:fill-white md:h-7" />
       </Link>
       <div className="px-4 md:px-14">
         <div className="relative flex items-center">
           <div className="right-full flex items-center gap-x-6">
             <UserControls defaultTheme={defaultTheme} />
             <CustomLink className="ml-auto mt-auto" href={Routes.CREATE_EVENT}>
-              Přidat akci
+              Přidat sportovní akci
             </CustomLink>
           </div>
         </div>

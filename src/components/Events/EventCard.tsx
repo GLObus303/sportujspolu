@@ -9,6 +9,7 @@ import { Routes, levelLabels } from '../../constants';
 import { getSportLabel } from '../../utils/getSportLabel';
 import { slugifyCategory } from '../../utils/slugifyCategory';
 import { getImagePath } from '../../utils/getImagePath';
+import { HeartButton } from '../HeartButton';
 
 type EventCardProps = {
   event: Event;
@@ -70,6 +71,7 @@ export const EventCard: React.FC<EventCardProps> = ({
           </div>
         </div>
       </Link>
+      <HeartButton className="absolute right-3 top-3" eventId={id} />
     </article>
   );
 };
