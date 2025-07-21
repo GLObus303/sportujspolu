@@ -10,6 +10,7 @@ import { Routes } from '../../constants';
 import { RankingIcon } from '../icons/RankingIcon';
 import { BrokenHeartIcon } from '../icons/BrokenHeartIcon';
 import { EventIcon } from '../icons/EventIcon';
+import { isBrowser } from '../../utils/env';
 
 type EventsProps = {
   events: Event[];
@@ -25,7 +26,7 @@ export const Events: React.FC<EventsProps> = ({
   pageNumber = 1,
 }) => {
   const likedEventIdArray = JSON.parse(
-    localStorage.getItem('likedEvents') || '[]',
+    isBrowser() ? localStorage.getItem('likedEvents') || '[]' : '[]',
   );
 
   const dislayedEvents = !isLikedEvents
