@@ -52,7 +52,7 @@ export const faqData = [
     description: `
       <p>
         SportujSpolu podporuje širokou škálu sportovních aktivit:
-        <b>basketbal, běhání, box, cyklistika, fitness, fotbal, golf, plavání, skateboarding, tanec,stolní tenis, tenis, volejbal, jóga</b>
+        <b>basketbal, běhání, box, cyklistika, fitness, fotbal, golf, plavání, skateboarding, tanec, stolní tenis, tenis, volejbal, jóga</b>
       </p>
     `,
   },
