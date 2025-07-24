@@ -65,12 +65,14 @@ export const sportsArray = [
   'football',
   'golf',
   'swimming',
+  'martialArts',
   'skateboarding',
   'tableTennis',
   'tennis',
   'dancing',
   'volleyball',
   'yoga',
+  'other',
 ] as const;
 
 export const sportsSet = new Set(sportsArray);
@@ -90,8 +92,10 @@ export const sportsLabels: Record<SportsType, string> = {
   tableTennis: 'Stolní tenis',
   tennis: 'Tenis',
   dancing: 'Tanec',
+  martialArts: 'Bojová umění',
   volleyball: 'Volejbal',
   yoga: 'Yoga',
+  other: 'Ostatní',
 };
 
 export const sportsOptions = Object.entries(sportsLabels).map(

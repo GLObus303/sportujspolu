@@ -13,6 +13,8 @@ import { GolfIcon } from '../icons/sports/GolfIcon';
 import { RunningIcon } from '../icons/sports/RunningIcon';
 import { SkateboardingIcon } from '../icons/sports/SkateboardingIcon';
 import { FootballIcon } from '../icons/sports/FootballIcon';
+import { MartialArtsIcon } from '../icons/sports/MartialArtsIcon';
+import { OtherSportIcon } from '../icons/sports/OtherSportIcon';
 
 export const SportIcon = ({ sport }: { sport: SportsType }) => {
   switch (sport) {
@@ -40,11 +42,13 @@ export const SportIcon = ({ sport }: { sport: SportsType }) => {
       return <FootballIcon />;
     case 'golf':
       return <GolfIcon />;
+    case 'martialArts':
+      return <MartialArtsIcon />;
     case 'running':
       return <RunningIcon />;
     case 'skateboarding':
       return <SkateboardingIcon />;
     default:
-      return null;
+      return <OtherSportIcon />;
   }
 };

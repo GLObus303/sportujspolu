@@ -12,7 +12,7 @@ type SportPageProps = {
   params: Promise<{ sport: SportsType }>;
 };
 
-const SportPage = async ({ params }: SportPageProps) => {
+const SportPage: React.FC<SportPageProps> = async ({ params }) => {
   const { sport } = await params;
 
   if (!sportsSet.has(sport)) {
