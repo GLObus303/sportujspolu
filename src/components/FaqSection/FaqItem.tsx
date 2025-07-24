@@ -6,7 +6,10 @@ import { MinusIcon } from '../icons/MinusIcon';
 import { PlusIcon } from '../icons/PlusIcon';
 
 type FaqItemProps = {
-  question: any;
+  question: {
+    title: string;
+    description: string;
+  };
   openIndex: number | null;
   handleToggle: (index: number) => void;
   index: number;
