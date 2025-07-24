@@ -29,11 +29,11 @@ export const Events: React.FC<EventsProps> = ({
     isBrowser() ? localStorage.getItem('likedEvents') || '[]' : '[]',
   );
 
-  const dislayedEvents = !isLikedEvents
+  const displayedEvents = !isLikedEvents
     ? events
     : events.filter((event) => likedEventIdArray.includes(event.id));
 
-  if (!dislayedEvents.length && isLikedEvents) {
+  if (!displayedEvents.length && isLikedEvents) {
     return (
       <BeFirst
         imageIcon={<BrokenHeartIcon />}
@@ -44,7 +44,7 @@ export const Events: React.FC<EventsProps> = ({
     );
   }
 
-  if (!dislayedEvents.length && pageNumber === 1) {
+  if (!displayedEvents.length && pageNumber === 1) {
     return (
       <BeFirst
         imageIcon={<RankingIcon />}
@@ -55,7 +55,7 @@ export const Events: React.FC<EventsProps> = ({
     );
   }
 
-  if (!dislayedEvents.length && pageNumber > 1) {
+  if (!displayedEvents.length && pageNumber > 1) {
     return (
       <BeFirst
         imageIcon={<EventIcon />}
@@ -69,7 +69,7 @@ export const Events: React.FC<EventsProps> = ({
   return (
     <section className={cx('flex justify-center', className)}>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[350px] mt-10 gap-5 gap-y-5 sm:px-5 md:mt-14 md:px-0 sm:max-w-[750px] lg:max-w-[1000px] xl:max-w-[1440px]">
-        {dislayedEvents?.map((event, index) => (
+        {displayedEvents?.map((event, index) => (
           <EventCard
             key={event.id}
             event={event}

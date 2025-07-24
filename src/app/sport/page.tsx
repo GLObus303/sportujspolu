@@ -1,12 +1,11 @@
 import { Container } from '../../components/Container';
 import { MainHeading } from '../../components/MainHeading';
-import { SportsType, sportsSet } from '../../constants';
+import { SportsType, sportsSet, Routes } from '../../constants';
 import NotFound from '../not-found';
 import { Events } from '../../components/Events';
 import { getAllEvents } from '../../api/events';
 import { SportsNavigation } from '../../components/SportsNavigation';
 import { BeFirst } from '../../components/BeFirst';
-import { Routes } from '../../constants';
 import { RankingIcon } from '../../components/icons/RankingIcon';
 
 type SportPageProps = {
@@ -28,7 +27,7 @@ const SportPage = async ({ params }: SportPageProps) => {
       <MainHeading className="lg:text-start">
         Všechny sportovní akce v Česku
       </MainHeading>
-      {!!events.length ? (
+      {events.length ? (
         <Events events={events} />
       ) : (
         <BeFirst
