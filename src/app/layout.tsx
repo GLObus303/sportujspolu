@@ -1,5 +1,4 @@
 import '../styles/globals.scss';
-import { cookies } from 'next/headers';
 import { Kanit } from 'next/font/google';
 import cx from 'classnames';
 import Script from 'next/script';
@@ -9,7 +8,7 @@ import { AuthProvider } from '../context/AuthContext';
 import { AuthModalProvider } from '../context/AuthModalContext';
 import { Layout } from '../components/Layout';
 import { ChildrenFC } from '../utils/type';
-import { THEME } from '../constants';
+import { getDefaultTheme } from '../utils/getDefaultTheme';
 
 const kanit = Kanit({
   subsets: ['latin'],
@@ -25,8 +24,7 @@ export const metadata = {
 };
 
 const RootLayout: ChildrenFC = async ({ children }) => {
-  const cookieStore = await cookies();
-  const defaultTheme = cookieStore.get('theme')?.value || THEME.LIGHT;
+  const defaultTheme = await getDefaultTheme();
 
   return (
     <html

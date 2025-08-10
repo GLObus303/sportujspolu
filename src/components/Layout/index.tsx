@@ -1,14 +1,11 @@
-import { cookies } from 'next/headers';
-
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { ChildrenFC } from '../../utils/type';
-import { THEME } from '../../constants';
 import { AuthModal } from '../AuthModal';
+import { getDefaultTheme } from '../../utils/getDefaultTheme';
 
 export const Layout: ChildrenFC = async ({ children }) => {
-  const cookieStore = await cookies();
-  const defaultTheme = cookieStore.get('theme')?.value || THEME.LIGHT;
+  const defaultTheme = await getDefaultTheme();
 
   return (
     <>

@@ -1,18 +1,23 @@
 'use client';
 
-import { useTheme } from 'next-themes';
 import Image from 'next/image';
+import { useTheme } from 'next-themes';
 
 import { THEME } from '../../constants';
 
-export const HeroImage = () => {
+type HeroImageProps = {
+  defaultTheme: string;
+};
+
+export const HeroImage: React.FC<HeroImageProps> = ({ defaultTheme }) => {
   const { theme } = useTheme();
+  const currentTheme = theme || defaultTheme;
 
   return (
     <Image
       alt="SportujSpolu sportovní ilustrace"
       src={
-        theme === THEME.DARK
+        currentTheme === THEME.DARK
           ? '/illustrations/hero-image-dark.svg'
           : '/illustrations/hero-image.svg'
       }
