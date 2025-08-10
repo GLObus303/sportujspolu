@@ -8,6 +8,364 @@ export const defaultPost = {
 
 export const postsData = [
   {
+    id: 12,
+    slug: 'top-6-letnich-sportu-ve-dvou',
+    image: '/images/cycling/5.avif',
+    category: 'tipy',
+    title: 'TOP 6 letních sportů, které si nejlépe užiješ ve dvou',
+    preview:
+      'Léto je ideální čas vyrazit ven a užít si sport společně s někým dalším. Tady je šest aktivit, které propojí pohyb, zábavu a týmového ducha – ať už s kamarádem, partnerem nebo kolegou.',
+    content: `
+      <div>
+        <p>
+          Sport ve dvou má svoje kouzlo – sdílené zážitky, motivaci od parťáka a často i lepší výsledky. Ať už hledáš zábavu, trénink, nebo způsob, jak trávit čas venku aktivně, tyto letní sporty tě nadchnou. Navíc nevyžadují složité plánování a většinu z nich můžeš vyzkoušet i bez předchozí zkušenosti.
+        </p>
+      </div>
+  
+      <div>
+        <h2>1) Paddleboarding na tandemu</h2>
+        <p>
+          Paddleboarding se stal hitem posledních let – a ve dvou na jednom prkně je to ještě větší výzva. Tandemový paddleboard je delší a širší, takže unese dva lidi, ale vyžaduje spolupráci a dobrou komunikaci.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> začněte v kleku a postupně přejděte do stoje, až budete cítit stabilitu.</li>
+          <li><b>Pro pokročilé:</b> zkuste sladit pádlování tak, aby se prkno pohybovalo rovně i při vyšší rychlosti.</li>
+          <li><b>Vybavení:</b> tandem paddleboard, pádla, leash, plovací vesta.</li>
+          <li><b>Tip:</b> vyberte si klidnou hladinu bez silného větru – ideální je jezero nebo široká klidná řeka.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>2) Beach volejbal 1 vs 1</h2>
+        <p>
+          Plážový volejbal je většinou týmová hra, ale ve dvou se tempo zrychlí a zapojíš víc pohybu. Písek tlumí dopady, takže je šetrnější ke kloubům, a navíc hned po zápase můžeš skočit do vody na ochlazení.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> hraj na menším hřišti a zkrať sety, ať si hru užijete bez zbytečné únavy.</li>
+          <li><b>Pro pokročilé:</b> trénujte různé herní scénáře – příjem, útok, obrana – a zrychlete tempo.</li>
+          <li><b>Vybavení:</b> míč na beach volejbal, síť, sportovní oblečení, opalovací krém.</li>
+          <li><b>Tip:</b> hraj ráno nebo večer, kdy písek není rozpálený.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>3) Tandemová cyklistika</h2>
+        <p>
+          Na dvojkole si jízdu užijete společně – jeden šlape vpředu a řídí, druhý se může soustředit na šlapání a výhled. Pokud nemáte tandem, můžete jet i vedle sebe na klasických kolech a držet společné tempo.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> zvolte rovinatou trasu s minimálním provozem.</li>
+          <li><b>Pro pokročilé:</b> vyzkoušejte delší trasy s mírným stoupáním, kde se ukáže vaše sehranost.</li>
+          <li><b>Vybavení:</b> tandemové nebo klasické kolo, helma, láhev s vodou.</li>
+          <li><b>Tip:</b> domluvte si signály pro změnu rychlosti a zatáčení, ať jízda plyne bez zmatků.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>4) Kanoe pro dva</h2>
+        <p>
+          Společná jízda na kanoi je o spolupráci. Jeden sedí vpředu a udává tempo, druhý vzadu řídí směr. Ideální pro pohodové splouvání řeky nebo kratší výlety po jezeře.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> začněte na klidné vodě bez silného proudu.</li>
+          <li><b>Pro pokročilé:</b> zkuste delší úseky na řece s mírným proudem pro pestřejší zážitek.</li>
+          <li><b>Vybavení:</b> kanoe, pádla, plovací vesty, nepromokavý vak.</li>
+          <li><b>Tip:</b> naplánujte si cestu s možností zastávky na břehu pro odpočinek nebo piknik.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>5) Badminton</h2>
+        <p>
+          Lehce dostupný sport, který zvládneš kdekoliv – na zahradě, v parku nebo na pláži. Rychlé reakce, lehký pohyb a možnost hrát podle libosti buď pohodově, nebo soutěživě.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> nehraj na body, ale na výměny – cílem je udržet míček co nejdéle ve vzduchu.</li>
+          <li><b>Pro pokročilé:</b> přidejte rychlejší výměny a zkuste přesnější umísťování úderů.</li>
+          <li><b>Vybavení:</b> badmintonové rakety a míček (ideálně plastový pro venkovní podmínky).</li>
+          <li><b>Tip:</b> hraj v bezvětří nebo s minimálním větrem, aby míček nelétal nepředvídatelně.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>6) Slackline nad vodou</h2>
+        <p>
+          Slackline je výzva pro rovnováhu a koordinaci, ale nad vodou přidává ještě adrenalin a osvěžení. Spadneš? Nevadí – rovnou se zchladíš. Ve dvou je tahle disciplína ideální – jeden na lajně, druhý povzbuzuje, radí a pomáhá s rozjezdem.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> začni s lajnou nízko nad vodou a na kratší vzdálenost (5–7 m).</li>
+          <li><b>Pro pokročilé:</b> přidej otočky, dřepy nebo krátké poskoky – voda pod tebou dodá jistotu a odvahu.</li>
+          <li><b>Vybavení:</b> slackline set (popruh, ráčny), dva pevné body (stromy), plavky.</li>
+          <li><b>Tip:</b> natáhni lajnou nad mělkou část – dopad bude bezpečný a můžeš hned zkusit znovu.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>Závěr</h2>
+        <p>
+          Sport ve dvou je ideální způsob, jak spojit pohyb s časem stráveným s někým blízkým. Ať už si vybereš klidný paddleboard, soutěživý beach volejbal, nebo adrenalin na slackline nad vodou, vždy mysli na společný zážitek a vzájemnou podporu. Letní dny jsou k tomu jako stvořené – tak vezmi parťáka a vyrazte ven.
+        </p>
+      </div>
+    `,
+  },
+  {
+    id: 11,
+    slug: 'voda-stin-pohyb-letni-vodni-sporty',
+    image: '/images/swimming/6.avif',
+    category: 'společné aktivity',
+    title: 'Voda, stín, pohyb: Letní vodní sporty u řeky a jezera',
+    preview:
+      'V horkých dnech je voda ideálním místem, kde se ochladit a přitom si užít pohyb. Od plavání přes paddleboard až po vodní jógu – tady je přehled aktivit, které zvládne každý a dají se dělat u řeky, jezera nebo v přírodním koupališti.',
+    content: `
+      <div>
+        <p>
+          Léto, voda a pohyb jdou skvěle dohromady. Pobyt u řeky, jezera nebo na přírodním koupališti nabízí nejen osvěžení, ale i spoustu možností, jak se aktivně hýbat. Navíc chladná voda pomáhá tělu lépe zvládat vysoké teploty a pohyb v ní je šetrnější ke kloubům. Ať už hledáš klidné aktivity pro relax, nebo dynamičtější sporty, u vody si vybere každý.
+        </p>
+        <p>
+          V tomto článku najdeš tipy na oblíbené i méně známé vodní sporty, doporučení pro začátečníky, bezpečnostní zásady a nápady, jak z pobytu u vody udělat plnohodnotný trénink i zábavný den.
+        </p>
+      </div>
+  
+      <div>
+        <h2>1) Plavání — klasika, která nikdy neomrzí</h2>
+        <p>
+          Plavání je univerzální sport, který zapojuje celé tělo, zlepšuje kondici, sílu i flexibilitu. Navíc je ideální pro lidi s citlivými klouby nebo po zranění.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> začni krátkými úseky (20–30 m), střídej plavecké styly a odpočívej mezi sériemi.</li>
+          <li><b>Pro pokročilé:</b> zařaď intervalový trénink – např. 10×50 m s pauzou 30 sekund.</li>
+          <li><b>Tip:</b> venkovní koupaliště a přírodní nádrže bývají ráno klidnější a voda čistší.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>2) Paddleboarding — rovnováha a posílení středu těla</h2>
+        <p>
+          Paddleboard je skvělá kombinace klidu a posilování. Jízda ve stoje zapojuje hluboké svaly středu těla a zlepšuje rovnováhu. Při jízdě vleže nebo v kleče je to zase skvělý relax.
+        </p>
+        <ul>
+          <li><b>Jak začít:</b> zvol klidnou hladinu bez silného větru, začni v kleku a postupně přejdi do stoje.</li>
+          <li><b>Pro zpestření:</b> zkus jednoduché jógové pozice přímo na paddleboardu.</li>
+          <li><b>Bezpečnost:</b> vždy používej leash a plovací vestu, zejména na řece.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>3) Kajak a kanoe — pro dobrodruhy i rodiny</h2>
+        <p>
+          Pádlo v ruce, voda kolem a krajina z úplně jiné perspektivy. Kajak je skvělý na rychlejší projížďky, kanoe zase nabízí prostor pro víc lidí a pohodlnější tempo.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> začni na klidném jezeře nebo široké pomalé řece.</li>
+          <li><b>Tréninkový efekt:</b> posiluje horní polovinu těla, zlepšuje koordinaci a vytrvalost.</li>
+          <li><b>Tip:</b> kombinuj pádlování s pauzami na koupání nebo piknik na břehu.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>4) Vodní jóga a cvičení ve vodě</h2>
+        <p>
+          Cvičení ve vodě je nejen zábavné, ale i šetrné k pohybovému aparátu. Vodní jóga nebo aqua fitness jsou ideální i pro úplné začátečníky.
+        </p>
+        <ul>
+          <li><b>Výhoda:</b> voda poskytuje odpor a zároveň odlehčuje, což zvyšuje efektivitu i bezpečnost.</li>
+          <li><b>Tip pro začátek:</b> stačí bazén po prsa hluboký a několik základních cviků na ruce, nohy a střed těla.</li>
+          <li><b>Pro zpestření:</b> přidej hudbu a cvič v partě – motivace půjde nahoru.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>5) Šnorchlování a potápění na nádech</h2>
+        <p>
+          Pokud máš možnost čisté vody, šnorchlování je perfektní kombinace pohybu, relaxu a objevování podvodního světa. I v českých podmínkách lze najít zajímavé lokality.
+        </p>
+        <ul>
+          <li><b>Vybavení:</b> maska, šnorchl, ploutve; pro začátečníky ideálně mělká a klidná voda.</li>
+          <li><b>Tip:</b> soustřeď se na pomalý a klidný dech, abys prodloužil čas pod hladinou.</li>
+          <li><b>Bezpečnost:</b> nikdy nechoď šnorchlovat sám, vždy měj parťáka na břehu nebo ve vodě.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>6) Beach sporty s vodním zázemím</h2>
+        <p>
+          I když nejsou přímo „ve vodě“, plážové sporty tě udrží v pohybu s možností okamžitého ochlazení. Beach volejbal, frisbee nebo spikeball lze hrát na pláži, a pak skočit do vody.
+        </p>
+        <ul>
+          <li><b>Výhoda:</b> písek je měkký, šetří klouby a posiluje svaly nohou.</li>
+          <li><b>Tip:</b> hraj v ranních nebo večerních hodinách, kdy písek není rozpálený.</li>
+          <li><b>Extra motivace:</b> po hře dej krátké plavání na uvolnění svalů.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>Bezpečnost u vody</h2>
+        <ul>
+          <li>Vždy sleduj aktuální podmínky – proud, vítr, čistotu vody.</li>
+          <li>Neplav daleko od břehu, pokud nejsi zkušený plavec.</li>
+          <li>Používej opalovací krém i ve stínu – odraz světla od hladiny může spálit.</li>
+          <li>Pij dostatek vody, i když jsi ve vodě – dehydratace je častá i při vodních sportech.</li>
+          <li>Nepodceňuj teplotu vody, zejména při delším pobytu.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>Závěr</h2>
+        <p>
+          Vodní sporty nejsou jen osvěžením v horku – jsou skvělou cestou, jak posílit celé tělo, zlepšit kondici a užít si přírodu z jiné perspektivy. Ať už si vybereš klidné plavání, dobrodružný kajak, nebo paddleboard s přáteli, vždy mysli na bezpečnost a pravidelný pohyb. Letní dny u vody mohou být nejen relaxem, ale i příležitostí pro nový sportovní začátek.
+        </p>
+      </div>
+    `,
+  },
+  {
+    id: 10,
+    slug: 'letni-sporty-pro-zacatecniky',
+    image: '/images/other/1.avif',
+    category: 'motivace',
+    title: 'Start od nuly: Letní sporty pro začátečníky',
+    preview:
+      'Léto je ideální čas začít se hýbat. Pokud začínáš úplně od nuly, vybrali jsme aktivity, které zvládne každý. Minimum vybavení, jednoduché postupy a tipy, jak se vyhnout přetížení i letním vedrům.',
+    content: `
+      <div>
+        <p>
+          Mnoho lidí si řekne „začnu od pondělí“ – a pak to odloží na další týden. Léto ale nabízí skvělou příležitost udělat ten první krok hned. Teplé počasí, delší dny, spousta možností venku a minimum překážek. Nejde o to stát se během dvou měsíců vrcholovým sportovcem. Cílem je nastartovat zdravý pohybový návyk, který se stane součástí běžného života.
+        </p>
+        <p>
+          Pokud začínáš úplně od nuly, není potřeba kupovat drahé vybavení nebo hned zapisovat tréninkový plán plný složitých cviků. Postačí vybrat jednoduché aktivity, které jsou dostupné, baví tě a dají se dělat pravidelně bez zbytečného stresu.
+        </p>
+        <p>
+          V tomto článku najdeš šest letních sportů ideálních pro začátečníky, podrobný návod, jak začít, a rady, jak u toho vydržet i ve chvílích, kdy je venku 30 °C nebo ti chybí motivace.
+        </p>
+      </div>
+  
+      <div>
+        <h2>1) Chůze a nordic walking — ideální start pro každého</h2>
+        <p>
+          Chůze je nejjednodušší forma pohybu, kterou zvládne opravdu každý. Přesto dokáže udělat s kondicí i zdravím zázraky. Nordic walking k tomu přidává aktivní zapojení horní části těla a šetří klouby, protože hole pomáhají rozložit zátěž.
+        </p>
+        <p>
+          <b>Jak začít:</b> Pokud nejsi zvyklý chodit delší trasy, začni na 20–30 minutách pohodové chůze 3–4× týdně. Postupně přidávej čas nebo zrychluj tempo. Pro nordic walking si pořiď nastavitelné hole – ideálně si nech poradit od někoho zkušeného, aby jejich délka odpovídala tvé výšce.
+        </p>
+        <ul>
+          <li><b>Vybavení:</b> pohodlné sportovní boty, pro nordic walking hole s nastavitelnou výškou.</li>
+          <li><b>Tip pro léto:</b> vybírej trasy ve stínu nebo u vody; pij alespoň půl litru vody na každých 30–40 minut chůze.</li>
+          <li><b>Jak si udržet motivaci:</b> sleduj si počet kroků nebo ušlou vzdálenost – i malá čísla se rychle nasčítají.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>2) Běh–chůze (run–walk) — přechod k běhu bez bolesti</h2>
+        <p>
+          Mnoho začátečníků udělá chybu, že se hned snaží běžet co nejrychleji a co nejdéle. Výsledek? Bolest svalů, přetížení kloubů a rychlá ztráta motivace. Běh–chůze je šetrný způsob, jak si vybudovat vytrvalost, aniž bys riskoval zranění.
+        </p>
+        <p>
+          <b>Jak začít:</b> První týden zkus 1 minutu lehkého běhu a 2 minuty svižné chůze. Opakuj 6–8×, celkem 20–25 minut, 3× týdně. Každý týden běžecký úsek prodluž o 30 vteřin, dokud nebudeš zvládat 5 minut běhu v kuse.
+        </p>
+        <ul>
+          <li><b>Vybavení:</b> kvalitní běžecké boty, lehké oblečení, kšiltovka proti slunci.</li>
+          <li><b>Tip pro léto:</b> běhej ráno do 9:00 nebo večer po 19:00; přidej krátkou rozcvičku před startem a protažení po doběhu.</li>
+          <li><b>Jak si udržet motivaci:</b> zapisuj si čas běhu–chůze a sleduj pokrok po týdnech, ne po dnech.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>3) Kolo — vítr ve vlasech a šetrný trénink</h2>
+        <p>
+          Cyklistika posiluje nohy, zlepšuje kondici a přitom minimálně zatěžuje klouby. Pokud nemáš vlastní kolo, zkus městský bikesharing – dnes už je dostupný ve většině měst.
+        </p>
+        <p>
+          <b>Jak začít:</b> Zvol rovinatou trasu dlouhou 5–10 km a jeď pohodovým tempem. Po týdnu nebo dvou můžeš přidat pár mírných kopců. Cílem není závod, ale pravidelný pohyb.
+        </p>
+        <ul>
+          <li><b>Vybavení:</b> helma, světla, láhev s vodou; u sdíleného kola stačí aplikace v telefonu.</li>
+          <li><b>Tip pro léto:</b> plánuj trasu podél řeky nebo parkem, kde je více stínu.</li>
+          <li><b>Jak si udržet motivaci:</b> spoj cyklistiku s cílem – například výlet na zmrzlinu nebo do parku na piknik.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>4) Plavání — ochlazení i kompletní trénink</h2>
+        <p>
+          Plavání zapojí celé tělo a navíc skvěle chladí. Pokud máš problémy s klouby, je to ideální volba. Skvělou alternativou je aquajogging – běh ve vodě s pomocí speciálního pásku.
+        </p>
+        <p>
+          <b>Jak začít:</b> Začni s 20 minutami souvislého plavání v lehkém tempu. Střídej styly, abys zapojil různé svalové skupiny. Po týdnu přidej krátké intervaly rychlejšího plavání s pauzou na odpočinek.
+        </p>
+        <ul>
+          <li><b>Vybavení:</b> plavecké brýle, případně plavecký pásek pro aquajogging.</li>
+          <li><b>Tip pro léto:</b> plav brzy ráno nebo večer, aby ses vyhnul přelidněným bazénům.</li>
+          <li><b>Jak si udržet motivaci:</b> stanov si výzvu – např. kolik bazénů zvládneš za měsíc.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>5) In-line bruslení — zábava i posílení středu těla</h2>
+        <p>
+          Brusle jsou ideální kombinace kardio tréninku a zábavy. Posiluješ nohy, hýždě i střed těla a zároveň si zlepšuješ rovnováhu.
+        </p>
+        <p>
+          <b>Jak začít:</b> Najdi rovnou a hladkou trasu, nejlépe cyklostezku. První tréninky drž v délce 20–30 minut, soustřeď se hlavně na techniku brzdění.
+        </p>
+        <ul>
+          <li><b>Vybavení:</b> brusle, helma, chrániče na zápěstí a kolena.</li>
+          <li><b>Tip pro léto:</b> jezdi ráno nebo pozdě večer, kdy je asfalt chladnější.</li>
+          <li><b>Jak si udržet motivaci:</b> domluv se s kamarádem, aby tréninky byly společenskou událostí.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>6) Jóga a mobilita venku — klidná síla</h2>
+        <p>
+          Jóga v parku nebo na zahradě je skvělý způsob, jak se rozhýbat, zlepšit flexibilitu a přitom se nepřehřát. Může být doplňkem k jiné sportovní aktivitě, nebo hlavním pohybem, pokud začínáš opravdu opatrně.
+        </p>
+        <p>
+          <b>Jak začít:</b> Vyber si pár základních pozic (pozdrav slunci, kočka–kráva, pes hlavou dolů) a cvič je 20 minut 3× týdně. Postupně přidávej nové pozice a prodlužuj výdrže.
+        </p>
+        <ul>
+          <li><b>Vybavení:</b> podložka, pohodlné oblečení.</li>
+          <li><b>Tip pro léto:</b> cvič ráno ve stínu, kdy je vzduch nejchladnější.</li>
+          <li><b>Jak si udržet motivaci:</b> přidej krátkou meditaci nebo dechové cvičení, aby tě cvičení bavilo i mentálně.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>První dvoutýdenní plán</h2>
+        <p>
+          Pokud se nemůžeš rozhodnout, jak začít, tady je univerzální plán pro první dva týdny. Dny můžeš prohodit podle potřeby.
+        </p>
+        <ul>
+          <li><b>Pondělí:</b> Chůze 30 min</li>
+          <li><b>Úterý:</b> Jóga 20 min</li>
+          <li><b>Středa:</b> Běh–chůze 25 min</li>
+          <li><b>Čtvrtek:</b> Volno nebo procházka 20 min</li>
+          <li><b>Pátek:</b> Cyklistika 30–40 min</li>
+          <li><b>Sobota:</b> Plavání 20 min</li>
+          <li><b>Neděle:</b> Volno + lehké protažení</li>
+        </ul>
+        <p>
+          <i>Týden 2:</i> u každé aktivity přidej 5 minut nebo mírně zvyš intenzitu. Pokud se cítíš unaveně, vrať se na objem z týdne 1.
+        </p>
+      </div>
+  
+      <div>
+        <h2>Jak si udržet motivaci</h2>
+        <ul>
+          <li>Stanov si reálný cíl, třeba „3 pohybové dny týdně“.</li>
+          <li>Najdi si sportovního parťáka – pohyb ve dvou je vždy snazší.</li>
+          <li>Neboj se střídat aktivity podle nálady a počasí.</li>
+          <li>Po každé aktivitě si dopřej malou odměnu – třeba dobré smoothie nebo čas na odpočinek.</li>
+        </ul>
+      </div>
+  
+      <div>
+        <h2>Závěr</h2>
+        <p>
+          Začít od nuly není ostuda. Každý sportovec někdy stál na začátku – a to, co rozhoduje, není rychlost pokroku, ale vytrvalost. Vyber si aktivitu, která tě baví, a dělej ji pravidelně. Léto je ideální čas začít – tak proč čekat na další pondělí?
+        </p>
+      </div>
+    `,
+  },
+  {
     id: 9,
     slug: 'jak-se-efektivne-hodit-do-formy-na-leto-7-zpusobu-jak-zacit-a-vydrzet',
     title:
