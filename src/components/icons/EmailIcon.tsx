@@ -3,47 +3,48 @@ import { SVGProps } from 'react';
 export const EmailIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="96"
-    height="96"
-    className="stroke-text"
+    width="60"
+    height="60"
+    fill="none"
+    viewBox="0 0 61 60"
     {...props}
   >
     <ellipse
-      cx="50.008"
-      cy="48.527"
-      className="fill-pistachio stroke-none"
-      rx="45.841"
-      ry="43.253"
+      cx="32.2011"
+      cy="30.3298"
+      className="fill-pistachio"
+      rx="28.6506"
+      ry="27.033"
     />
-    <circle fill="none" cx="48" cy="48" r="47.5" />
-    <g clipPath="url(#a)">
-      <path
-        className="fill-background stroke-none"
-        d="M17.686 29.539h60.478v36.923H17.686z"
-      />
+    <circle cx="30.9459" cy="30" r="29.5" className="stroke-text" />
+    <g clipPath="url(#clip0_4740_291)">
       <path
         className="fill-background"
+        d="M11.9996 18.4614h37.7985v23.0769H11.9996z"
+      />
+      <path
+        className="stroke-text"
         strokeLinejoin="round"
-        d="m77.476 30.18-59.088-.39 29.87 24.578L77.476 30.18Z"
+        d="m49.3688 18.8624-36.9301-.2437 18.6685 15.3609 18.2616-15.1172Z"
       />
       <path
-        className="stroke-none fill-text"
-        d="M41.011 48.512a.5.5 0 0 0-.641-.767l.641.767ZM19.029 66.215l-.32-.384a.5.5 0 0 0 .32.884v-.5Zm57.935 0v.5a.5.5 0 0 0 .32-.884l-.32.384ZM40.69 48.128l-.321-.383L18.709 65.83l.32.384.32.384 21.662-18.087-.32-.384ZM19.029 66.215v.5h57.935v-1H19.029v.5Zm57.935 0 .32-.384L55.88 47.957l-.32.384-.32.383L76.642 66.6l.32-.384Z"
+        className="fill-text"
+        d="M26.698 30.4639a.5.5 0 0 0-.6409-.7676l.3204.3838.3205.3838ZM12.8392 41.3841l-.3205-.3838a.5.5 0 0 0 .3205.8838v-.5Zm36.2091 0v.5a.5.5 0 0 0 .3205-.8838l-.3205.3838Zm-22.6708-11.304-.3204-.3838-13.5384 11.304.3205.3838.3204.3838 13.5384-11.304-.3205-.3838Zm-13.5383 11.304v.5h36.2091v-1H12.8392v.5Zm36.2091 0 .3205-.3838L35.9906 29.829l-.3205.3837-.3204.3838 13.3781 11.1714.3205-.3838Z"
       />
       <path
-        className="fill-background"
-        d="m18.388 29.79.641 36.425M76.964 66.215l.512-36.035"
+        className="stroke-text"
+        d="m12.4387 18.6187.4005 22.7653m36.2091-.0001.3204-22.5216"
       />
     </g>
     <path
-      className="fill-pistachio stroke-none"
-      d="m56.78 48.528 4.168 3.165L70.98 36.789l-14.2 11.739ZM39.59 48l-3.647 3.165L25.776 36.79 39.59 48Z"
+      className="fill-pistachio"
+      d="m36.4337 30.3296 2.6046 1.978 6.2702-9.3147-8.8748 7.3367Zm-10.744-.3293-2.279 1.978-6.3552-8.9849 8.6342 7.0069Z"
     />
     <defs>
-      <clipPath id="a">
+      <clipPath id="clip0_4740_291">
         <path
           className="fill-background"
-          d="M17.686 29.539h60.478v36.923H17.686z"
+          d="M11.9996 18.4614h37.7985v23.0769H11.9996z"
         />
       </clipPath>
     </defs>
