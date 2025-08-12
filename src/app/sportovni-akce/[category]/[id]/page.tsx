@@ -14,17 +14,32 @@ import { getImagePath } from '../../../../utils/getImagePath';
 import { Container } from '../../../../components/Container';
 import { MainHeading } from '../../../../components/MainHeading';
 
-export const metadata = {
-  title: 'Sportovní akce | SportujSpolu',
-  description:
-    'SportujSpolu ti pomůže najít parťáky na sport. Zakládej události, připojuj se k akcím a už nikdy nesportuj sám.',
-};
-
 type EventPageProps = {
   params: Promise<{
     category: string;
     id: string;
   }>;
+};
+
+export const generateMetadata = async ({ params }: EventPageProps) => {
+  const { category, id } = await params;
+  const event = await getEvent(id);
+
+  if (!event) {
+    return;
+  }
+
+  return {
+    title: `Sportovní akce: ${event?.name}`,
+    description: `Připoj se ke sportovní akci "${event?.name}" v kategorii "${getSportLabel(event?.sport)}" a sportuj s námi!`,
+    alternates: { canonical: `/sportovni-akce/${category}/${id}` },
+    openGraph: {
+      type: 'article',
+      title: `Sportovní akce: ${event?.name} - ${getSportLabel(event?.sport)} | SportujSpolu`,
+      description: `Užij si spoustu zábavy na sportovní akci "${event?.name}" v kategorii "${getSportLabel(event?.sport)}". ${event?.location}, je skvělé místo pro sport! Tato akce je vhodná pro sportovní nadšence na úrovni "${levelLabels[event?.level]}" - vytvoř si vzpomínky v pohybu a přihlas se ještě dnes!`,
+      images: [{ url: getImagePath(id, event.sport) }],
+    },
+  };
 };
 
 const EventPage: NextPage<EventPageProps> = async ({ params }) => {

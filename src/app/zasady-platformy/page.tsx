@@ -6,6 +6,19 @@ import { guidelineData } from './guidelineData';
 import { MainHeading } from '../../components/MainHeading';
 import { TextContent } from '../../components/TextContent/TextContent';
 
+export const generateMetadata = () => ({
+  title: 'Zásady platformy – pravidla chování a bezpečnosti',
+  description:
+    'Zásady platformy SportujSpolu: bezpečnost, férové chování a respekt. Pravidla pro organizátory i účastníky, hlášení porušení a postup moderace.',
+  alternates: { canonical: '/zasady-platformy' },
+  openGraph: {
+    type: 'website',
+    title: 'Zásady platformy | SportujSpolu',
+    description:
+      'Pravidla bezpečného a férového chování na SportujSpolu: respekt, nulová tolerance obtěžování, hlášení porušení a postup moderace.',
+  },
+});
+
 const PlatformGuideLines: NextPage = () => (
   <Container className="max-w-4xl">
     <MainHeading className="mb-12">Zásady platformy SportujSpolu</MainHeading>

@@ -7,6 +7,19 @@ import { FacebookIcon } from '../../components/icons/FacebookIcon';
 import { EmailIcon } from '../../components/icons/EmailIcon';
 import { ContactItem } from './ContactItem';
 
+export const generateMetadata = () => ({
+  title: 'Kontaktuj nás',
+  description:
+    'Napiš nám, pokud máš nápad, jak můžeme sportujspolu vylepšit. Můžeš nám poslat email, nebo nám zanechat zpětnou vazbu na sociálních sítích.',
+  alternates: { canonical: `/kontakt` },
+  openGraph: {
+    type: 'website',
+    title: 'Kontaktuj nás | SportujSpolu',
+    description:
+      'Napiš nám, pokud máš nápad, jak můžeme sportujspolu vylepšit. Můžeš nám poslat email, nebo nám zanechat zpětnou vazbu na sociálních sítích.',
+  },
+});
+
 const Contact: NextPage = () => (
   <Container className="h-full flex flex-col justify-center">
     <MainHeading>Kontakt</MainHeading>
