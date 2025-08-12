@@ -18,11 +18,35 @@ const kanit = Kanit({
 });
 
 export const metadata = {
+  metadataBase: new URL('https://www.sportujspolu.cz'),
   title: 'Spojujeme lidi ke společnému sportování | SportujSpolu',
   description:
     'SportujSpolu ti pomůže najít parťáky na sport. Zakládej události, připojuj se k akcím a už nikdy nesportuj sám.',
+  openGraph: {
+    type: 'website',
+    locale: 'cs_CZ',
+    url: 'https://www.sportujspolu.cz',
+    title: 'Spojujeme lidi ke společnému sportování | SportujSpolu',
+    description:
+      'SportujSpolu ti pomůže najít parťáky na sport. Zakládej události, připojuj se k akcím a už nikdy nesportuj sám.',
+    siteName: 'SportujSpolu',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'SportujSpolu – Spojujeme lidi ke společnému sportování',
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://www.sportujspolu.cz',
+  },
 };
-
 const RootLayout: ChildrenFC = async ({ children }) => {
   const defaultTheme = await getDefaultTheme();
 
@@ -48,7 +72,6 @@ const RootLayout: ChildrenFC = async ({ children }) => {
             `,
           }}
         />
-        <meta name="robots" content="index, follow" />
       </head>
       <body>
         <ThemeProvider defaultTheme={defaultTheme}>
