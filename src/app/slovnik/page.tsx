@@ -7,15 +7,15 @@ import { TextContent } from '../../components/TextContent/TextContent';
 import { DictionaryNavigation } from './DictionaryNavigation';
 
 export const generateMetadata = () => ({
-  title: 'Slovník pojmů',
+  title: 'Zásady platformy – bezpečné a férové sportování',
   description:
-    'Slovník pojmů SportujSpolu: jasné definice a zkratky k našim akcím – úrovně náročnosti, typy sportů, role účastníků a pravidla.',
-  alternates: { canonical: '/slovnik' },
+    'Hodnoty a pravidla SportujSpolu: bezpečnost, respekt a férové chování. Pro sportovní nadšence, ženy hledající bezpečí i všechny, kdo chtějí sportovat společně.',
+  alternates: { canonical: '/zasady-platformy' },
   openGraph: {
     type: 'website',
-    title: 'Slovník pojmů | SportujSpolu',
+    title: 'Zásady platformy | SportujSpolu',
     description:
-      'Slovník SportujSpolu: přehled pojmů a zkratek k našim sportovním akcím – úrovně, typy sportů, role a pravidla.',
+      'Zjisti, jak funguje SportujSpolu – bezpečné a přátelské prostředí, pravidla chování a cíle naší komunity. Připoj se a sportuj s respektem.',
   },
 });
 

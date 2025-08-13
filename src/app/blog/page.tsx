@@ -5,17 +5,17 @@ import { MainHeading } from '../../components/MainHeading';
 import { BlogPosts } from './BlogPosts';
 
 export const generateMetadata = () => ({
-  title: 'Blog',
-  description: 'Přečti si naše články o sportu a sportovních akcích.',
-  alternates: { canonical: `/blog` },
+  title: 'Kontaktuj nás',
+  description:
+    'Kontaktuj tým SportujSpolu s dotazy, návrhy nebo zpětnou vazbou. Napiš nám e-mail nebo se ozvi přes sociální sítě.',
+  alternates: { canonical: `/kontakt` },
   openGraph: {
     type: 'website',
-    title: 'Blog | SportujSpolu',
+    title: 'Kontaktuj nás | SportujSpolu',
     description:
-      'Blog SportujSpolu – články o sportu, sportovních akcích a praktické tipy pro sportovní nadšence.',
+      'Máte dotaz, nápad nebo zpětnou vazbu? Kontaktujte tým SportujSpolu e-mailem nebo přes naše sociální sítě.',
   },
 });
-
 const Blog: NextPage = () => (
   <Container>
     <MainHeading>Blog SportujSpolu</MainHeading>
