@@ -7,6 +7,19 @@ import { faqData } from './faqData';
 import { MainHeading } from '../../components/MainHeading';
 import { TextContent } from '../../components/TextContent/TextContent';
 
+export const generateMetadata = () => ({
+  title: 'FAQ – Často kladené otázky',
+  description:
+    'Nejčastější dotazy k platformě SportujSpolu: registrace, funkce, bezpečnost, sporty, komunikace a plánované novinky.',
+  alternates: { canonical: `/faq` },
+  openGraph: {
+    type: 'article',
+    title: 'FAQ – Často kladené otázky | SportujSpolu',
+    description:
+      'Odpovědi na nejčastější dotazy k registraci, používání a bezpečnosti platformy SportujSpolu. Zjisti, jak najít sportovní parťáky a pořádat akce.',
+  },
+});
+
 const FAQ: NextPage = () => (
   <Container className="max-w-4xl">
     <MainHeading className="mb-12">FAQ</MainHeading>

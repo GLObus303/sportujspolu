@@ -1,8 +1,9 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 import { SanitizedHTML } from '../../../components/SanitizedHTML';
-import { postsData, defaultPost } from '../postsData';
+import { postsData } from '../postsData';
 import { Container } from '../../../components/Container';
 import { MainHeading } from '../../../components/MainHeading';
 import { TextContent } from '../../../components/TextContent/TextContent';
@@ -14,11 +15,37 @@ type BlogPostProps = {
   }>;
 };
 
+const findPost = (slug: string) =>
+  postsData.find(({ slug: postSlug }) => postSlug === slug);
+
+export const generateMetadata = async ({ params }: BlogPostProps) => {
+  const { slug } = await params;
+  const post = findPost(slug);
+
+  if (!post) {
+    return;
+  }
+
+  return {
+    title: post.title,
+    description: post.description,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      type: 'article',
+      title: post.title,
+      description: post.description,
+      images: [{ url: post.image }],
+    },
+  };
+};
+
 const BlogPost: NextPage<BlogPostProps> = async ({ params }) => {
   const { slug } = await params;
+  const post = findPost(slug);
 
-  const post =
-    postsData.find(({ slug: postSlug }) => postSlug === slug) || defaultPost;
+  if (!post) {
+    return notFound();
+  }
 
   return (
     <Container className="max-w-4xl">

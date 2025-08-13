@@ -6,6 +6,19 @@ import { MainHeading } from '../../components/MainHeading';
 import { TextContent } from '../../components/TextContent/TextContent';
 import { DictionaryNavigation } from './DictionaryNavigation';
 
+export const generateMetadata = () => ({
+  title: 'Slovník pojmů',
+  description:
+    'Sportovní slovník SportujSpolu: přehled pojmů, tréninkových metod a sportů. Jasné vysvětlení úrovní, disciplín a pravidel.',
+  alternates: { canonical: '/slovnik' },
+  openGraph: {
+    type: 'website',
+    title: 'Slovník pojmů | SportujSpolu',
+    description:
+      'Prozkoumej sportovní slovník SportujSpolu – definice sportů, tréninkových metod, úrovní a pravidel. Rychlá orientace pro všechny sportovce.',
+  },
+});
+
 const Dictionary: NextPage = () => (
   <Container className="max-w-4xl">
     <MainHeading>Slovník Pojmů</MainHeading>

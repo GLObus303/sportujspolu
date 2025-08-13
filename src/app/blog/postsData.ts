@@ -1,11 +1,3 @@
-export const defaultPost = {
-  id: 0,
-  slug: '',
-  title: '',
-  content: '',
-  image: '',
-};
-
 export const postsData = [
   {
     id: 12,
@@ -13,7 +5,7 @@ export const postsData = [
     image: '/images/cycling/5.avif',
     category: 'tipy',
     title: 'TOP 6 letních sportů, které si nejlépe užiješ ve dvou',
-    preview:
+    description:
       'Léto je ideální čas vyrazit ven a užít si sport společně s někým dalším. Tady je šest aktivit, které propojí pohyb, zábavu a týmového ducha – ať už s kamarádem, partnerem nebo kolegou.',
     content: `
       <div>
@@ -114,7 +106,7 @@ export const postsData = [
     image: '/images/swimming/6.avif',
     category: 'společné aktivity',
     title: 'Voda, stín, pohyb: Letní vodní sporty u řeky a jezera',
-    preview:
+    description:
       'V horkých dnech je voda ideálním místem, kde se ochladit a přitom si užít pohyb. Od plavání přes paddleboard až po vodní jógu – tady je přehled aktivit, které zvládne každý a dají se dělat u řeky, jezera nebo v přírodním koupališti.',
     content: `
       <div>
@@ -223,7 +215,7 @@ export const postsData = [
     image: '/images/other/1.avif',
     category: 'motivace',
     title: 'Start od nuly: Letní sporty pro začátečníky',
-    preview:
+    description:
       'Léto je ideální čas začít se hýbat. Pokud začínáš úplně od nuly, vybrali jsme aktivity, které zvládne každý. Minimum vybavení, jednoduché postupy a tipy, jak se vyhnout přetížení i letním vedrům.',
     content: `
       <div>
@@ -372,7 +364,7 @@ export const postsData = [
       'Jak se efektivně hodit do formy na léto? 7 způsobů, jak začít (a vydržet)',
     image: '/images/running/7.avif',
     category: 'motivace',
-    preview:
+    description:
       'Léto se blíží a s ním i touha cítit se dobře ve vlastním těle. Nepotřebuješ drastické diety ani nekonečné hodiny ve fitku. Stačí chytře začít – ideálně s někým, kdo tě podpoří. Tady je 7 způsobů, jak nastartovat formu na léto a nepolevit po týdnu.',
     content: `
       <div>
@@ -526,7 +518,7 @@ export const postsData = [
     title: 'Top Strategie, Jak Zůstat Motivovaný V Posilovně V Novém Roce 2025',
     image: '/images/fitness/3.avif',
     category: 'fitness',
-    preview:
+    description:
       'Nový rok přináší nové cíle a odhodlání, a jedno z nejčastějších je zlepšení fyzické kondice prostřednictvím pravidelného cvičení v posilovně. Avšak udržet si motivaci může být výzvou, zejména když výsledky nejsou okamžité nebo když...',
     content: `
     <div>
@@ -715,7 +707,7 @@ export const postsData = [
     image: '/images/yoga/2.avif',
     category: 'společné aktivity',
     title: '5 Důvodů, Proč Sportování S Přáteli Zlepší Vaše Výsledky',
-    preview:
+    description:
       'Sportování s přáteli není jen o fyzické aktivitě – je to také o motivaci, podpoře a zábavě. Když se spojíte s kamarádem nebo přítelkyní, sportování se stává mnohem příjemnějším a efektivnějším. Společné...',
     content: `
     <div>
@@ -873,7 +865,7 @@ export const postsData = [
     image: '/images/volleyball/3.avif',
     category: 'motivace',
     title: 'Nejlepší Teamové Sporty pro Zlepšení Motivace a Výkonu',
-    preview:
+    description:
       'Teamové sporty nejsou jen o fyzické aktivitě – jsou také o spolupráci, komunikaci a společném cíli. Hraní ve skupině může výrazně zvýšit vaši motivaci, zlepšit výkon a posílit vztahy s ostatními. Společné úsilí...',
     content: `
     <div>
@@ -1095,6 +1087,8 @@ export const postsData = [
     image: '/images/tennis/3.avif',
     category: 'top nej...',
     title: 'Top 5 Nejoblíbenějších Sportů, Které Si Užijete Ve Dvojici',
+    description:
+      'Sportování není jen o fyzické aktivitě – je to také o sdílení zážitků, posilování vztahů a zábavě. Pokud hledáte způsob, jak se motivovat k pohybu a zároveň si užít kvalitní čas s někým blízkým, sport ve dvojici je tou pravou volbou. Společné sportování přináší nejen fyzické benefity, ale také psychické a sociální výhody, které mohou posílit váš vztah a zlepšit vaši celkovou pohodu.',
     content: `
       <div>
         <p>
@@ -1275,6 +1269,8 @@ export const postsData = [
     category: 'zdraví',
     title:
       'Přínosy Meditace pro Sportovce: Zklidnění Mysli a Zvýšení Soustředění',
+    description:
+      'Meditace se v posledních letech stává stále populárnější mezi sportovci všech úrovní. Nejenže nabízí psychické benefity, ale také výrazně přispívá k fyzickému výkonu. Meditace může pomoci sportovcům zklidnit mysl, zvýšit soustředění a zlepšit celkovou pohodu, což je klíčové pro dosažení nejlepších výsledků.',
     content: `
       <div>
         <p>
@@ -1440,6 +1436,8 @@ export const postsData = [
     category: 'výživa',
     title:
       'Ultimátní Průvodce Výživou pro Sportovce: Jak Správně Jíst pro Maximální Výkon',
+    description:
+      'Správná výživa je základem úspěchu každého sportovce. Kvalitní strava nejenže poskytuje potřebnou energii pro tréninky a soutěže, ale také podporuje regeneraci, zvyšuje výkon a snižuje riziko zranění. Tento průvodce vám poskytne komplexní přehled o tom, jak správně žít a jíst pro dosažení nejlepších sportovních výsledků.',
     content: `
       <div>
         <p>
@@ -1708,6 +1706,8 @@ export const postsData = [
     image: '/images/running/1.avif',
     category: 'společné aktivity',
     title: 'Jak si Najít Ideálního Parťáka na Běhání: Společně Krok za Krokem',
+    description:
+      'Běhání je skvělý způsob, jak zůstat fit a zdravý, ale může být ještě zábavnější a motivující, když máte parťáka. Najít někoho, kdo sdílí vaši vášeň pro běhání, může být klíčem k udržení pravidelného tréninkového režimu a dosažení vašich cílů. V tomto článku se podíváme na různé způsoby, jak si najít běžeckého parťáka, a jaké výhody může společné běhání přinést. Ať už jste začátečník nebo zkušený běžec, najít správného parťáka může být klíčové pro vaši motivaci a úspěch.',
     content: `
       <div>
         <p>
@@ -1814,6 +1814,8 @@ export const postsData = [
     category: 'motivace',
     title:
       'Jak si Vytvořit Zdravý Návyk, Který Vydrží? Sportuj s Někým, Sportuj Spolu!',
+    description:
+      'Vytvoření zdravého návyku může být náročné, ale když máte parťáka, který vás podporuje, je to mnohem snazší. Sportování s někým může být klíčem k udržení motivace a dosažení vašich cílů. V tomto článku se podíváme na to, jak si vytvořit zdravý návyk, který vydrží, a jak vám může pomoci sportování s někým.',
     content: `
       <div>
         <p>

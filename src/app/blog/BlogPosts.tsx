@@ -42,7 +42,9 @@ export const BlogPosts: React.FC<BlogPostsProps> = ({ variant = 'full' }) => {
                 {post.title}
               </h2>
               <SanitizedHTML
-                htmlContent={(isPreview ? post.preview : post.content) || ''}
+                htmlContent={
+                  (isPreview ? post.description : post.content) || ''
+                }
                 className="mt-2 line-clamp-4"
               />
             </div>
