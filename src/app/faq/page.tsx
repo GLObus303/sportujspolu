@@ -10,13 +10,13 @@ import { TextContent } from '../../components/TextContent/TextContent';
 export const generateMetadata = () => ({
   title: 'FAQ – Často kladené otázky',
   description:
-    'Odpovědi na nejčastější dotazy ke sportovním akcím, registraci, úrovním a organizaci. Najdi řešení rychle a sportuj s námi.',
+    'Nejčastější dotazy k platformě SportujSpolu: registrace, funkce, bezpečnost, sporty, komunikace a plánované novinky.',
   alternates: { canonical: `/faq` },
   openGraph: {
     type: 'article',
     title: 'FAQ – Často kladené otázky | SportujSpolu',
     description:
-      'Odpovědi na nejčastější dotazy ke sportovním akcím, registraci, úrovním a organizaci. Najdi řešení rychle a sportuj s námi.',
+      'Odpovědi na nejčastější dotazy k registraci, používání a bezpečnosti platformy SportujSpolu. Zjisti, jak najít sportovní parťáky a pořádat akce.',
   },
 });
 
