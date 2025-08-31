@@ -66,11 +66,13 @@ export const UserControls: React.FC<UserControls> = ({ defaultTheme }) => {
     <div ref={ref} className="flex items-center">
       <button
         aria-label={isNavigationOpen ? 'Zavřít menu' : 'Otevřít menu'}
-        className="items-center h-full justify-center text-xl hover:fill-primary fill-text focus:fill-primary hover:text-primary focus:text-primary relative"
+        className="items-center h-full justify-center text-xl fill-text focus:fill-primary hover:text-primary focus:text-primary relative"
         onClick={isUserLoggedIn ? handleToggleNavigation : openAuthModal}
       >
         <div className="flex group gap-4 items-center">
-          <span className="hidden whitespace-nowrap sm:inline">{name}</span>
+          <span className="whitespace-nowrap sm:inline hover-marker">
+            <span className="hidden md:block">{name}</span>
+          </span>
           <ProfileIcon className="inline h-6 w-6" />
         </div>
 

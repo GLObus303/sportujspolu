@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import { LogoType } from '../icons/LogoType';
 import { LogoIcon } from '../icons/LogoIcon';
 import { Routes } from '../../constants';
 import { CustomLink } from '../CustomLink';
@@ -16,10 +15,12 @@ export const Header: React.FC<HeaderProps> = ({ defaultTheme }) => (
       <Link
         href={Routes.DASHBOARD}
         aria-label="SportujSpolu - domovská stránka"
-        className="px-4 text-3xl hover:fill-primary md:px-14"
+        className="px-4 text-3xl md:px-14 flex items-center gap-1"
       >
-        <LogoIcon className="h-6 block md:hidden dark:fill-white md:h-7" />
-        <LogoType className="h-6 hidden md:block dark:fill-white md:h-7" />
+        <LogoIcon className="h-6 block fill-text" />
+        <span className="hover-marker text-xl">
+          <span className="hidden md:block">SportujSpolu</span>
+        </span>
       </Link>
       <div className="px-4 md:px-14">
         <div className="relative flex items-center">
