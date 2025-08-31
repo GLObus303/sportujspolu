@@ -19,7 +19,11 @@ export const AuthWrapper: ChildrenFC<AuthWrapperProps> = ({
 }) => (
   <section className="flex flex-col items-center justify-center px-6 pt-20">
     <h1 className="text-xl font-semibold">
-      {headingText} <span className="text-primary">SportujSpolu</span>
+      {headingText}
+      <span className="relative">
+        <span className="absolute bottom-[8%] left-0 w-full h-[55%] bg-pistachio rounded-full translate-x-1" />
+        <span className="relative px-1">SportujSpolu</span>
+      </span>
     </h1>
     <p className="pt-5">Zadat {formText} údaje:</p>
 
@@ -27,11 +31,8 @@ export const AuthWrapper: ChildrenFC<AuthWrapperProps> = ({
 
     <p className="mt-2 py-5 font-light">
       {redirectText}{' '}
-      <button
-        onClick={onToggleForm}
-        className="font-medium hover:text-primary focus:text-primary"
-      >
-        {redirectButtonText}
+      <button onClick={onToggleForm} className="font-medium hover-marker">
+        <span>{redirectButtonText}</span>
       </button>
     </p>
   </section>

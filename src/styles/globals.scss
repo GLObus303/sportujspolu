@@ -90,7 +90,6 @@ button {
 
 .hover-marker:hover::before {
   transform: scaleX(1);
-  translate: 0 0.2em;
 }
 
 .hover-marker > span {
