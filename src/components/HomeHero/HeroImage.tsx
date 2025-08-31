@@ -23,6 +23,7 @@ export const HeroImage: React.FC<HeroImageProps> = ({ defaultTheme }) => {
       }
       width={500}
       height={480}
+      fetchPriority="high"
     />
   );
 };
