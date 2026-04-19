@@ -4,9 +4,7 @@ import nookies from 'nookies';
 import { ERROR_MESSAGE } from '../constants';
 import { OnErrorType } from '../types/Api';
 
-const apiUrl =
-  process.env.NEXT_PUBLIC_API_URL ||
-  'https://sportujspolu-api.onrender.com/api/v1/';
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const privateApi = () =>
   ky.create({
