@@ -47,6 +47,7 @@ type CreateEventValues = {
   location: string;
   level: string;
   price: number;
+  emailVisibleToAttendees: boolean;
 };
 
 const getTitle = (status: number | undefined, isNewEvent?: boolean) => {
@@ -90,6 +91,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
       location: event?.location,
       level: event?.level,
       price: event?.price,
+      emailVisibleToAttendees: event?.emailVisibleToAttendees || false,
     },
   });
   const { watch } = formProps;
@@ -144,6 +146,15 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
   };
 
   const watchedLevel = watch('level');
+  const watchedEmailVisible = watch('emailVisibleToAttendees');
+
+  const emailVisibilityLabels = [
+    {
+      value: false,
+      label: 'Pouze na vyžádání',
+    },
+    { value: true, label: 'Viditelný přihlášeným' },
+  ];
 
   return (
     <>
@@ -201,10 +212,10 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
                       type="radio"
                       value={value}
                       defaultChecked={index === 0}
-                      className="h-9 w-36 focus:outline-primary"
+                      className="peer sr-only"
                     />
                     <span
-                      className={`absolute w-36 rounded-full py-2 text-center leading-5 ${
+                      className={`w-36 rounded-full py-2 text-center leading-5 peer-focus:outline peer-focus:outline-primary ${
                         watchedLevel === value
                           ? 'border border-pistachio bg-pistachio'
                           : 'border border-low-contrast bg-card hover:border-primary'
@@ -223,6 +234,36 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
               placeholder="Cena"
               {...inputStyles}
             />
+            <div className="flex w-full flex-row items-start justify-between">
+              <span className="text-normal mb-4 pt-3 text-start md:pt-2 md:text-xl">
+                Viditelnost e-mailu
+              </span>
+              <div className="mt-5 flex w-3/5 flex-wrap justify-end gap-4 md:justify-between">
+                {emailVisibilityLabels.map(({ value, label }) => (
+                  <label
+                    key={String(value)}
+                    className="relative flex cursor-pointer"
+                  >
+                    <input
+                      {...formProps.register('emailVisibleToAttendees')}
+                      type="radio"
+                      value={String(value)}
+                      defaultChecked={value === false}
+                      className="peer sr-only"
+                    />
+                    <span
+                      className={`rounded-full px-2 py-2 leading-5 border text-center peer-focus:outline w-48 peer-focus:outline-primary ${
+                        String(watchedEmailVisible) === String(value)
+                          ? 'border-pistachio bg-pistachio'
+                          : 'border-low-contrast bg-card hover:border-primary'
+                      }`}
+                    >
+                      {label}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
             <div className="ml-auto flex flex-row items-center justify-center">
               {isDeleteForeverVisible ? (
                 <Modal onClose={toggleDeleteConfirmation}>
@@ -244,12 +285,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
                   >
                     <DeleteIcon className="mt-0.5 hover:animate-shake motion-reduce:hover:animate-none" />
                   </button>
-                  <button
-                    type="submit"
-                    className="whitespace-nowrap rounded-md bg-button px-5 py-2 text-reverse-text hover:text-primary"
-                  >
-                    Odeslat
-                  </button>
+                  <Button type="submit">Odeslat</Button>
                 </>
               )}
             </div>

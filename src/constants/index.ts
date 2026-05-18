@@ -151,5 +151,6 @@ export const defaultEvent = {
   level: levelArray[3],
   createdAt: '',
   ownerId: '',
+  emailVisibleToAttendees: false,
   owner: defaultOwner,
 };

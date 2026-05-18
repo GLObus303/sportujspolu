@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import cx from 'classnames';
 import Link from 'next/link';

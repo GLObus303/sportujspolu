@@ -54,7 +54,16 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
     return notFound();
   }
 
-  const { name, date, location, sport, description, level, owner } = event;
+  const {
+    name,
+    date,
+    location,
+    sport,
+    description,
+    level,
+    owner,
+    emailVisibleToAttendees,
+  } = event;
   const eventOwner = owner || defaultOwner;
 
   const sportLabel = getSportLabel(sport);
@@ -96,7 +105,12 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
             />
             <hr className="my-16 border-t border-low-contrast" />
           </section>
-          <MessageSection eventOwner={eventOwner} name={name} eventId={id} />
+          <MessageSection
+            eventOwner={eventOwner}
+            name={name}
+            eventId={id}
+            emailVisibleToAttendees={emailVisibleToAttendees}
+          />
         </div>
         <EventDetail
           className="sticky hidden lg:block"

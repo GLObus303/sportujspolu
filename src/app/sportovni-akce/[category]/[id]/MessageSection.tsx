@@ -10,21 +10,27 @@ import { MessageBox } from '../../../../components/MessageBox';
 import { OwnerRequestType } from '../../../../types/Message';
 import { getOwnerRequests } from '../../../../api/messages';
 import { useEffectAsync } from '../../../../hooks/useEffectAsync';
+import { EmailCTA } from './EmailCTA';
+
+import { EventOwner } from '@/types/EventOwner';
 
 type MessageSectionProps = {
-  eventOwner: {
-    id: string;
-    image?: string;
-    name: string;
-  };
+  eventOwner: EventOwner;
   name: string;
   eventId: string;
+  emailVisibleToAttendees: boolean;
 };
 
 export const MessageSection: React.FC<MessageSectionProps> = ({
-  eventOwner: { id: ownerId, image: ownerImage, name: ownerName },
+  eventOwner: {
+    id: ownerId,
+    image: ownerImage,
+    name: ownerName,
+    email: ownerEmail,
+  },
   name,
   eventId,
+  emailVisibleToAttendees,
 }) => {
   const {
     user: { id: userId },
@@ -62,7 +68,7 @@ export const MessageSection: React.FC<MessageSectionProps> = ({
   return (
     <section className="w-full">
       <h2 className="flex flex-col px-20 text-center text-xl font-medium leading-normal md:flex-row md:px-0 lg:text-start lg:text-3xl">
-        Chceš se zúčastnit? Registruj se na akci!
+        Chceš se zúčastnit? Kontaktuj pořadatele sportovní akce!
       </h2>
       <div className="relative mt-10 flex flex-row">
         <figure className="relative mr-4 h-12 w-12">
@@ -76,10 +82,16 @@ export const MessageSection: React.FC<MessageSectionProps> = ({
         </figure>
         <div className="mr-2">
           <h3 className="items-center text-base md:text-lg">{ownerName}</h3>
-          <p className="font-light text-accent">Napiš nyní a sportuj spolu!</p>
+          <p className="font-light text-accent">
+            Napiš pořadateli akce a sportuj spolu!
+          </p>
         </div>
       </div>
-      <EmailForm eventId={eventId} />
+      {emailVisibleToAttendees && ownerEmail ? (
+        <EmailCTA ownerEmail={ownerEmail} />
+      ) : (
+        <EmailForm eventId={eventId} />
+      )}
     </section>
   );
 };
