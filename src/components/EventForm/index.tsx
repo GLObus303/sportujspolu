@@ -27,6 +27,7 @@ import { DeleteIcon } from '../icons/DeleteIcon';
 import { Modal } from '../Modal';
 import { useAuthModal } from '../../context/AuthModalContext';
 import { Button } from '../Button';
+import { RadioInput } from '../RadioInput';
 
 type EventFormProps = {
   event?: Event;
@@ -94,7 +95,6 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
       emailVisibleToAttendees: event?.emailVisibleToAttendees || false,
     },
   });
-  const { watch } = formProps;
 
   const isNewEvent = !event?.id;
 
@@ -145,15 +145,14 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
     setStatus(undefined);
   };
 
-  const watchedLevel = watch('level');
-  const watchedEmailVisible = watch('emailVisibleToAttendees');
+  const levelOptions = Object.entries(levelLabels).map(([value, label]) => ({
+    value,
+    label,
+  }));
 
-  const emailVisibilityLabels = [
-    {
-      value: false,
-      label: 'Pouze na vyžádání',
-    },
-    { value: true, label: 'Viditelný přihlášeným' },
+  const emailVisibilityOptions = [
+    { value: 'false', label: 'Na vyžádání' },
+    { value: 'true', label: 'Pro přihlášené' },
   ];
 
   return (
@@ -197,36 +196,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
               placeholder="Místo konání"
               {...inputStyles}
             />
-            <div className="flex w-full flex-row justify-between">
-              <span className="text-normal mb-4 pt-3 md:pt-2 md:text-xl">
-                Úroveň
-              </span>
-              <div className="mt-5 flex w-3/5 flex-wrap justify-end gap-4 md:justify-between">
-                {Object.entries(levelLabels).map(([value, label], index) => (
-                  <label
-                    key={value}
-                    className="flex cursor-pointer items-center"
-                  >
-                    <input
-                      {...formProps.register('level')}
-                      type="radio"
-                      value={value}
-                      defaultChecked={index === 0}
-                      className="peer sr-only"
-                    />
-                    <span
-                      className={`w-36 rounded-full py-2 text-center leading-5 peer-focus:outline peer-focus:outline-primary ${
-                        watchedLevel === value
-                          ? 'border border-pistachio bg-pistachio'
-                          : 'border border-low-contrast bg-card hover:border-primary'
-                      }`}
-                    >
-                      {label}
-                    </span>
-                  </label>
-                ))}
-              </div>
-            </div>
+            <RadioInput name="level" label="Úroveň" options={levelOptions} />
             <Input
               type="number"
               name="price"
@@ -234,36 +204,11 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
               placeholder="Cena"
               {...inputStyles}
             />
-            <div className="flex w-full flex-row items-start justify-between">
-              <span className="text-normal mb-4 pt-3 text-start md:pt-2 md:text-xl">
-                Viditelnost e-mailu
-              </span>
-              <div className="mt-5 flex w-3/5 flex-wrap justify-end gap-4 md:justify-between">
-                {emailVisibilityLabels.map(({ value, label }) => (
-                  <label
-                    key={String(value)}
-                    className="relative flex cursor-pointer"
-                  >
-                    <input
-                      {...formProps.register('emailVisibleToAttendees')}
-                      type="radio"
-                      value={String(value)}
-                      defaultChecked={value === false}
-                      className="peer sr-only"
-                    />
-                    <span
-                      className={`rounded-full px-2 py-2 leading-5 border text-center peer-focus:outline w-48 peer-focus:outline-primary ${
-                        String(watchedEmailVisible) === String(value)
-                          ? 'border-pistachio bg-pistachio'
-                          : 'border-low-contrast bg-card hover:border-primary'
-                      }`}
-                    >
-                      {label}
-                    </span>
-                  </label>
-                ))}
-              </div>
-            </div>
+            <RadioInput
+              name="emailVisibleToAttendees"
+              label="Viditelnost e-mailu"
+              options={emailVisibilityOptions}
+            />
             <div className="ml-auto flex flex-row items-center justify-center">
               {isDeleteForeverVisible ? (
                 <Modal onClose={toggleDeleteConfirmation}>
