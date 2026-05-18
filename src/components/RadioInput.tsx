@@ -1,20 +1,15 @@
 import { useFormContext } from 'react-hook-form';
 
-type Option = {
-  value: string;
-  label: string;
-};
-
 type RadioInputProps = {
   name: string;
   label: string;
-  options: Option[];
+  labels: Record<string, string>;
 };
 
 export const RadioInput: React.FC<RadioInputProps> = ({
   name,
   label,
-  options,
+  labels,
 }) => {
   const { register, watch } = useFormContext();
   const watchedValue = String(watch(name));
@@ -25,7 +20,7 @@ export const RadioInput: React.FC<RadioInputProps> = ({
         {label}
       </span>
       <div className="mt-5 grid md:grid-cols-2 w-3/5 gap-4">
-        {options.map(({ value, label: optionLabel }, index) => (
+        {Object.entries(labels).map(([value, optionLabel], index) => (
           <label key={value} className="relative flex cursor-pointer">
             <input
               {...register(name)}

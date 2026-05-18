@@ -19,6 +19,7 @@ import {
   ERROR_MESSAGE,
   Routes,
   SUCCESS_EVENT,
+  emailVisibilityLabels,
   levelLabels,
   sportsArray,
   sportsOptions,
@@ -145,16 +146,6 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
     setStatus(undefined);
   };
 
-  const levelOptions = Object.entries(levelLabels).map(([value, label]) => ({
-    value,
-    label,
-  }));
-
-  const emailVisibilityOptions = [
-    { value: 'false', label: 'Na vyžádání' },
-    { value: 'true', label: 'Pro přihlášené' },
-  ];
-
   return (
     <>
       <article className="relative mr-0 mt-10 flex w-full max-w-xl flex-col rounded-md bg-card text-center shadow-md lg:text-start xl:mr-28 xl:mt-14 xl:px-0">
@@ -196,7 +187,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
               placeholder="Místo konání"
               {...inputStyles}
             />
-            <RadioInput name="level" label="Úroveň" options={levelOptions} />
+            <RadioInput name="level" label="Úroveň" labels={levelLabels} />
             <Input
               type="number"
               name="price"
@@ -207,7 +198,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
             <RadioInput
               name="emailVisibleToAttendees"
               label="Viditelnost e-mailu"
-              options={emailVisibilityOptions}
+              labels={emailVisibilityLabels}
             />
             <div className="ml-auto flex flex-row items-center justify-center">
               {isDeleteForeverVisible ? (
