@@ -5,7 +5,7 @@ import { useAuthModal } from '../../../../context/AuthModalContext';
 import { useAuth } from '../../../../context/AuthContext';
 
 type EmailCTAProps = {
-  ownerEmail?: string;
+  ownerEmail: string;
 };
 
 export const EmailCTA: React.FC<EmailCTAProps> = ({ ownerEmail }) => {
