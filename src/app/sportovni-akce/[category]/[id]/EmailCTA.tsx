@@ -1,8 +1,8 @@
-import { EmailIcon } from '@/components/icons/EmailIcon';
-import { EmailWithCopy } from '@/components/EmailWithCopy';
-import { Button } from '@/components/Button';
-import { useAuthModal } from '@/context/AuthModalContext';
-import { useAuth } from '@/context/AuthContext';
+import { EmailIcon } from '../../../../components/icons/EmailIcon';
+import { EmailWithCopy } from '../../../../components/EmailWithCopy';
+import { Button } from '../../../../components/Button';
+import { useAuthModal } from '../../../../context/AuthModalContext';
+import { useAuth } from '../../../../context/AuthContext';
 
 type EmailCTAProps = {
   ownerEmail?: string;

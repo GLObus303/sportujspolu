@@ -11,8 +11,7 @@ import { OwnerRequestType } from '../../../../types/Message';
 import { getOwnerRequests } from '../../../../api/messages';
 import { useEffectAsync } from '../../../../hooks/useEffectAsync';
 import { EmailCTA } from './EmailCTA';
-
-import { EventOwner } from '@/types/EventOwner';
+import { EventOwner } from '../../../../types/EventOwner';
 
 type MessageSectionProps = {
   eventOwner: EventOwner;

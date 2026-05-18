@@ -49,7 +49,7 @@ export const MessageCard: React.FC<MessageCardProps> = ({ message }) => {
 
   const [isApproved, setIsApproved] = useState(approved);
   const [updatedRequesterEmail, setUpdatedRequesterEmail] = useState(
-    'requesterEmail' in message && message.requesterEmail,
+    'requesterEmail' in message ? message.requesterEmail : undefined,
   );
 
   const handleApprove = async () => {
