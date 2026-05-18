@@ -12,5 +12,6 @@ export type Event = {
   level: LevelType;
   createdAt: string;
   ownerId: string;
+  emailVisibleToAttendees: boolean;
   owner?: EventOwner;
 };

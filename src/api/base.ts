@@ -1,10 +1,22 @@
 import ky from 'ky';
 import nookies from 'nookies';
 
+import { isBrowser } from '../utils/env';
 import { ERROR_MESSAGE } from '../constants';
 import { OnErrorType } from '../types/Api';
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+const getToken = async () => {
+  if (!isBrowser()) {
+    const { cookies } = await import('next/headers');
+    const cookieStore = await cookies();
+
+    return cookieStore.get('token')?.value;
+  }
+
+  return nookies.get().token;
+};
 
 const privateApi = () =>
   ky.create({
@@ -12,8 +24,8 @@ const privateApi = () =>
     headers: { cache: 'no-store' },
     hooks: {
       beforeRequest: [
-        (request) => {
-          const { token } = nookies.get();
+        async (request) => {
+          const token = await getToken();
           if (token) {
             request.headers.set('Authorization', `Bearer ${token}`);
           }

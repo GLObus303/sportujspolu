@@ -56,6 +56,11 @@ export const levelLabels: Record<LevelType, string> = {
   Any: 'Pro každého',
 };
 
+export const emailVisibilityLabels: Record<string, string> = {
+  false: 'Na vyžádání',
+  true: 'Pro přihlášené',
+};
+
 export const sportsArray = [
   'football',
   'iceHockey',
@@ -151,5 +156,6 @@ export const defaultEvent = {
   level: levelArray[3],
   createdAt: '',
   ownerId: '',
+  emailVisibleToAttendees: false,
   owner: defaultOwner,
 };

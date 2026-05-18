@@ -112,7 +112,7 @@ export const EmailForm: React.FC<EmailFormProps> = ({ eventId }) => {
             label="Zpráva pro pořadatele"
             placeholder="Ahoj, můžeš mi poslat bližší informace..."
           />
-          <Button type="submit" disabled={isLoading} className="ml-auto mt-5">
+          <Button type="submit" disabled={isLoading} className="ml-auto">
             Zúčastnit se
           </Button>
         </form>
