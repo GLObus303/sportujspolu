@@ -93,7 +93,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
       location: event?.location,
       level: event?.level,
       price: event?.price,
-      emailVisibleToAttendees: event?.emailVisibleToAttendees || false,
+      emailVisibleToAttendees: !!event?.emailVisibleToAttendees,
     },
   });
 
