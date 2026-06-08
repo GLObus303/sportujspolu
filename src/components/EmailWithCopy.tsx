@@ -1,9 +1,11 @@
+'use client';
+
 import { useState } from 'react';
 import cx from 'classnames';
 import Link from 'next/link';
 
 type EmailWithCopyProps = {
-  email?: string;
+  email: string;
   className?: string;
 };
 

@@ -25,4 +25,5 @@ export const eventSchema = yup.object().shape({
     .integer('Cena musí být celé číslo.')
     .min(0, 'Cena nemůže být záporná.')
     .required('Cena je povinná.'),
+  emailVisibleToAttendees: yup.boolean().required(),
 });

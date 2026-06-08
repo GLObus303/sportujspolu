@@ -56,8 +56,10 @@ export const MessageCard: React.FC<MessageCardProps> = ({ message }) => {
     try {
       const response = await approveMessageRequest(id, { approved: true });
 
-      setIsApproved(true);
-      setUpdatedRequesterEmail(response?.requesterEmail);
+      if (response) {
+        setIsApproved(true);
+        setUpdatedRequesterEmail(response.requesterEmail);
+      }
     } catch (error) {
       setIsApproved(false);
     }

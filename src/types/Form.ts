@@ -13,6 +13,7 @@ export type LoginFormData = {
 export type EventFormData = {
   date: string;
   description: string;
+  emailVisibleToAttendees: boolean;
   level: string;
   location: string;
   name: string;
