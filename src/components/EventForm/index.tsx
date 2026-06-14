@@ -152,7 +152,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
         <FormProvider {...formProps}>
           <form
             onSubmit={formProps.handleSubmit(onSubmit)}
-            className="flex flex-col space-y-8 rounded-md bg-card p-4 sm:p-7 overflow-hidden"
+            className="flex flex-col space-y-8 rounded-md bg-card p-4 sm:p-7"
           >
             <Input
               type="name"
@@ -199,6 +199,7 @@ export const EventForm: React.FC<EventFormProps> = ({ event }) => {
               name="emailVisibleToAttendees"
               label="Viditelnost e-mailu"
               labels={emailVisibilityLabels}
+              tooltip="Váš e-mail uvidí pouze přihlášení účastníci, nebo ho sdílíte až po schválení žádosti. Nikdy se nezobrazí bez vašeho souhlasu."
             />
             <div className="ml-auto flex flex-row items-center justify-center">
               {isDeleteForeverVisible ? (
