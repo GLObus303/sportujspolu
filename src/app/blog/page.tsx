@@ -5,15 +5,15 @@ import { MainHeading } from '../../components/MainHeading';
 import { BlogPosts } from './BlogPosts';
 
 export const generateMetadata = () => ({
-  title: 'Kontaktuj nás',
+  title: 'Blog',
   description:
-    'Kontaktuj tým SportujSpolu s dotazy, návrhy nebo zpětnou vazbou. Napiš nám e-mail nebo se ozvi přes sociální sítě.',
-  alternates: { canonical: `/kontakt` },
+    'Tipy, inspirace a rady pro sportovce. Přečtěte si články o trénování, motivaci, výživě a společném sportování na blogu SportujSpolu.',
+  alternates: { canonical: `/blog` },
   openGraph: {
     type: 'website',
-    title: 'Kontaktuj nás | SportujSpolu',
+    title: 'Blog | SportujSpolu',
     description:
-      'Máte dotaz, nápad nebo zpětnou vazbu? Kontaktujte tým SportujSpolu e-mailem nebo přes naše sociální sítě.',
+      'Tipy, inspirace a rady pro sportovce. Přečtěte si články o trénování, motivaci, výživě a společném sportování.',
   },
 });
 const Blog: NextPage = () => (
