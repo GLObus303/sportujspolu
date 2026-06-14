@@ -1,5 +1,461 @@
 export const postsData = [
   {
+    id: 15,
+    slug: 'aktivni-dovolena-v-cesku-kde-si-v-lete-zasportujete',
+    image: '/images/hiking/5.avif',
+    category: 'tipy',
+    title: 'Aktivní dovolená v Česku: 10 míst, kde si v létě zasportujete',
+    description:
+      'Kam vyrazit na aktivní dovolenou v Česku? 10 nejlepších míst pro sport v přírodě. Šumava, Český ráj, Třeboňsko, Pálava a další. Tipy na cyklo, turistiku, vodu i běh.',
+    content: `
+      <div>
+        <p>
+          Nemusíte létat do Chorvatska nebo Řecka, abyste si užili aktivní dovolenou. Česko je plné míst, kde se dá skvěle sportovat v přírodě. Hory, jezera, řeky, cyklostezky, skalní města. Všechno je na dosah ruky, bez fronty na letišti a za zlomek ceny. Tady je 10 míst, kam vyrazit v létě, pokud chcete spojit dovolenou s pohybem.
+        </p>
+      </div>
+
+      <div>
+        <h2>1) Šumava</h2>
+        <p>
+          Šumava je ráj pro všechny, kdo milují přírodu a klid. Rozlehlé lesy, rašeliniště, ledovcová jezera a stovky kilometrů značených tras. Ať už chodíte, běháte nebo jezdíte na kole, Šumava vás nepustí.
+        </p>
+        <ul>
+          <li><b>Turistika:</b> klasika je výstup na Boubín nebo okruh kolem Černého a Čertova jezera. Trasy jsou dobře značené a zvládnou je i rodiny s dětmi.</li>
+          <li><b>Cyklistika:</b> šumavské cyklostezky vedou přes louky a lesy. Oblíbená trasa je okruh z Modravy přes Kvildu.</li>
+          <li><b>Na vodě:</b> Lipno nabízí SUP, windsurfing i kajak. Hladina je klidná a ideální pro začátečníky.</li>
+          <li><b>Pro koho:</b> rodiny, páry i sólo cestovatelé. Šumava zvládne všechny fitness úrovně.</li>
+          <li><b>Tip:</b> ubytujte se v Kašperských Horách nebo na Kvildě. Obě místa jsou skvělou základnou pro výlety do okolí.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>2) Třeboňsko</h2>
+        <p>
+          Rovinatá krajina plná rybníků, alejí a cyklostezek. Třeboňsko je ideální pro ty, kdo nechtějí šlapat do kopců, ale chtějí najet kilometry na kole a pak se osvěžit v rybníce.
+        </p>
+        <ul>
+          <li><b>Cyklistika:</b> cyklostezky kolem rybníků jsou rovinaté a vedou krásnou krajinou. Trasa Třeboň, Chlum u Třeboně, Suchdol nad Lužnicí je klasika.</li>
+          <li><b>Plavání:</b> Rožmberk, Svět nebo pískovny u Chlumu nabízejí čistou vodu a klidné pláže.</li>
+          <li><b>Kanoistika:</b> Lužnice od Suchdola po Třeboň je pohodový splav vhodný i pro úplné začátečníky.</li>
+          <li><b>Pro koho:</b> rodiny s dětmi, rekreační cyklisty a všechny, kdo preferují klidnější tempo.</li>
+          <li><b>Tip:</b> zkombinujte kolo a vodu. Dopoledne cyklostezka, odpoledne rybník. Lepší letní den neexistuje.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>3) Český ráj</h2>
+        <p>
+          Skalní města, zříceniny hradů a výhledy, ze kterých se tají dech. Český ráj je kompaktní oblast, kde se na malém prostoru vejde turistika, lezení i kolo.
+        </p>
+        <ul>
+          <li><b>Turistika:</b> Prachovské skály jsou povinnost. Okruh trvá 2 až 3 hodiny a je plný průhledů a skalních bran.</li>
+          <li><b>Lezení:</b> Český ráj je jednou z nejlepších lezeckých oblastí v Česku. Pískovcové věže nabízejí cesty pro všechny úrovně.</li>
+          <li><b>Trail running:</b> měkké lesní stezky kolem Turnova a Hruboskalska jsou skvělé na trailový běh.</li>
+          <li><b>Pro koho:</b> dobrodruhy, páry a aktivní rodiny. Děti milují průlezky ve skalách.</li>
+          <li><b>Tip:</b> vyrazte brzy ráno. Prachovské skály jsou v létě hodně navštěvované a ráno budete mít klid.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>4) Krkonoše</h2>
+        <p>
+          Nejvyšší české hory nabízejí v létě úplně jiný zážitek než v zimě. Žádné fronty na vleky, místo toho zelené hřebeny, horské louky a výhledy na stovky kilometrů.
+        </p>
+        <ul>
+          <li><b>Turistika:</b> hřebenovka z Harrachova přes Labskou boudu na Sněžku je jedním z nejkrásnějších treků v Česku.</li>
+          <li><b>Trail running:</b> Krkonošské stezky jsou náročné, ale odměnou jsou výhledy. Oblíbený je okruh přes Luční boudu.</li>
+          <li><b>Cyklistika:</b> silniční výjezdy na Špindlerovu boudu nebo do Pece jsou výzvou pro silné nohy.</li>
+          <li><b>Pro koho:</b> zdatnější sportovce a turisty. Převýšení je tu opravdové.</li>
+          <li><b>Tip:</b> počasí se v Krkonoších mění rychle. I v létě si zabalte větrovku a sledujte předpověď.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>5) Pálava a Jižní Morava</h2>
+        <p>
+          Vinice, teplé klima, Novomlýnské nádrže a bílé útesy Pálavy. Jižní Morava je ideální pro ty, kdo chtějí spojit sport s vínem a dobrým jídlem.
+        </p>
+        <ul>
+          <li><b>Cyklistika:</b> Moravské vinařské stezky jsou legendární. 1 200 km tras přes vinice, sklípky a malebné vesnice.</li>
+          <li><b>Na vodě:</b> Novomlýnské nádrže nabízejí windsurfing, kiteboarding a SUP. Je to jedno z nejteplejších míst v Česku.</li>
+          <li><b>Turistika:</b> výstup na Děvín (549 m) je krátký, ale odměnou je panoramatický výhled na celou Pálavu.</li>
+          <li><b>Pro koho:</b> páry, skupiny přátel a všechny, kdo chtějí spojit sport a gastronomii.</li>
+          <li><b>Tip:</b> naplánujte cyklovýlet tak, aby vedl přes vinný sklípek. Odměna po tréninku je důležitá.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>6) Jeseníky</h2>
+        <p>
+          Jeseníky jsou méně přeplněné než Krkonoše, ale nabízejí podobně krásnou horskou přírodu. Praděd, Velká kotlina, vodopád Bílé Opavy. Kdo tu jednou byl, vrací se.
+        </p>
+        <ul>
+          <li><b>Turistika:</b> výstup na Praděd (1 491 m) je klasika. Z Ovčárny je to asi 45 minut a výhledy z rozhledny stojí za to.</li>
+          <li><b>Horská kola:</b> Jeseníky mají skvělé traily pro MTB. Bikepark Kouty nabízí sjezdy pro všechny úrovně.</li>
+          <li><b>Koupání:</b> Slezská Harta je přehrada s čistou vodou a několika plážemi. Méně lidí než u Lipna.</li>
+          <li><b>Pro koho:</b> sportovce, kteří hledají klid a opravdovou přírodu bez davů.</li>
+          <li><b>Tip:</b> spojte výstup na Praděd se sjezdem na kole z Karlovy Studánky. Nahoru pěšky, dolů na kole.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>7) Máchovo jezero</h2>
+        <p>
+          Písečné pláže, teplá voda a sportovní vyžití na každém rohu. Máchovo jezero je letní klasika a nemusí to být jen o opalování.
+        </p>
+        <ul>
+          <li><b>Na vodě:</b> SUP, kajak, šlapadla i windsurfing. Půjčovny najdete přímo na pláži v Doksech.</li>
+          <li><b>Beach volejbal:</b> na hlavní pláži jsou kurty a v létě se tu hrají i amatérské turnaje.</li>
+          <li><b>Cyklistika:</b> okruh kolem jezera je asi 12 km a vede přes lesy a kolem menších rybníků.</li>
+          <li><b>Pro koho:</b> party přátel, rodiny a všechny, kdo chtějí kombinovat sport a pláž.</li>
+          <li><b>Tip:</b> vyrazte na kole k Bezdězu (zřícenina hradu na kopci). Výhled na jezero shora je ten nejlepší.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>8) Slapská přehrada a Vltava</h2>
+        <p>
+          Slapy jsou oblíbeným výletním cílem Pražáků, ale nabízejí víc než jen víkendové chataření. Údolí Vltavy je skvělé na vodu i na kolo.
+        </p>
+        <ul>
+          <li><b>Kajak a kánoe:</b> Vltava od Štěchovic po Slapy je klidná a krásná. Ideální na půldenní výlet.</li>
+          <li><b>SUP:</b> paddleboarding na Slapech je zážitek. Vysoké skalní stěny po obou stranách a čistá voda.</li>
+          <li><b>Cyklistika:</b> cyklostezka podél Vltavy od Prahy směrem na jih je jednou z nejhezčích v okolí hlavního města.</li>
+          <li><b>Pro koho:</b> Pražáky, kteří chtějí za hodinu z města do přírody. Ideální na jednodenní výlet.</li>
+          <li><b>Tip:</b> v týdnu je tu výrazně méně lidí. Pokud můžete, vyrazte ve středu nebo ve čtvrtek.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>9) Beskydy</h2>
+        <p>
+          Beskydy jsou drsné, zelené a divoké. Lysá hora, Radhošť, valašské pralesy. Tady se sportuje s pokorou k přírodě.
+        </p>
+        <ul>
+          <li><b>Turistika:</b> výstup na Lysou horu (1 323 m) je náročnější, ale odměnou je výhled na Tatry za jasného počasí.</li>
+          <li><b>Horská kola:</b> Beskydy mají hustou síť trailů. Bikepark Bílá je jeden z nejlepších v zemi.</li>
+          <li><b>Běh:</b> Beskydské ultra trail je slavný závod, ale trasy můžete běhat i sami. Terén je pestrý a náročný.</li>
+          <li><b>Pro koho:</b> sportovce, kteří nemají rádi přeplněná místa a hledají fyzickou výzvu.</li>
+          <li><b>Tip:</b> na Pustevnách si dejte pauzu u Jurkovičových dřevěnek. Atmosféra tohoto místa je nezapomenutelná.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>10) Brno a okolí</h2>
+        <p>
+          Brno není jen město. Je to brána na Pálavu, do Moravského krasu i k Brněnské přehradě. A samo o sobě nabízí víc sportovních možností, než byste čekali.
+        </p>
+        <ul>
+          <li><b>Workout hřiště:</b> Kraví hora má venkovní fitness, beachové kurty a bazén. Vše na jednom místě.</li>
+          <li><b>Běh:</b> okruh kolem Brněnské přehrady (asi 10 km) je oblíbená trasa místních běžců.</li>
+          <li><b>Cyklistika:</b> z Brna se dá vyjet na kole směrem na Pálavu nebo do Moravského krasu za méně než hodinu.</li>
+          <li><b>Na vodě:</b> na Brněnské přehradě si můžete půjčit kajak, SUP nebo šlapadlo.</li>
+          <li><b>Pro koho:</b> městské sportovce, kteří chtějí kombinovat sport ve městě s výlety do okolí.</li>
+          <li><b>Tip:</b> vyzkoušejte běh nebo kolo v Mariánském údolí. Je pár minut od centra a připadáte si jako uprostřed přírody.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Jak si užít aktivní dovolenou naplno</h2>
+        <p>
+          Pár praktických rad, aby vaše sportovní dovolená klapla od začátku do konce.
+        </p>
+        <ul>
+          <li><b>Plánujte, ale neplánujte moc:</b> mějte seznam míst, která chcete navštívit, ale nechte prostor pro spontánní odbočky. Nejlepší zážitky přicházejí neplánovaně.</li>
+          <li><b>Kombinujte sporty:</b> ráno túra, odpoledne voda. Střídání aktivit zabrání únavě a udrží zábavu.</li>
+          <li><b>Berte parťáky:</b> aktivní dovolená ve dvou nebo ve skupině je vždy lepší. Sdílené zážitky z kopce nebo z vody se pamatují roky.</li>
+          <li><b>Myslete na regeneraci:</b> den odpočinku uprostřed dovolené není lenošení. Je to investice do dalších dní.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Závěr</h2>
+        <p>
+          Česko je pro aktivní dovolenou jako stvořené. Od šumavských lesů přes moravské vinice až po beskydské hřebeny. Každý region nabízí jiný typ pohybu a jiný zážitek. Stačí si vybrat směr, sbalit batoh a vyrazit.
+        </p>
+        <p>
+          A pokud nechcete jet sami, najděte si parťáky na SportujSpolu. Zadejte region, sport a termín a připojte se k lidem, kteří chtějí sportovat stejně jako vy.
+        </p>
+      </div>
+    `,
+  },
+  {
+    id: 14,
+    slug: 'sport-v-horku-jak-bezpecne-sportovat-v-letnich-vedrech',
+    image: '/images/cycling/3.avif',
+    category: 'zdraví',
+    title:
+      'Sport v horku: 7 pravidel, jak bezpečně sportovat v letních vedrech',
+    description:
+      'Jak sportovat v létě, když je 30 °C a víc? Tady je 7 pravidel pro bezpečný trénink v horku. Pitný režim, správné oblečení, načasování a varovné signály.',
+    content: `
+      <div>
+        <p>
+          Léto láká ven a pohyb na čerstvém vzduchu je skvělý. Jenže když teploty přeskočí 30 °C, tělo funguje úplně jinak. Srdce pracuje víc, pot teče rychleji a riziko přehřátí roste. Ignorovat horko při sportu není tvrdost, je to zbytečné riziko. Tady je 7 pravidel, díky kterým si letní trénink užiješ bezpečně a bez problémů.
+        </p>
+      </div>
+
+      <div>
+        <h2>1) Trénuj v pravou dobu</h2>
+        <p>
+          Největší chyba, kterou můžeš v létě udělat, je jít běhat ve dvě odpoledne. Mezi 11:00 a 16:00 je slunce nejsilnější a teplota vzduchu dosahuje maxima. Přesuň trénink na ráno nebo večer.
+        </p>
+        <ul>
+          <li><b>Ráno (6:00 až 9:00):</b> vzduch je čerstvý, teplota příjemná a den začneš s energií. Ideální pro běh nebo cyklistiku.</li>
+          <li><b>Večer (po 18:00):</b> slunce už nepalí, ale pozor, asfalt a beton stále sálají teplo. Vyhledávej stín a parky.</li>
+          <li><b>Tip:</b> pokud trénuješ venku pravidelně, nastav si budík o půl hodiny dřív. Ranní trénink v létě je úplně jiný zážitek než v poledním vedru.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>2) Pij dřív, než dostaneš žízeň</h2>
+        <p>
+          Žízeň je signál, že tvé tělo už je mírně dehydrované. V horku ztrácíš potem 1 až 2 litry tekutin za hodinu intenzivního pohybu. Pokud čekáš, až ti vyschne v krku, je pozdě.
+        </p>
+        <ul>
+          <li><b>Před tréninkem:</b> vypij 300 až 500 ml vody asi 30 minut předem.</li>
+          <li><b>Během tréninku:</b> pij každých 15 až 20 minut po malých doušcích, zhruba 150 ml.</li>
+          <li><b>Po tréninku:</b> doplň tekutiny postupně. Dobrá orientace je barva moči. Světlá = v pořádku, tmavá = pij víc.</li>
+          <li><b>Tip:</b> noste s sebou láhev vždy. Na běh existují lehké běžecké pásy s lahvičkami, na kolo bidon. Nenechávej pití v autě nebo doma.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>3) Elektrolyty nejsou jen pro maratonce</h2>
+        <p>
+          Když se potíš, neztrácíš jen vodu, ale i sodík, draslík, hořčík a další minerály. Samotná voda je skvělá na krátký trénink do 45 minut. Ale při delším nebo intenzivnějším pohybu v horku potřebuješ víc.
+        </p>
+        <ul>
+          <li><b>Kdy doplnit elektrolyty:</b> při tréninku delším než 60 minut, při silném pocení nebo když cítíš svalové křeče.</li>
+          <li><b>Co funguje:</b> iontové nápoje, elektrolytové tablety do vody nebo kokosová voda.</li>
+          <li><b>Domácí recept:</b> 500 ml vody, špetka soli, lžíce medu a šťáva z půlky citrónu. Jednoduchý a účinný.</li>
+          <li><b>Pozor:</b> energetické nápoje a kofein dehydratují. V horku je to poslední, co chceš pít při sportu.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>4) Sniž intenzitu, ne motivaci</h2>
+        <p>
+          Ve 30 °C tvé tělo pracuje víc, i když běžíš stejné tempo jako ve 20 °C. Srdce pumpuje krev ke svalům a zároveň ke kůži na chlazení. Výsledek? Stejný výkon tě stojí víc energie. Proto je rozumné v horku zvolnit.
+        </p>
+        <ul>
+          <li><b>Pravidlo palce:</b> sniž tempo o 10 až 20 % oproti běžnému tréninku při nižších teplotách.</li>
+          <li><b>Sleduj tepovku:</b> pokud máš hodinky s měřením tepové frekvence, drž se aerobní zóny. V horku ti srdeční frekvence stoupne rychleji.</li>
+          <li><b>Neboj se přestávek:</b> krátká pauza ve stínu, pár doušků vody a můžeš pokračovat. To není slabost, to je chytrost.</li>
+          <li><b>Tip:</b> zkus v nejparnějších dnech vyměnit běh za plavání nebo SUP. Voda tě ochladí a trénink bude šetrnější.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>5) Správné oblečení dělá rozdíl</h2>
+        <p>
+          Bavlněné tričko nasákne pot a přilepí se na tělo. Funkční materiál odvádí vlhkost a pomáhá tělu se chladit. V létě tohle rozhoduje o tom, jestli si trénink užiješ nebo se budeš trápit.
+        </p>
+        <ul>
+          <li><b>Materiál:</b> lehké, prodyšné, funkční prádlo. Vyhýbej se bavlně.</li>
+          <li><b>Barvy:</b> světlé barvy odrážejí sluneční záření. Černá absorbuje teplo, takže ji nech v šatníku.</li>
+          <li><b>Hlava:</b> kšiltovka nebo lehký buff chrání před úžehem. Hlava se přehřívá nejrychleji.</li>
+          <li><b>Oči:</b> sportovní sluneční brýle chrání oči a pomáhají s orientací v ostrém světle.</li>
+          <li><b>Opalovací krém:</b> i sportovci potřebují SPF 30+. Nanášej 20 minut před tréninkem a používej voděodolný typ.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>6) Poznej varovné signály</h2>
+        <p>
+          Přehřátí se neohlásí předem. Přichází postupně a pokud ho ignoruješ, může to skončit vážně. Znát varovné signály je stejně důležité jako znát správnou techniku běhu.
+        </p>
+        <ul>
+          <li><b>Tepelné křeče:</b> bolestivé stahování svalů, většinou lýtka nebo stehna. Příčinou je ztráta solí potem. Zastav se, napij se iontového nápoje a protáhni svaly.</li>
+          <li><b>Tepelné vyčerpání:</b> silné pocení, slabost, závratě, nevolnost, bolest hlavy. Přesuň se do stínu, lehni si, chlaď se mokrým ručníkem a pij.</li>
+          <li><b>Úžeh (nejhorší scénář):</b> zmatení, horká a suchá kůže (tělo přestalo potit), teplota nad 40 °C. Volej záchranku, tohle je stav ohrožující život.</li>
+          <li><b>Pravidlo:</b> pokud se cítíš „divně", zastav se. Radši jeden trénink vynechat než skončit na pohotovosti.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>7) Sportuj s někým</h2>
+        <p>
+          Tohle je pravidlo, které platí vždy, ale v horku dvojnásob. Když sportujete ve dvou nebo ve skupině, vzájemně se hlídáte. Parťák si všimne, že jsi bledý, zarudlý nebo zpomalil dřív, než si to uvědomíš sám.
+        </p>
+        <ul>
+          <li><b>Bezpečnost:</b> pokud se jednomu z vás udělá špatně, druhý pomože nebo zavolá pomoc.</li>
+          <li><b>Motivace:</b> ve vedru je lákavé trénink odpískat. S parťákem se lépe překoná vnitřní lenost.</li>
+          <li><b>Kontrola:</b> domluvte se, že se budete navzájem upozorňovat na pití a přestávky.</li>
+          <li><b>Tip:</b> nemáš s kým sportovat v horku? Na SportujSpolu najdeš parťáky ve svém městě, kteří hledají společníky na letní tréninky.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Bonus: 5 sportů, které zvládneš i ve vedru</h2>
+        <p>
+          Ne každý sport se do vedra hodí stejně. Tady je pět aktivit, které fungují skvěle i když teploměr ukazuje přes 30 °C.
+        </p>
+        <ul>
+          <li><b>Plavání:</b> klasika. Celé tělo pracuje a zároveň se chladíš. Venkovní koupaliště, jezero nebo řeka.</li>
+          <li><b>SUP (paddleboarding):</b> stojíš na vodě, fouká ti vítr a když ti je horko, skočíš do vody. Ideální.</li>
+          <li><b>Ranní běh:</b> v šest ráno je 18 °C a prázdné ulice. Nejlepší běžecké podmínky celého dne.</li>
+          <li><b>Večerní cyklistika:</b> po sedmé večer je příjemný vánek a dlouhé stíny. Ideální na delší vyjížďku.</li>
+          <li><b>Jóga ve stínu:</b> rozložte karimatky pod stromy v parku. Pomalý pohyb, hluboké dýchání, žádné riziko přehřátí.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Závěr</h2>
+        <p>
+          Sportovat v létě je skvělé, ale vyžaduje to trochu víc plánování než ve zbytku roku. Pij pravidelně, trénuj ráno nebo večer, sniž intenzitu a hlavně poslouchej své tělo. Horko není nepřítel, pokud ho respektuješ.
+        </p>
+        <p>
+          A ještě jedna věc. V horku je lepší nesportovat sám. Najdi si parťáka na SportujSpolu, domluvte se na ranním běhu nebo večerním volejbalu a užijte si léto aktivně a bezpečně.
+        </p>
+      </div>
+    `,
+  },
+  {
+    id: 13,
+    slug: 'venkovni-trenink-s-partou-jak-sportovat-venku-v-lete',
+    image: '/images/basketball/4.avif',
+    category: 'společné aktivity',
+    title:
+      'Venkovní trénink s partou: 8 způsobů, jak sportovat venku v létě 2026',
+    description:
+      'Hledáš inspiraci na letní sport s přáteli? Tady je 8 nejlepších venkovních aktivit pro skupinu v létě 2026, od běžeckých klubů po pickleball a SUP.',
+    content: `
+      <div>
+        <p>
+          Léto 2026 je tady a s ním i ideální podmínky pro sportování pod širým nebem. Ale ruku na srdce, sám v parku to prostě není ono. Skupinový sport venku patří mezi nejsilnější fitness trendy roku 2026. Pomáhá udržet motivaci, zlepšit výsledky a hlavně si pohyb opravdu užít. Tady je 8 aktivit, které letos musíš vyzkoušet s partou.
+        </p>
+      </div>
+
+      <div>
+        <h2>1) Běžecké kluby a running crews</h2>
+        <p>
+          Běžecké kluby zažívají obrovský boom. Nejde jen o trénink, jde hlavně o komunitu. V každém větším českém městě dnes najdeš running crew, která se pravidelně schází a běhá společně. A pokud žádná ve tvém okolí není? Založ si vlastní.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> hledej skupiny s pomalým tempem nebo kombinací běhu a chůze. Ideální jsou programy typu „z gauče na 5 km".</li>
+          <li><b>Pro pokročilé:</b> zkus intervalové tréninky ve skupině. Společné tempo a vzájemné povzbuzování posouvají hranice.</li>
+          <li><b>Kde začít:</b> podívej se na SportujSpolu, jestli někdo ve tvém městě nehledá parťáky na běhání.</li>
+          <li><b>Tip:</b> domluvte se na pravidelném termínu (např. úterý a čtvrtek 18:00). Rutina je základ.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>2) Outdoor bootcamp v parku</h2>
+        <p>
+          Kruhový trénink pod širým nebem je zábavnější i efektivnější, než si myslíš. Stačí pár metrů trávy, vlastní váha těla a parta lidí, kteří se navzájem ženou vpřed. Žádná posilovna, žádné výmluvy.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> začněte s jednoduchými cviky: dřepy, kliky na kolenou, výpady, plank. 30 sekund práce, 30 sekund pauza.</li>
+          <li><b>Pro pokročilé:</b> přidejte burpees, výskoky a zkraťte pauzy. Můžete soutěžit v počtu opakování.</li>
+          <li><b>Vybavení:</b> karimatka nebo ručník, láhev s vodou. Nic víc nepotřebuješ.</li>
+          <li><b>Tip:</b> střídejte se v roli „trenéra". Každý týden někdo jiný vymyslí trénink, udržíte pestrost.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>3) Plážový volejbal a beach sporty</h2>
+        <p>
+          Plážový volejbal je klasika letního skupinového sportu. V Česku najdeš beachové kurty téměř v každém městě a pro hru potřebuješ minimálně čtyři lidi, takže je to přirozený způsob, jak sportovat s partou.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> hrajte rekreačně bez bodování. Cílem je udržet míč ve hře co nejdéle.</li>
+          <li><b>Pro pokročilé:</b> zorganizujte turnaj 4 vs 4 s krátkými sety a rotací týmů.</li>
+          <li><b>Kde hrát:</b> v Praze na Štvanici nebo Císařské louce, v Brně na Kraví hoře, ale beachové kurty najdeš i v menších městech.</li>
+          <li><b>Tip:</b> hrajte ráno nebo podvečer. V poledne je písek rozpálený a slunce příliš silné.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>4) Pickleball: sport, který dobývá Česko</h2>
+        <p>
+          Pickleball je kombinace tenisu, badmintonu a stolního tenisu. Hraje se na menším kurtu s lehkou pálkou a plastovým děrovaným míčkem. Je jednoduchý na naučení, ale náročný na zvládnutí. A hlavně je neuvěřitelně návykový. V roce 2026 patří mezi nejrychleji rostoucí sporty na světě.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> pravidla se naučíš za 10 minut. Hraje se na body do 11, podání má specifická pravidla.</li>
+          <li><b>Pro pokročilé:</b> zkoušejte čtyřhru. Komunikace a strategie ve dvojici přidávají novou dimenzi.</li>
+          <li><b>Vybavení:</b> pickleball pálky, míčky a síť. Sady se dají pořídit od 1 000 Kč.</li>
+          <li><b>Tip:</b> mnoho tenisových areálů v ČR už nabízí pickleball kurty, stačí se zeptat.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>5) SUP (Stand-Up Paddleboarding) ve skupině</h2>
+        <p>
+          Paddleboarding sám je relax. Paddleboarding s partou je zábava, výzva i společný zážitek. Můžete pádlovat společně po řece, závodit na krátké vzdálenosti nebo si prostě užít vodu a sluníčko.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> začněte v kleku na klidné vodě. Jakmile získáte jistotu, přejděte do stoje.</li>
+          <li><b>Pro pokročilé:</b> zkuste SUP jógu ve skupině nebo závod na delší trasu.</li>
+          <li><b>Kde v ČR:</b> Vltava (úsek Český Krumlov), Lipno, Máchovo jezero, Slapská přehrada.</li>
+          <li><b>Tip:</b> pronájem SUP boardu stojí kolem 300 až 500 Kč za hodinu. Ve skupině často dostanete slevu.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>6) Skupinová cyklistika a gravel riding</h2>
+        <p>
+          Cyklistika ve skupině má úplně jiný náboj než sólo jízda. Peloton vás táhne vpřed, sdílíte námahu a po cestě je prostor na konverzaci. Gravel riding, tedy jízda na šotolinových a lesních cestách, je navíc trendem, který v roce 2026 láká stále víc lidí.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> zvolte rovinatou cyklostezku a tempo přizpůsobte nejpomalejšímu.</li>
+          <li><b>Pro pokročilé:</b> naplánujte gravel ride s převýšením a zastávkou v hospůdce na půl cesty.</li>
+          <li><b>Trasy:</b> Greenway Praha do Vídně, Labská cyklostezka, Moravské vinařské stezky.</li>
+          <li><b>Tip:</b> domluvte se na společném tempu předem. Nic nezabíjí skupinovou jízdu víc než „závodníci" v čele.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>7) Walking kluby: nový fenomén</h2>
+        <p>
+          Chůze jako sport? Ano, a je to obrovský trend roku 2026. Walking kluby spojují pohyb, přírodu a konverzaci. Nejde o výkon, ale o pravidelnost a komunitu. Je to aktivita pro každého bez ohledu na věk nebo kondici.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> začněte s 30minutovou procházkou 3× týdně. Postupně prodlužujte.</li>
+          <li><b>Pro pokročilé:</b> zkuste „6-6-6 challenge", tedy 6 km, 6× týdně po dobu 6 týdnů. Výsledky vás překvapí.</li>
+          <li><b>Proč to funguje:</b> nízká bariéra vstupu, žádné vybavení, vhodné pro všechny fitness úrovně.</li>
+          <li><b>Tip:</b> walking klub je skvělý způsob, jak poznat nové lidi. Pozvěte kolegy, sousedy nebo se připojte přes SportujSpolu.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>8) Venkovní jóga a společný strečink</h2>
+        <p>
+          Jóga v parku na čerstvém vzduchu je úplně jiný zážitek než v uzavřeném studiu. Ráno na trávě, s ptáky kolem a sluncem v zádech. Ve skupině navíc vzniká energie, která vás udrží v přítomném okamžiku.
+        </p>
+        <ul>
+          <li><b>Pro začátečníky:</b> vyberte jednodušší flow, třeba pozdrav slunci, základní stojky a sedy.</li>
+          <li><b>Pro pokročilé:</b> zkuste vinyasu nebo ashtangu venku. Nerovný terén přidává výzvu pro stabilitu.</li>
+          <li><b>Vybavení:</b> karimatka, pohodlné oblečení, láhev s vodou.</li>
+          <li><b>Tip:</b> cvičte naboso na trávě. Kontakt s přírodou zesiluje pozitivní účinky jógy.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Proč sportovat venku s partou?</h2>
+        <p>
+          Skupinový sport venku má víc benefitů než sólo trénink v posilovně. Kombinace pohybu, čerstvého vzduchu a sociální interakce snižuje stres, zlepšuje náladu a zvyšuje pravděpodobnost, že u sportování vydržíte dlouhodobě.
+        </p>
+        <ul>
+          <li><b>Motivace:</b> ve skupině je těžší vynechat trénink. Parťáci vás podrží.</li>
+          <li><b>Zábava:</b> sdílený zážitek z pohybu vytváří přátelství a vzpomínky.</li>
+          <li><b>Výsledky:</b> lidé sportující ve skupině dosahují lepších výsledků.</li>
+          <li><b>Zdraví:</b> pobyt venku zvyšuje hladinu vitamínu D a zlepšuje spánek.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Závěr</h2>
+        <p>
+          Léto 2026 je ideální čas vyrazit ven a sportovat s ostatními. Ať už tě láká běh, cyklistika, pickleball nebo jen pravidelná procházka s walking klubem, klíčem je začít a najít si lidi, se kterými tě to bude bavit.
+        </p>
+        <p>
+          Nemáš s kým sportovat? Právě proto tu je SportujSpolu. Najdi si parťáky ve svém městě, připoj se k existující akci nebo vytvoř vlastní a užij si léto naplno.
+        </p>
+      </div>
+    `,
+  },
+  {
     id: 12,
     slug: 'top-6-letnich-sportu-ve-dvou',
     image: '/images/cycling/5.avif',

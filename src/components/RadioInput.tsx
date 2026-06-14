@@ -1,23 +1,28 @@
 import { useFormContext } from 'react-hook-form';
 
+import { Tooltip } from './Tooltip';
+
 type RadioInputProps = {
   name: string;
   label: string;
   labels: Record<string, string>;
+  tooltip?: string;
 };
 
 export const RadioInput: React.FC<RadioInputProps> = ({
   name,
   label,
   labels,
+  tooltip,
 }) => {
   const { register, watch } = useFormContext();
   const watchedValue = String(watch(name));
 
   return (
     <div className="flex w-full flex-row items-start justify-between">
-      <span className="text-normal mb-4 pt-3 text-start md:pt-2 md:text-xl">
+      <span className="text-normal mb-4 inline-flex items-center pt-3 text-start md:pt-2 md:text-xl">
         {label}
+        {tooltip && <Tooltip text={tooltip} />}
       </span>
       <div className="mt-5 grid md:grid-cols-2 w-3/5 gap-4">
         {Object.entries(labels).map(([value, optionLabel], index) => (
