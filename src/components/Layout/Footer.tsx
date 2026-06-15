@@ -14,6 +14,7 @@ const footerLinks = [
     isSocials: true,
   },
   { href: Routes.BLOG, label: 'Blog', isSocials: false },
+  { href: Routes.CALCULATORS, label: 'Kalkulačky', isSocials: false },
   { href: Routes.GUIDELINES, label: 'Zásady platformy', isSocials: false },
   { href: Routes.CONTACT, label: 'Kontakt', isSocials: false },
   { href: Routes.DICTIONARY, label: 'Slovník', isSocials: false },

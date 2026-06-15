@@ -45,7 +45,6 @@ export const Select: React.FC<SelectProps> = ({
             'border-secondary': errors?.[name],
           },
         )}
-        placeholder={placeholder}
         {...register(name)}
       >
         <option value="" disabled>

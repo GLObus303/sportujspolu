@@ -15,6 +15,7 @@ export const Routes = {
   CONTACT: '/kontakt',
   FAQ: '/faq',
   SPORT: '/sport',
+  CALCULATORS: '/kalkulacky',
 };
 
 export const THEME = {
