@@ -5,9 +5,9 @@ import Image from 'next/image';
 
 import { StarRating } from '../StarRating';
 import { Event } from '../../types/Event';
-import { Routes, levelLabels } from '../../constants';
+import { levelLabels } from '../../constants';
 import { getSportLabel } from '../../utils/getSportLabel';
-import { slugifyCategory } from '../../utils/slugifyCategory';
+import { buildEventPath } from '../../utils/buildEventPath';
 import { getImagePath } from '../../utils/getImagePath';
 import { HeartButton } from '../HeartButton';
 
@@ -18,18 +18,18 @@ type EventCardProps = {
 };
 
 export const EventCard: React.FC<EventCardProps> = ({
-  event: { id, name, sport, location, price, description, level, owner },
+  event,
   index,
   formattedDate,
 }) => {
+  const { id, name, sport, location, price, description, level, owner } = event;
   const sportLabel = getSportLabel(sport);
   const levelLabel = levelLabels[level];
-
-  const category = slugifyCategory(`${sportLabel} ${location} ${levelLabel}`);
+  const eventPath = buildEventPath(event);
 
   return (
     <article className="relative rounded-md bg-card shadow-md">
-      <Link href={`${Routes.EVENT}/${category}/${id}`}>
+      <Link href={eventPath}>
         <div style={{ aspectRatio: '1/1' }} className="rounded-md bg-card">
           <figure className="relative h-1/3 w-full overflow-hidden">
             <Image
